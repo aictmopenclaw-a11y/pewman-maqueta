@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pewman Innovation · Inteligencia natural para la agricultura del futuro</title>
+<meta name="description" content="Tecnología de vanguardia para una agricultura productiva y sostenible. Crioprotect y Nanoforte: bioinsumos chilenos frente a heladas y sequía.">
+<link rel="icon" href="img/iso-pewman.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rojo:#BD0028; --rojo-d:#a12423;
+    --tinta:#343434; --gris:#DFDFDF; --gris-cl:#F9F9F9; --blanco:#fff;
+    --linea:#e4e4e4; --gris-tx:#6f6f6f;
+    --f:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --sh:0 2px 4px rgba(52,52,52,.05),0 16px 38px -20px rgba(52,52,52,.25);
+    --sh2:0 28px 56px -28px rgba(52,52,52,.4);
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--f);color:var(--tinta);background:var(--blanco);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-weight:700;line-height:1.12;letter-spacing:-.02em}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rojo)}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 44px}
+  .sec-head h2{font-size:clamp(27px,3.6vw,40px);color:var(--tinta);margin:12px 0 12px}
+  .sec-head p{font-size:16.5px;color:var(--gris-tx)}
+  section{padding:78px 0}
+
+  /* Regla global de botones: redondeados, inactivo gris, hover rojo */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--f);font-weight:600;font-size:15px;padding:13px 28px;border-radius:100px;cursor:pointer;border:2px solid transparent;transition:.2s;white-space:nowrap}
+  .btn-dark{background:var(--tinta);color:#fff}
+  .btn-light{background:#ececec;color:var(--tinta);border-color:#9a9a9a}
+  .btn-dark:hover,.btn-light:hover{background:var(--rojo);color:#fff;border-color:var(--rojo);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+  .btn-ghost:hover{background:var(--rojo);border-color:var(--rojo);transform:translateY(-2px)}
+
+  /* topbar + header */
+  .topbar{background:var(--tinta);color:#cfcfcf;font-size:13px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .topbar a{color:#eee}.topbar .r{display:flex;gap:16px;align-items:center}
+  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--linea)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:88px}
+  .logo img{height:63px}
+  nav.main{display:flex;gap:26px;font-weight:600;font-size:15px}
+  nav.main a{color:var(--tinta);padding:4px 0;position:relative}
+  nav.main a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--rojo);transition:.25s}
+  nav.main a:hover::after,nav.main a.active::after{width:100%}
+  nav.main a.active{color:var(--rojo)}
+  .header-cta{display:flex;align-items:center;gap:16px}
+  .cart{color:var(--tinta);font-size:21px}
+  nav.main .dd{position:relative}
+  nav.main .dd > a{display:inline-flex;align-items:center;gap:4px}
+  nav.main .dd-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(6px);background:#fff;border:1px solid var(--linea);border-radius:12px;box-shadow:0 16px 36px -14px rgba(0,0,0,.22);padding:8px;min-width:190px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transition:.2s;z-index:80}
+  nav.main .dd:hover .dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  nav.main .dd-menu a{padding:9px 13px;border-radius:8px;font-size:14px;white-space:nowrap}
+  nav.main .dd-menu a::after{display:none}
+  nav.main .dd-menu a:hover{background:#f0f0f0}
+
+  /* HERO carrusel · 3 banners · 2 columnas */
+  .hero{background:var(--gris-cl);padding:42px 0 30px;overflow:hidden}
+  .hviewport{overflow:hidden}
+  .htrack{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+  .hslide{flex:0 0 100%;min-width:100%}
+  .hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;min-height:480px}
+  .hgrid .tx .k{font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--rojo);display:inline-block;padding:5px 12px;border-radius:4px;margin-bottom:16px}
+  .hgrid .tx .plogo{height:44px;width:auto;margin-bottom:16px}
+  .hgrid .tx h1{font-size:clamp(28px,4vw,46px);color:var(--tinta);margin-bottom:14px}
+  .hgrid .tx p{font-size:clamp(16px,1.5vw,18px);color:var(--gris-tx);max-width:470px;margin-bottom:26px}
+  .hgrid .tx .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hgrid .media{height:clamp(380px,52vh,500px);aspect-ratio:5/6;justify-self:end;border-radius:20px;overflow:hidden;box-shadow:var(--sh)}
+  .hgrid .media.sci img{width:100%;height:100%;object-fit:cover}
+  .hgrid .media.prod{display:flex;align-items:center;justify-content:center;background:linear-gradient(155deg,#ececec,#fafafa);padding:22px}
+  .hgrid .media.prod img{max-height:90%;width:auto;object-fit:contain;filter:drop-shadow(0 18px 26px rgba(52,52,52,.25))}
+  .hdots{display:flex;gap:9px;justify-content:center;margin-top:22px}
+  .hdots button{width:11px;height:11px;border-radius:50%;border:2px solid var(--tinta);background:transparent;cursor:pointer;padding:0;transition:.2s}
+  .hdots button.on{background:var(--rojo);border-color:var(--rojo);width:26px;border-radius:7px}
+  @media(max-width:820px){
+    .hero{padding:24px 0}
+    .hgrid{grid-template-columns:1fr;gap:22px;min-height:0}
+    .hgrid .media{order:-1;justify-self:stretch;height:auto;width:100%;aspect-ratio:4/3;max-height:360px}
+  }
+
+  /* PREMIOS */
+  .premios{background:var(--blanco);padding-top:64px;padding-bottom:64px}
+  .prm-track{display:flex;gap:20px;overflow-x:auto;padding:8px 2px 16px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .prm-track::-webkit-scrollbar{display:none}
+  .prm{flex:0 0 auto;width:150px;height:120px;background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r);display:flex;align-items:center;justify-content:center;padding:18px;scroll-snap-align:center;transition:.2s}
+  .prm:hover{box-shadow:var(--sh);transform:translateY(-4px)}
+  .prm img{max-height:78px;max-width:120px;object-fit:contain}
+  .prm.ph{border-style:dashed;color:#bcbcbc;font-size:12px;font-weight:600;text-align:center}
+
+  /* CONTADOR */
+  .contador{background:var(--gris-cl);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .cstat .v{font-size:clamp(34px,4.5vw,52px);font-weight:800;color:var(--tinta);line-height:1;letter-spacing:-.03em}
+  .cstat .l{font-size:14px;color:var(--gris-tx);margin-top:10px;max-width:190px;margin-left:auto;margin-right:auto}
+
+  /* SOLUCIONES */
+  .sol{background:var(--blanco)}
+  .sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .scard{border:1px solid var(--linea);border-radius:18px;overflow:hidden;background:var(--blanco);box-shadow:var(--sh);display:flex;flex-direction:column;transition:.25s}
+  .scard:hover{transform:translateY(-5px);box-shadow:var(--sh2)}
+  .scard .top{height:230px;display:flex;align-items:center;justify-content:center;background:var(--gris-cl);position:relative;padding:22px}
+  .scard .top img.pack{height:200px;width:auto;object-fit:contain;filter:drop-shadow(0 16px 22px rgba(52,52,52,.22))}
+  .scard .top img.brand{position:absolute;top:18px;left:20px;height:30px}
+  .scard .bd{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
+  .scard ul{list-style:none;margin:6px 0 18px}
+  .scard li{font-size:14.5px;padding-left:26px;position:relative;margin-bottom:9px;color:var(--tinta)}
+  .scard li::before{content:"";position:absolute;left:0;top:7px;width:13px;height:13px;border-radius:3px;background:var(--rojo)}
+  .scard.crio li::before{background:#2bbee0}
+  .scard.nano li::before{background:#009633}
+  .scard .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;border-top:1px solid var(--linea)}
+  .scard .price .s{font-size:12px;color:var(--gris-tx)}
+  .scard .price .p{font-weight:800;font-size:22px;color:var(--tinta)}
+  .nota-precio{text-align:center;font-size:13px;color:var(--gris-tx);margin-top:18px}
+
+  /* CASOS carrusel */
+  .casos{background:var(--gris-cl)}
+  .cs-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:none}
+  .cs-track::-webkit-scrollbar{display:none}
+  .cs{flex:0 0 auto;width:300px;height:360px;border-radius:18px;overflow:hidden;position:relative;scroll-snap-align:center;box-shadow:var(--sh)}
+  .cs img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .cs:hover img{transform:scale(1.06)}
+  .cs .lb{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 16px;background:linear-gradient(transparent,rgba(20,20,20,.82));color:#fff;font-weight:700;font-size:16px}
+  .car-nav{display:flex;gap:10px;justify-content:center;margin-top:22px}
+  .car-nav button{width:42px;height:42px;border-radius:50%;border:1px solid var(--linea);background:#fff;cursor:pointer;font-size:18px;color:var(--tinta);transition:.2s}
+  .car-nav button:hover{background:var(--rojo);color:#fff;border-color:var(--rojo)}
+
+  /* EMPRESAS */
+  .conf{background:var(--blanco);padding:48px 0}
+  .conf .lab{text-align:center;font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris-tx);margin-bottom:22px}
+  .conf .row{display:flex;gap:40px;align-items:center;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:10px 4px 20px}
+  .conf .row::-webkit-scrollbar{display:none}
+  .conf .row img{height:66px;width:auto;max-width:204px;object-fit:contain;filter:grayscale(1);opacity:.65;transition:.2s;flex:0 0 auto;scroll-snap-align:center}
+  .conf .row img:hover{filter:grayscale(0);opacity:1}
+  .conf .ph-logo{height:66px;width:188px;border:1px dashed #d2d2d2;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#bcbcbc;flex:0 0 auto;scroll-snap-align:center}
+
+  /* FORMULARIO */
+  .form-sec{position:relative;background:linear-gradient(rgba(38,38,38,.82),rgba(38,38,38,.60)),url('img/caso-uvas.jpg') center/cover}
+  .form-sec .sec-head h2{color:#fff}
+  .form-box{max-width:760px;margin:0 auto;background:#fff;border:1px solid var(--linea);border-radius:20px;padding:40px;box-shadow:var(--sh)}
+  .form-box .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .form-box label{display:block;font-weight:600;font-size:13px;margin-bottom:6px}
+  .form-box input,.form-box select,.form-box textarea{width:100%;border:1.5px solid var(--linea);border-radius:10px;padding:12px 14px;font-size:15px;font-family:var(--f);transition:.18s}
+  .form-box input:focus,.form-box select:focus,.form-box textarea:focus{outline:none;border-color:var(--rojo);box-shadow:0 0 0 3px rgba(189,0,40,.12)}
+  .form-box .full{margin-bottom:14px}
+  .form-box textarea{min-height:96px;resize:vertical}
+  .ok{font-size:13px;color:var(--rojo);margin-top:10px;font-weight:600}
+
+  /* BANNER DISTRIBUIDOR (estilo CALS, fondo claro) */
+  .dist{padding:40px 0}
+  .dist .banner{background:#f6f6f3;border:1px solid var(--linea);border-radius:16px;display:flex;align-items:center;justify-content:center;gap:46px;padding:30px 24px;flex-wrap:wrap}
+  .dist .dist-txt{font-weight:700;font-size:clamp(17px,2vw,23px);color:var(--tinta)}
+  .dist .dist-logo-img{height:74px;width:auto;background:#fff;border-radius:12px;padding:10px 20px;box-shadow:0 8px 20px -12px rgba(0,0,0,.3)}
+  .dist .dist-banner-img{width:100%;height:auto;border-radius:16px;display:block;box-shadow:var(--sh)}
+
+  /* PRENSA */
+  .prensa{background:var(--blanco)}
+  .pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pcard{border-radius:16px;overflow:hidden;position:relative;height:230px;box-shadow:var(--sh)}
+  .pcard img{width:100%;height:100%;object-fit:cover}
+  .pcard::after{content:"";position:absolute;inset:0;background:rgba(52,52,52,.55);transition:.3s}
+  .pcard:hover::after{background:rgba(52,52,52,.2)}
+  .pcard .ct{position:absolute;left:0;right:0;bottom:0;padding:30px 18px 16px;z-index:2;color:#fff}
+  .pcard .src{font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:var(--rojo);display:inline-block;padding:3px 9px;border-radius:4px;margin-bottom:7px}
+  .pcard .ct h4{font-size:15.5px;color:#fff;line-height:1.3}
+  .prensa .more{text-align:center;margin-top:32px}
+
+  /* FRANJA INSTITUCIONAL + FOOTER */
+  .inst{background:#2b2b2b;color:#cfcfcf;padding:32px 0;font-size:13px}
+  .inst-grid{display:grid;grid-template-columns:1.2fr .9fr 1.1fr 1.5fr;gap:30px;align-items:start}
+  .inst .t{font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:9px}
+  .inst p{color:#bdbdbd;line-height:1.75;font-size:13px}
+  .inst .corfo{display:inline-flex;margin-top:2px}
+  .inst .corfo img{height:72px;width:auto;object-fit:contain}
+  .inst .col a{display:block;color:#cfcfcf;margin-bottom:6px}
+  .inst .col a:hover{color:#fff;text-decoration:underline}
+  @media(max-width:900px){.inst-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.inst-grid{grid-template-columns:1fr}}
+  footer.site{background:#dfdfdf;color:#4a4a4a;padding:54px 0 26px;font-size:14px}
+  .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:34px;border-bottom:1px solid #d4d4d4}
+  footer.site .logo img{height:60px;margin-bottom:14px}
+  footer.site h4{color:var(--tinta);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
+  footer.site a{display:block;color:#5a5a5a;margin-bottom:8px}
+  footer.site a:hover{color:var(--rojo)}
+  .soc{display:flex;gap:10px;margin-top:14px}
+  .soc a{width:38px;height:38px;border-radius:10px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;margin:0;color:var(--tinta)}
+  .soc a:hover{background:var(--rojo);color:#fff}
+  .fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;font-size:12.5px;color:#8a8a8a}
+
+  @media(max-width:900px){
+    .sol-grid,.cgrid,.pr-grid,.pat-grid,.fgrid,.form-box .grid{grid-template-columns:1fr 1fr}
+    nav.main,.topbar .l{display:none}
+  }
+  @media(max-width:560px){
+    .cgrid,.pr-grid,.pat-grid,.fgrid,.sol-grid,.form-box .grid{grid-template-columns:1fr}
+    section{padding:56px 0}
+    .dist .banner{gap:18px;padding:24px 18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span class="l">🇨🇱 Biotecnología agrícola chilena · Patentada en Chile, USA, India e internacional</span>
+  <div class="r"><a href="#">ES</a><span style="opacity:.4">|</span><a href="#" style="opacity:.6">EN</a>
+    <a href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">💬 +56 9 9083 3908</a></div>
+</div></div>
+
+<header><div class="wrap">
+  <a class="logo" href="#"><img src="img/logo-pewman.png" alt="Pewman Innovation"></a>
+  <nav class="main">
+    <a href="home.html" class="active">Inicio</a>
+    <div class="dd"><a href="crioprotect-general.html">Productos ▾</a>
+      <div class="dd-menu"><a href="crioprotect-general.html">Crioprotect</a><a href="nanoforte-general.html">Nanoforte</a></div>
+    </div>
+    <a href="casos.html">Casos</a>
+    <div class="dd"><a href="empresa.html">Empresa ▾</a>
+      <div class="dd-menu"><a href="empresa.html">Nosotros</a><a href="empresa.html#terminos">Términos y condiciones</a></div>
+    </div>
+    <a href="prensa.html">Prensa y medios</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <div class="header-cta">
+    <a class="cart" href="#" title="Carro" aria-label="Carro de compras">🛒</a>
+  </div>
+</div></header>
+
+<!-- HERO carrusel · 3 banners · 2 columnas (texto izq / imagen 5:6 der) -->
+<section class="hero" id="hero" aria-label="Destacados">
+  <div class="wrap">
+    <div class="hviewport">
+      <div class="htrack" id="htrack">
+
+        <!-- Slide 1: institucional -->
+        <div class="hslide">
+          <div class="hgrid">
+            <div class="tx">
+              <span class="k">Pewman Innovation</span>
+              <h1>Inteligencia natural para la agricultura del futuro</h1>
+              <p>Tecnología de vanguardia para una agricultura productiva y sostenible. Enfrenta el cambio climático.</p>
+              <div class="cta">
+                <a class="btn btn-dark" href="#">Conoce más de nuestra tecnología</a>
+                <a class="btn btn-light" href="#soluciones">Ver productos</a>
+              </div>
+            </div>
+            <div class="media sci"><img src="img/hero-cientificos.png" alt="Investigación científica en ecosistemas extremos"></div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Crioprotect -->
+        <div class="hslide">
+          <div class="hgrid">
+            <div class="tx">
+              <span class="k">Producción, cuidado y resistencia</span>
+              <h1>¿Estás preparado para proteger tus cultivos de las heladas?</h1>
+              <div class="cta">
+                <a class="btn btn-dark" href="crioprotect-general.html">Ver Crioprotect</a>
+                <a class="btn btn-light" href="#">Conoce más</a>
+              </div>
+            </div>
+            <div class="media sci"><img src="img/hero-crioprotect.png" alt="Crioprotect en cultivo protegido de heladas"></div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Nanoforte -->
+        <div class="hslide">
+          <div class="hgrid">
+            <div class="tx">
+              <span class="k">Más producción con menos agua</span>
+              <h1>¿Estás preparado para enfrentar la sequía?</h1>
+              <div class="cta">
+                <a class="btn btn-dark" href="nanoforte-general.html">Ver Nanoforte</a>
+                <a class="btn btn-light" href="#">Conoce más</a>
+              </div>
+            </div>
+            <div class="media sci"><img src="img/hero-nanoforte.png" alt="Nanoforte para resistencia hídrica"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="hdots" id="hdots"></div>
+  </div>
+</section>
+
+<!-- PREMIOS (carrusel, fondo blanco, sin franja roja) -->
+<section class="premios" aria-label="Premios">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:30px;max-width:960px"><h2>Premios que respaldan nuestra ciencia</h2></div>
+    <div class="prm-track">
+      <div class="prm"><img src="img/premio-startup.png" alt="Startup del Año"></div>
+      <div class="prm"><img src="img/premio-avonni.png" alt="Avonni"></div>
+      <div class="prm"><img src="img/premio-goglobal.png" alt="GoGlobal"></div>
+      <div class="prm"><img src="img/premio-01.png" alt="Premio"></div>
+      <div class="prm"><img src="img/premio-02.png" alt="Premio"></div>
+      <div class="prm"><img src="img/premio-03.png" alt="Premio"></div>
+      <div class="prm"><img src="img/premio-04.png" alt="Premio"></div>
+      <div class="prm ph">Premio 8</div>
+      <div class="prm ph">Premio 9</div>
+      <div class="prm ph">Premio 10</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTADOR (cifras animadas, letras rojas sobre fondo gris) -->
+<section class="contador" aria-label="Cifras">
+  <div class="wrap">
+    <div class="cgrid">
+      <div class="cstat"><div class="v" data-to="2000" data-pre="+" data-suf="">+0</div><div class="l">hectáreas protegidas</div></div>
+      <div class="cstat"><div class="v" data-to="40" data-pre="" data-suf="%">0%</div><div class="l">de rentabilidad generada por hectárea</div></div>
+      <div class="cstat"><div class="v" data-to="8" data-pre="+" data-suf="">+0</div><div class="l">regiones del país con presencia</div></div>
+      <div class="cstat"><div class="v" data-to="10" data-pre="+" data-suf="">+0</div><div class="l">años de investigación y desarrollo propio</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NUESTRAS SOLUCIONES -->
+<section class="sol" id="soluciones">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Productos</span>
+      <h2>Nuestras soluciones</h2></div>
+    <div class="sol-grid">
+      <article class="scard crio">
+        <div class="top"><img class="brand" src="img/logo-crio.svg" alt="Crioprotect"><img class="pack" src="img/crio-20lt.png" alt="Crioprotect"></div>
+        <div class="bd">
+          <ul>
+            <li>Protección contra heladas de hasta −4°C y 12 horas de duración.</li>
+            <li>Evita pérdidas del 80% al 100% en la producción.</li>
+            <li>Huella mínima: 4,6 kg de CO₂e por hectárea.</li>
+            <li>Formatos: 1 L y 5 L.</li>
+          </ul>
+          <div class="foot"><div class="price"><div class="s">Desde</div><div class="p">$33.815</div></div>
+            <a class="btn btn-dark" href="crioprotect.html">Ver producto</a></div>
+        </div>
+      </article>
+      <article class="scard nano">
+        <div class="top"><img class="brand" src="img/logo-nano.svg" alt="Nanoforte"><img class="pack" src="img/nano-20lt.png" alt="Nanoforte"></div>
+        <div class="bd">
+          <ul>
+            <li>Aumenta entre 10% y 15% la generación de biomasa del cultivo.</li>
+            <li>Mejora entre 30% y 40% el potencial hídrico de la planta.</li>
+            <li>Opera con 40% menos de agua.</li>
+            <li>Formatos: 1 L, 5 L y 20 L.</li>
+          </ul>
+          <div class="foot"><div class="price"><div class="s">Desde</div><div class="p">$19.990</div></div>
+            <a class="btn btn-dark" href="nanoforte.html">Ver producto</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS DE ÉXITO (carrusel, sin testimonios) -->
+<section class="casos" id="casos">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Resultados</span>
+      <h2>Casos de éxito</h2>
+      <p>Probado en los cultivos de Chile.</p></div>
+    <div class="cs-track" id="csTrack">
+      <div class="cs"><img src="img/caso-duraznos.png" alt="Productor en huerto de frutales" loading="lazy"><div class="lb">Frutales</div></div>
+      <div class="cs"><img src="img/caso-asesoria.png" alt="Asesoría técnica en parronal" loading="lazy"><div class="lb">Asesoría en terreno</div></div>
+      <div class="cs"><img src="img/caso-frutal.png" alt="Revisión de árbol frutal" loading="lazy"><div class="lb">Paltos y cítricos</div></div>
+      <div class="cs"><img src="img/caso-lechugas.png" alt="Cultivo de hortalizas" loading="lazy"><div class="lb">Hortalizas</div></div>
+      <div class="cs"><img src="img/caso-fumigacion.png" alt="Aplicación en viñedo" loading="lazy"><div class="lb">Viñedos</div></div>
+      <div class="cs"><img src="img/caso-brotes.png" alt="Revisión de brotación" loading="lazy"><div class="lb">Brotación</div></div>
+    </div>
+    <div class="car-nav"><button data-t="csTrack" data-d="-1" aria-label="Anterior">‹</button><button data-t="csTrack" data-d="1" aria-label="Siguiente">›</button></div>
+  </div>
+</section>
+
+<!-- EMPRESAS QUE CONFÍAN -->
+<div class="conf">
+  <div class="wrap">
+    <div class="lab">Empresas que confían en nosotros</div>
+    <div class="row">
+      <img src="img/cli-corteva.jpg" alt="Corteva">
+      <img src="img/cli-gidding.jpg" alt="Giddings">
+      <img src="img/cli-santamarta.jpg" alt="Santa Marta">
+      <img src="img/cli-sugal.jpg" alt="Sugal Group">
+      <img src="img/cli-24.png" alt="Cran Chile">
+      <img src="img/cli-25.png" alt="Colún">
+      <img src="img/cli-26.png" alt="Agro Ingenium">
+      <img src="img/cli-27.png" alt="Montes">
+      <span class="ph-logo">Logo 9</span>
+      <span class="ph-logo">Logo 10</span>
+    </div>
+  </div>
+</div>
+
+<!-- FORMULARIO -->
+<section class="form-sec" id="form">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Contacto</span>
+      <h2>¿Quieres saber más de nuestras soluciones?</h2></div>
+    <form class="form-box" onsubmit="document.getElementById('okmsg').textContent='✓ ¡Gracias! Te contactaremos pronto. (demo)';return false;">
+      <div class="grid">
+        <div><label>Nombre</label><input type="text" required></div>
+        <div><label>Correo electrónico</label><input type="email" required></div>
+      </div>
+      <div class="grid">
+        <div><label>Teléfono</label><input type="tel"></div>
+        <div><label>Tipo de cultivo</label><input type="text" placeholder="Cerezos, uva, papas..."></div>
+      </div>
+      <div class="grid">
+        <div><label>Hectáreas</label><input type="number" min="0" placeholder="Ej: 25"></div>
+        <div><label>Producto de interés</label><select><option>Crioprotect</option><option>Nanoforte</option><option>Ambos</option></select></div>
+      </div>
+      <div class="full"><label>Mensaje</label><textarea placeholder="Cuéntanos sobre tu cultivo"></textarea></div>
+      <button class="btn btn-dark" type="submit">Enviar mensaje</button>
+      <div class="ok" id="okmsg"></div>
+    </form>
+  </div>
+</section>
+
+<!-- BANNER DISTRIBUIDOR (estilo CALS, fondo claro) -->
+<div class="dist"><div class="wrap">
+  <img class="dist-banner-img" src="img/banner-cals.png" alt="Encuentra nuestros productos en CALS, de lo agrícola lo mejor">
+</div></div>
+
+<!-- PRENSA Y MEDIOS -->
+<section class="prensa" id="prensa">
+  <div class="wrap">
+    <div class="sec-head"><h2>Prensa y medios</h2></div>
+    <div class="pr-grid">
+      <a class="pcard" href="#"><img src="img/prensa-campo.jpg" alt="Nota de prensa" loading="lazy"><div class="ct"><span class="src">El Mercurio Campo</span><h4>La biotecnología antiheladas que nació de la Antártica.</h4></div></a>
+      <a class="pcard" href="#"><img src="img/prensa-financiero.jpg" alt="Nota de prensa" loading="lazy"><div class="ct"><span class="src">Diario Financiero</span><h4>Biotech chilena escala con biofortificantes de bacterias.</h4></div></a>
+      <a class="pcard" href="#"><img src="img/prensa-radio.jpg" alt="Nota de prensa" loading="lazy"><div class="ct"><span class="src">Redagrícola</span><h4>Microorganismos extremos al servicio del agro.</h4></div></a>
+    </div>
+    <div class="more"><a class="btn btn-light" href="prensa.html">Ver todas las noticias</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><a class="logo" href="#"><img src="img/logo-pewman.png" alt="Pewman Innovation"></a>
+        <p style="max-width:280px;font-size:14px">Biotecnología de vanguardia para una agricultura más productiva y sostenible.</p>
+        <div class="soc">
+          <a href="https://www.instagram.com/pewmaninnovation" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+          <a href="https://www.facebook.com/pewmaninnovation" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a href="https://www.linkedin.com/company/pewman-innovation" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div><h4>Productos</h4><a href="crioprotect-general.html">Crioprotect</a><a href="nanoforte-general.html">Nanoforte</a><a href="#casos">Casos de éxito</a></div>
+      <div><h4>Empresa</h4><a href="#">Nosotros</a><a href="#prensa">Prensa y medios</a><a href="#form">Contacto</a></div>
+      <div><h4>Contacto</h4>
+        <a href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">💬 +56 9 9083 3908</a>
+        <a href="#">📍 Badajoz 100, of. 708, Las Condes, Santiago</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRANJA INSTITUCIONAL (bajo el footer, sobre el copyright) -->
+  <div class="inst">
+    <div class="wrap inst-grid">
+      <div class="col">
+        <div class="t">Patentes</div>
+        <p>PCT/CL2021/050061<br>USA: USPTO 63051414<br>Chile: 1865-2021 · India: 509159</p>
+      </div>
+      <div class="col">
+        <div class="t">Marco legal</div>
+        <p>Ley N°21.516 Art. 23</p>
+      </div>
+      <div class="col">
+        <div class="corfo"><img src="img/premio-corfo.png" alt="Proyecto apoyado por Corfo y Gobierno de Chile"></div>
+      </div>
+      <div class="col">
+        <div class="t">Reportes</div>
+        <a href="documentos/corporativo-legal/Estado-Resultado-ano-2022-Para-cargar-en-pag-WEB.pdf" target="_blank" rel="noopener">Estado de Resultado año 2022</a>
+        <a href="documentos/corporativo-legal/BALANCE-2022-PEWMAN-INNOVATION.pdf" target="_blank" rel="noopener">Balance 2022 Pewman Innovation</a>
+        <a href="documentos/corporativo-legal/CONVENIO-PROYECTO-23CVI2-251449.pdf" target="_blank" rel="noopener">Convenio Proyecto 23CVI2-251449</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="fbot">
+      <span>© 2026 Pewman Innovation SPA. Todos los derechos reservados.</span>
+      <span>Sitio desarrollado por Cloanco</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hero carrusel (3 slides, desplazamiento horizontal)
+  (function(){
+    const track=document.getElementById('htrack');
+    const slides=[...track.children];
+    const dots=document.getElementById('hdots');
+    let i=0, timer;
+    slides.forEach((s,n)=>{const b=document.createElement('button');if(n===0)b.className='on';b.setAttribute('aria-label','Banner '+(n+1));b.addEventListener('click',()=>{go(n);restart();});dots.appendChild(b);});
+    function go(n){i=(n+slides.length)%slides.length;track.style.transform='translateX(-'+(i*100)+'%)';[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));}
+    function restart(){clearInterval(timer);timer=setInterval(()=>go(i+1),6500);}
+    restart();
+    track.addEventListener('pointerenter',()=>clearInterval(timer));
+    track.addEventListener('pointerleave',restart);
+  })();
+  // Carrusel casos (flechas)
+  document.querySelectorAll('.car-nav button').forEach(b=>b.addEventListener('click',()=>{
+    const t=document.getElementById(b.dataset.t);t.scrollBy({left:(+b.dataset.d)*330,behavior:'smooth'});
+  }));
+  // Contador animado
+  (function(){
+    const els=[...document.querySelectorAll('.cstat .v')];
+    const run=el=>{const to=+el.dataset.to,pre=el.dataset.pre||'',suf=el.dataset.suf||'';let s=null;const dur=1400;
+      const step=t=>{if(!s)s=t;const p=Math.min((t-s)/dur,1);const val=Math.floor((0.5-Math.cos(Math.PI*p)/2)*to);el.textContent=pre+val.toLocaleString('es-CL')+suf;if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);};
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});
+    els.forEach(e=>io.observe(e));
+  })();
+</script>
+</body>
+</html>
