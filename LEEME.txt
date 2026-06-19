@@ -1,0 +1,57 @@
+MAQUETA DE REFERENCIA · NUEVA WEB PEWMAN INNOVATION
+Preparado por Cristobal Tejero · Marketing, Web y Paid Media
+
+==================================================
+QUE ES
+==================================================
+Maqueta de referencia de la nueva web de Pewman Innovation (6 paginas),
+hecha en HTML y CSS, con contenido e imagenes reales del sitio actual.
+Sirve como guia visual para el diseno y el desarrollo final.
+
+==================================================
+COMO ABRIRLA
+==================================================
+1. Descomprime este archivo .zip.
+2. Abre "index.html" con doble clic (se abre en tu navegador).
+3. Navega a todas las paginas desde el menu superior.
+
+==================================================
+PAGINAS
+==================================================
+index.html ........ Inicio (home)
+crioprotect.html .. Producto Crioprotect (ficha)
+nanoforte.html .... Producto Nanoforte (ficha)
+casos.html ........ Casos de exito
+empresa.html ...... Empresa y equipo
+contacto.html ..... Contacto
+
+==================================================
+ESTRUCTURA DE ARCHIVOS
+==================================================
+styles.css ........ Todo el diseno (colores, tipografias, componentes)
+img/ .............. Imagenes (logos, envases, fotos, sellos, premios)
+
+==================================================
+SISTEMA DE DISENO
+==================================================
+Tipografias (Google Fonts):
+  Titulos: Sora (pesos 400 a 800)
+  Texto:   Inter (pesos 400 a 600)
+
+Paleta principal:
+  Verde oscuro .... #0E3D2A
+  Verde marca ..... #1F9D63
+  Verde claro ..... #36C07D
+  Azul hielo ...... #2B7FB0  (sobre fondo hielo #E8F3F8)
+  Fondo crema ..... #F7F6F1
+  Texto ........... #0F1C16
+
+==================================================
+NOTAS
+==================================================
+- Es una maqueta de referencia, no la web final.
+- Los botones de descarga de fichas y documentos son demostrativos;
+  el material tecnico va por separado.
+- Las imagenes vienen del sitio actual; algunas se pueden reemplazar
+  por versiones de mayor calidad o fotos nuevas.
+- Diseno responsive: se adapta a computador, tablet y celular.
