@@ -65,13 +65,13 @@
   nav.main .dd-menu a:hover{background:#f0f0f0;color:var(--rojo)}
 
   /* HERO carrusel full-bleed · imagen de fondo + texto encima */
-  .hero{position:relative;overflow:hidden}
+  .hero{position:relative;overflow:hidden;padding:0;background:#161616}
   .hviewport{overflow:hidden}
   .htrack{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
   .hslide{flex:0 0 100%;min-width:100%;position:relative;overflow:hidden}
   .hslide .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
   .hslide::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(18,18,18,.86) 0%,rgba(18,18,18,.64) 40%,rgba(18,18,18,.28) 70%,rgba(18,18,18,.10) 100%)}
-  .hinner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px;min-height:clamp(440px,62vh,580px);display:flex;flex-direction:column;justify-content:center}
+  .hinner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px;min-height:clamp(500px,56vw,820px);display:flex;flex-direction:column;justify-content:center}
   .hinner .tx{max-width:640px}
   .hinner .k{font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--rojo);display:inline-block;padding:6px 14px;border-radius:4px;margin-bottom:18px}
   .hinner h1{font-size:clamp(30px,4.6vw,52px);color:#fff;margin-bottom:16px;line-height:1.08}
@@ -82,8 +82,8 @@
   .hdots button{width:11px;height:11px;border-radius:50%;border:2px solid #fff;background:transparent;cursor:pointer;padding:0;transition:.2s}
   .hdots button.on{background:var(--rojo);border-color:var(--rojo);width:26px;border-radius:7px}
   @media(max-width:820px){
-    .hinner{min-height:0;padding-top:56px;padding-bottom:64px}
-    .hslide::after{background:linear-gradient(90deg,rgba(18,18,18,.90) 0%,rgba(18,18,18,.74) 60%,rgba(18,18,18,.52) 100%)}
+    .hinner{min-height:clamp(460px,84vw,580px);padding-top:46px;padding-bottom:54px}
+    .hslide::after{background:linear-gradient(180deg,rgba(18,18,18,.55) 0%,rgba(18,18,18,.68) 100%)}
   }
 
   /* PREMIOS */
@@ -257,7 +257,7 @@
 
       <!-- Slide 1: institucional -->
       <div class="hslide">
-        <img class="bg" src="img/hero-cientificos.png" alt="Investigación en ambientes extremos">
+        <img class="bg" src="img/hero-slide1.jpg" alt="Investigación en ambientes extremos: microorganismos, ADN y cultivo">
         <div class="hinner">
           <div class="tx">
             <span class="k">Pewman Innovation</span>
@@ -273,7 +273,7 @@
 
       <!-- Slide 2: Crioprotect -->
       <div class="hslide">
-        <img class="bg" src="img/hero-crioprotect.png" alt="Crioprotect protege los cultivos de las heladas">
+        <img class="bg" src="img/hero-slide2.jpg" alt="Crioprotect protege los cultivos de las heladas">
         <div class="hinner">
           <div class="tx">
             <span class="k">Producción, cuidado y resistencia</span>
@@ -289,7 +289,7 @@
 
       <!-- Slide 3: Nanoforte -->
       <div class="hslide">
-        <img class="bg" src="img/hero-nanoforte.png" alt="Nanoforte mejora la resistencia hídrica">
+        <img class="bg" src="img/hero-slide3.jpg" alt="Nanoforte mejora la resistencia hídrica">
         <div class="hinner">
           <div class="tx">
             <span class="k">Más producción con menos agua</span>
