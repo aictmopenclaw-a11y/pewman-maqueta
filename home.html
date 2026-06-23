@@ -190,6 +190,26 @@
   .dist .dist-txt{font-weight:700;font-size:clamp(17px,2vw,23px);color:var(--tinta)}
   .dist .dist-logo-img{height:74px;width:auto;background:#fff;border-radius:12px;padding:10px 20px;box-shadow:0 8px 20px -12px rgba(0,0,0,.3)}
   .dist .dist-banner-img{width:100%;height:auto;border-radius:16px;display:block;box-shadow:var(--sh)}
+  .dist-banner-btn{display:block;width:100%;border:0;padding:0;background:none;cursor:pointer;border-radius:16px;transition:.2s}
+  .dist-banner-btn:hover{transform:translateY(-2px);filter:brightness(1.03)}
+  /* Modal Conecta con tu distribuidor (CALS) */
+  .cals-ov{position:fixed;inset:0;background:rgba(20,20,20,.64);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
+  .cals-ov[hidden]{display:none}
+  .cals-md{background:#fff;border-radius:18px;padding:34px;max-width:520px;width:100%;position:relative;box-shadow:0 30px 70px -20px rgba(0,0,0,.5);max-height:92vh;overflow:auto}
+  .cals-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#9a9a9a;line-height:1}
+  .cals-md h3{font-size:22px;color:var(--tinta);margin:8px 0 8px}
+  .cals-md p{font-size:14px;color:var(--gris-tx);margin-bottom:18px}
+  .cals-fm{display:flex;flex-direction:column;gap:12px}
+  .cals-fm label{font-weight:600;font-size:13px;color:var(--tinta)}
+  .cals-fm select,.cals-fm input{width:100%;border:1.5px solid var(--linea);border-radius:10px;padding:12px 14px;font-size:14.5px;font-family:var(--f);color:var(--tinta);background:#fff}
+  .cals-fm select:focus,.cals-fm input:focus{outline:none;border-color:var(--rojo);box-shadow:0 0 0 3px rgba(189,0,40,.12)}
+  .ff2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .cals-suc{background:#f0eef0;border-radius:10px;padding:11px 14px;font-size:13px;color:var(--tinta)}
+  .cals-suc[hidden]{display:none}
+  .cals-ok{text-align:center;padding:10px 4px}
+  .cals-ok[hidden]{display:none}
+  .cals-ok .okic{width:56px;height:56px;border-radius:50%;background:#009633;color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  @media(max-width:520px){.ff2{grid-template-columns:1fr}}
 
   /* PRENSA */
   .prensa{background:var(--blanco)}
@@ -472,7 +492,9 @@
 
 <!-- BANNER DISTRIBUIDOR (estilo CALS, fondo claro) -->
 <div class="dist"><div class="wrap">
-  <img class="dist-banner-img" src="img/banner-cals.png" alt="Encuentra nuestros productos en CALS, de lo agrícola lo mejor">
+  <button class="dist-banner-btn" id="calsOpen" type="button" aria-label="Encuentra nuestros productos en CALS, nuestro distribuidor oficial">
+    <img class="dist-banner-img" src="img/banner-cals.png" alt="Encuentra nuestros productos en CALS, de lo agrícola lo mejor">
+  </button>
 </div></div>
 
 <!-- PRENSA Y MEDIOS -->
@@ -550,6 +572,38 @@
   </div>
 </footer>
 
+<!-- MODAL: Conecta con tu distribuidor (CALS) -->
+<div class="cals-ov" id="calsOv" hidden>
+  <div class="cals-md">
+    <button class="cals-x" id="calsX" aria-label="Cerrar">&times;</button>
+    <div id="calsBody">
+      <span class="eyebrow">Distribuidor oficial</span>
+      <h3>Conecta con tu distribuidor CALS</h3>
+      <p>CALS es nuestro distribuidor oficial. Cuéntanos de tu campo: te derivamos a tu sucursal más cercana y nuestro equipo técnico te acompaña en la aplicación.</p>
+      <form id="calsForm" class="cals-fm">
+        <label for="calsZona">¿En qué zona está tu campo?</label>
+        <select id="calsZona" required>
+          <option value="">Selecciona tu zona</option>
+          <option value="norte">Norte · Arica, La Serena, Ovalle</option>
+          <option value="centro">Centro / Aconcagua · La Calera, Hijuelas, Los Andes</option>
+          <option value="rm">Metropolitana · Melipilla, Talagante, Buin</option>
+          <option value="ohiggins">O'Higgins · Rancagua, Las Cabras, San Vicente</option>
+        </select>
+        <div class="cals-suc" id="calsSuc" hidden><b>Tu sucursal CALS más cercana:</b> <span id="calsSucTxt"></span></div>
+        <div class="ff2"><input type="text" placeholder="Nombre" required><input type="tel" placeholder="Teléfono" required></div>
+        <div class="ff2"><input type="text" placeholder="Cultivo (cerezos, uva...)"><input type="number" placeholder="Hectáreas" min="0"></div>
+        <button class="btn btn-dark" type="submit" style="justify-content:center;width:100%">Ver mi distribuidor + recibir asesoría</button>
+      </form>
+    </div>
+    <div class="cals-ok" id="calsOk" hidden>
+      <div class="okic">✓</div>
+      <h3>¡Listo! Te contactaremos pronto</h3>
+      <p id="calsOkText">Nuestro equipo técnico te escribirá para acompañarte en la aplicación. Mientras, revisa los productos Pewman en CALS:</p>
+      <a class="btn btn-dark" id="calsGo" href="https://cals.cl/" target="_blank" rel="noopener" style="justify-content:center">Ir a CALS &rarr;</a>
+    </div>
+  </div>
+</div>
+
 <script>
   // Header transparente sobre el hero -> sólido al hacer scroll
   (function(){var hd=document.querySelector('header');function on(){hd.classList.toggle('scrolled',window.scrollY>60);}on();window.addEventListener('scroll',on,{passive:true});})();
@@ -577,6 +631,22 @@
       const step=t=>{if(!s)s=t;const p=Math.min((t-s)/dur,1);const val=Math.floor((0.5-Math.cos(Math.PI*p)/2)*to);el.textContent=pre+val.toLocaleString('es-CL')+suf;if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);};
     const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});
     els.forEach(e=>io.observe(e));
+  })();
+  // Modal "Conecta con tu distribuidor" (CALS) - Propuesta A: captura de lead + ruteo por zona
+  (function(){
+    var ov=document.getElementById('calsOv'),op=document.getElementById('calsOpen'),x=document.getElementById('calsX');
+    var zona=document.getElementById('calsZona'),suc=document.getElementById('calsSuc'),sucT=document.getElementById('calsSucTxt'),form=document.getElementById('calsForm');
+    var body=document.getElementById('calsBody'),ok=document.getElementById('calsOk'),okT=document.getElementById('calsOkText');
+    if(!ov||!op)return;
+    var SUC={norte:'Arica, La Serena y Ovalle',centro:'La Calera, Hijuelas y Los Andes',rm:'Melipilla, Talagante y Buin',ohiggins:'Rancagua, Las Cabras y San Vicente'};
+    function open(){ov.hidden=false;document.body.style.overflow='hidden';}
+    function close(){ov.hidden=true;document.body.style.overflow='';body.hidden=false;ok.hidden=true;form.reset();suc.hidden=true;}
+    op.addEventListener('click',open);
+    x.addEventListener('click',close);
+    ov.addEventListener('click',function(e){if(e.target===ov)close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close();});
+    zona.addEventListener('change',function(){if(zona.value){sucT.textContent=SUC[zona.value];suc.hidden=false;}else{suc.hidden=true;}});
+    form.addEventListener('submit',function(e){e.preventDefault();body.hidden=true;ok.hidden=false;if(zona.value){okT.textContent='Nuestro equipo técnico te escribirá para acompañarte en la aplicación. Mientras, revisa los productos Pewman en tu sucursal CALS de '+SUC[zona.value]+':';}});
   })();
 </script>
 </body>
