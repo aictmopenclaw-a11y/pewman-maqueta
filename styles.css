@@ -32,9 +32,9 @@ img{max-width:100%;display:block}
 .ribbon b{color:#fff}
 
 /* topbar + header */
-.topbar{background:var(--v900);color:#cfcfcf;font-size:13px}
-.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px}
-.topbar a{color:#e2e2e2}.topbar .r{display:flex;gap:18px;align-items:center}
+.topbar{background:#dcdcdc;color:#5a5a5a;font-size:12.5px}
+.topbar .wrap{display:flex;justify-content:center;align-items:center;height:38px;text-align:center}
+.topbar .l{letter-spacing:.02em}
 header{position:sticky;top:0;z-index:50;background:rgba(247,246,241,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:88px}
 .logo img{height:63px}
@@ -309,7 +309,8 @@ nav.main .dd-menu a:hover{background:#f0f0f0;color:var(--v500)}
   .steps,.rgrid,.testi-grid,.press-grid,.doc-grid,.fgrid,.pr-top,.feat-grid,.dl-grid{grid-template-columns:1fr 1fr}
   .caso-grid{grid-template-columns:1fr 1fr}
   .prod-grid,.nl,.eq-grid{grid-template-columns:1fr}
-  nav.main,.topbar .l{display:none}
+  nav.main{display:none}
+  .topbar{font-size:11px}.topbar .wrap{display:block;height:auto;padding:8px 16px;line-height:1.35}
 }
 @media(max-width:560px){
   .rgrid,.testi-grid,.press-grid,.doc-grid,.caso-grid,.fgrid,.steps,.feat-grid,.dl-grid,.pr-top{grid-template-columns:1fr}
