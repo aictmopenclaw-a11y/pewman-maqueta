@@ -4,57 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casos de éxito: resultados reales en cultivos de Chile | Pewman Innovation</title>
-<meta name="description" content="Casos de éxito de Crioprotect y Nanoforte en cerezos, uvas, paltos y papas de Chile: cultivos que resistieron heladas y mejoraron su rendimiento.">
+<meta name="description" content="Casos de éxito de Crioprotect y Nanoforte en duraznos, kiwis, paltos, papas, lechugas y viñedos de Chile: testimonios en video e informes técnicos de ensayos de campo.">
 <link rel="icon" href="img/iso-pewman.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* Testimonios en video */
-  .vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media(max-width:860px){.vid-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.vid-grid{grid-template-columns:1fr}}
-  .vcard{position:relative;border-radius:var(--rl);overflow:hidden;cursor:pointer;aspect-ratio:4/3;box-shadow:var(--sh);border:1px solid var(--linea);background:#222}
-  .vcard img{width:100%;height:100%;object-fit:cover;transition:.45s}
-  .vcard:hover img{transform:scale(1.06)}
-  .vcard::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 38%,rgba(18,18,18,.85))}
-  .vcard .play{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;z-index:2;transition:.2s;box-shadow:0 8px 22px -6px rgba(0,0,0,.5)}
-  .vcard .play::before{content:"";border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #BD0028;margin-left:4px}
-  .vcard:hover .play{transform:translate(-50%,-50%) scale(1.09);background:#fff}
-  .vcard .meta{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:34px 18px 16px;color:#fff}
-  .vcard .meta .badge{display:inline-block;font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:8px;color:#fff}
-  .vcard .meta .badge.crio{background:#1499c7}
-  .vcard .meta .badge.nano{background:#009633}
-  .vcard .meta h3{font-size:17px;color:#fff;line-height:1.2;margin-bottom:3px}
-  .vcard .meta .who{font-size:12.5px;color:#e2e2e2}
+  /* Page-hero con foto */
+  .page-hero{background:linear-gradient(rgba(28,28,28,.62),rgba(28,28,28,.66)),url('img/casos-hero.jpg') center/cover}
+  .page-hero::before{display:none}
+  /* Nos validan */
+  .nv{padding:42px 0 8px;background:var(--blanco)}
+  .nv-lab{text-align:center;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);margin-bottom:26px}
+  .nv-row{display:flex;gap:46px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .nv-row img{height:62px;width:auto;max-width:150px;object-fit:contain;filter:grayscale(1);opacity:.72;transition:.2s}
+  .nv-row img:hover{filter:grayscale(0);opacity:1}
+  /* Testimonios (foto + estrellas + texto + ver video) */
+  .tg{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.tg{grid-template-columns:1fr}}
+  .tc{display:grid;grid-template-columns:150px 1fr;background:#fff;border:1px solid var(--linea);border-radius:16px;overflow:hidden;cursor:pointer;transition:.2s}
+  .tc:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:#cfcfcf}
+  .tc .ph{position:relative;overflow:hidden;background:#222;min-height:190px}
+  .tc .ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .tc .ph .pl{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;z-index:2;transition:.2s}
+  .tc .ph .pl::before{content:"";border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #BD0028;margin-left:3px}
+  .tc:hover .ph .pl{transform:translate(-50%,-50%) scale(1.1)}
+  .tc .bd{padding:18px 20px;display:flex;flex-direction:column}
+  .tc .badge{display:inline-block;align-self:flex-start;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;padding:3px 8px;border-radius:4px;margin-bottom:8px}
+  .tc .badge.crio{background:#1499c7}.tc .badge.nano{background:#009633}
+  .tc .stars{color:#f5b301;font-size:13px;letter-spacing:2px;margin-bottom:5px}
+  .tc h3{font-size:16px;color:var(--v900);line-height:1.2;margin-bottom:4px}
+  .tc .who{font-size:12px;color:var(--gris);margin-bottom:8px}
+  .tc .desc{font-size:13px;color:var(--tinta2);line-height:1.45;margin-bottom:12px;flex:1}
+  .tc .vbtn{align-self:flex-start;font-family:var(--display);font-weight:600;font-size:12px;color:#fff;background:var(--v800);padding:8px 16px;border-radius:100px;letter-spacing:.03em}
+  .tc:hover .vbtn{background:var(--v500)}
+  @media(max-width:430px){.tc{grid-template-columns:1fr}.tc .ph{min-height:150px}}
   .yt-link{text-align:center;margin-top:34px}
-  /* Informes por categoria (grises, sin color de producto) */
+  /* Ensayos con foto + categoria */
   .cat-head{display:flex;align-items:center;gap:14px;margin:0 0 22px}
   .cat-head h3{font-size:21px;color:var(--v900);white-space:nowrap}
   .cat-head .line{flex:1;height:1px;background:var(--linea)}
   .cat-head .count{font-size:12.5px;color:var(--gris);font-weight:600;white-space:nowrap}
-  .rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+  @media(max-width:560px){.cat-head h3{white-space:normal;font-size:18px}.cat-head .count{display:none}}
+  .rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:48px}
   @media(max-width:860px){.rep-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.rep-grid{grid-template-columns:1fr}}
-  .rep{display:flex;flex-direction:column;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:22px 22px 20px;transition:.2s;height:100%}
+  .rep{display:flex;flex-direction:column;background:#fff;border:1px solid var(--linea);border-radius:16px;overflow:hidden;transition:.2s;height:100%}
+  .rep.has-pdf{cursor:pointer}
   .rep:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:#cfcfcf}
-  .rep .rh{display:flex;gap:13px;align-items:center;margin-bottom:12px}
-  .rep .ic{width:44px;height:44px;border-radius:11px;background:#727272;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+  .rep .ph{height:152px;overflow:hidden;background:#eee}
+  .rep .ph img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .rep.has-pdf:hover .ph img{transform:scale(1.05)}
+  .rep .bd{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
   .rep .n{font-family:var(--display);font-weight:700;font-size:15px;color:var(--v800);line-height:1.2}
-  .rep .m{font-size:12px;color:var(--gris);margin-top:2px}
-  .rep .desc{font-size:13px;color:var(--tinta2);line-height:1.5;margin-bottom:14px;flex:1}
+  .rep .m{font-size:12px;color:var(--gris);margin:2px 0 8px}
+  .rep .desc{font-size:13px;color:var(--tinta2);line-height:1.5;margin-bottom:12px;flex:1}
   .rep .go{font-family:var(--display);font-weight:600;font-size:12.5px;color:var(--v500);margin-top:auto}
-  /* Modal de video (YouTube embebido) */
-  .vmodal{position:fixed;inset:0;background:rgba(14,14,14,.86);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px}
-  .vmodal[hidden]{display:none}
+  .rep .go.soon{color:#aaa}
+  /* Modal video */
+  .vmodal,.pdfmodal{position:fixed;inset:0;background:rgba(14,14,14,.86);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px}
+  .vmodal[hidden],.pdfmodal[hidden]{display:none}
   .vmodal .box{position:relative;width:100%;max-width:940px;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
   .vmodal iframe{width:100%;height:100%;border:0;display:block}
   .vmodal .close{position:absolute;top:-46px;right:0;background:none;border:none;color:#fff;font-size:30px;cursor:pointer;line-height:1}
-  @media(max-width:560px){
-    .cat-head h3{white-space:normal;font-size:18px}
-    .cat-head .count{display:none}
-  }
+  /* Modal PDF (visor + descarga) */
+  .pdfmodal .pbox{width:100%;max-width:920px;height:88vh;background:#fff;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+  .pdfmodal .pbar{display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-bottom:1px solid var(--linea);background:#fafafa}
+  .pdfmodal .pbar .pt{font-family:var(--display);font-weight:700;font-size:14px;color:var(--tinta);flex:1;line-height:1.2}
+  .pdfmodal .pbar .btn{padding:9px 18px;font-size:13px}
+  .pdfmodal .pclose{background:none;border:none;font-size:26px;cursor:pointer;color:#9a9a9a;line-height:1}
+  .pdfmodal iframe{flex:1;width:100%;border:0;background:#525659}
+  @media(max-width:560px){.pdfmodal .pbar .pt{display:none}.pdfmodal .pbox{height:90vh}}
 </style>
 </head>
 <body>
@@ -72,7 +93,7 @@
     </div>
     <a href="casos.html" class="active">Casos</a>
     <div class="dd"><a href="empresa.html">Nosotros &#9662;</a>
-      <div class="dd-menu"><a href="empresa.html">Nosotros</a><a href="patentes-papers.html">Patentes y papers</a><a href="empresa.html#terminos">Terminos y condiciones</a></div>
+      <div class="dd-menu"><a href="empresa.html">Nosotros</a><a href="patentes-papers.html">Patentes y papers</a><a href="empresa.html#terminos">Términos y condiciones</a></div>
     </div>
     <a href="prensa.html">Prensa y medios</a>
     <a href="contacto.html">Contacto</a>
@@ -82,7 +103,7 @@
   </div>
 </div></header>
 
-<!-- HERO -->
+<!-- HERO con foto -->
 <section class="page-hero">
   <div class="wrap">
     <div class="breadcrumb"><a href="home.html">Inicio</a> / Casos</div>
@@ -91,52 +112,84 @@
   </div>
 </section>
 
-<!-- TESTIMONIOS EN VIDEO (click -> modal YouTube embebido) -->
+<!-- NOS VALIDAN -->
+<section class="nv">
+  <div class="wrap">
+    <div class="nv-lab">Nos validan</div>
+    <div class="nv-row">
+      <img src="img/cert-sgs.png" alt="SGS">
+      <img src="img/cert-cer.png" alt="CER">
+      <img src="img/cert-ecocert.png" alt="Ecocert">
+      <img src="img/cert-al.png" alt="A&amp;L Biological">
+      <img src="img/cert-agrocoop.png" alt="Agrocoop Araucanía">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS EN VIDEO -->
 <section class="section-light">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Testimonios</span>
       <h2>Resultados en video</h2>
-      <p>Agricultores de Chile cuentan sus resultados con Crioprotect y Nanoforte. Haz clic en una tarjeta para ver el video.</p></div>
-    <div class="vid-grid">
-      <div class="vcard" data-yt="Iez3_9MoZzw" role="button" tabindex="0" aria-label="Ver video: Resultados en Duraznos"><img loading="lazy" src="img/testi-durazno.jpg" alt="Resultados en durazno"><span class="play"></span><div class="meta"><span class="badge nano">Nanoforte</span><h3>Resultados en Durazno</h3><div class="who">Luis Fermín Orellana</div></div></div>
-      <div class="vcard" data-yt="bZugLiP_4rI" role="button" tabindex="0" aria-label="Ver video: Aumento de producción en Kiwis"><img loading="lazy" src="img/testi-kiwis.jpg" alt="Resultados en kiwis"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Aumento de producción en Kiwis</h3><div class="who">Pirque, Región Metropolitana</div></div></div>
-      <div class="vcard" data-yt="Dg8WHq331e8" role="button" tabindex="0" aria-label="Ver video: Crioprotect en Paltos"><img loading="lazy" src="img/testi-paltos.jpg" alt="Resultados en paltos"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Crioprotect en Paltos</h3><div class="who">Jean Carlos Lotito · V Región</div></div></div>
-      <div class="vcard" data-yt="AQVZtMkv6ng" role="button" tabindex="0" aria-label="Ver video: Protección en Papas"><img loading="lazy" src="img/testi-papas.jpg" alt="Resultados en papas"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Protección en Papas</h3><div class="who">Ángel Castro · Talagante</div></div></div>
-      <div class="vcard" data-yt="tDzo3pSMF9A" role="button" tabindex="0" aria-label="Ver video: Ensayo viña Concha y Toro"><img loading="lazy" src="img/caso-fumigacion.png" alt="Ensayo viña Concha y Toro"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Ensayo viña Concha y Toro</h3><div class="who">Ensayo de campo</div></div></div>
-      <div class="vcard" data-yt="mc8fUEoEEg8" role="button" tabindex="0" aria-label="Ver video: Resultados en Lechugas"><img loading="lazy" src="img/testi-lechugas.jpg" alt="Resultados en lechugas y coliflor"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Resultados en Lechugas y coliflor</h3><div class="who">Roberto del Pino</div></div></div>
+      <p>Agricultores de Chile cuentan sus resultados con Crioprotect y Nanoforte. Haz clic para ver el video.</p></div>
+    <div class="tg">
+      <div class="tc" data-yt="Iez3_9MoZzw" role="button" tabindex="0" aria-label="Ver video: Durazno">
+        <div class="ph"><img loading="lazy" src="img/testi-durazno.jpg" alt="Durazno"><span class="pl"></span></div>
+        <div class="bd"><span class="badge nano">Nanoforte</span><div class="stars">★★★★★</div><h3>Durazno</h3><div class="who">Luis Fermín Orellana · Copequén, O'Higgins</div><p class="desc">Compartió su experiencia usando Nanoforte en su campo de duraznos nectarín.</p><span class="vbtn">Ver video</span></div>
+      </div>
+      <div class="tc" data-yt="bZugLiP_4rI" role="button" tabindex="0" aria-label="Ver video: Kiwis">
+        <div class="ph"><img loading="lazy" src="img/testi-kiwis.jpg" alt="Kiwis"><span class="pl"></span></div>
+        <div class="bd"><span class="badge crio">Crioprotect</span><div class="stars">★★★★★</div><h3>Kiwis</h3><div class="who">Pirque, Región Metropolitana</div><p class="desc">Aumento de producción en kiwis tras la aplicación de Crioprotect.</p><span class="vbtn">Ver video</span></div>
+      </div>
+      <div class="tc" data-yt="Dg8WHq331e8" role="button" tabindex="0" aria-label="Ver video: Paltos">
+        <div class="ph"><img loading="lazy" src="img/testi-paltos.jpg" alt="Paltos"><span class="pl"></span></div>
+        <div class="bd"><span class="badge crio">Crioprotect</span><div class="stars">★★★★★</div><h3>Paltos</h3><div class="who">Jean Carlos Lotito · V Región</div><p class="desc">Aplicación de Crioprotect antiheladas en paltos de la V Región.</p><span class="vbtn">Ver video</span></div>
+      </div>
+      <div class="tc" data-yt="AQVZtMkv6ng" role="button" tabindex="0" aria-label="Ver video: Papas">
+        <div class="ph"><img loading="lazy" src="img/testi-papas.jpg" alt="Papas"><span class="pl"></span></div>
+        <div class="bd"><span class="badge crio">Crioprotect</span><div class="stars">★★★★★</div><h3>Papas</h3><div class="who">Ángel Castro · Talagante, RM</div><p class="desc">6 heladas consecutivas de −2 a −3°C sin sufrir daños significativos.</p><span class="vbtn">Ver video</span></div>
+      </div>
+      <div class="tc" data-yt="tDzo3pSMF9A" role="button" tabindex="0" aria-label="Ver video: Ensayo viña Concha y Toro">
+        <div class="ph"><img loading="lazy" src="img/caso-fumigacion.png" alt="Ensayo viña Concha y Toro"><span class="pl"></span></div>
+        <div class="bd"><span class="badge crio">Crioprotect</span><div class="stars">★★★★★</div><h3>Ensayo viña Concha y Toro</h3><div class="who">Marcelo Gálvez · Chardonnay</div><p class="desc">Ensayo aplicando Crioprotect en un cuartel de Chardonnay expuesto a heladas.</p><span class="vbtn">Ver video</span></div>
+      </div>
+      <div class="tc" data-yt="mc8fUEoEEg8" role="button" tabindex="0" aria-label="Ver video: Lechugas y coliflor">
+        <div class="ph"><img loading="lazy" src="img/testi-lechugas.jpg" alt="Lechugas y coliflor"><span class="pl"></span></div>
+        <div class="bd"><span class="badge nano">Nanoforte</span><div class="stars">★★★★★</div><h3>Lechugas y coliflor</h3><div class="who">Roberto del Pino</div><p class="desc">En solo 7 días vio los resultados de Nanoforte en sus lechugas y coliflores.</p><span class="vbtn">Ver video</span></div>
+      </div>
     </div>
-    <div class="yt-link"><a class="btn btn-ghost" href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener">Ver canal de YouTube &rarr;</a></div>
+    <div class="yt-link"><a class="btn btn-ghost" href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener">Ver más en nuestro canal de YouTube &rarr;</a></div>
   </div>
 </section>
 
-<!-- INFORMES TECNICOS POR CATEGORIA (grises, sin color) -->
+<!-- ENSAYOS DOCUMENTADOS (foto + popup PDF) -->
 <section class="section-cream">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Respaldo técnico</span>
       <h2>Ensayos de campo documentados</h2>
-      <p>Resultados validados en distintos cultivos y regiones, separados por tipo de cultivo.</p></div>
+      <p>Resultados validados en distintos cultivos y regiones. Haz clic para ver el informe técnico y descargarlo.</p></div>
 
     <div class="cat-head"><h3>Frutales</h3><span class="line"></span><span class="count">8 ensayos</span></div>
     <div class="rep-grid">
-      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Arándanos</div><div class="m">Agrícola Giddings</div></div></div><div class="desc">Ensayo Crioprotect antiheladas en arándanos de la Agrícola Giddings.</div><span class="go">Ver informe técnico &rarr;</span></a>
-      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Zarzaparrillas</div><div class="m">Agrícola Giddings</div></div></div><div class="desc">Protección antiheladas Crioprotect en zarzaparrillas de la Agrícola Giddings.</div><span class="go">Ver informe técnico &rarr;</span></a>
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_cerezos_agrocoop_temuco.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Cerezos</div><div class="m">Temuco · Agrocoop Araucanía</div></div></div><div class="desc">Protección antiheladas sobre árboles de cerezo en Temuco, realizado por Agrocoop Araucanía.</div><span class="go">Ver informe técnico &rarr;</span></a>
-      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Cerezos</div><div class="m">Naicura, O'Higgins · CER</div></div></div><div class="desc">Ensayo Crioprotect antiheladas sobre cerezos en la zona de Naicura, evaluado por el Centro de Evaluación Rosario.</div><span class="go">Ver informe técnico &rarr;</span></a>
-      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Cerezos</div><div class="m">Agrícola Giddings</div></div></div><div class="desc">Protección Crioprotect antiheladas en cerezos de la Agrícola Giddings.</div><span class="go">Ver informe técnico &rarr;</span></a>
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_paltos_villa_alegre.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Paltos</div><div class="m">Villa Alegre</div></div></div><div class="desc">Protección Crioprotect sobre paltos en la zona de Villa Alegre.</div><span class="go">Ver informe técnico &rarr;</span></a>
-      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Paltos y cerezos jóvenes</div><div class="m">Colina</div></div></div><div class="desc">Aplicación Crioprotect antiheladas sobre árboles jóvenes de palto y cerezo en Colina.</div><span class="go">Ver informe técnico &rarr;</span></a>
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_uva_mesa_sta_marta.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Uva de mesa</div><div class="m">Santa Marta de Liray</div></div></div><div class="desc">Ensayo Crioprotect antiheladas en uva de mesa en la zona de Liray.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <div class="rep"><div class="ph"><img loading="lazy" src="img/caso-brotes.png" alt="Arándanos"></div><div class="bd"><div class="n">Arándanos</div><div class="m">Agrícola Giddings</div><div class="desc">Ensayo Crioprotect antiheladas en arándanos de la Agrícola Giddings.</div><span class="go soon">Informe en preparación</span></div></div>
+      <div class="rep"><div class="ph"><img loading="lazy" src="img/caso-cerezas.jpg" alt="Zarzaparrillas"></div><div class="bd"><div class="n">Zarzaparrillas</div><div class="m">Agrícola Giddings</div><div class="desc">Protección antiheladas Crioprotect en zarzaparrillas de la Agrícola Giddings.</div><span class="go soon">Informe en preparación</span></div></div>
+      <div class="rep has-pdf" data-pdf="documentos/ensayos-casos/Ensayo_Crioprotect_cerezos_agrocoop_temuco.pdf" data-title="Cerezos · Temuco (Agrocoop Araucanía)"><div class="ph"><img loading="lazy" src="img/nano-cerezos.webp" alt="Cerezos Temuco"></div><div class="bd"><div class="n">Cerezos</div><div class="m">Temuco · Agrocoop Araucanía</div><div class="desc">Protección antiheladas sobre árboles de cerezo en Temuco.</div><span class="go">Ver informe técnico &rarr;</span></div></div>
+      <div class="rep"><div class="ph"><img loading="lazy" src="img/hero-cerezos.webp" alt="Cerezos Naicura"></div><div class="bd"><div class="n">Cerezos</div><div class="m">Naicura, O'Higgins · CER</div><div class="desc">Ensayo Crioprotect antiheladas sobre cerezos en la zona de Naicura.</div><span class="go soon">Informe en preparación</span></div></div>
+      <div class="rep"><div class="ph"><img loading="lazy" src="img/caso-crio.jpg" alt="Cerezos Giddings"></div><div class="bd"><div class="n">Cerezos</div><div class="m">Agrícola Giddings</div><div class="desc">Protección Crioprotect antiheladas en cerezos de la Agrícola Giddings.</div><span class="go soon">Informe en preparación</span></div></div>
+      <div class="rep has-pdf" data-pdf="documentos/ensayos-casos/Ensayo_Crioprotect_paltos_villa_alegre.pdf" data-title="Paltos · Villa Alegre"><div class="ph"><img loading="lazy" src="img/testi-paltos.jpg" alt="Paltos Villa Alegre"></div><div class="bd"><div class="n">Paltos</div><div class="m">Villa Alegre</div><div class="desc">Protección Crioprotect sobre paltos en la zona de Villa Alegre.</div><span class="go">Ver informe técnico &rarr;</span></div></div>
+      <div class="rep"><div class="ph"><img loading="lazy" src="img/caso-paltas.jpg" alt="Paltos y cerezos jóvenes Colina"></div><div class="bd"><div class="n">Paltos y cerezos jóvenes</div><div class="m">Colina</div><div class="desc">Aplicación Crioprotect sobre árboles jóvenes de palto y cerezo en Colina.</div><span class="go soon">Informe en preparación</span></div></div>
+      <div class="rep has-pdf" data-pdf="documentos/ensayos-casos/Ensayo_Crioprotect_uva_mesa_sta_marta.pdf" data-title="Uva de mesa · Santa Marta de Liray"><div class="ph"><img loading="lazy" src="img/caso-uvas.jpg" alt="Uva de mesa"></div><div class="bd"><div class="n">Uva de mesa</div><div class="m">Santa Marta de Liray</div><div class="desc">Ensayo Crioprotect antiheladas en uva de mesa en la zona de Liray.</div><span class="go">Ver informe técnico &rarr;</span></div></div>
     </div>
 
     <div class="cat-head"><h3>Hortalizas y cultivos anuales</h3><span class="line"></span><span class="count">2 ensayos</span></div>
     <div class="rep-grid">
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_papas_el_monte.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Papas</div><div class="m">El Monte</div></div></div><div class="desc">Crioprotect protección antiheladas en cultivos de papa en la zona de El Monte.</div><span class="go">Ver informe técnico &rarr;</span></a>
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_papas_inia_la_pampa.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Papas</div><div class="m">INIA La Pampa · Purranque, Osorno</div></div></div><div class="desc">Crioprotect antiheladas en semillero de papas certificado de INIA La Pampa, Purranque.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <div class="rep has-pdf" data-pdf="documentos/ensayos-casos/Ensayo_Crioprotect_papas_el_monte.pdf" data-title="Papas · El Monte"><div class="ph"><img loading="lazy" src="img/testi-papas.jpg" alt="Papas El Monte"></div><div class="bd"><div class="n">Papas</div><div class="m">El Monte</div><div class="desc">Crioprotect protección antiheladas en cultivos de papa en El Monte.</div><span class="go">Ver informe técnico &rarr;</span></div></div>
+      <div class="rep has-pdf" data-pdf="documentos/ensayos-casos/Ensayo_Crioprotect_papas_inia_la_pampa.pdf" data-title="Papas · INIA La Pampa, Purranque"><div class="ph"><img loading="lazy" src="img/caso-papas.jpg" alt="Papas INIA La Pampa"></div><div class="bd"><div class="n">Papas</div><div class="m">INIA La Pampa · Purranque, Osorno</div><div class="desc">Crioprotect antiheladas en semillero de papas certificado de INIA La Pampa.</div><span class="go">Ver informe técnico &rarr;</span></div></div>
     </div>
 
     <div class="cat-head"><h3>Otros</h3><span class="line"></span><span class="count">1 ensayo</span></div>
     <div class="rep-grid" style="margin-bottom:0">
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_ornamentales_colina.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Ornamentales</div><div class="m">Colina</div></div></div><div class="desc">Aplicación Crioprotect antiheladas sobre plantas ornamentales en Colina.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <div class="rep has-pdf" data-pdf="documentos/ensayos-casos/Ensayo_Crioprotect_ornamentales_colina.pdf" data-title="Ornamentales · Colina"><div class="ph"><img loading="lazy" src="img/cult-ornamentales.jpg" alt="Ornamentales Colina"></div><div class="bd"><div class="n">Ornamentales</div><div class="m">Colina</div><div class="desc">Aplicación Crioprotect antiheladas sobre plantas ornamentales en Colina.</div><span class="go">Ver informe técnico &rarr;</span></div></div>
     </div>
   </div>
 </section>
@@ -148,7 +201,7 @@
     <p>Conversa con nuestro equipo y arma la estrategia ideal para proteger y potenciar tu cultivo esta temporada.</p>
     <div class="cta">
       <a class="btn btn-light" href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">Hablar con un asesor</a>
-      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="crioprotect.html">Ver productos →</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="crioprotect.html">Ver productos &rarr;</a>
     </div>
   </div>
 </section>
@@ -158,7 +211,7 @@
   <div class="wrap">
     <div class="fgrid">
       <div><a class="logo" href="home.html"><img src="img/logo-pewman.png" alt="Pewman Innovation"></a>
-        <p style="max-width:280px;font-size:14px">Biotecnologia de vanguardia para una agricultura mas productiva y sostenible.</p>
+        <p style="max-width:280px;font-size:14px">Biotecnología de vanguardia para una agricultura más productiva y sostenible.</p>
         <div class="soc">
           <a href="https://www.instagram.com/pewmaninnovation" target="_blank" rel="noopener" aria-label="Instagram">&#9678;</a>
           <a href="https://www.facebook.com/pewmaninnovation" target="_blank" rel="noopener" aria-label="Facebook">f</a>
@@ -166,8 +219,8 @@
           <a href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener" aria-label="YouTube">&#9654;</a>
         </div>
       </div>
-      <div><h4>Productos</h4><a href="crioprotect-general.html">Crioprotect</a><a href="nanoforte-general.html">Nanoforte</a><a href="casos.html">Casos de exito</a></div>
-      <div><h4>Empresa</h4><a href="empresa.html">Nosotros</a><a href="prensa.html">Prensa y medios</a><a href="contacto.html">Contacto</a></div>
+      <div><h4>Productos</h4><a href="crioprotect-general.html">Crioprotect</a><a href="nanoforte-general.html">Nanoforte</a><a href="casos.html">Casos de éxito</a></div>
+      <div><h4>Nosotros</h4><a href="empresa.html">Nosotros</a><a href="patentes-papers.html">Patentes y papers</a><a href="prensa.html">Prensa y medios</a><a href="contacto.html">Contacto</a></div>
       <div><h4>Contacto</h4>
         <a href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">&#128172; +56 9 9083 3908</a>
         <a href="contacto.html">&#128205; Badajoz 100, of. 708, Las Condes, Santiago</a>
@@ -179,7 +232,7 @@
       <div class="col"><div class="t">Marco legal</div><p>Ley N&deg;21.516 Art. 23</p></div>
       <div class="col"><div class="corfo"><img src="img/premio-corfo.png" alt="Proyecto apoyado por Corfo y Gobierno de Chile"></div></div>
       <div class="col"><div class="t">Reportes</div>
-        <a href="documentos/corporativo-legal/Estado-Resultado-ano-2022-Para-cargar-en-pag-WEB.pdf" target="_blank" rel="noopener">Estado de Resultado ano 2022</a>
+        <a href="documentos/corporativo-legal/Estado-Resultado-ano-2022-Para-cargar-en-pag-WEB.pdf" target="_blank" rel="noopener">Estado de Resultado año 2022</a>
         <a href="documentos/corporativo-legal/BALANCE-2022-PEWMAN-INNOVATION.pdf" target="_blank" rel="noopener">Balance 2022 Pewman Innovation</a>
         <a href="documentos/corporativo-legal/CONVENIO-PROYECTO-23CVI2-251449.pdf" target="_blank" rel="noopener">Convenio Proyecto 23CVI2-251449</a></div>
     </div>
@@ -192,7 +245,7 @@
   </div>
 </footer>
 
-<!-- MODAL VIDEO (YouTube embebido) -->
+<!-- MODAL VIDEO -->
 <div class="vmodal" id="vmodal" hidden>
   <div class="box">
     <button class="close" id="vclose" aria-label="Cerrar video">&times;</button>
@@ -200,18 +253,41 @@
   </div>
 </div>
 
+<!-- MODAL PDF (visor + descarga) -->
+<div class="pdfmodal" id="pdfmodal" hidden>
+  <div class="pbox">
+    <div class="pbar">
+      <span class="pt" id="ptitle">Informe técnico</span>
+      <a class="btn btn-light" id="pdl" href="#" download target="_blank" rel="noopener">&#11015; Descargar PDF</a>
+      <button class="pclose" id="pclose" aria-label="Cerrar">&times;</button>
+    </div>
+    <iframe id="pframe" title="Informe técnico"></iframe>
+  </div>
+</div>
+
 <script>
+  // Modal video (YouTube embebido)
   (function(){
-    const modal=document.getElementById('vmodal'), frame=document.getElementById('vframe');
-    function open(id){if(!id)return;frame.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';modal.hidden=false;document.body.style.overflow='hidden';}
-    function close(){frame.src='';modal.hidden=true;document.body.style.overflow='';}
-    document.querySelectorAll('.vcard').forEach(c=>{
+    const m=document.getElementById('vmodal'),f=document.getElementById('vframe');
+    function open(id){if(!id)return;f.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';m.hidden=false;document.body.style.overflow='hidden';}
+    function close(){f.src='';m.hidden=true;document.body.style.overflow='';}
+    document.querySelectorAll('.tc').forEach(c=>{
       c.addEventListener('click',()=>open(c.dataset.yt));
       c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(c.dataset.yt);}});
     });
     document.getElementById('vclose').addEventListener('click',close);
-    modal.addEventListener('click',e=>{if(e.target===modal)close();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close();});
+    m.addEventListener('click',e=>{if(e.target===m)close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!m.hidden)close();});
+  })();
+  // Modal PDF (visor + descarga)
+  (function(){
+    const m=document.getElementById('pdfmodal'),f=document.getElementById('pframe'),dl=document.getElementById('pdl'),t=document.getElementById('ptitle');
+    function open(pdf,title){f.src=pdf;dl.href=pdf;t.textContent=title||'Informe técnico';m.hidden=false;document.body.style.overflow='hidden';}
+    function close(){f.src='';m.hidden=true;document.body.style.overflow='';}
+    document.querySelectorAll('.rep.has-pdf').forEach(r=>r.addEventListener('click',()=>open(r.dataset.pdf,r.dataset.title)));
+    document.getElementById('pclose').addEventListener('click',close);
+    m.addEventListener('click',e=>{if(e.target===m)close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!m.hidden)close();});
   })();
 </script>
 </body>
