@@ -584,10 +584,11 @@
         <label for="calsZona">¿En qué zona está tu campo?</label>
         <select id="calsZona" required>
           <option value="">Selecciona tu zona</option>
-          <option value="norte">Norte · Arica, La Serena, Ovalle</option>
-          <option value="centro">Centro / Aconcagua · La Calera, Hijuelas, Los Andes</option>
-          <option value="rm">Metropolitana · Melipilla, Talagante, Buin</option>
-          <option value="ohiggins">O'Higgins · Rancagua, Las Cabras, San Vicente</option>
+          <option value="norte">Norte · Arica, Copiapó</option>
+          <option value="centro-norte">Centro Norte · La Serena, Ovalle, San Felipe, Limache</option>
+          <option value="centro">Centro · Santiago, Talagante, Buin, Melipilla</option>
+          <option value="centro-sur">Centro Sur · Rancagua, Curicó, Talca, Linares</option>
+          <option value="sur">Sur · Chillán, Temuco, Osorno, Frutillar</option>
         </select>
         <div class="cals-suc" id="calsSuc" hidden><b>Tu sucursal CALS más cercana:</b> <span id="calsSucTxt"></span></div>
         <div class="ff2"><input type="text" placeholder="Nombre" required><input type="tel" placeholder="Teléfono" required></div>
@@ -638,7 +639,8 @@
     var zona=document.getElementById('calsZona'),suc=document.getElementById('calsSuc'),sucT=document.getElementById('calsSucTxt'),form=document.getElementById('calsForm');
     var body=document.getElementById('calsBody'),ok=document.getElementById('calsOk'),okT=document.getElementById('calsOkText');
     if(!ov||!op)return;
-    var SUC={norte:'Arica, La Serena y Ovalle',centro:'La Calera, Hijuelas y Los Andes',rm:'Melipilla, Talagante y Buin',ohiggins:'Rancagua, Las Cabras y San Vicente'};
+    var SUC={norte:'Arica y Copiapó','centro-norte':'La Serena, Ovalle, Hijuelas, San Felipe y Limache',centro:'Santiago, Talagante, Buin y Melipilla','centro-sur':'Rancagua, San Fernando, San Vicente, Curicó, Talca y Linares',sur:'Chillán, Los Ángeles, Temuco, Osorno y Frutillar'};
+    var URLZ={norte:'https://cals.cl/norte/','centro-norte':'https://cals.cl/centro-norte/',centro:'https://cals.cl/zona-centro/','centro-sur':'https://cals.cl/zona-centro-sur/',sur:'https://cals.cl/zona-sur/'};
     function open(){ov.hidden=false;document.body.style.overflow='hidden';}
     function close(){ov.hidden=true;document.body.style.overflow='';body.hidden=false;ok.hidden=true;form.reset();suc.hidden=true;}
     op.addEventListener('click',open);
@@ -646,7 +648,7 @@
     ov.addEventListener('click',function(e){if(e.target===ov)close();});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close();});
     zona.addEventListener('change',function(){if(zona.value){sucT.textContent=SUC[zona.value];suc.hidden=false;}else{suc.hidden=true;}});
-    form.addEventListener('submit',function(e){e.preventDefault();body.hidden=true;ok.hidden=false;if(zona.value){okT.textContent='Nuestro equipo técnico te escribirá para acompañarte en la aplicación. Mientras, revisa los productos Pewman en tu sucursal CALS de '+SUC[zona.value]+':';}});
+    form.addEventListener('submit',function(e){e.preventDefault();body.hidden=true;ok.hidden=false;if(zona.value){okT.textContent='Nuestro equipo técnico te escribirá para acompañarte en la aplicación. Mientras, revisa los productos Pewman en tu sucursal CALS de '+SUC[zona.value]+':';document.getElementById('calsGo').setAttribute('href',URLZ[zona.value]);}});
   })();
 </script>
 </body>
