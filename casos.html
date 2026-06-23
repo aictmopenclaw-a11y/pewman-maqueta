@@ -10,6 +10,49 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Testimonios en video */
+  .vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:860px){.vid-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.vid-grid{grid-template-columns:1fr}}
+  .vcard{position:relative;border-radius:var(--rl);overflow:hidden;cursor:pointer;aspect-ratio:4/3;box-shadow:var(--sh);border:1px solid var(--linea);background:#222}
+  .vcard img{width:100%;height:100%;object-fit:cover;transition:.45s}
+  .vcard:hover img{transform:scale(1.06)}
+  .vcard::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 38%,rgba(18,18,18,.85))}
+  .vcard .play{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;z-index:2;transition:.2s;box-shadow:0 8px 22px -6px rgba(0,0,0,.5)}
+  .vcard .play::before{content:"";border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #BD0028;margin-left:4px}
+  .vcard:hover .play{transform:translate(-50%,-50%) scale(1.09);background:#fff}
+  .vcard .meta{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:34px 18px 16px;color:#fff}
+  .vcard .meta .badge{display:inline-block;font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:8px;color:#fff}
+  .vcard .meta .badge.crio{background:#1499c7}
+  .vcard .meta .badge.nano{background:#009633}
+  .vcard .meta h3{font-size:17px;color:#fff;line-height:1.2;margin-bottom:3px}
+  .vcard .meta .who{font-size:12.5px;color:#e2e2e2}
+  .yt-link{text-align:center;margin-top:34px}
+  /* Informes por categoria (grises, sin color de producto) */
+  .cat-head{display:flex;align-items:center;gap:14px;margin:0 0 22px}
+  .cat-head h3{font-size:21px;color:var(--v900);white-space:nowrap}
+  .cat-head .line{flex:1;height:1px;background:var(--linea)}
+  .cat-head .count{font-size:12.5px;color:var(--gris);font-weight:600;white-space:nowrap}
+  .rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+  @media(max-width:860px){.rep-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.rep-grid{grid-template-columns:1fr}}
+  .rep{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px 18px;transition:.2s}
+  .rep:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:#cfcfcf}
+  .rep .ic{width:46px;height:46px;border-radius:12px;background:#727272;color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
+  .rep .n{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--tinta)}
+  .rep .m{font-size:12px;color:var(--gris)}
+  /* Modal de video (YouTube embebido) */
+  .vmodal{position:fixed;inset:0;background:rgba(14,14,14,.86);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px}
+  .vmodal[hidden]{display:none}
+  .vmodal .box{position:relative;width:100%;max-width:940px;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+  .vmodal iframe{width:100%;height:100%;border:0;display:block}
+  .vmodal .close{position:absolute;top:-46px;right:0;background:none;border:none;color:#fff;font-size:30px;cursor:pointer;line-height:1}
+  @media(max-width:560px){
+    .cat-head h3{white-space:normal;font-size:18px}
+    .cat-head .count{display:none}
+  }
+</style>
 </head>
 <body>
 
@@ -45,58 +88,44 @@
   </div>
 </section>
 
-<!-- GALERIA DE CASOS -->
-<section class="casos section-light">
-  <div class="wrap">
-    <div class="caso-grid">
-      <div class="caso"><img loading="lazy" src="img/caso-duraznos.png" alt="Productor en huerto de frutales"><div class="lb">Frutales</div></div>
-      <div class="caso"><img loading="lazy" src="img/caso-asesoria.png" alt="Asesoría técnica en parronal"><div class="lb">Asesoría en terreno</div></div>
-      <div class="caso"><img loading="lazy" src="img/caso-frutal.png" alt="Revisión de árbol frutal"><div class="lb">Paltos y cítricos</div></div>
-      <div class="caso"><img loading="lazy" src="img/caso-lechugas.png" alt="Cultivo de hortalizas"><div class="lb">Hortalizas</div></div>
-      <div class="caso"><img loading="lazy" src="img/caso-fumigacion.png" alt="Aplicación en viñedo"><div class="lb">Viñedos</div></div>
-      <div class="caso"><img loading="lazy" src="img/caso-brotes.png" alt="Revisión de brotación"><div class="lb">Brotación</div></div>
-      <div class="caso"><img loading="lazy" src="img/nano-cerezos.webp" alt="Cerezos tratados con Nanoforte"><div class="lb">Cerezos con Nanoforte</div></div>
-      <div class="caso"><img loading="lazy" src="img/grafica-papas.webp" alt="Gráfica de resultados en papas"><div class="lb">Resultados en papas</div></div>
-      <div class="caso"><img loading="lazy" src="img/hero-cerezos.webp" alt="Helada controlada en cerezos"><div class="lb">Helada controlada</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIOS -->
-<section class="section-cream">
+<!-- TESTIMONIOS EN VIDEO (click -> modal YouTube embebido) -->
+<section class="section-light">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Testimonios</span>
-      <h2>Lo dicen los agricultores</h2></div>
-    <div class="testi-grid">
-      <div class="tcard">
-        <p class="q">Resistimos 6 heladas consecutivas de −2 a −3°C sin sufrir daños significativos en la plantación.</p>
-        <div class="who"><div class="av">AC</div><div><div class="n">Ángel Castro</div><div class="m">Papas, Talagante, RM</div></div></div>
-      </div>
-      <div class="tcard">
-        <p class="q">Con Nanoforte vimos resultados en la lechuga y el coliflor en apenas 7 días de aplicación.</p>
-        <div class="who"><div class="av">RP</div><div><div class="n">Roberto del Pino</div><div class="m">Hortalizas, Región Metropolitana</div></div></div>
-      </div>
-      <div class="tcard">
-        <p class="q">Aplicamos en los duraznos y la diferencia en el cuaje y el vigor de la planta fue clara.</p>
-        <div class="who"><div class="av">LO</div><div><div class="n">Luis Fermín Orellana</div><div class="m">Duraznos, Copequén, O'Higgins</div></div></div>
-      </div>
+      <h2>Resultados en video</h2>
+      <p>Agricultores de Chile cuentan sus resultados con Crioprotect y Nanoforte. Haz clic en una tarjeta para ver el video.</p></div>
+    <div class="vid-grid">
+      <div class="vcard" data-yt="Iez3_9MoZzw" role="button" tabindex="0" aria-label="Ver video: Resultados en Duraznos"><img loading="lazy" src="img/caso-duraznos.png" alt="Resultados en duraznos"><span class="play"></span><div class="meta"><span class="badge nano">Nanoforte</span><h3>Resultados en Duraznos</h3><div class="who">Luis Fermín Orellana</div></div></div>
+      <div class="vcard" data-yt="bZugLiP_4rI" role="button" tabindex="0" aria-label="Ver video: Aumento de producción en Kiwis"><img loading="lazy" src="img/caso-brotes.png" alt="Resultados en kiwis"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Aumento de producción en Kiwis</h3><div class="who">Pirque, Región Metropolitana</div></div></div>
+      <div class="vcard" data-yt="Dg8WHq331e8" role="button" tabindex="0" aria-label="Ver video: Crioprotect en Paltos"><img loading="lazy" src="img/caso-paltas.jpg" alt="Resultados en paltos"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Crioprotect en Paltos</h3><div class="who">Jean Carlos Lotito · V Región</div></div></div>
+      <div class="vcard" data-yt="AQVZtMkv6ng" role="button" tabindex="0" aria-label="Ver video: Protección en Papas"><img loading="lazy" src="img/caso-papas.jpg" alt="Resultados en papas"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Protección en Papas</h3><div class="who">Ángel Castro · Talagante</div></div></div>
+      <div class="vcard" data-yt="tDzo3pSMF9A" role="button" tabindex="0" aria-label="Ver video: Ensayo en viñedo"><img loading="lazy" src="img/caso-fumigacion.png" alt="Ensayo en viñedo"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Ensayo en Viñedo</h3><div class="who">Concha y Toro</div></div></div>
+      <div class="vcard" data-yt="mc8fUEoEEg8" role="button" tabindex="0" aria-label="Ver video: Resultados en Lechugas"><img loading="lazy" src="img/caso-lechugas.png" alt="Resultados en lechugas"><span class="play"></span><div class="meta"><span class="badge crio">Crioprotect</span><h3>Resultados en Lechugas</h3><div class="who">Roberto del Pino</div></div></div>
     </div>
+    <div class="yt-link"><a class="btn btn-ghost" href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener">Ver canal de YouTube &rarr;</a></div>
   </div>
 </section>
 
-<!-- ENSAYOS / DESCARGAS -->
-<section class="section-light">
+<!-- INFORMES TECNICOS POR CATEGORIA (grises, sin color) -->
+<section class="section-cream">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Respaldo técnico</span>
       <h2>Ensayos de campo documentados</h2>
-      <p>Descarga los resultados validados en distintos cultivos y regiones.</p></div>
-    <div class="dl-grid">
-      <a class="dl" href="documentos/ensayos-casos/Ensayo_Crioprotect_papas_el_monte.pdf" target="_blank"><div class="ic">🔬</div><div><div class="n">Papas, El Monte</div><div class="m">PDF · cultivo y lugar</div></div></a>
-      <a class="dl" href="documentos/ensayos-casos/Ensayo_Crioprotect_papas_inia_la_pampa.pdf" target="_blank"><div class="ic">🔬</div><div><div class="n">Papas, INIA La Pampa</div><div class="m">PDF · cultivo y lugar</div></div></a>
-      <a class="dl" href="documentos/ensayos-casos/Ensayo_Crioprotect_cerezos_agrocoop_temuco.pdf" target="_blank"><div class="ic">🔬</div><div><div class="n">Cerezos, Agrocoop Temuco</div><div class="m">PDF · cultivo y lugar</div></div></a>
-      <a class="dl" href="documentos/ensayos-casos/Ensayo_Crioprotect_paltos_villa_alegre.pdf" target="_blank"><div class="ic">🔬</div><div><div class="n">Paltos, Villa Alegre</div><div class="m">PDF · cultivo y lugar</div></div></a>
-      <a class="dl" href="documentos/ensayos-casos/Ensayo_Crioprotect_uva_mesa_sta_marta.pdf" target="_blank"><div class="ic">🔬</div><div><div class="n">Uva de mesa, Santa Marta</div><div class="m">PDF · cultivo y lugar</div></div></a>
-      <a class="dl" href="documentos/ensayos-casos/Ensayo_Crioprotect_ornamentales_colina.pdf" target="_blank"><div class="ic">🔬</div><div><div class="n">Ornamentales, Colina</div><div class="m">PDF · cultivo y lugar</div></div></a>
+      <p>Resultados validados en distintos cultivos y regiones, separados por tipo de cultivo.</p></div>
+
+    <div class="cat-head"><h3>Frutales</h3><span class="line"></span><span class="count">5 cultivos</span></div>
+    <div class="rep-grid">
+      <a class="rep" href="#" aria-label="Informe Arándanos"><div class="ic">&#128196;</div><div><div class="n">Arándanos</div><div class="m">Agrícola Giddings</div></div></a>
+      <a class="rep" href="#" aria-label="Informe Zarzaparillas"><div class="ic">&#128196;</div><div><div class="n">Zarzaparillas</div><div class="m">Agrícola Giddings</div></div></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_cerezos_agrocoop_temuco.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Cerezos</div><div class="m">Temuco · Naicura · Giddings</div></div></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_paltos_villa_alegre.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Paltos</div><div class="m">Colina · Villa Alegre</div></div></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_uva_mesa_sta_marta.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Uvas</div><div class="m">Santa Marta de Liray</div></div></a>
+    </div>
+
+    <div class="cat-head"><h3>Hortalizas y cultivos anuales</h3><span class="line"></span><span class="count">2 cultivos</span></div>
+    <div class="rep-grid" style="margin-bottom:0">
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_papas_el_monte.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Papas</div><div class="m">El Monte · INIA La Pampa</div></div></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_ornamentales_colina.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Ornamentales</div><div class="m">Colina</div></div></a>
     </div>
   </div>
 </section>
@@ -154,5 +183,27 @@
   </div>
 </footer>
 
+<!-- MODAL VIDEO (YouTube embebido) -->
+<div class="vmodal" id="vmodal" hidden>
+  <div class="box">
+    <button class="close" id="vclose" aria-label="Cerrar video">&times;</button>
+    <iframe id="vframe" title="Video de caso de éxito" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const modal=document.getElementById('vmodal'), frame=document.getElementById('vframe');
+    function open(id){if(!id)return;frame.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';modal.hidden=false;document.body.style.overflow='hidden';}
+    function close(){frame.src='';modal.hidden=true;document.body.style.overflow='';}
+    document.querySelectorAll('.vcard').forEach(c=>{
+      c.addEventListener('click',()=>open(c.dataset.yt));
+      c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(c.dataset.yt);}});
+    });
+    document.getElementById('vclose').addEventListener('click',close);
+    modal.addEventListener('click',e=>{if(e.target===modal)close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close();});
+  })();
+</script>
 </body>
 </html>
