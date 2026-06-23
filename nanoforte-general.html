@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="styles.css">
 <style>
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+  .bene{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .bene .b{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:20px 20px 22px;border-top:3px solid #009633;box-shadow:var(--sh)}
+  .bene .b h3{font-size:15.5px;color:var(--v800);margin-bottom:6px;line-height:1.2}
+  .bene .b p{font-size:13px;color:var(--tinta2);line-height:1.5}
+  @media(max-width:860px){.bene{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.bene{grid-template-columns:1fr}}
   .lead-form{max-width:780px;margin:0 auto;background:#fff;border:1px solid var(--linea);border-radius:18px;padding:34px;box-shadow:var(--sh)}
   .ff-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
   .lead-form input,.lead-form select,.lead-form textarea{width:100%;border:1.5px solid var(--linea);border-radius:10px;padding:12px 14px;font-size:15px;font-family:var(--sans);background:#fff;color:var(--tinta)}
@@ -53,13 +59,25 @@
     <h1>Más fuerte frente a la sequía</h1>
     <p>Nanoforte mejora el potencial hídrico de la planta, aumenta la biomasa y la producción, y opera con un 40% menos de agua. Bacterias extremófilas y nanoburbujas de oxígeno al servicio de tu cultivo.</p>
     <div class="hero-cta">
-      <a class="btn btn-light" href="nanoforte.html">Comprar ahora</a>
-      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf" target="_blank" rel="noopener">Descargar ficha técnica</a>
+      <button class="btn btn-light gate-open" type="button" data-pdf="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf">Descargar guía de aplicación</button>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="nanoforte.html">Comprar ahora</a>
     </div>
   </div>
 </section>
 
-<!-- COMO FUNCIONA -->
+<!-- BENEFICIOS (4 puntos) -->
+<section class="section-cream">
+  <div class="wrap">
+    <div class="bene">
+      <div class="b"><h3>Hasta 40% menos consumo de agua</h3><p>Mayor eficiencia hídrica para una agricultura más resiliente.</p></div>
+      <div class="b"><h3>Estimula el desarrollo radicular</h3><p>Favorece una mayor exploración del suelo y captación de agua y nutrientes.</p></div>
+      <div class="b"><h3>Mejora la nutrición de la planta</h3><p>Incrementa la disponibilidad y absorción de fósforo.</p></div>
+      <div class="b"><h3>Mayor tolerancia a sequía y temperaturas extremas</h3><p>Ayuda a mantener el desempeño productivo bajo condiciones adversas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. COMO FUNCIONA (mecanismo) -->
 <section class="section-light" id="como-funciona">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Cómo funciona</span>
@@ -73,8 +91,47 @@
   </div>
 </section>
 
-<!-- RESULTADOS / split -->
+<!-- 2. CULTIVOS (compatibilidad) -->
 <section class="section-cream">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Compatibilidad</span>
+      <h2>Cultivos donde se aplica</h2></div>
+    <div class="chips">
+      <span class="chip">Cerezos</span><span class="chip">Uva de mesa</span><span class="chip">Uva de vino</span>
+      <span class="chip">Paltos</span><span class="chip">Papas</span><span class="chip">Cítricos</span>
+      <span class="chip">Arándanos</span><span class="chip">Maíz</span><span class="chip">Hortalizas</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. GUIA DE APLICACION (gated) -->
+<section class="section-light">
+  <div class="wrap">
+    <div class="guia-band">
+      <div>
+        <span class="eyebrow">Documento clave</span>
+        <h2>Guía de aplicación de Nanoforte</h2>
+        <p>Dosis, pH, compatibilidad y métodos de aplicación (drone, turbo, riego diluido). El documento más importante para aplicar bien el producto y proteger tu inversión.</p>
+      </div>
+      <button class="btn btn-primary gate-open" type="button" data-pdf="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf">Descargar guía de aplicación</button>
+    </div>
+  </div>
+</section>
+
+<!-- 4. INFORMACION TECNICA (descargas) -->
+<section class="section-cream">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Documentos</span>
+      <h2>Información técnica</h2></div>
+    <div class="dl-grid">
+      <a class="dl" href="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf" target="_blank" rel="noopener"><div class="ic">📄</div><div><div class="n">Ficha técnica Nanoforte</div><div class="m">PDF · especificaciones del producto</div></div></a>
+      <a class="dl" href="documentos/hojas-seguridad/Hoja-de-Seguridad-NANOFORTE.pdf" target="_blank" rel="noopener"><div class="ic">🛡️</div><div><div class="n">Hoja de seguridad</div><div class="m">PDF · manejo seguro</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CASO DE EXITO (resultados) -->
+<section class="section-light">
   <div class="wrap">
     <div class="split">
       <img src="img/nano-cerezos.webp" alt="Cerezos tratados con Nanoforte" loading="lazy">
@@ -89,52 +146,12 @@
   </div>
 </section>
 
-<!-- CULTIVOS -->
-<section class="section-light">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Compatibilidad</span>
-      <h2>Cultivos donde se aplica</h2></div>
-    <div class="chips">
-      <span class="chip">Cerezos</span><span class="chip">Uva de mesa</span><span class="chip">Uva de vino</span>
-      <span class="chip">Paltos</span><span class="chip">Papas</span><span class="chip">Cítricos</span>
-      <span class="chip">Arándanos</span><span class="chip">Maíz</span><span class="chip">Hortalizas</span>
-    </div>
-  </div>
-</section>
-
-
-<!-- GUIA DE APLICACION (gated) -->
-<section class="section-light">
-  <div class="wrap">
-    <div class="guia-band">
-      <div>
-        <span class="eyebrow">Documento clave</span>
-        <h2>Guía de aplicación de Nanoforte</h2>
-        <p>Dosis, pH, compatibilidad y métodos de aplicación (drone, turbo, riego diluido). El documento más importante para aplicar bien el producto y proteger tu inversión.</p>
-      </div>
-      <button class="btn btn-primary gate-open" type="button" data-pdf="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf">Descargar guía de aplicación</button>
-    </div>
-  </div>
-</section>
-
-<!-- DESCARGAS -->
+<!-- FORMULARIO -->
 <section class="section-cream">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Documentos</span>
-      <h2>Descarga la información técnica</h2></div>
-    <div class="dl-grid">
-      <a class="dl" href="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf" target="_blank" rel="noopener"><div class="ic">📄</div><div><div class="n">Ficha técnica Nanoforte</div><div class="m">PDF · especificaciones del producto</div></div></a>
-      <a class="dl" href="documentos/hojas-seguridad/Hoja-de-Seguridad-NANOFORTE.pdf" target="_blank" rel="noopener"><div class="ic">🛡️</div><div><div class="n">Hoja de seguridad</div><div class="m">PDF · manejo seguro</div></div></a>
-    </div>
-  </div>
-</section>
-
-<!-- FORMULARIO -->
-<section class="section-light">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Contacto</span>
-      <h2>¿Quieres saber más de Nanoforte?</h2>
-      <p>Déjanos tus datos y un asesor te contacta para armar la dosis ideal para tu cultivo.</p></div>
+    <div class="sec-head"><span class="eyebrow">Asesoría técnica</span>
+      <h2>Arma la dosis ideal para tu cultivo</h2>
+      <p>Déjanos tus datos y un asesor te contacta para definir la aplicación según tu cultivo y hectáreas.</p></div>
     <form class="lead-form" onsubmit="return false">
       <div class="ff-grid">
         <input type="text" placeholder="Nombre" aria-label="Nombre">
@@ -176,7 +193,7 @@
         </div>
       </div>
       <div><h4>Productos</h4><a href="crioprotect-general.html">Crioprotect</a><a href="nanoforte-general.html">Nanoforte</a><a href="casos.html">Casos de éxito</a></div>
-      <div><h4>Empresa</h4><a href="empresa.html">Nosotros</a><a href="prensa.html">Prensa y medios</a><a href="contacto.html">Contacto</a></div>
+      <div><h4>Nosotros</h4><a href="empresa.html">Nosotros</a><a href="patentes-papers.html">Patentes y papers</a><a href="prensa.html">Prensa y medios</a><a href="contacto.html">Contacto</a></div>
       <div><h4>Contacto</h4>
         <a href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">💬 +56 9 9083 3908</a>
         <a href="contacto.html">📍 Badajoz 100, of. 708, Las Condes, Santiago</a>
@@ -200,7 +217,6 @@
     </div>
   </div>
 </footer>
-
 
 <!-- MODAL GUIA GATED -->
 <div class="gate-overlay" id="gate" hidden>
