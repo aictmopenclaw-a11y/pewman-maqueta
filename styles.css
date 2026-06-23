@@ -189,7 +189,7 @@ section{padding:84px 0}
 
 footer.site{background:#dfdfdf;color:#4a4a4a;padding:54px 0 26px;font-size:14px}
 .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:34px;border-bottom:1px solid #d4d4d4}
-footer.site .logo img{height:60px;margin-bottom:14px}
+footer.site .logo img{height:94px;margin-bottom:16px;filter:brightness(0)}
 footer.site h4{font-family:var(--display);color:var(--tinta);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
 footer.site a{display:block;color:#5a5a5a;margin-bottom:8px}
 footer.site a:hover{color:var(--v500)}
