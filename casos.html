@@ -37,11 +37,14 @@
   .rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
   @media(max-width:860px){.rep-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.rep-grid{grid-template-columns:1fr}}
-  .rep{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px 18px;transition:.2s}
+  .rep{display:flex;flex-direction:column;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:22px 22px 20px;transition:.2s;height:100%}
   .rep:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:#cfcfcf}
-  .rep .ic{width:46px;height:46px;border-radius:12px;background:#727272;color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
-  .rep .n{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--tinta)}
-  .rep .m{font-size:12px;color:var(--gris)}
+  .rep .rh{display:flex;gap:13px;align-items:center;margin-bottom:12px}
+  .rep .ic{width:44px;height:44px;border-radius:11px;background:#727272;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+  .rep .n{font-family:var(--display);font-weight:700;font-size:15px;color:var(--v800);line-height:1.2}
+  .rep .m{font-size:12px;color:var(--gris);margin-top:2px}
+  .rep .desc{font-size:13px;color:var(--tinta2);line-height:1.5;margin-bottom:14px;flex:1}
+  .rep .go{font-family:var(--display);font-weight:600;font-size:12.5px;color:var(--v500);margin-top:auto}
   /* Modal de video (YouTube embebido) */
   .vmodal{position:fixed;inset:0;background:rgba(14,14,14,.86);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px}
   .vmodal[hidden]{display:none}
@@ -84,7 +87,7 @@
   <div class="wrap">
     <div class="breadcrumb"><a href="home.html">Inicio</a> / Casos</div>
     <h1>Casos de éxito</h1>
-    <p>Resultados reales en los cultivos de Chile: cerezos, uvas, paltos, papas y más, que resistieron heladas y mejoraron su rendimiento.</p>
+    <p>Pewman Innovation desarrolla soluciones basadas en bionanotecnología y microorganismos de ambientes extremos, ayudando a enfrentar el cambio climático, optimizar el uso del agua y mejorar los cultivos. Estos son los resultados validados en campo.</p>
   </div>
 </section>
 
@@ -113,19 +116,27 @@
       <h2>Ensayos de campo documentados</h2>
       <p>Resultados validados en distintos cultivos y regiones, separados por tipo de cultivo.</p></div>
 
-    <div class="cat-head"><h3>Frutales</h3><span class="line"></span><span class="count">5 cultivos</span></div>
+    <div class="cat-head"><h3>Frutales</h3><span class="line"></span><span class="count">8 ensayos</span></div>
     <div class="rep-grid">
-      <a class="rep" href="#" aria-label="Informe Arándanos"><div class="ic">&#128196;</div><div><div class="n">Arándanos</div><div class="m">Agrícola Giddings</div></div></a>
-      <a class="rep" href="#" aria-label="Informe Zarzaparillas"><div class="ic">&#128196;</div><div><div class="n">Zarzaparillas</div><div class="m">Agrícola Giddings</div></div></a>
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_cerezos_agrocoop_temuco.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Cerezos</div><div class="m">Temuco · Naicura · Giddings</div></div></a>
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_paltos_villa_alegre.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Paltos</div><div class="m">Colina · Villa Alegre</div></div></a>
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_uva_mesa_sta_marta.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Uvas</div><div class="m">Santa Marta de Liray</div></div></a>
+      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Arándanos</div><div class="m">Agrícola Giddings</div></div></div><div class="desc">Ensayo Crioprotect antiheladas en arándanos de la Agrícola Giddings.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Zarzaparrillas</div><div class="m">Agrícola Giddings</div></div></div><div class="desc">Protección antiheladas Crioprotect en zarzaparrillas de la Agrícola Giddings.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_cerezos_agrocoop_temuco.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Cerezos</div><div class="m">Temuco · Agrocoop Araucanía</div></div></div><div class="desc">Protección antiheladas sobre árboles de cerezo en Temuco, realizado por Agrocoop Araucanía.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Cerezos</div><div class="m">Naicura, O'Higgins · CER</div></div></div><div class="desc">Ensayo Crioprotect antiheladas sobre cerezos en la zona de Naicura, evaluado por el Centro de Evaluación Rosario.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Cerezos</div><div class="m">Agrícola Giddings</div></div></div><div class="desc">Protección Crioprotect antiheladas en cerezos de la Agrícola Giddings.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_paltos_villa_alegre.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Paltos</div><div class="m">Villa Alegre</div></div></div><div class="desc">Protección Crioprotect sobre paltos en la zona de Villa Alegre.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <a class="rep" href="#"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Paltos y cerezos jóvenes</div><div class="m">Colina</div></div></div><div class="desc">Aplicación Crioprotect antiheladas sobre árboles jóvenes de palto y cerezo en Colina.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_uva_mesa_sta_marta.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Uva de mesa</div><div class="m">Santa Marta de Liray</div></div></div><div class="desc">Ensayo Crioprotect antiheladas en uva de mesa en la zona de Liray.</div><span class="go">Ver informe técnico &rarr;</span></a>
     </div>
 
-    <div class="cat-head"><h3>Hortalizas y cultivos anuales</h3><span class="line"></span><span class="count">2 cultivos</span></div>
+    <div class="cat-head"><h3>Hortalizas y cultivos anuales</h3><span class="line"></span><span class="count">2 ensayos</span></div>
+    <div class="rep-grid">
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_papas_el_monte.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Papas</div><div class="m">El Monte</div></div></div><div class="desc">Crioprotect protección antiheladas en cultivos de papa en la zona de El Monte.</div><span class="go">Ver informe técnico &rarr;</span></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_papas_inia_la_pampa.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Papas</div><div class="m">INIA La Pampa · Purranque, Osorno</div></div></div><div class="desc">Crioprotect antiheladas en semillero de papas certificado de INIA La Pampa, Purranque.</div><span class="go">Ver informe técnico &rarr;</span></a>
+    </div>
+
+    <div class="cat-head"><h3>Otros</h3><span class="line"></span><span class="count">1 ensayo</span></div>
     <div class="rep-grid" style="margin-bottom:0">
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_papas_el_monte.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Papas</div><div class="m">El Monte · INIA La Pampa</div></div></a>
-      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_ornamentales_colina.pdf" target="_blank" rel="noopener"><div class="ic">&#128196;</div><div><div class="n">Ornamentales</div><div class="m">Colina</div></div></a>
+      <a class="rep" href="documentos/ensayos-casos/Ensayo_Crioprotect_ornamentales_colina.pdf" target="_blank" rel="noopener"><div class="rh"><div class="ic">&#128196;</div><div><div class="n">Ornamentales</div><div class="m">Colina</div></div></div><div class="desc">Aplicación Crioprotect antiheladas sobre plantas ornamentales en Colina.</div><span class="go">Ver informe técnico &rarr;</span></a>
     </div>
   </div>
 </section>
