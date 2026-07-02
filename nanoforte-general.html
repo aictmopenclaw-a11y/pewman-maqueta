@@ -3,27 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nanoforte · Antiestrés hídrico para tus cultivos | Pewman Innovation</title>
-<meta name="description" content="Nanoforte: bioestimulante antiestrés hídrico con bacterias extremófilas y nanoburbujas de oxígeno. Más producción con un 40% menos de agua. Conoce cómo funciona.">
+<title>Nanoforte · Bioestimulante antiestrés hídrico | Pewman Innovation</title>
+<meta name="description" content="Nanoforte: bioestimulante 100% orgánico y biodegradable con bacterias extremófilas y nanoburbujas de oxígeno. Más producción con hasta 40% menos agua. Conoce el producto, su triple mecanismo y compra en línea.">
 <link rel="icon" href="img/iso-pewman.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
-  .bene{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .bene .b{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:20px 20px 22px;border-top:3px solid #009633;box-shadow:var(--sh)}
-  .bene .b h3{font-size:15.5px;color:var(--v800);margin-bottom:6px;line-height:1.2}
-  .bene .b p{font-size:13px;color:var(--tinta2);line-height:1.5}
-  @media(max-width:860px){.bene{grid-template-columns:1fr 1fr}}
-  @media(max-width:520px){.bene{grid-template-columns:1fr}}
-  .lead-form{max-width:780px;margin:0 auto;background:#fff;border:1px solid var(--linea);border-radius:18px;padding:34px;box-shadow:var(--sh)}
-  .ff-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-  .lead-form input,.lead-form select,.lead-form textarea{width:100%;border:1.5px solid var(--linea);border-radius:10px;padding:12px 14px;font-size:15px;font-family:var(--sans);background:#fff;color:var(--tinta)}
-  .lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{outline:none;border-color:#009633;box-shadow:0 0 0 3px rgba(0,150,51,.14)}
-  .lead-form textarea{min-height:92px;resize:vertical;margin-bottom:14px}
-  @media(max-width:620px){.ff-grid{grid-template-columns:1fr}}
+  /* ===== Color de producto: Nanoforte (verde) ===== */
+  :root{--prod:#009633;--prod-d:#0b7a34;--prod-soft:rgba(0,150,51,.14);--rojo:#BD0028}
+
+  /* Header transparente sobre el hero (sólido al hacer scroll) */
+  header{position:sticky;top:0;z-index:60;background:transparent;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:none;transition:background .3s ease,border-color .3s ease}
+  header.scrolled{background:rgba(22,22,22,.96);backdrop-filter:blur(12px);border-bottom-color:rgba(255,255,255,.08)}
+  header .logo img{filter:brightness(0) invert(1)}
+  header nav.main a{color:#eaeaea}
+  header nav.main a:hover,header nav.main a.active{color:#fff}
+  header .cart,header .srch{color:#fff}
+  header nav.main .dd-menu a{color:var(--tinta)}
+  .header-cta{display:flex;align-items:center;gap:18px}
+  .srch{font-size:18px;cursor:pointer}
+
+  /* HERO full-bleed con foto */
+  .phero{position:relative;overflow:hidden;background:#141414;margin-top:-120px}
+  .phero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .phero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,16,14,.88) 0%,rgba(14,16,14,.62) 42%,rgba(14,16,14,.24) 72%,rgba(14,16,14,.05) 100%)}
+  .phero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px;min-height:clamp(520px,54vw,760px);display:flex;flex-direction:column;justify-content:center}
+  .phero-logo{height:52px;width:auto;margin-bottom:24px;filter:brightness(0) invert(1);align-self:flex-start}
+  .phero h1{font-size:clamp(30px,4.4vw,50px);color:#fff;max-width:660px;margin-bottom:16px;line-height:1.08}
+  .phero p{font-size:clamp(15px,1.5vw,18px);color:#eaeaea;max-width:500px;margin-bottom:28px}
+  @media(max-width:820px){.phero-inner{min-height:clamp(460px,88vw,580px);padding-top:44px;padding-bottom:52px}.phero-logo{height:42px}}
+
+  /* Beneficios (3 iconos) */
+  .pben-sec{background:#fff;padding:66px 0}
+  .pben{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+  .pben .it{text-align:center;padding:0 10px}
+  .pben .ic{display:inline-flex;width:58px;height:58px;color:#343434;margin-bottom:16px}
+  .pben .ic svg{width:100%;height:100%}
+  .pben .it p{font-size:15px;color:#5a5a5a;line-height:1.55}
+  @media(max-width:820px){.pben{grid-template-columns:1fr;gap:30px;max-width:440px;margin:0 auto}}
+
+  /* Triple mecanismo (fondo oscuro + tarjetas de color) */
+  .mech{position:relative;overflow:hidden;background:#0f1a12;color:#fff}
+  .mech-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.30;z-index:0}
+  .mech::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,14,10,.80),rgba(9,14,10,.90))}
+  .mech-inner{position:relative;z-index:2}
+  .mech-head{text-align:center;margin-bottom:44px}
+  .mech-head h2{font-size:clamp(28px,3.6vw,40px);color:#fff;margin-top:10px}
+  .mech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .mcard{background:var(--prod);border-radius:18px;padding:32px 26px;box-shadow:0 22px 44px -22px rgba(0,0,0,.65)}
+  .mcard .mn{font-family:var(--display);font-weight:800;font-size:20px;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.20);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .mcard h3{font-size:19px;margin-bottom:10px;color:#fff;line-height:1.15}
+  .mcard p{font-size:14px;color:rgba(255,255,255,.94);line-height:1.55}
+  @media(max-width:820px){.mech-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+
+  /* Cultivos (lista) */
+  .crops{max-width:840px;margin:0 auto;text-align:center;font-family:var(--display);font-weight:600;font-size:clamp(15px,1.7vw,19px);line-height:2.1;color:var(--prod-d)}
+
+  /* Guia de aplicacion (split: media + formulario) */
+  .guia2{display:grid;grid-template-columns:.85fr 1.15fr;gap:32px;align-items:stretch}
+  .guia2-media{position:relative;border-radius:20px;overflow:hidden;background:url('img/form-bg.jpg') center/cover;min-height:430px;display:flex;align-items:center;justify-content:center;padding:30px}
+  .guia2-media::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,0,0,.42),rgba(0,0,0,.62))}
+  .gcover{position:relative;z-index:1;background:#fff;border-radius:14px;padding:32px 26px;text-align:center;box-shadow:0 26px 54px -20px rgba(0,0,0,.55);max-width:240px}
+  .gcover-logo{height:32px;width:auto;margin:0 auto 18px}
+  .gcover-t{font-family:var(--display);font-weight:800;font-size:23px;color:var(--prod);line-height:1.1}
+  .gcover-s{font-size:14px;color:#5a5a5a;margin-top:5px}
+  .guia2-form{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:32px;box-shadow:var(--sh)}
+  .gf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .guia2-form label{display:block;font-family:var(--display);font-weight:600;font-size:12.5px;color:#3d3d3d;margin:0 0 5px}
+  .guia2-form input,.guia2-form select,.guia2-form textarea{width:100%;border:1.5px solid var(--linea);border-radius:10px;padding:11px 13px;font-size:14.5px;font-family:var(--sans);background:#fff;color:var(--tinta)}
+  .guia2-form input:focus,.guia2-form select:focus,.guia2-form textarea:focus{outline:none;border-color:var(--prod);box-shadow:0 0 0 3px var(--prod-soft)}
+  .guia2-form textarea{min-height:92px;resize:vertical;margin-bottom:14px}
+  @media(max-width:820px){.guia2{grid-template-columns:1fr}.gf-grid{grid-template-columns:1fr}.guia2-media{min-height:300px}}
+
+  /* Certificaciones */
+  .cert-sec{background:#fff;padding:58px 0}
+  .cert-lab{text-align:center;font-family:var(--display);font-weight:700;font-size:clamp(18px,2.4vw,26px);color:var(--tinta);margin-bottom:28px}
+  .cert-row{display:flex;gap:52px;justify-content:center;align-items:center;flex-wrap:wrap}
+  .cert-row img{height:98px;width:auto;object-fit:contain}
+
+  /* Resultados */
+  .res-media{position:relative}
+  .res-media img{border-radius:18px;box-shadow:var(--sh);width:100%;object-fit:cover;aspect-ratio:4/3}
+  .res-badge{position:absolute;left:16px;bottom:16px;background:var(--prod);color:#fff;font-family:var(--display);font-weight:600;font-size:12px;padding:9px 15px;border-radius:100px;max-width:210px;line-height:1.3;box-shadow:0 12px 26px -10px rgba(0,0,0,.5)}
+  .btn-red{background:var(--rojo);color:#fff;border-color:var(--rojo)}
+  .btn-red:hover{background:#a01f22;border-color:#a01f22;transform:translateY(-2px)}
 </style>
 </head>
 <body>
@@ -36,145 +101,172 @@
   <a class="logo" href="home.html"><img src="img/logo-pewman.png" alt="Pewman Innovation"></a>
   <nav class="main">
     <a href="home.html">Inicio</a>
-    <div class="dd"><a href="crioprotect-general.html" class="active">Productos ▾</a>
+    <div class="dd"><a href="nanoforte-general.html" class="active">Productos &#9662;</a>
       <div class="dd-menu"><a href="crioprotect-general.html">Crioprotect</a><a href="nanoforte-general.html">Nanoforte</a></div>
     </div>
     <a href="casos.html">Casos</a>
-    <div class="dd"><a href="empresa.html">Nosotros ▾</a>
+    <div class="dd"><a href="empresa.html">Nosotros &#9662;</a>
       <div class="dd-menu"><a href="empresa.html">Nosotros</a><a href="patentes-papers.html">Patentes y papers</a><a href="empresa.html#terminos">Términos y condiciones</a></div>
     </div>
     <a href="prensa.html">Prensa y medios</a>
     <a href="contacto.html">Contacto</a>
   </nav>
   <div class="header-cta">
-    <a class="cart" href="#" title="Carrito" aria-label="Carro de compras">🛒</a>
+    <span class="srch" title="Buscar" aria-label="Buscar">&#128269;</span>
+    <a class="cart" href="#" title="Carrito" aria-label="Carro de compras">&#128722;</a>
   </div>
 </div></header>
 
 <!-- HERO -->
-<section class="page-hero">
-  <div class="wrap">
-    <div class="breadcrumb"><a href="home.html">Inicio</a> / Productos / Nanoforte</div>
-    <span class="eyebrow" style="color:#e2e2e2">Antiestrés hídrico</span>
-    <h1>Más fuerte frente a la sequía</h1>
-    <p>Nanoforte mejora el potencial hídrico de la planta, aumenta la biomasa y la producción, y opera con un 40% menos de agua. Bacterias extremófilas y nanoburbujas de oxígeno al servicio de tu cultivo.</p>
-    <div class="hero-cta">
-      <button class="btn btn-light gate-open" type="button" data-pdf="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf">Descargar guía de aplicación</button>
-      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="nanoforte.html">Comprar ahora</a>
+<section class="phero">
+  <img class="phero-bg" src="img/hero-nano-full.jpg" alt="Cultivo de papas con Nanoforte">
+  <div class="phero-inner">
+    <img class="phero-logo" src="img/logo-nano.svg" alt="Nanoforte">
+    <h1>Biotecnología para cultivos expuestos a altas temperaturas y estrés</h1>
+    <p>NANOFORTE&reg; es un bioestimulante 100% orgánico y biodegradable que disminuye el estrés biótico y abiótico de los cultivos.</p>
+    <div><a class="btn btn-light" href="#comprar">Comprar ahora</a></div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="pben-sec">
+  <div class="wrap pben">
+    <div class="it">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z"/></svg></span>
+      <p>Mejora la respuesta de la planta frente a altas temperaturas y baja disponibilidad de agua.</p>
+    </div>
+    <div class="it">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2.3"/><circle cx="19" cy="18" r="2.3"/><circle cx="12" cy="5" r="2.3"/><path d="M10.4 6.6 6.6 15.8M13.6 6.6 17.4 15.8M7.3 18h9.4"/></svg></span>
+      <p>Favorece el aprovechamiento de nutrientes en suelos degradados o con baja disponibilidad de fósforo.</p>
+    </div>
+    <div class="it">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V11M12 11c0-3-2.4-5-5.4-5H4.2v1.5C4.2 10.4 6.6 12.4 9.6 12.4M12 11c0-3.3 2.6-6 5.9-6H20v1.7C20 10 17.4 12.4 14.1 12.4"/></svg></span>
+      <p>Contribuye al desarrollo radicular en suelos compactados, salinos o con presencia de metales pesados.</p>
     </div>
   </div>
 </section>
 
-<!-- BENEFICIOS (4 puntos) -->
-<section class="section-cream">
+<!-- FICHA DE PRODUCTO (compra) -->
+<section class="section-cream" style="padding-top:64px">
   <div class="wrap">
-    <div class="bene">
-      <div class="b"><h3>Hasta 40% menos consumo de agua</h3><p>Mayor eficiencia hídrica para una agricultura más resiliente.</p></div>
-      <div class="b"><h3>Estimula el desarrollo radicular</h3><p>Favorece una mayor exploración del suelo y captación de agua y nutrientes.</p></div>
-      <div class="b"><h3>Mejora la nutrición de la planta</h3><p>Incrementa la disponibilidad y absorción de fósforo.</p></div>
-      <div class="b"><h3>Mayor tolerancia a sequía y temperaturas extremas</h3><p>Ayuda a mantener el desempeño productivo bajo condiciones adversas.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 1. COMO FUNCIONA (mecanismo) -->
-<section class="section-light" id="como-funciona">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Cómo funciona</span>
-      <h2>Más resistencia con menos agua</h2>
-      <p>Nanoforte combina microorganismos extremófilos, oxígeno y biopolímeros para que el cultivo aproveche mejor cada gota.</p></div>
-    <div class="feat-grid">
-      <div class="feat"><div class="ic">💧</div><h3>Bacterias de ambientes extremos</h3><p>Microorganismos aislados de la Antártica y el Desierto de Atacama, adaptados a sobrevivir con muy poca agua y resistir la sequía.</p></div>
-      <div class="feat"><div class="ic">🫧</div><h3>Nanoburbujas de oxígeno</h3><p>Mejoran la oxigenación de la raíz y la eficiencia en el uso del agua, para que la planta absorba más con menos.</p></div>
-      <div class="feat"><div class="ic">🌾</div><h3>Mayor productividad</h3><p>Más floración, mejor cuaja y mayor rendimiento por hectárea, usando menos recursos hídricos en cada temporada.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 2. CULTIVOS (compatibilidad) -->
-<section class="section-cream">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Compatibilidad</span>
-      <h2>Cultivos donde se aplica</h2></div>
-    <div class="chips">
-      <span class="chip">Cerezos</span><span class="chip">Uva de mesa</span><span class="chip">Uva de vino</span>
-      <span class="chip">Paltos</span><span class="chip">Papas</span><span class="chip">Cítricos</span>
-      <span class="chip">Arándanos</span><span class="chip">Maíz</span><span class="chip">Hortalizas</span>
-    </div>
-  </div>
-</section>
-
-<!-- 3. GUIA DE APLICACION (gated) -->
-<section class="section-light">
-  <div class="wrap">
-    <div class="guia-band">
-      <div>
-        <span class="eyebrow">Documento clave</span>
-        <h2>Guía de aplicación de Nanoforte</h2>
-        <p>Dosis, pH, compatibilidad y métodos de aplicación (drone, turbo, riego diluido). El documento más importante para aplicar bien el producto y proteger tu inversión.</p>
+    <div class="breadcrumb" style="color:#8a8a8a;margin-bottom:22px"><a href="home.html" style="color:var(--prod)">Inicio</a> / <a href="home.html#productos" style="color:var(--prod)">Productos</a> / Nanoforte</div>
+    <div class="pdp nano" id="comprar">
+      <div class="gallery">
+        <div class="main"><img id="pack" src="img/nano-20lt.png" alt="Nanoforte bidón 20 litros"></div>
       </div>
-      <button class="btn btn-primary gate-open" type="button" data-pdf="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf">Descargar guía de aplicación</button>
+      <div class="info">
+        <span class="tag">Antiestrés hídrico</span>
+        <img src="img/logo-nano.svg" alt="Nanoforte" style="height:40px;margin-bottom:12px">
+        <h1>Nanoforte</h1>
+        <p class="lead">Formulación a partir de bacterias aisladas de la Antártica y el Desierto de Atacama, enriquecida con nanoburbujas de oxígeno y biopolímeros. Un bioestimulante antiestrés hídrico para cultivos resistentes a la sequía.</p>
+        <ul class="bul">
+          <li>Hasta un <b>30% más</b> de potencial hídrico</li>
+          <li>Entre <b>15 y 20% más</b> de producción</li>
+          <li>Hasta <b>47%</b> de incidencia en floración y cuaja</li>
+          <li>Opera con un <b>40% menos</b> de agua</li>
+        </ul>
+        <p style="font-family:var(--display);font-weight:600;font-size:14px;color:var(--v700);margin-bottom:10px">Elige tu formato</p>
+        <div class="formats">
+          <button class="fmt" data-price="$19.990" data-img="img/nano-1lt.png"><div class="sz">1 L</div><div class="pr">$19.990</div></button>
+          <button class="fmt" data-price="$99.950" data-img="img/nano-5lt.png"><div class="sz">5 L</div><div class="pr">$99.950</div></button>
+          <button class="fmt active" data-price="$399.800" data-img="img/nano-20lt.png"><div class="sz">20 L</div><div class="pr">$399.800</div></button>
+        </div>
+        <div class="buy">
+          <div class="price" id="price">$399.800</div>
+          <a class="btn btn-primary" href="#">Añadir al carrito</a>
+          <a class="btn btn-wa" href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+        </div>
+        <a class="btn btn-ghost" href="#mecanismo" style="margin-top:18px;align-self:flex-start">Conoce todo sobre Nanoforte</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 4. INFORMACION TECNICA (descargas) -->
+<!-- TRIPLE MECANISMO -->
+<section class="mech" id="mecanismo">
+  <img class="mech-bg" src="img/hero-nano-full.jpg" alt="">
+  <div class="wrap mech-inner">
+    <div class="mech-head">
+      <span class="eyebrow" style="color:var(--prod)">¿Cómo funciona?</span>
+      <h2>Triple mecanismo de protección</h2>
+    </div>
+    <div class="mech-grid">
+      <div class="mcard"><div class="mn">1</div><h3>Nanoburbujas de oxígeno</h3><p>Mejora la relación CO&#8322;:O&#8322;, la absorción de nutrientes y promueve la diversidad de microorganismos benéficos.</p></div>
+      <div class="mcard"><div class="mn">2</div><h3>Consorcio de bacterias</h3><p>Compuestos orgánicos y microorganismos antárticos y desérticos promueven el crecimiento radicular, solubilizan fosfatos y capturan metales pesados.</p></div>
+      <div class="mcard"><div class="mn">3</div><h3>Nanobiopolímeros</h3><p>Contribuyen a disminuir la pérdida de agua a través de los estomas y la retienen en la zona radicular de la planta.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTIVOS -->
+<section class="section-light">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:26px">
+      <span class="eyebrow" style="color:var(--prod)">Compatibilidad</span>
+      <h2>¿En qué cultivos lo aplico?</h2>
+    </div>
+    <p class="crops">Acelga | Ají | Brócoli | Coliflor | Espárrago | Frutilla | Lechuga | Melón | Pimentón | Repollo | Sandía | Tomate | Zanahoria | Zapallo guarda | Zapallo italiano | Papas | Choclo | Cerezo | Duraznero | Manzanero | Cítricos</p>
+  </div>
+</section>
+
+<!-- GUIA DE APLICACION -->
 <section class="section-cream">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Documentos</span>
-      <h2>Información técnica</h2></div>
-    <div class="dl-grid">
-      <a class="dl" href="documentos/fichas-tecnicas/Ficha-tecnica-Nanoforte-2024.pdf" target="_blank" rel="noopener"><div class="ic">📄</div><div><div class="n">Ficha técnica Nanoforte</div><div class="m">PDF · especificaciones del producto</div></div></a>
-      <a class="dl" href="documentos/hojas-seguridad/Hoja-de-Seguridad-NANOFORTE.pdf" target="_blank" rel="noopener"><div class="ic">🛡️</div><div><div class="n">Hoja de seguridad</div><div class="m">PDF · manejo seguro</div></div></a>
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--prod)">Conoce en profundidad Nanoforte</span>
+      <h2>Descarga la guía de aplicación</h2>
+    </div>
+    <div class="guia2">
+      <!-- PLACEHOLDER portada de la guia: reemplazar por la portada real cuando Dalila la pase. Fondo = collage form-bg.jpg -->
+      <div class="guia2-media">
+        <div class="gcover">
+          <img class="gcover-logo" src="img/logo-nano.svg" alt="Nanoforte">
+          <div class="gcover-t">Guía de aplicación</div>
+          <div class="gcover-s">y preguntas frecuentes</div>
+        </div>
+      </div>
+      <form class="guia2-form" onsubmit="return false">
+        <div class="gf-grid">
+          <div><label>Nombre</label><input type="text" placeholder="Nombre" aria-label="Nombre"></div>
+          <div><label>Correo electrónico</label><input type="email" placeholder="Correo electrónico" aria-label="Correo electrónico"></div>
+          <div><label>Teléfono</label><input type="tel" placeholder="Teléfono" aria-label="Teléfono"></div>
+          <div><label>Tipo de cultivo</label><input type="text" placeholder="Cerezos, uva, papas..." aria-label="Tipo de cultivo"></div>
+          <div><label>Hectáreas</label><input type="number" placeholder="Ej. 25" aria-label="Hectáreas"></div>
+          <div><label>Producto de interés</label><select aria-label="Producto de interés"><option>Nanoforte</option><option>Crioprotect</option></select></div>
+        </div>
+        <label>Mensaje</label>
+        <textarea placeholder="Cuéntanos sobre tu cultivo" aria-label="Mensaje"></textarea>
+        <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- 5. CASO DE EXITO (resultados) -->
-<section class="section-light">
+<!-- CERTIFICACIONES -->
+<section class="cert-sec">
+  <div class="wrap">
+    <p class="cert-lab">Solución 100% Orgánica y certificada</p>
+    <div class="cert-row">
+      <img src="img/cert-sgs.png" alt="Certificación SAG · Servicio Agrícola y Ganadero">
+      <img src="img/cert-ecocert.png" alt="Certificación Ecocert">
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section class="section-cream">
   <div class="wrap">
     <div class="split">
-      <img src="img/nano-cerezos.webp" alt="Cerezos tratados con Nanoforte" loading="lazy">
+      <div class="res-media">
+        <img src="img/res-nano.jpg" alt="Aplicación de Nanoforte en campo, validado científicamente" loading="lazy" style="aspect-ratio:1/1">
+      </div>
       <div>
-        <span class="eyebrow">Validado en campo</span>
-        <h2 style="margin-top:12px">Más cosecha con menos agua</h2>
-        <p>Nanoforte aumenta la producción entre un <b>15 y 20%</b> mientras opera con un <b>40% menos de agua</b>. Una ventaja clave para zonas afectadas por la escasez hídrica.</p>
-        <p>Es compatible con cultivos resistentes a la sequía y ayuda a mantener el rendimiento incluso cuando el agua disponible es limitada.</p>
-        <a class="btn btn-ghost" href="casos.html" style="margin-top:8px">Ver casos de éxito →</a>
+        <span class="eyebrow" style="color:var(--prod)">Validado en campo</span>
+        <h2 style="margin-top:12px">Resultados reales ante estrés en el campo</h2>
+        <p>Don Luis Fermín Orellana, productor de Copequén en la 6ta región de O'Higgins, compartió su experiencia usando Nanoforte en su campo de duraznos nectarín.</p>
+        <p>Tras solo 1 mes de aplicación, logró mejorar el follaje de sus árboles y potenciar la producción de frutos. Un claro ejemplo de cómo Nanoforte transforma la agricultura, incluso en condiciones desafiantes.</p>
+        <a class="btn btn-red" href="casos.html" style="margin-top:8px">Ver casos de éxito</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- FORMULARIO -->
-<section class="section-cream">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Asesoría técnica</span>
-      <h2>Arma la dosis ideal para tu cultivo</h2>
-      <p>Déjanos tus datos y un asesor te contacta para definir la aplicación según tu cultivo y hectáreas.</p></div>
-    <form class="lead-form" onsubmit="return false">
-      <div class="ff-grid">
-        <input type="text" placeholder="Nombre" aria-label="Nombre">
-        <input type="email" placeholder="Email" aria-label="Email">
-        <input type="tel" placeholder="Teléfono" aria-label="Teléfono">
-        <input type="text" placeholder="Tipo de cultivo" aria-label="Tipo de cultivo">
-        <input type="number" placeholder="Hectáreas" aria-label="Hectáreas">
-        <select aria-label="Producto de interés"><option>Producto de interés</option><option>Nanoforte</option><option>Crioprotect</option></select>
-      </div>
-      <textarea placeholder="Cuéntanos sobre tu cultivo" aria-label="Mensaje"></textarea>
-      <button class="btn btn-primary" type="submit">Enviar consulta</button>
-    </form>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-band">
-  <div class="wrap">
-    <h2>Produce más con menos agua</h2>
-    <p>Compra Nanoforte en línea o conversa con nuestro equipo para armar la dosis ideal.</p>
-    <div class="cta">
-      <a class="btn btn-light" href="nanoforte.html">Comprar ahora</a>
-      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">Hablar con un asesor</a>
     </div>
   </div>
 </section>
@@ -186,23 +278,23 @@
       <div><a class="logo" href="home.html"><img src="img/logo-pewman.png" alt="Pewman Innovation"></a>
         <p style="max-width:280px;font-size:14px">Biotecnología de vanguardia para una agricultura más productiva y sostenible.</p>
         <div class="soc">
-          <a href="https://www.instagram.com/pewmaninnovation" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+          <a href="https://www.instagram.com/pewmaninnovation" target="_blank" rel="noopener" aria-label="Instagram">&#9678;</a>
           <a href="https://www.facebook.com/pewmaninnovation" target="_blank" rel="noopener" aria-label="Facebook">f</a>
           <a href="https://www.linkedin.com/company/pewman-innovation" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-          <a href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+          <a href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener" aria-label="YouTube">&#9654;</a>
         </div>
       </div>
       <div><h4>Productos</h4><a href="crioprotect-general.html">Crioprotect</a><a href="nanoforte-general.html">Nanoforte</a><a href="casos.html">Casos de éxito</a></div>
       <div><h4>Nosotros</h4><a href="empresa.html">Nosotros</a><a href="patentes-papers.html">Patentes y papers</a><a href="prensa.html">Prensa y medios</a><a href="contacto.html">Contacto</a></div>
       <div><h4>Contacto</h4>
-        <a href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">💬 +56 9 9083 3908</a>
-        <a href="contacto.html">📍 Badajoz 100, of. 708, Las Condes, Santiago</a>
+        <a href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">&#128172; +56 9 9083 3908</a>
+        <a href="contacto.html">&#128205; Badajoz 100, of. 708, Las Condes, Santiago</a>
       </div>
     </div>
   </div>
   <div class="inst">
     <div class="wrap inst-grid">
-      <div class="col"><div class="t">Marco legal</div><p>Ley N°21.516 Art. 23</p></div>
+      <div class="col"><div class="t">Marco legal</div><p>Ley N&deg;21.516 Art. 23</p></div>
       <div class="col"><div class="corfo"><img src="img/premio-corfo.png" alt="Proyecto apoyado por Corfo y Gobierno de Chile"></div></div>
       <div class="col"><div class="t">Reportes</div>
         <a href="documentos/corporativo-legal/Estado-Resultado-ano-2022-Para-cargar-en-pag-WEB.pdf" target="_blank" rel="noopener">Estado de Resultado año 2022</a>
@@ -218,31 +310,14 @@
   </div>
 </footer>
 
-<!-- MODAL GUIA GATED -->
-<div class="gate-overlay" id="gate" hidden>
-  <div class="gate-modal">
-    <button class="gate-close" type="button" aria-label="Cerrar">&#10005;</button>
-    <span class="eyebrow">Acceso a la guía</span>
-    <h3>Completa tus datos para acceder</h3>
-    <p>La guía de aplicación es gratuita. Déjanos tus datos y la abrimos al instante.</p>
-    <form class="gate-form" id="gateForm">
-      <input type="text" placeholder="Nombre" required aria-label="Nombre">
-      <input type="email" placeholder="Email" required aria-label="Email">
-      <input type="tel" placeholder="Teléfono" required aria-label="Teléfono">
-      <input type="text" placeholder="Tipo de cultivo" aria-label="Tipo de cultivo">
-      <button class="btn btn-primary" type="submit">Acceder a la guía</button>
-    </form>
-  </div>
-</div>
 <script>
-(function(){
-  var gate=document.getElementById('gate'), form=document.getElementById('gateForm'), pdf='';
-  document.querySelectorAll('.gate-open').forEach(function(b){b.addEventListener('click',function(){pdf=b.getAttribute('data-pdf');gate.hidden=false;document.body.style.overflow='hidden';});});
-  function closeGate(){gate.hidden=true;document.body.style.overflow='';form.reset();}
-  gate.querySelector('.gate-close').addEventListener('click',closeGate);
-  gate.addEventListener('click',function(e){if(e.target===gate)closeGate();});
-  form.addEventListener('submit',function(e){e.preventDefault();if(pdf)window.open(pdf,'_blank','noopener');closeGate();});
-})();
+  document.querySelectorAll('.fmt').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.fmt').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active');
+    document.getElementById('price').textContent=b.dataset.price;
+    document.getElementById('pack').src=b.dataset.img;
+  });});
+  (function(){var h=document.querySelector('header');function s(){h.classList.toggle('scrolled',window.scrollY>40);}window.addEventListener('scroll',s,{passive:true});s();})();
 </script>
 
 </body>
