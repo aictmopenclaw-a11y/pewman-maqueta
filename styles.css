@@ -35,16 +35,17 @@ img{max-width:100%;display:block}
 .topbar{background:#dcdcdc;color:#5a5a5a;font-size:12.5px}
 .topbar .wrap{display:flex;justify-content:center;align-items:center;height:38px;text-align:center}
 .topbar .l{letter-spacing:.02em}
-header{position:sticky;top:0;z-index:50;background:rgba(247,246,241,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+header{position:sticky;top:0;z-index:50;background:#181818;backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:120px}
 .logo img{height:101px}
 nav.main{display:flex;gap:26px;font-family:var(--display);font-weight:500;font-size:15px}
-nav.main a{color:var(--tinta2);padding:4px 0;position:relative}
-nav.main a:hover,nav.main a.active{color:var(--v700)}
+nav.main a{color:#eaeaea;padding:4px 0;position:relative}
+nav.main a:hover,nav.main a.active{color:#fff}
 nav.main a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--v500);transition:.25s}
 nav.main a:hover::after,nav.main a.active::after{width:100%}
 .header-cta{display:flex;align-items:center;gap:14px}
-.cart{color:var(--v800);font-size:20px}
+.cart{color:#fff;font-size:20px}
+.srch{color:#fff}
 
 /* home hero */
 .hero{position:relative;padding:60px 0 76px;overflow:hidden}
@@ -187,16 +188,16 @@ section{padding:84px 0}
 .nl input{flex:1;min-width:200px;border:none;border-radius:100px;padding:15px 22px;font-size:15px;font-family:var(--sans)}
 .nl .mini{font-size:12px;color:#aaaaaa;margin-top:12px}
 
-footer.site{background:#dfdfdf;color:#4a4a4a;padding:54px 0 26px;font-size:14px}
-.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:34px;border-bottom:1px solid #d4d4d4}
-footer.site .logo img{height:94px;margin-bottom:16px;filter:brightness(0)}
-footer.site h4{font-family:var(--display);color:var(--tinta);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
-footer.site a{display:block;color:#5a5a5a;margin-bottom:8px}
+footer.site{background:#181818;color:#b0b0b0;padding:54px 0 26px;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:34px;border-bottom:1px solid #2e2e2e}
+footer.site .logo img{height:94px;margin-bottom:16px}
+footer.site h4{font-family:var(--display);color:#fff;font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
+footer.site a{display:block;color:#bcbcbc;margin-bottom:8px}
 footer.site a:hover{color:var(--v500)}
 .soc{display:flex;gap:10px;margin-top:14px}
-.soc a{width:38px;height:38px;border-radius:10px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;margin:0;font-size:15px;color:var(--tinta)}
+.soc a{width:38px;height:38px;border-radius:10px;background:#333;display:flex;align-items:center;justify-content:center;margin:0;font-size:15px;color:#eaeaea}
 .soc a:hover{background:var(--v500);color:#fff}
-.patents{font-size:12px;color:#7a7a7a;line-height:1.7;margin-top:8px}
+.patents{font-size:12px;color:#9a9a9a;line-height:1.7;margin-top:8px}
 .fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:20px;font-size:12.5px;color:#8a8a8a}
 /* Franja institucional (Corfo, patentes, marco legal, reportes) */
 .inst{background:#2b2b2b;color:#cfcfcf;padding:32px 0;font-size:13px}
@@ -214,7 +215,7 @@ nav.main .dd{position:relative}
 nav.main .dd > a{display:inline-flex;align-items:center;gap:4px}
 nav.main .dd-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(6px);background:#fff;border:1px solid var(--linea);border-radius:12px;box-shadow:0 16px 36px -14px rgba(0,0,0,.22);padding:8px;min-width:190px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transition:.2s;z-index:80}
 nav.main .dd:hover .dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-nav.main .dd-menu a{padding:9px 13px;border-radius:8px;font-size:14px;white-space:nowrap;margin:0}
+nav.main .dd-menu a{padding:9px 13px;border-radius:8px;font-size:14px;white-space:nowrap;margin:0;color:var(--tinta)}
 nav.main .dd-menu a::after{display:none}
 nav.main .dd-menu a:hover{background:#f0f0f0;color:var(--v500)}
 
