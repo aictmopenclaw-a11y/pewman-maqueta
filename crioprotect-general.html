@@ -46,8 +46,8 @@
 
   /* Triple mecanismo (fondo oscuro + tarjetas de color) */
   .mech{position:relative;overflow:hidden;background:#0b1620;color:#fff}
-  .mech-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;z-index:0}
-  .mech::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,14,20,.68),rgba(8,14,20,.85))}
+  .mech-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;z-index:0}
+  .mech::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,14,20,.38),rgba(8,14,20,.56))}
   .mech-inner{position:relative;z-index:2}
   .mech-head{text-align:center;margin-bottom:44px}
   .mech-head h2{font-size:clamp(28px,3.6vw,40px);color:#fff;margin-top:10px}
@@ -65,10 +65,12 @@
   .guia2{display:grid;grid-template-columns:.85fr 1.15fr;gap:32px;align-items:stretch}
   .guia2-media{position:relative;border-radius:20px;overflow:hidden;background:url('img/form-bg.jpg') center/cover;min-height:430px;display:flex;align-items:center;justify-content:center;padding:30px}
   .guia2-media::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,0,0,.42),rgba(0,0,0,.62))}
-  .gcover{position:relative;z-index:1;background:#fff;border-radius:14px;padding:32px 26px;text-align:center;box-shadow:0 26px 54px -20px rgba(0,0,0,.55);max-width:240px}
-  .gcover-logo{height:32px;width:auto;margin:0 auto 18px}
-  .gcover-t{font-family:var(--display);font-weight:800;font-size:23px;color:var(--prod);line-height:1.1}
-  .gcover-s{font-size:14px;color:#5a5a5a;margin-top:5px}
+  .gcover{position:relative;z-index:1;background:#fff;border-radius:14px;padding:26px 24px 20px;text-align:center;box-shadow:0 26px 54px -20px rgba(0,0,0,.55);max-width:272px}
+  .gcover-prod{height:158px;width:auto;margin:0 auto 12px;display:block;filter:drop-shadow(0 14px 20px rgba(0,0,0,.20))}
+  .gcover-t{font-family:var(--display);font-weight:800;font-size:22px;color:var(--prod);line-height:1.1}
+  .gcover-s{font-size:13.5px;color:#5a5a5a;margin-top:4px}
+  .gcover-brands{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px;padding-top:14px;border-top:1px solid #eee}
+  .gcover-brands img{height:26px;width:auto;object-fit:contain}
   .guia2-form{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:32px;box-shadow:var(--sh)}
   .gf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
   .guia2-form label{display:block;font-family:var(--display);font-weight:600;font-size:12.5px;color:#3d3d3d;margin:0 0 5px}
@@ -217,12 +219,15 @@
       <h2>Descarga la guía de aplicación</h2>
     </div>
     <div class="guia2">
-      <!-- PLACEHOLDER portada de la guia: reemplazar por la portada real cuando Dalila la pase. Fondo = collage form-bg.jpg -->
       <div class="guia2-media">
         <div class="gcover">
-          <img class="gcover-logo" src="img/logo-crio.svg" alt="Crioprotect">
+          <img class="gcover-prod" src="img/crio-20lt.png" alt="Guía de aplicación Crioprotect">
           <div class="gcover-t">Guía de aplicación</div>
           <div class="gcover-s">y preguntas frecuentes</div>
+          <div class="gcover-brands">
+            <img src="img/logo-pewman.png" alt="Pewman Innovation">
+            <img src="img/logo-cals.jpg" alt="CALS">
+          </div>
         </div>
       </div>
       <form class="guia2-form" onsubmit="return false">
