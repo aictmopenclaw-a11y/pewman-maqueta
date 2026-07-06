@@ -37,7 +37,7 @@ img{max-width:100%;display:block}
 .topbar .l{letter-spacing:.02em}
 header{position:sticky;top:0;z-index:50;background:#181818;backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:120px}
-.logo img{height:101px}
+.logo img{height:56px}
 nav.main{display:flex;gap:26px;font-family:var(--display);font-weight:500;font-size:15px}
 nav.main a{color:#eaeaea;padding:4px 0;position:relative}
 nav.main a:hover,nav.main a.active{color:#fff}
@@ -190,7 +190,7 @@ section{padding:84px 0}
 
 footer.site{background:#181818;color:#b0b0b0;padding:54px 0 26px;font-size:14px}
 .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:34px;border-bottom:1px solid #2e2e2e}
-footer.site .logo img{height:94px;margin-bottom:16px}
+footer.site .logo img{height:46px;margin-bottom:16px}
 footer.site h4{font-family:var(--display);color:#fff;font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
 footer.site a{display:block;color:#bcbcbc;margin-bottom:8px}
 footer.site a:hover{color:var(--v500)}
