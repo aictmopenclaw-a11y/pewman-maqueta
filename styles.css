@@ -305,13 +305,26 @@ nav.main .dd-menu a:hover{background:#f0f0f0;color:var(--v500)}
 .cta-band p{font-size:17px;color:#d6d6d6;max-width:560px;margin:0 auto 26px}
 .cta-band .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
+/* Boton hamburguesa (solo mobile) */
+.hamb{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:none;border:none;cursor:pointer;padding:8px;margin:0}
+.hamb span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:.25s}
+header.mnav-open .hamb span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+header.mnav-open .hamb span:nth-child(2){opacity:0}
+header.mnav-open .hamb span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media(max-width:920px){
   .hero .wrap,.split,.contact-grid,.pdp{grid-template-columns:1fr;gap:34px}
   .pdp .gallery{position:static}
   .steps,.rgrid,.testi-grid,.press-grid,.doc-grid,.fgrid,.pr-top,.feat-grid,.dl-grid{grid-template-columns:1fr 1fr}
   .caso-grid{grid-template-columns:1fr 1fr}
   .prod-grid,.nl,.eq-grid{grid-template-columns:1fr}
-  nav.main{display:none}
+  .hamb{display:flex}
+  nav.main{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;gap:0;background:#181818;padding:6px 24px 16px;border-top:1px solid rgba(255,255,255,.08);box-shadow:0 24px 44px -18px rgba(0,0,0,.7);max-height:calc(100vh - 120px);overflow-y:auto}
+  header.mnav-open nav.main{display:flex}
+  nav.main a{padding:13px 2px;border-bottom:1px solid rgba(255,255,255,.07)}
+  nav.main a::after{display:none}
+  nav.main .dd{position:static}
+  nav.main .dd-menu{position:static;opacity:1;visibility:visible;transform:none;background:none;border:none;box-shadow:none;padding:0 0 4px 14px;min-width:0;margin:0}
+  nav.main .dd-menu a{color:#b7b7b7!important;padding:11px 2px;border-bottom:none}
   .topbar{font-size:11px}.topbar .wrap{display:block;height:auto;padding:8px 16px;line-height:1.35}
 }
 @media(max-width:560px){

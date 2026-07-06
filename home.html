@@ -246,9 +246,21 @@
   .soc a:hover{opacity:1;transform:translateY(-2px)}
   .fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;font-size:12.5px;color:#8a8a8a}
 
+  .hamb{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:none;border:none;cursor:pointer;padding:8px;margin:0}
+  .hamb span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:.25s}
+  header.mnav-open .hamb span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  header.mnav-open .hamb span:nth-child(2){opacity:0}
+  header.mnav-open .hamb span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   @media(max-width:900px){
     .sol-grid,.cgrid,.pr-grid,.pat-grid,.fgrid,.form-box .grid{grid-template-columns:1fr 1fr}
-    nav.main{display:none}
+    .hamb{display:flex}
+    nav.main{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;gap:0;background:#181818;padding:6px 24px 16px;border-top:1px solid rgba(255,255,255,.08);box-shadow:0 24px 44px -18px rgba(0,0,0,.7);max-height:calc(100vh - 120px);overflow-y:auto}
+    header.mnav-open nav.main{display:flex}
+    nav.main a{padding:13px 2px;border-bottom:1px solid rgba(255,255,255,.07)}
+    nav.main a::after{display:none}
+    nav.main .dd{position:static}
+    nav.main .dd-menu{position:static;opacity:1;visibility:visible;transform:none;background:none;border:none;box-shadow:none;padding:0 0 4px 14px;min-width:0;margin:0}
+    nav.main .dd-menu a{color:#b7b7b7!important;padding:11px 2px}
     .topbar{font-size:11px}.topbar .wrap{display:block;height:auto;padding:8px 16px;line-height:1.35}
   }
   @media(max-width:560px){
@@ -278,7 +290,7 @@
     <a href="prensa.html">Prensa y medios</a>
     <a href="contacto.html">Contacto</a>
   </nav>
-  <div class="header-cta">
+  <div class="header-cta"><button class="hamb" aria-label="Abrir menu" aria-expanded="false" onclick="var h=this.closest('header');this.setAttribute('aria-expanded',h.classList.toggle('mnav-open'))"><span></span><span></span><span></span></button>
     <a class="srch" href="#" title="Buscar" aria-label="Buscar">🔍</a>
     <a class="cart" href="#" title="Carro" aria-label="Carro de compras">🛒</a>
   </div>
