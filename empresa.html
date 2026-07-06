@@ -10,6 +10,31 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Timeline "Nuestra Historia" (estilo del sitio) */
+  .tl{position:relative;max-width:880px;margin:0 auto}
+  .tl::before{content:"";position:absolute;left:19px;top:14px;bottom:14px;width:2px;background:var(--linea)}
+  .tl-item{position:relative;padding:0 0 26px 66px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-num{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--v500);color:#fff;font-family:var(--display);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 6px 16px -4px rgba(189,0,40,.5)}
+  .tl-card{background:#fff;border:1px solid var(--linea);border-radius:16px;box-shadow:var(--sh);overflow:hidden;display:grid;grid-template-columns:210px 1fr;transition:.2s}
+  .tl-card:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+  .tl-card.no-img{grid-template-columns:1fr}
+  .tl-card>img{width:100%;height:100%;object-fit:cover;min-height:190px}
+  .tl-card .tx{padding:24px 28px}
+  .tl-card h3{font-size:20px;color:var(--tinta);margin:7px 0 11px;line-height:1.22}
+  .tl-card p{color:var(--tinta2);font-size:15px;margin-bottom:9px}
+  .tl-card p:last-child{margin-bottom:0}
+  .tl-card .chips{margin-top:14px}
+  @media(max-width:680px){
+    .tl-item{padding-left:50px}
+    .tl::before{left:16px}
+    .tl-num{width:34px;height:34px;font-size:14px}
+    .tl-card{grid-template-columns:1fr}
+    .tl-card>img{min-height:150px;max-height:200px}
+    .tl-card .tx{padding:20px 22px}
+  }
+</style>
 </head>
 <body>
 
@@ -56,33 +81,39 @@
   </div>
 </section>
 
-<!-- DE ECOSISTEMAS EXTREMOS -->
+<!-- NUESTRA HISTORIA (timeline) -->
 <section class="section-cream">
   <div class="wrap">
-    <div class="split">
-      <img src="img/caso-uvas.jpg" alt="Viñedo en el valle central de Chile" loading="lazy">
-      <div>
-        <span class="eyebrow">El origen</span>
-        <h2 style="margin-top:12px">De ecosistemas extremos a soluciones agrícolas</h2>
-        <p>Nuestra historia comenzó explorando algunos de los ecosistemas más extremos del planeta, incluyendo la Antártica, el Desierto de Atacama, la Patagonia, volcanes e islas australes de Chile.</p>
-        <p>Estos ambientes albergan microorganismos extraordinarios que han evolucionado durante miles de años para sobrevivir en condiciones de frío extremo, escasez de agua, alta radiación UV y otros desafíos ambientales. Comprender estos mecanismos de adaptación nos permitió identificar nuevas oportunidades para fortalecer la resiliencia de los cultivos frente al cambio climático.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CIENCIA PROPIA (diferenciador clave) -->
-<section class="section-light">
-  <div class="wrap">
-    <div class="split">
-      <div>
-        <span class="eyebrow">Lo que nos hace únicos</span>
-        <h2 style="margin-top:12px">Ciencia propia desde el origen</h2>
-        <p><b>No utilizamos microorganismos descubiertos por otros.</b> Descubrimos, aislamos, caracterizamos y desarrollamos nuestras propias tecnologías a partir de microorganismos provenientes de algunos de los ecosistemas más extremos del planeta.</p>
-        <p>A diferencia de muchas soluciones biológicas del mercado, conocemos en profundidad nuestros microorganismos, comprendemos sus mecanismos de acción y desarrollamos tecnologías basadas en evidencia científica sólida.</p>
-        <p>La combinación de este conocimiento con nanotecnología orgánica ha permitido crear una plataforma tecnológica única, diseñada para responder a desafíos agrícolas específicos de manera sustentable y eficiente.</p>
-      </div>
-      <img src="img/nano-cerezos.webp" alt="Evidencia científica de laboratorio" loading="lazy">
+    <div class="sec-head"><span class="eyebrow">Nuestra historia</span>
+      <h2>El camino de Pewman Innovation</h2>
+      <p>De los ecosistemas más extremos del planeta a soluciones que hoy protegen cultivos en Chile y el mundo.</p></div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-num">1</div>
+        <div class="tl-card"><img src="img/caso-uvas.jpg" alt="Viñedo en el valle central de Chile" loading="lazy">
+          <div class="tx"><span class="eyebrow">El origen</span><h3>De ecosistemas extremos a soluciones agrícolas</h3>
+            <p>Nuestra historia comenzó explorando algunos de los ecosistemas más extremos del planeta, incluyendo la Antártica, el Desierto de Atacama, la Patagonia, volcanes e islas australes de Chile.</p>
+            <p>Estos ambientes albergan microorganismos extraordinarios que han evolucionado durante miles de años para sobrevivir en condiciones de frío extremo, escasez de agua, alta radiación UV y otros desafíos ambientales. Comprender estos mecanismos de adaptación nos permitió identificar nuevas oportunidades para fortalecer la resiliencia de los cultivos frente al cambio climático.</p></div></div></div>
+      <div class="tl-item"><div class="tl-num">2</div>
+        <div class="tl-card"><img src="img/nano-cerezos.webp" alt="Evidencia científica de laboratorio" loading="lazy">
+          <div class="tx"><span class="eyebrow">Lo que nos hace únicos</span><h3>Ciencia propia desde el origen</h3>
+            <p><b>No utilizamos microorganismos descubiertos por otros.</b> Descubrimos, aislamos, caracterizamos y desarrollamos nuestras propias tecnologías a partir de microorganismos provenientes de algunos de los ecosistemas más extremos del planeta.</p>
+            <p>A diferencia de muchas soluciones biológicas del mercado, conocemos en profundidad nuestros microorganismos, comprendemos sus mecanismos de acción y desarrollamos tecnologías basadas en evidencia científica sólida.</p>
+            <p>La combinación de este conocimiento con nanotecnología orgánica ha permitido crear una plataforma tecnológica única, diseñada para responder a desafíos agrícolas específicos de manera sustentable y eficiente.</p></div></div></div>
+      <div class="tl-item"><div class="tl-num">3</div>
+        <div class="tl-card"><img src="img/caso-cerezas.jpg" alt="Cultivo de cerezos" loading="lazy">
+          <div class="tx"><span class="eyebrow">Pioneros</span><h3>Una nueva generación de biotecnologías agrícolas</h3>
+            <p>Uno de nuestros principales hitos fue el descubrimiento y caracterización de bacterias asociadas a plantas antárticas, con propiedades capaces de contribuir a la protección frente a bajas temperaturas y otros factores de estrés ambiental.</p>
+            <p>Este trabajo dio origen a una nueva línea de innovación biotecnológica basada en microorganismos de ecosistemas extremos. Como pioneros en este campo, hoy colaboramos con empresas, productores e instituciones que buscan incorporar ciencia avanzada para enfrentar los desafíos productivos del futuro.</p></div></div></div>
+      <div class="tl-item"><div class="tl-num">4</div>
+        <div class="tl-card no-img">
+          <div class="tx"><span class="eyebrow">Validado en condiciones reales</span><h3>Tecnologías que funcionan en el campo</h3>
+            <p>Tras más de 10 años de investigación, desarrollo y validación, nuestras tecnologías han demostrado su eficacia en miles de hectáreas agrícolas, ayudando a productores a enfrentar heladas, déficit hídrico y otros factores asociados al cambio climático.</p>
+            <p>Nuestro enfoque combina rigurosidad científica, validación en terreno y desarrollo tecnológico, generando soluciones con impacto medible y aplicabilidad comercial.</p></div></div></div>
+      <div class="tl-item"><div class="tl-num">5</div>
+        <div class="tl-card no-img">
+          <div class="tx"><span class="eyebrow">Proyección global</span><h3>Desde Chile hacia el mundo</h3>
+            <p>Lo que comenzó como investigación científica desarrollada en Chile hoy se proyecta a nivel internacional, a través de alianzas estratégicas, programas de validación y colaboraciones con actores del sector agrícola y de innovación.</p>
+            <div class="chips"><span class="chip">América Latina</span><span class="chip">Europa</span><span class="chip">Norteamérica</span></div></div></div></div>
     </div>
   </div>
 </section>
@@ -99,71 +130,14 @@
   </div>
 </section>
 
-<!-- PIONEROS -->
-<section class="section-cream">
-  <div class="wrap">
-    <div class="split">
-      <img src="img/caso-cerezas.jpg" alt="Cultivo de cerezos" loading="lazy">
-      <div>
-        <span class="eyebrow">Pioneros</span>
-        <h2 style="margin-top:12px">Una nueva generación de biotecnologías agrícolas</h2>
-        <p>Uno de nuestros principales hitos fue el descubrimiento y caracterización de bacterias asociadas a plantas antárticas, con propiedades capaces de contribuir a la protección frente a bajas temperaturas y otros factores de estrés ambiental.</p>
-        <p>Este trabajo dio origen a una nueva línea de innovación biotecnológica basada en microorganismos de ecosistemas extremos. Como pioneros en este campo, hoy colaboramos con empresas, productores e instituciones que buscan incorporar ciencia avanzada para enfrentar los desafíos productivos del futuro.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VALIDADO -->
-<section class="section-light">
-  <div class="wrap">
-    <div class="prose" style="text-align:center">
-      <span class="eyebrow">Validado en condiciones reales</span>
-      <h2 style="color:var(--v900);font-size:30px;margin:12px 0 16px">Tecnologías que funcionan en el campo</h2>
-      <p>Tras más de 10 años de investigación, desarrollo y validación, nuestras tecnologías han demostrado su eficacia en miles de hectáreas agrícolas, ayudando a productores a enfrentar heladas, déficit hídrico y otros factores asociados al cambio climático.</p>
-      <p>Nuestro enfoque combina rigurosidad científica, validación en terreno y desarrollo tecnológico, generando soluciones con impacto medible y aplicabilidad comercial.</p>
-    </div>
-  </div>
-</section>
-
-<!-- DESDE CHILE AL MUNDO -->
-<section class="section-cream">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Proyección global</span>
-      <h2>Desde Chile hacia el mundo</h2>
-      <p>Lo que comenzó como investigación científica desarrollada en Chile hoy se proyecta a nivel internacional, a través de alianzas estratégicas, programas de validación y colaboraciones con actores del sector agrícola y de innovación.</p></div>
-    <div class="chips">
-      <span class="chip">América Latina</span>
-      <span class="chip">Europa</span>
-      <span class="chip">Norteamérica</span>
-    </div>
-  </div>
-</section>
-
 <!-- PROPOSITO Y VISION -->
 <section class="section-light">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Hacia dónde vamos</span>
       <h2>Propósito y visión</h2></div>
     <div class="feat-grid" style="grid-template-columns:repeat(2,1fr)">
-      <div class="feat"><div class="ic">🎯</div><h3>Nuestro propósito</h3><p>Fortalecer la resiliencia de la agricultura mediante tecnologías biológicas desarrolladas a partir de microorganismos de ecosistemas extremos.</p></div>
-      <div class="feat"><div class="ic">🌍</div><h3>Nuestra visión</h3><p>Convertirnos en referentes globales en biotecnología agrícola, llevando innovación desarrollada en Chile hacia los principales mercados agrícolas del mundo.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- LO QUE NOS DIFERENCIA -->
-<section class="section-cream">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Diferenciadores</span>
-      <h2>Lo que nos diferencia</h2></div>
-    <div class="feat-grid">
-      <div class="feat"><div class="ic">🔬</div><h3>Más de 10 años de I+D</h3><p>Una década transformando ciencia de frontera en tecnología aplicada.</p></div>
-      <div class="feat"><div class="ic">🧬</div><h3>Microorganismos propios</h3><p>Aislados y caracterizados por nuestro propio equipo científico.</p></div>
-      <div class="feat"><div class="ic">🔍</div><h3>Mecanismos de acción</h3><p>Comprendemos a fondo cómo funcionan nuestras tecnologías.</p></div>
-      <div class="feat"><div class="ic">📊</div><h3>Evidencia y validación</h3><p>Desarrollo basado en ciencia y validación en campo real.</p></div>
-      <div class="feat"><div class="ic">🏔️</div><h3>Inspiración extrema</h3><p>Innovación inspirada en los ecosistemas más extremos del planeta.</p></div>
-      <div class="feat"><div class="ic">🌎</div><h3>Proyección global</h3><p>Tecnologías chilenas con alcance internacional.</p></div>
+      <div class="feat"><h3>Nuestro propósito</h3><p>Fortalecer la resiliencia de la agricultura mediante tecnologías biológicas desarrolladas a partir de microorganismos de ecosistemas extremos.</p></div>
+      <div class="feat"><h3>Nuestra visión</h3><p>Convertirnos en referentes globales en biotecnología agrícola, llevando innovación desarrollada en Chile hacia los principales mercados agrícolas del mundo.</p></div>
     </div>
   </div>
 </section>
