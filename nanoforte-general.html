@@ -230,10 +230,10 @@
           </div>
         </div>
       </div>
-      <form class="guia2-form" onsubmit="return false">
+      <form class="guia2-form" data-guide-form>
         <div class="gf-grid">
-          <div><label>Nombre</label><input type="text" placeholder="Nombre" aria-label="Nombre"></div>
-          <div><label>Correo electrónico</label><input type="email" placeholder="Correo electrónico" aria-label="Correo electrónico"></div>
+          <div><label>Nombre</label><input type="text" placeholder="Nombre" aria-label="Nombre" required></div>
+          <div><label>Correo electrónico</label><input type="email" placeholder="Correo electrónico" aria-label="Correo electrónico" required></div>
           <div><label>Teléfono</label><input type="tel" placeholder="Teléfono" aria-label="Teléfono"></div>
           <div><label>Tipo de cultivo</label><input type="text" placeholder="Cerezos, uva, papas..." aria-label="Tipo de cultivo"></div>
           <div><label>Hectáreas</label><input type="number" placeholder="Ej. 25" aria-label="Hectáreas"></div>
@@ -241,8 +241,20 @@
         </div>
         <label>Mensaje</label>
         <textarea placeholder="Cuéntanos sobre tu cultivo" aria-label="Mensaje"></textarea>
-        <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+        <button class="btn btn-primary" type="submit">Enviar y descargar guía</button>
       </form>
+      <div class="guia2-form" data-guide-success hidden style="text-align:center">
+        <div style="width:56px;height:56px;border-radius:50%;background:#009633;color:#fff;font-size:26px;line-height:56px;text-align:center;margin:0 auto 16px">&#10003;</div>
+        <h3 style="font-family:var(--display);font-weight:800;font-size:22px;color:var(--tinta);margin:6px 0 8px">¡Listo! Aquí está tu guía</h3>
+        <p style="color:#5a5a5a;margin:0 0 20px">Te enviamos una copia a tu correo. También puedes descargarla directamente:</p>
+        <a class="btn btn-primary" href="https://cdn.shopify.com/s/files/1/0798/6348/0551/files/guia-aplicacion-nanoforte.pdf?v=1783720273" target="_blank" rel="noopener">&#11015; Descargar guía de aplicación (PDF)</a>
+      </div>
+      <script>
+      (function(){
+        var f=document.querySelector('[data-guide-form]'), s=document.querySelector('[data-guide-success]');
+        if(f&&s) f.addEventListener('submit',function(e){e.preventDefault();f.hidden=true;s.hidden=false;});
+      })();
+      </script>
     </div>
   </div>
 </section>
