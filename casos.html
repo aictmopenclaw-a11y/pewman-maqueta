@@ -88,6 +88,11 @@
   .pdfmodal .pclose{background:none;border:none;font-size:26px;cursor:pointer;color:#9a9a9a;line-height:1}
   .pdfmodal iframe{flex:1;width:100%;border:0;background:#525659}
   @media(max-width:560px){.pdfmodal .pbar .pt{display:none}.pdfmodal .pbox{height:90vh}}
+  /* CTA final con foto de campo de fondo */
+  .cta-band--field{position:relative;overflow:hidden;background:#1c1c1c}
+  .cta-band--field::before{content:"";position:absolute;inset:0;background:url('img/casos-cta-campo.jpg') center/cover no-repeat}
+  .cta-band--field::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(28,28,28,.84),rgba(18,18,18,.8))}
+  .cta-band--field .wrap{position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -203,7 +208,7 @@
 </section>
 
 <!-- CTA -->
-<section class="cta-band">
+<section class="cta-band cta-band--field">
   <div class="wrap">
     <h2>¿Quieres estos resultados en tu campo?</h2>
     <p>Conversa con nuestro equipo y arma la estrategia ideal para proteger y potenciar tu cultivo esta temporada.</p>
