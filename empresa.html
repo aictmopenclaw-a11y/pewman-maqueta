@@ -34,6 +34,28 @@
     .tl-card>img{min-height:150px;max-height:200px}
     .tl-card .tx{padding:20px 22px}
   }
+
+  /* Equipo: regiones + tarjetas */
+  .team-region{margin-top:44px}
+  .team-region:first-child{margin-top:0}
+  .team-region-label{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+  .team-region-label span{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--v500);white-space:nowrap}
+  .team-region-label::after{content:"";flex:1;height:1px;background:var(--linea)}
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .team-card{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--rl);padding:18px;text-align:center;box-shadow:var(--sh);transition:.2s}
+  .team-card:hover{box-shadow:var(--sh2);transform:translateY(-3px)}
+  .team-card .ph-wrap{position:relative;margin-bottom:14px}
+  .team-card .ph{width:100%;aspect-ratio:1/1;border-radius:18px;overflow:hidden;background:var(--crema2)}
+  .team-card .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .team-card .li{position:absolute;right:8px;bottom:8px;width:32px;height:32px;border-radius:50%;background:#fff;border:1px solid var(--linea);box-shadow:var(--sh);display:flex;align-items:center;justify-content:center;transition:.2s}
+  .team-card .li svg{width:16px;height:16px;fill:var(--v600);display:block}
+  .team-card .li:hover{background:var(--v600)}
+  .team-card .li:hover svg{fill:#fff}
+  .team-card h3{font-size:15.5px;color:var(--v800);margin:0 0 4px;line-height:1.28}
+  .team-card .role{font-family:var(--display);font-weight:600;font-size:12px;color:var(--v500);line-height:1.35}
+  @media(max-width:920px){.team-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:680px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:400px){.team-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -148,24 +170,99 @@
     <div class="sec-head"><span class="eyebrow">Equipo</span>
       <h2>Fundado por científicos</h2>
       <p>Con equipos en Chile, Perú y Europa.</p></div>
-    <div class="eq-grid">
-      <div class="eq">
-        <div class="ph-ini">JP</div>
-        <h3>José Manuel Pérez-Donoso</h3>
-        <div class="role">CEO y Director Fundador</div>
-        <p>Bioquímico, PhD en Microbiología. Más de 20 años en nanotecnología. Postdoctorados en la U. de Western Ontario (Canadá) y la USACH.</p>
+
+    <div class="team-region">
+      <div class="team-region-label"><span>Chile</span></div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="ph-wrap">
+            <div class="ph"><img src="img/jose-perez-donoso.jpg" alt="Dr. José Manuel Pérez-Donoso" loading="lazy"></div>
+            <a class="li" href="https://www.linkedin.com/in/jose-perez-donoso/" target="_blank" rel="noopener" aria-label="LinkedIn de José Manuel Pérez-Donoso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          </div>
+          <h3>Dr. José Manuel Pérez-Donoso</h3>
+          <div class="role">CEO y Director Fundador</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap">
+            <div class="ph"><img src="img/denisse-bravo.jpg" alt="Denisse Bravo" loading="lazy"></div>
+            <a class="li" href="https://www.linkedin.com/in/denisse-bravo-069a4583/" target="_blank" rel="noopener" aria-label="LinkedIn de Denisse Bravo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          </div>
+          <h3>Denisse Bravo</h3>
+          <div class="role">Directora Científica</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap">
+            <div class="ph"><img src="img/enzo-galliani.jpg" alt="Enzo Galliani" loading="lazy"></div>
+            <a class="li" href="https://www.linkedin.com/in/enzo-galliani/" target="_blank" rel="noopener" aria-label="LinkedIn de Enzo Galliani"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          </div>
+          <h3>Enzo Galliani</h3>
+          <div class="role">Gerente de Proyectos</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/alberto-rios.jpg" alt="Alberto Ríos" loading="lazy"></div></div>
+          <h3>Alberto Ríos</h3>
+          <div class="role">Asesor técnico comercial</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/matias-vargas.jpg" alt="Matías Vargas" loading="lazy"></div></div>
+          <h3>Matías Vargas</h3>
+          <div class="role">Director de laboratorio e investigación</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/felipe-pavez.jpg" alt="Felipe Pávez" loading="lazy"></div></div>
+          <h3>Felipe Pávez</h3>
+          <div class="role">Director de ventas y administración</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/safka-hernandez.jpg" alt="Safka Hernández" loading="lazy"></div></div>
+          <h3>Safka Hernández</h3>
+          <div class="role">Asistente de laboratorio</div>
+        </div>
       </div>
-      <div class="eq">
-        <img src="img/eq-denisse.png" alt="Denisse Bravo" loading="lazy">
-        <h3>Denisse Bravo</h3>
-        <div class="role">Directora Científica y Cofundadora</div>
-        <p>Bioquímica, PhD en Bioquímica. Más de 20 años de investigación en microbiología. Postdoctorado en la Universidad de Chile.</p>
+    </div>
+
+    <div class="team-region">
+      <div class="team-region-label"><span>Perú</span></div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/camila-gutierrez.jpg" alt="Camila Gutiérrez" loading="lazy"></div></div>
+          <h3>Camila Gutiérrez</h3>
+          <div class="role">Coordinadora de Operaciones Perú</div>
+        </div>
       </div>
-      <div class="eq">
-        <img src="img/eq-enzo.png" alt="Enzo Galliani" loading="lazy">
-        <h3>Enzo Galliani</h3>
-        <div class="role">Director de Operaciones</div>
-        <p>Ingeniero en Biotecnología. Lidera los proyectos y los ensayos en campo de Pewman.</p>
+    </div>
+
+    <div class="team-region">
+      <div class="team-region-label"><span>Europa</span></div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="ph-wrap">
+            <div class="ph"><img src="img/isaac-bugueno.jpg" alt="Dr. Isaac Bugueno" loading="lazy"></div>
+            <a class="li" href="https://www.linkedin.com/in/isaac-maximiliano-bugueno-valdebenito-1a282921/" target="_blank" rel="noopener" aria-label="LinkedIn de Isaac Bugueno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          </div>
+          <h3>Dr. Isaac Bugueno</h3>
+          <div class="role">Cofundador y CEO</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/carla-galardo.jpg" alt="Dr. Carla Galardo" loading="lazy"></div></div>
+          <h3>Dr. Carla Galardo</h3>
+          <div class="role">Oficial de I+D</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/marion-pugliano.jpg" alt="Dr. Marion Pugliano" loading="lazy"></div></div>
+          <h3>Dr. Marion Pugliano</h3>
+          <div class="role">Ingeniero de investigación</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/jeremy-hamm.jpg" alt="Jérémy Hamm" loading="lazy"></div></div>
+          <h3>Jérémy Hamm</h3>
+          <div class="role">Ingeniero financiero y de operaciones</div>
+        </div>
+        <div class="team-card">
+          <div class="ph-wrap"><div class="ph"><img src="img/alain-carpio-palza.jpg" alt="Alain Carpio Palza" loading="lazy"></div></div>
+          <h3>Alain Carpio Palza</h3>
+          <div class="role">Marketing y Despliegue de Mercado</div>
+        </div>
       </div>
     </div>
   </div>
