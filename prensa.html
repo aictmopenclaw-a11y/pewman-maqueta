@@ -11,6 +11,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
+  /* Header transparente sobre el hero, sólido al hacer scroll (igual que empresa/casos/home) */
+  header{background:transparent;border-bottom:1px solid rgba(255,255,255,.10);transition:background .3s ease,border-color .3s ease}
+  header.scrolled{background:rgba(24,24,24,.96);backdrop-filter:blur(12px)}
+  /* Hero de Prensa: imagen full-bleed con zoom lento, bajo el menu transparente */
+  .page-hero{position:relative;overflow:hidden;min-height:clamp(560px,60vw,860px);display:flex;align-items:center;padding:0;margin-top:-120px;background:#101820}
+  .page-hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;animation:heroZoom 20s ease-out infinite alternate}
+  .page-hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(16,24,32,.48),rgba(16,24,32,.64))}
+  .page-hero .wrap{position:relative;z-index:2;width:100%}
+  .page-hero h1{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.45)}
+  .page-hero p{color:#eef3f5;text-shadow:0 1px 8px rgba(0,0,0,.55)}
+  .page-hero .eyebrow{text-shadow:0 1px 6px rgba(0,0,0,.5)}
+  .page-hero .breadcrumb,.page-hero .breadcrumb a{color:#e2e2e2;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+  @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.09)}}
+  @media(max-width:820px){.page-hero{min-height:clamp(460px,86vw,600px)}}
   .news-wrap{padding:52px 0 72px}
   .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
   .ncard{display:block;border-radius:16px;overflow:hidden;position:relative;height:300px;box-shadow:var(--sh);background:#222}
@@ -52,6 +66,7 @@
 </div></header>
 
 <section class="page-hero">
+  <img class="page-hero__bg" src="img/prensa-hero-microfonos.jpg" alt="Sala de prensa con micrófonos dispuestos sobre la mesa, lista para una conferencia">
   <div class="wrap">
     <div class="breadcrumb"><a href="home.html">Inicio</a> / Prensa y medios</div>
     <h1>Prensa y medios</h1>
@@ -140,5 +155,6 @@
   </div>
 </footer>
 
+<script>(function(){var hd=document.querySelector('header');function on(){hd.classList.toggle('scrolled',window.scrollY>60);}on();window.addEventListener('scroll',on,{passive:true});})();</script>
 </body>
 </html>
