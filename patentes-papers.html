@@ -14,22 +14,15 @@
   /* Patentes */
   .pat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
   @media(max-width:720px){.pat-grid{grid-template-columns:1fr}}
-  .pat{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:24px 26px;transition:.2s}
-  .pat:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:#cfcfcf}
-  .pat .ic{width:48px;height:48px;border-radius:12px;background:#727272;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+  .pat{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:24px 26px}
+  .pat .ic{width:50px;height:36px;border-radius:7px;overflow:hidden;flex:none;border:1px solid var(--linea);box-shadow:0 2px 6px rgba(0,0,0,.12);font-size:0}
+  .pat .ic svg{width:100%;height:100%;display:block}
+  .pat .ic.intl{width:36px;height:36px;border-radius:50%;background:#727272;border:none;box-shadow:none;display:flex;align-items:center;justify-content:center}
+  .pat .ic.intl svg{width:22px;height:22px}
   .pat .juris{font-family:var(--display);font-weight:700;font-size:16px;color:var(--v900)}
   .pat .num{font-size:13.5px;color:var(--v500);font-weight:600;margin:2px 0 6px;letter-spacing:.01em}
   .pat .desc{font-size:13.5px;color:var(--tinta2);line-height:1.5}
   .legal-note{margin-top:22px;font-size:13.5px;color:var(--gris);text-align:center}
-  /* Papers */
-  .paper-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:860px){.paper-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.paper-grid{grid-template-columns:1fr}}
-  .paper{display:flex;flex-direction:column;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:22px 24px;transition:.2s;height:100%}
-  .paper:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:#cfcfcf}
-  .paper .tag{display:inline-block;align-self:flex-start;font-family:var(--display);font-weight:700;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#727272;padding:3px 9px;border-radius:4px;margin-bottom:12px}
-  .paper h3{font-size:16px;color:var(--v800);line-height:1.32;margin-bottom:10px}
-  .paper .meta{font-size:12.5px;color:var(--gris);margin-top:auto}
 </style>
 </head>
 <body>
@@ -57,13 +50,9 @@
   </div>
 </div></header>
 
-<!-- HERO -->
-<section class="page-hero">
-  <div class="wrap">
-    <div class="breadcrumb"><a href="home.html">Inicio</a> / <a href="empresa.html">Nosotros</a> / Patentes y papers</div>
-    <h1>Patentes y papers</h1>
-    <p>El respaldo técnico y científico detrás de Pewman Innovation. Para quien quiere profundizar en la tecnología: nuestra propiedad intelectual y la ciencia que la sustenta.</p>
-  </div>
+<!-- TITULO -->
+<section style="padding:70px 0 12px;text-align:center">
+  <div class="wrap"><h1 style="font-size:clamp(32px,4.5vw,46px);color:var(--v900)">Patentes y papers</h1></div>
 </section>
 
 <!-- PATENTES -->
@@ -73,40 +62,12 @@
       <h2>Nuestras patentes</h2>
       <p>La tecnología de Crioprotect y Nanoforte está protegida en Chile y en mercados internacionales.</p></div>
     <div class="pat-grid">
-      <div class="pat"><div class="ic">&#127757;</div><div><div class="juris">Internacional (PCT)</div><div class="num">PCT/CL2021/050061</div><p class="desc">Solicitud internacional bajo el Tratado de Cooperación en materia de Patentes, que abre la protección de la tecnología base en los países miembros.</p></div></div>
-      <div class="pat"><div class="ic">&#127482;&#127480;</div><div><div class="juris">Estados Unidos</div><div class="num">USPTO 63051414</div><p class="desc">Registro ante la Oficina de Patentes y Marcas de Estados Unidos (USPTO).</p></div></div>
-      <div class="pat"><div class="ic">&#127464;&#127473;</div><div><div class="juris">Chile</div><div class="num">N° 1865-2021</div><p class="desc">Registro nacional ante INAPI, que protege la tecnología en el mercado chileno.</p></div></div>
-      <div class="pat"><div class="ic">&#127470;&#127475;</div><div><div class="juris">India</div><div class="num">N° 509159</div><p class="desc">Patente registrada en India, ampliando la cobertura internacional de la tecnología.</p></div></div>
+      <div class="pat"><div class="ic intl" aria-label="Internacional" title="Internacional"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M5 6.5 Q12 9 19 6.5"/><path d="M5 17.5 Q12 15 19 17.5"/></svg></div><div><div class="juris">Internacional (PCT)</div><div class="num">PCT/CL2021/050061</div><p class="desc">Solicitud internacional bajo el Tratado de Cooperación en materia de Patentes, que abre la protección de la tecnología base en los países miembros.</p></div></div>
+      <div class="pat"><div class="ic" aria-label="Bandera de Estados Unidos" title="Estados Unidos"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><rect width="30" height="1.54" y="0" fill="#B22234"/><rect width="30" height="1.54" y="3.08" fill="#B22234"/><rect width="30" height="1.54" y="6.15" fill="#B22234"/><rect width="30" height="1.54" y="9.23" fill="#B22234"/><rect width="30" height="1.54" y="12.31" fill="#B22234"/><rect width="30" height="1.54" y="15.38" fill="#B22234"/><rect width="30" height="1.54" y="18.46" fill="#B22234"/><rect width="12" height="10.77" fill="#3C3B6E"/><circle cx="2" cy="1.7" r="0.55" fill="#fff"/><circle cx="5" cy="1.7" r="0.55" fill="#fff"/><circle cx="8" cy="1.7" r="0.55" fill="#fff"/><circle cx="10.7" cy="1.7" r="0.55" fill="#fff"/><circle cx="3.5" cy="3.6" r="0.55" fill="#fff"/><circle cx="6.5" cy="3.6" r="0.55" fill="#fff"/><circle cx="9.5" cy="3.6" r="0.55" fill="#fff"/><circle cx="2" cy="5.5" r="0.55" fill="#fff"/><circle cx="5" cy="5.5" r="0.55" fill="#fff"/><circle cx="8" cy="5.5" r="0.55" fill="#fff"/><circle cx="10.7" cy="5.5" r="0.55" fill="#fff"/><circle cx="3.5" cy="7.4" r="0.55" fill="#fff"/><circle cx="6.5" cy="7.4" r="0.55" fill="#fff"/><circle cx="9.5" cy="7.4" r="0.55" fill="#fff"/><circle cx="2" cy="9.3" r="0.55" fill="#fff"/><circle cx="5" cy="9.3" r="0.55" fill="#fff"/><circle cx="8" cy="9.3" r="0.55" fill="#fff"/><circle cx="10.7" cy="9.3" r="0.55" fill="#fff"/></svg></div><div><div class="juris">Estados Unidos</div><div class="num">USPTO 63051414</div><p class="desc">Registro ante la Oficina de Patentes y Marcas de Estados Unidos (USPTO).</p></div></div>
+      <div class="pat"><div class="ic" aria-label="Bandera de Chile" title="Chile"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" y="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><polygon points="5,2.7 5.6,4.2 7.2,4.3 5.9,5.3 6.4,6.9 5,6 3.6,6.9 4.1,5.3 2.8,4.3 4.4,4.2" fill="#fff"/></svg></div><div><div class="juris">Chile</div><div class="num">N° 1865-2021</div><p class="desc">Registro nacional ante INAPI, que protege la tecnología en el mercado chileno.</p></div></div>
+      <div class="pat"><div class="ic" aria-label="Bandera de India" title="India"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="30" height="6.67" y="0" fill="#FF9933"/><rect width="30" height="6.67" y="6.67" fill="#fff"/><rect width="30" height="6.67" y="13.33" fill="#138808"/><circle cx="15" cy="10" r="2.2" fill="none" stroke="#000080" stroke-width="0.35"/><circle cx="15" cy="10" r="0.4" fill="#000080"/><g stroke="#000080" stroke-width="0.3"><line x1="15" y1="7.8" x2="15" y2="12.2"/><line x1="12.8" y1="10" x2="17.2" y2="10"/><line x1="13.4" y1="8.4" x2="16.6" y2="11.6"/><line x1="16.6" y1="8.4" x2="13.4" y2="11.6"/><line x1="13.9" y1="7.9" x2="16.1" y2="12.1"/><line x1="16.1" y1="7.9" x2="13.9" y2="12.1"/></g></svg></div><div><div class="juris">India</div><div class="num">N° 509159</div><p class="desc">Patente registrada en India, ampliando la cobertura internacional de la tecnología.</p></div></div>
     </div>
     <p class="legal-note">Marco legal: Ley N° 21.516, Art. 23.</p>
-  </div>
-</section>
-
-<!-- PAPERS / ARTICULOS CIENTIFICOS -->
-<section class="section-cream">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Ciencia</span>
-      <h2>Artículos y papers</h2>
-      <p>Contenido técnico-científico para quien quiere ir más a fondo en cómo funciona la tecnología. El listado final de publicaciones lo administra el equipo de Pewman.</p></div>
-    <div class="paper-grid">
-      <div class="paper"><span class="tag">Paper</span><h3>Bacterias antárticas como agentes crioprotectores en cultivos frutales.</h3><div class="meta">Microorganismos extremófilos · resistencia a heladas</div></div>
-      <div class="paper"><span class="tag">Artículo</span><h3>Eficiencia hídrica con nanoburbujas de oxígeno y microorganismos extremófilos.</h3><div class="meta">Nanoforte · potencial hídrico</div></div>
-      <div class="paper"><span class="tag">Paper</span><h3>Respuesta sistémica del cultivo frente al estrés térmico por helada.</h3><div class="meta">Crioprotect · mecanismo de defensa</div></div>
-      <div class="paper"><span class="tag">Artículo</span><h3>Biopolímeros y su rol en la protección natural del cultivo.</h3><div class="meta">Formulación · barrera natural</div></div>
-    </div>
-    <p class="legal-note">Sección en preparación: el contenido científico completo se incorporará con el equipo de Pewman.</p>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-band">
-  <div class="wrap">
-    <h2>¿Quieres conocer la ciencia detrás de Pewman?</h2>
-    <p>Conversa con nuestro equipo técnico y resuelve tus dudas sobre la tecnología, su aplicación y respaldo.</p>
-    <div class="cta">
-      <a class="btn btn-light" href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">Hablar con un asesor</a>
-      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="empresa.html">Conocer Pewman &rarr;</a>
-    </div>
   </div>
 </section>
 
