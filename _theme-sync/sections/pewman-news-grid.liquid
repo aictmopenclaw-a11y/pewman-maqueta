@@ -1,3 +1,12 @@
+{%- liquid
+  assign use_blog = false
+  if section.settings.source == 'blog' and section.settings.blog != blank
+    assign the_blog = blogs[section.settings.blog]
+    if the_blog.articles_count > 0
+      assign use_blog = true
+    endif
+  endif
+-%}
 {%- style -%}
   #PewmanNews-{{ section.id }} { background: #fff; padding: 78px 0; }
   #PewmanNews-{{ section.id }}.pewman-news--tight { padding-top: 0; }
@@ -19,15 +28,6 @@
   @media (max-width: 560px) { #PewmanNews-{{ section.id }} .pewman-news__grid { grid-template-columns: 1fr; } }
 {%- endstyle -%}
 
-{%- liquid
-  assign use_blog = false
-  if section.settings.source == 'blog' and section.settings.blog != blank
-    assign the_blog = blogs[section.settings.blog]
-    if the_blog.articles_count > 0
-      assign use_blog = true
-    endif
-  endif
--%}
 <div id="PewmanNews-{{ section.id }}" class="{% if section.settings.tight_top %}pewman-news--tight{% endif %}">
   <div class="pewman-news__wrap">
     {%- if section.settings.heading != blank -%}
