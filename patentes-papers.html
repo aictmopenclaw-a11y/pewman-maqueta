@@ -23,6 +23,15 @@
   .pat .num{font-size:13.5px;color:var(--v500);font-weight:600;margin:2px 0 6px;letter-spacing:.01em}
   .pat .desc{font-size:13.5px;color:var(--tinta2);line-height:1.5}
   .legal-note{margin-top:22px;font-size:13.5px;color:var(--gris);text-align:center}
+  /* Papers */
+  .paper-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.paper-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.paper-grid{grid-template-columns:1fr}}
+  .paper{display:flex;flex-direction:column;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:22px 24px;transition:.2s;height:100%}
+  .paper:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:#cfcfcf}
+  .paper .tag{display:inline-block;align-self:flex-start;font-family:var(--display);font-weight:700;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#727272;padding:3px 9px;border-radius:4px;margin-bottom:12px}
+  .paper h3{font-size:16px;color:var(--v800);line-height:1.32;margin-bottom:10px}
+  .paper .meta{font-size:12.5px;color:var(--gris);margin-top:auto}
 </style>
 </head>
 <body>
@@ -68,6 +77,34 @@
       <div class="pat"><div class="ic" aria-label="Bandera de India" title="India"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="30" height="6.67" y="0" fill="#FF9933"/><rect width="30" height="6.67" y="6.67" fill="#fff"/><rect width="30" height="6.67" y="13.33" fill="#138808"/><circle cx="15" cy="10" r="2.2" fill="none" stroke="#000080" stroke-width="0.35"/><circle cx="15" cy="10" r="0.4" fill="#000080"/><g stroke="#000080" stroke-width="0.3"><line x1="15" y1="7.8" x2="15" y2="12.2"/><line x1="12.8" y1="10" x2="17.2" y2="10"/><line x1="13.4" y1="8.4" x2="16.6" y2="11.6"/><line x1="16.6" y1="8.4" x2="13.4" y2="11.6"/><line x1="13.9" y1="7.9" x2="16.1" y2="12.1"/><line x1="16.1" y1="7.9" x2="13.9" y2="12.1"/></g></svg></div><div><div class="juris">India</div><div class="num">N° 509159</div><p class="desc">Patente registrada en India, ampliando la cobertura internacional de la tecnología.</p></div></div>
     </div>
     <p class="legal-note">Marco legal: Ley N° 21.516, Art. 23.</p>
+  </div>
+</section>
+
+<!-- PAPERS / ARTICULOS CIENTIFICOS -->
+<section class="section-cream">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Ciencia</span>
+      <h2>Artículos y papers</h2>
+      <p>Contenido técnico-científico para quien quiere ir más a fondo en cómo funciona la tecnología. El listado final de publicaciones lo administra el equipo de Pewman.</p></div>
+    <div class="paper-grid">
+      <div class="paper"><span class="tag">Paper</span><h3>Bacterias antárticas como agentes crioprotectores en cultivos frutales.</h3><div class="meta">Microorganismos extremófilos · resistencia a heladas</div></div>
+      <div class="paper"><span class="tag">Artículo</span><h3>Eficiencia hídrica con nanoburbujas de oxígeno y microorganismos extremófilos.</h3><div class="meta">Nanoforte · potencial hídrico</div></div>
+      <div class="paper"><span class="tag">Paper</span><h3>Respuesta sistémica del cultivo frente al estrés térmico por helada.</h3><div class="meta">Crioprotect · mecanismo de defensa</div></div>
+      <div class="paper"><span class="tag">Artículo</span><h3>Biopolímeros y su rol en la protección natural del cultivo.</h3><div class="meta">Formulación · barrera natural</div></div>
+    </div>
+    <p class="legal-note">Sección en preparación: el contenido científico completo se incorporará con el equipo de Pewman.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>¿Quieres conocer la ciencia detrás de Pewman?</h2>
+    <p>Conversa con nuestro equipo técnico y resuelve tus dudas sobre la tecnología, su aplicación y respaldo.</p>
+    <div class="cta">
+      <a class="btn btn-light" href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">Hablar con un asesor</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="empresa.html">Conocer Pewman &rarr;</a>
+    </div>
   </div>
 </section>
 
