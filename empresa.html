@@ -55,7 +55,7 @@
   .team-region-label{display:flex;align-items:center;gap:16px;margin-bottom:22px}
   .team-region-label span{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--v500);white-space:nowrap}
   .team-region-label::after{content:"";flex:1;height:1px;background:var(--linea)}
-  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .team-card{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--rl);padding:18px;text-align:center;box-shadow:var(--sh);transition:.2s}
   .team-card:hover{box-shadow:var(--sh2);transform:translateY(-3px)}
   .team-card .ph-wrap{position:relative;margin-bottom:14px}
@@ -67,9 +67,11 @@
   .team-card .li:hover svg{fill:#fff}
   .team-card h3{font-size:15.5px;color:var(--v800);margin:0 0 4px;line-height:1.28}
   .team-card .role{font-family:var(--display);font-weight:600;font-size:12px;color:var(--v500);line-height:1.35}
-  @media(max-width:920px){.team-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:680px){.team-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:400px){.team-grid{grid-template-columns:1fr}}
+  /* Innovacion protegida: 4 patentes en una sola fila pareja en desktop (ya no son links, solo info) */
+  @media(min-width:921px){.docs .doc-grid{grid-template-columns:repeat(4,1fr)}}
+  .doc{cursor:default}
 </style>
 </head>
 <body>
@@ -302,22 +304,10 @@
     <div class="sec-head">
       <h2>Innovación protegida</h2></div>
     <div class="doc-grid">
-      <a class="doc" href="#"><div class="ic">🔒</div><div><div class="n">Internacional</div><div class="m">PCT/CL2021/050061</div></div></a>
-      <a class="doc" href="#"><div class="ic">🔒</div><div><div class="n">Estados Unidos</div><div class="m">USPTO 63051414</div></div></a>
-      <a class="doc" href="#"><div class="ic">🔒</div><div><div class="n">Chile</div><div class="m">1865-2021</div></div></a>
-      <a class="doc" href="#"><div class="ic">🔒</div><div><div class="n">India</div><div class="m">509159</div></div></a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-band">
-  <div class="wrap">
-    <h2>Ciencia inspirada en la naturaleza</h2>
-    <p>Conversa con nuestro equipo y descubre cómo nuestra tecnología puede fortalecer tu cultivo.</p>
-    <div class="cta">
-      <a class="btn btn-light" href="https://api.whatsapp.com/send/?phone=56990833908" target="_blank" rel="noopener">Contáctanos</a>
-      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="casos.html">Ver resultados en campo →</a>
+      <div class="doc"><div class="ic">🔒</div><div><div class="n">Internacional</div><div class="m">PCT/CL2021/050061</div></div></div>
+      <div class="doc"><div class="ic">🔒</div><div><div class="n">Estados Unidos</div><div class="m">USPTO 63051414</div></div></div>
+      <div class="doc"><div class="ic">🔒</div><div><div class="n">Chile</div><div class="m">1865-2021</div></div></div>
+      <div class="doc"><div class="ic">🔒</div><div><div class="n">India</div><div class="m">509159</div></div></div>
     </div>
   </div>
 </section>
