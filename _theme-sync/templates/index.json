@@ -418,7 +418,7 @@
       ]
     },
     "pewman_prensa": {
-      "type": "pewman-news-grid",
+      "type": "pewman-blog-cards",
       "settings": {
         "heading": "Prensa y medios",
         "tight_top": false,
@@ -431,7 +431,7 @@
       }
     },
     "pewman_articulos": {
-      "type": "pewman-news-grid",
+      "type": "pewman-blog-cards",
       "settings": {
         "heading": "Artículos",
         "tight_top": true,

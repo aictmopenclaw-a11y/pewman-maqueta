@@ -12,7 +12,7 @@
       }
     },
     "pewman_noticias": {
-      "type": "pewman-news-grid",
+      "type": "pewman-blog-cards",
       "settings": {
         "heading": "",
         "subtext": "Lo último de Pewman Innovation: ciencia aplicada al campo, reconocimientos y cobertura en prensa.",
@@ -24,7 +24,7 @@
       }
     },
     "pewman_articulos": {
-      "type": "pewman-news-grid",
+      "type": "pewman-blog-cards",
       "settings": {
         "eyebrow": "Contenido técnico",
         "heading": "Artículos y papers",
