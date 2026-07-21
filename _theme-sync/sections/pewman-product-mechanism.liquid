@@ -1,0 +1,106 @@
+{%- style -%}
+  #PewmanMechanism-{{ section.id }} {
+    position: relative; overflow: hidden; color: #fff;
+    background: {{ section.settings.base_color | default: '#0b1620' }};
+    --pewman-prod: {{ section.settings.product_accent_color | default: '#1499c7' }};
+    min-height: clamp(780px, 92vh, 1080px);
+    display: flex; align-items: center;
+  }
+  {%- if section.settings.background_image -%}
+  #PewmanMechanism-{{ section.id }}::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background-image: url({{ section.settings.background_image | image_url: width: 1800 }});
+    background-size: cover;
+    background-position: 50% {{ section.settings.bg_focus_y | default: 50 }}%;
+    background-attachment: fixed;
+    opacity: {{ section.settings.bg_opacity | default: 70 | divided_by: 100.0 }};
+  }
+  {%- endif -%}
+  #PewmanMechanism-{{ section.id }}::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, {{ section.settings.base_color | default: '#0b1620' | color_modify: 'alpha', 0.42 }}, {{ section.settings.base_color | default: '#0b1620' | color_modify: 'alpha', 0.6 }});
+  }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__wrap { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 96px 24px; }
+  @media (min-width: 821px) { #PewmanMechanism-{{ section.id }} { min-height: clamp(780px, 56.25vw, 1400px); } }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__head { text-align: center; margin-bottom: 44px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__head .pewman-eyebrow { color: var(--pewman-prod); }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__head h2 { font-size: clamp(28px, 3.6vw, 40px); color: #fff; margin-top: 10px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__card { background: var(--pewman-prod); border-radius: 18px; padding: 32px 26px; box-shadow: 0 22px 44px -22px rgba(0,0,0,.65); }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__num {
+    font-weight: 800; font-size: 20px; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+  }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__card h3 { font-size: 19px; margin-bottom: 10px; color: #fff; line-height: 1.15; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__card p { font-size: 14px; color: rgba(255,255,255,.94); line-height: 1.55; }
+  @media (max-width: 820px) { #PewmanMechanism-{{ section.id }} .pewman-mech__grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
+{%- endstyle -%}
+
+{%- liquid
+  assign steps = product.metafields.custom.mechanism_steps.value
+-%}
+<div id="PewmanMechanism-{{ section.id }}">
+  <span id="pewman-mecanismo" style="scroll-margin-top:90px" aria-hidden="true"></span>
+  <div class="pewman-mech__wrap">
+    <div class="pewman-mech__head">
+      <span class="pewman-eyebrow">¿Cómo funciona?</span>
+      <h2>{{ section.settings.heading | default: 'Triple mecanismo de protección' }}</h2>
+    </div>
+    <div class="pewman-mech__grid">
+      {%- if steps.size > 0 -%}
+        {%- for step in steps -%}
+          <div class="pewman-mech__card">
+            <div class="pewman-mech__num">{{ forloop.index }}</div>
+            <h3>{{ step.title.value }}</h3>
+            <p>{{ step.description.value }}</p>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'fallback_step' -%}
+            <div class="pewman-mech__card">
+              <div class="pewman-mech__num">{{ forloop.index }}</div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Triple mecanismo",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Triple mecanismo de protección" },
+    { "type": "image_picker", "id": "background_image", "label": "Imagen de fondo", "info": "Queda fija mientras las tarjetas pasan por encima al hacer scroll" },
+    { "type": "range", "id": "bg_focus_y", "label": "Encuadre vertical del fondo", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 50, "visible_if": "{{ section.settings.background_image != blank }}" },
+    { "type": "range", "id": "bg_opacity", "label": "Opacidad del fondo", "min": 30, "max": 100, "step": 5, "unit": "%", "default": 70, "visible_if": "{{ section.settings.background_image != blank }}" },
+    { "type": "color", "id": "base_color", "label": "Color base de la sección", "default": "#0b1620" },
+    { "type": "color", "id": "product_accent_color", "label": "Color de acento del producto", "default": "#1499c7" }
+  ],
+  "blocks": [
+    {
+      "type": "fallback_step",
+      "name": "Paso (respaldo)",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título" },
+        { "type": "textarea", "id": "description", "label": "Descripción" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Mecanismo",
+      "blocks": [
+        { "type": "fallback_step", "settings": { "title": "Biológico", "description": "Nanobiopolímeros generan una barrera física protectora, anticongelante y aislante sobre el tejido del cultivo." } },
+        { "type": "fallback_step", "settings": { "title": "Físico", "description": "Nuestras bacterias desplazan a las bacterias nucleadoras de hielo en hojas, troncos, ramas, brotes y flores." } },
+        { "type": "fallback_step", "settings": { "title": "Sistémico", "description": "Los compuestos orgánicos y volátiles actúan como precursores hormonales, aumentando los solutos intracelulares." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

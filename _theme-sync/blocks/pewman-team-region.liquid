@@ -1,0 +1,33 @@
+{%- comment -%}
+  Block anidado: región del equipo (Chile / Perú / Europa). Acepta blocks hijo
+  "pewman-team-member". Réplica del rediseño de empresa.html (2026-07-16):
+  etiqueta de región con línea + grilla de 3 tarjetas por fila.
+{%- endcomment -%}
+<div class="pewman-team__region">
+  <div class="pewman-team__region-label"><span>{{ block.settings.region_name }}</span></div>
+  <div class="pewman-team__grid">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Región del equipo",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "region_name", "label": "Nombre de la región", "info": "Ej. Chile, Perú, Europa" }
+  ],
+  "blocks": [
+    { "type": "pewman-team-member" }
+  ],
+  "presets": [
+    {
+      "name": "Región del equipo",
+      "settings": { "region_name": "Chile" },
+      "blocks": [
+        { "type": "pewman-team-member" }
+      ]
+    }
+  ]
+}
+{% endschema %}

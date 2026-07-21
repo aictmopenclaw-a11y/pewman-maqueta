@@ -1,0 +1,133 @@
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "style": "title",
+        "heading": "Patentes y papers"
+      }
+    },
+    "pewman_patentes": {
+      "type": "pewman-patents-grid",
+      "settings": {
+        "eyebrow": "Propiedad intelectual",
+        "heading": "Nuestras patentes",
+        "subtext": "La tecnología de Crioprotect y Nanoforte está protegida en Chile y en mercados internacionales.",
+        "dark_mode": false,
+        "show_description": true,
+        "legal_note": "Marco legal: Ley N° 21.516, Art. 23."
+      },
+      "blocks": {
+        "p1": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Internacional (PCT)",
+            "registration_number": "PCT/CL2021/050061",
+            "description": "Solicitud internacional bajo el Tratado de Cooperación en materia de Patentes, que abre la protección de la tecnología base en los países miembros.",
+            "country": "intl"
+          }
+        },
+        "p2": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Estados Unidos",
+            "registration_number": "USPTO 63051414",
+            "description": "Registro ante la Oficina de Patentes y Marcas de Estados Unidos (USPTO).",
+            "country": "usa"
+          }
+        },
+        "p3": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Chile",
+            "registration_number": "N° 1865-2021",
+            "description": "Registro nacional ante INAPI, que protege la tecnología en el mercado chileno.",
+            "country": "chile"
+          }
+        },
+        "p4": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "India",
+            "registration_number": "N° 509159",
+            "description": "Patente registrada en India, ampliando la cobertura internacional de la tecnología.",
+            "country": "india"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "pewman_papers": {
+      "type": "pewman-papers-list",
+      "settings": {
+        "eyebrow": "Ciencia",
+        "heading": "Artículos y papers",
+        "subtext": "Contenido técnico-científico para quien quiere ir más a fondo en cómo funciona la tecnología. El listado final de publicaciones lo administra el equipo de Pewman.",
+        "cream_bg": true,
+        "legal_note": "Sección en preparación: el contenido científico completo se incorporará con el equipo de Pewman."
+      },
+      "blocks": {
+        "pa1": {
+          "type": "paper",
+          "settings": {
+            "tag": "Paper",
+            "title": "Bacterias antárticas como agentes crioprotectores en cultivos frutales.",
+            "meta": "Microorganismos extremófilos · resistencia a heladas"
+          }
+        },
+        "pa2": {
+          "type": "paper",
+          "settings": {
+            "tag": "Artículo",
+            "title": "Eficiencia hídrica con nanoburbujas de oxígeno y microorganismos extremófilos.",
+            "meta": "Nanoforte · potencial hídrico"
+          }
+        },
+        "pa3": {
+          "type": "paper",
+          "settings": {
+            "tag": "Paper",
+            "title": "Respuesta sistémica del cultivo frente al estrés térmico por helada.",
+            "meta": "Crioprotect · mecanismo de defensa"
+          }
+        },
+        "pa4": {
+          "type": "paper",
+          "settings": {
+            "tag": "Artículo",
+            "title": "Biopolímeros y su rol en la protección natural del cultivo.",
+            "meta": "Formulación · barrera natural"
+          }
+        }
+      },
+      "block_order": [
+        "pa1",
+        "pa2",
+        "pa3",
+        "pa4"
+      ]
+    },
+    "pewman_cta": {
+      "type": "pewman-cta-band",
+      "settings": {
+        "heading": "¿Quieres conocer la ciencia detrás de Pewman?",
+        "text": "Conversa con nuestro equipo técnico y resuelve tus dudas sobre la tecnología, su aplicación y respaldo.",
+        "button_1_label": "Hablar con un asesor",
+        "button_1_link": "https://api.whatsapp.com/send/?phone=56990833908",
+        "button_2_label": "Conocer Pewman →",
+        "button_2_link": "/pages/empresa"
+      }
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_patentes",
+    "pewman_papers",
+    "pewman_cta"
+  ]
+}

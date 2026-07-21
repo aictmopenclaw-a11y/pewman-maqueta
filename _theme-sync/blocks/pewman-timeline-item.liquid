@@ -1,0 +1,46 @@
+{%- comment -%}
+  Block anidado: hito del timeline "Nuestra Historia". Acepta blocks hijo
+  "pewman-timeline-chip" (opcional, usado en el último hito: continentes).
+  Si no hay imagen, la tarjeta renderiza a ancho completo (.no-img), igual
+  que los hitos 4 y 5 del mockup. El número circular es forloop.index —
+  nunca un campo editable manual, para que no se desincronice al reordenar.
+{%- endcomment -%}
+<div class="pewman-timeline__item">
+  <div class="pewman-timeline__num">{{ forloop.index }}</div>
+  <div class="pewman-timeline__card{% if block.settings.image == blank %} no-img{% endif %}">
+    {%- if block.settings.image -%}
+      <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.image_alt | escape }}" loading="lazy" style="object-position: center {{ block.settings.image_focus | default: 50 }}%">
+    {%- endif -%}
+    <div class="pewman-timeline__tx">
+      {%- if block.settings.eyebrow_text != blank -%}<span class="pewman-eyebrow">{{ block.settings.eyebrow_text }}</span>{%- endif -%}
+      {%- if block.settings.heading != blank -%}<h3>{{ block.settings.heading }}</h3>{%- endif -%}
+      {%- if block.settings.body_text != blank -%}<div class="pewman-timeline__body">{{ block.settings.body_text }}</div>{%- endif -%}
+      {%- if block.blocks.size > 0 -%}
+        <div class="pewman-timeline__chips">
+          {% content_for 'blocks' %}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hito",
+  "tag": null,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen (opcional)" },
+    { "type": "text", "id": "image_alt", "label": "Texto alternativo de la imagen" },
+    { "type": "range", "id": "image_focus", "label": "Encuadre vertical de la foto", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 50, "info": "0 = borde superior · 100 = borde inferior", "visible_if": "{{ block.settings.image != blank }}" },
+    { "type": "text", "id": "eyebrow_text", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Título" },
+    { "type": "richtext", "id": "body_text", "label": "Texto" }
+  ],
+  "blocks": [
+    { "type": "pewman-timeline-chip" }
+  ],
+  "presets": [
+    { "name": "Hito" }
+  ]
+}
+{% endschema %}

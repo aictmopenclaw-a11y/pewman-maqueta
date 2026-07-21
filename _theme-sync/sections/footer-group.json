@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "pewman_footer": {
+      "type": "pewman-footer",
+      "settings": {
+        "logo": "shopify://shop_images/logo-pewman-hz.png",
+        "tagline": "Biotecnología de vanguardia para una agricultura más productiva y sostenible.",
+        "instagram_url": "https://www.instagram.com/pewmaninnovation",
+        "facebook_url": "https://www.facebook.com/pewmaninnovation",
+        "linkedin_url": "https://www.linkedin.com/company/pewman-innovation",
+        "youtube_url": "https://www.youtube.com/@PewmanInnovation",
+        "menu_1_title": "Productos",
+        "menu_1": "pewman-footer-productos",
+        "menu_2_title": "Empresa",
+        "menu_2": "pewman-footer-empresa",
+        "whatsapp_label": "+56 9 9083 3908",
+        "address": "Badajoz 100, of. 708, Las Condes, Santiago",
+        "copyright_text": "© 2026 Pewman Innovation SPA. Todos los derechos reservados.",
+        "credit_text": "Sitio desarrollado por Clo&Co."
+      }
+    }
+  },
+  "order": ["pewman_footer"]
+}

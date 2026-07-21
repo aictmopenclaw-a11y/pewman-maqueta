@@ -1,0 +1,19 @@
+{%- comment -%}
+  Arma el link de WhatsApp a partir del setting global (settings.pewman_whatsapp_phone),
+  en vez de hardcodear el número +56990833908 en cada página (aparecía idéntico en las 8
+  páginas de la maqueta fuente).
+  Params:
+    text (string, requerido)
+    prefill (string, opcional): texto pre-cargado en el mensaje
+    class (string, opcional): clases CSS adicionales para el <a>
+  Uso: {% render 'pewman-whatsapp-link', text: '+56 9 9083 3908' %}
+{%- endcomment -%}
+{%- liquid
+  assign wa_phone = settings.pewman_whatsapp_phone | default: '56990833908' | remove: '+' | remove: ' '
+  assign wa_url = 'https://api.whatsapp.com/send/?phone=' | append: wa_phone
+  if prefill != blank
+    assign wa_text = prefill | url_encode
+    assign wa_url = wa_url | append: '&text=' | append: wa_text
+  endif
+-%}
+<a href="{{ wa_url }}" target="_blank" rel="noopener" class="{{ class }}">{{ text }}</a>

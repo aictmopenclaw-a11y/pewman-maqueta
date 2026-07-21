@@ -1,0 +1,61 @@
+{%- style -%}
+  #PewmanLegal-{{ section.id }} { background: #fff; padding: 78px 0; }
+  #PewmanLegal-{{ section.id }} .pewman-legal__wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+  #PewmanLegal-{{ section.id }} .pewman-legal__section h3 { font-size: 18px; margin: 20px 0 6px; color: var(--pewman-tinta); }
+  #PewmanLegal-{{ section.id }} .pewman-legal__section p { font-size: 16px; color: var(--pewman-gris-tx); margin-bottom: 10px; }
+  #PewmanLegal-{{ section.id }} .pewman-legal__note { font-size: 13px; color: var(--pewman-gris); margin-top: 18px; }
+{%- endstyle -%}
+
+<div id="PewmanLegal-{{ section.id }}">
+  <span id="terminos" style="scroll-margin-top:90px" aria-hidden="true"></span>
+  <div class="pewman-legal__wrap">
+    {%- if section.settings.heading != blank -%}
+      {% render 'pewman-section-heading', eyebrow: 'Marco legal', heading: section.settings.heading, subtext: section.settings.subtext %}
+    {%- endif -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'legal_section' -%}
+        <div class="pewman-legal__section">
+          <h3>{{ block.settings.title }}</h3>
+          <div>{{ block.settings.text }}</div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if section.settings.note != blank -%}<p class="pewman-legal__note">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Términos",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Términos y condiciones" },
+    { "type": "textarea", "id": "subtext", "label": "Subtítulo" },
+    { "type": "text", "id": "note", "label": "Nota final" }
+  ],
+  "blocks": [
+    {
+      "type": "legal_section",
+      "name": "Sección legal",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título" },
+        { "type": "richtext", "id": "text", "label": "Texto" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Términos",
+      "settings": { "subtext": "Resumen de los términos de uso del sitio y de compra. El texto legal definitivo es administrado por Pewman Innovation SPA.", "note": "Contenido de referencia. Pewman Innovation definirá la versión legal final." },
+      "blocks": [
+        { "type": "legal_section", "settings": { "title": "1. Uso del sitio", "text": "<p>El acceso y uso de este sitio implica la aceptación de estos términos. Los contenidos, marcas, logotipos y materiales son propiedad de Pewman Innovation SPA y están protegidos por la legislación vigente.</p>" } },
+        { "type": "legal_section", "settings": { "title": "2. Productos e información técnica", "text": "<p>La información de Crioprotect y Nanoforte, fichas técnicas y recomendaciones de uso tiene carácter referencial. Los resultados pueden variar según el cultivo, las condiciones climáticas y la correcta aplicación del producto.</p>" } },
+        { "type": "legal_section", "settings": { "title": "3. Compras y pagos", "text": "<p>Las compras realizadas a través del sitio se rigen por los precios y condiciones vigentes al momento de la transacción. Los medios de pago disponibles se indican durante el proceso de compra.</p>" } },
+        { "type": "legal_section", "settings": { "title": "4. Despachos y devoluciones", "text": "<p>Los plazos de despacho y la política de cambios y devoluciones se informan al confirmar el pedido, conforme a la Ley N° 19.496 sobre protección de los derechos de los consumidores.</p>" } },
+        { "type": "legal_section", "settings": { "title": "5. Privacidad", "text": "<p>Los datos personales entregados se utilizan únicamente para gestionar consultas, cotizaciones y compras, y no se comparten con terceros sin autorización, de acuerdo con la Ley N° 19.628 sobre protección de la vida privada.</p>" } },
+        { "type": "legal_section", "settings": { "title": "6. Contacto", "text": "<p>Para consultas sobre estos términos, escríbenos por WhatsApp +56 9 9083 3908 o en Badajoz 100, of. 708, Las Condes, Santiago.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

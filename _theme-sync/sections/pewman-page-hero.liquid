@@ -1,0 +1,103 @@
+{%- liquid
+  assign zoom_max = section.settings.zoom_intensity | default: '1.09'
+-%}
+{%- style -%}
+  {%- if section.settings.style == 'title' -%}
+  #PewmanPageHero-{{ section.id }}.pewman-page-hero--title { background: #fff; color: var(--pewman-tinta); }
+  #PewmanPageHero-{{ section.id }} .pewman-page-hero__title-wrap { max-width: 1200px; margin: 0 auto; padding: 70px 24px 12px; text-align: center; }
+  #PewmanPageHero-{{ section.id }}.pewman-page-hero--title h1 { font-size: clamp(32px, 4.5vw, 46px); color: var(--pewman-tinta); margin: 0; }
+  #PewmanPageHero-{{ section.id }}.pewman-page-hero--title p { font-size: 17px; color: var(--pewman-gris-tx); max-width: 660px; margin: 12px auto 0; }
+  {%- endif -%}
+  #PewmanPageHero-{{ section.id }} {
+    position: relative; overflow: hidden; color: #eafaf2;
+    background: {% if section.settings.background_image %}#101820{% else %}linear-gradient(155deg, #2b2b2b, #3d3d3d){% endif %};
+  }
+  {%- if section.settings.background_image -%}
+  #PewmanPageHero-{{ section.id }} .pewman-page-hero__bg {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+    animation: pewmanHeroZoom-{{ section.id }} 20s ease-out infinite alternate;
+  }
+  #PewmanPageHero-{{ section.id }}::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(16,24,32,.48), rgba(16,24,32,.64));
+  }
+  @keyframes pewmanHeroZoom-{{ section.id }} { from { transform: scale(1); } to { transform: scale({{ zoom_max }}); } }
+  #PewmanPageHero-{{ section.id }} h1 { text-shadow: 0 2px 14px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.45); }
+  #PewmanPageHero-{{ section.id }} p { color: #eef3f5; text-shadow: 0 1px 8px rgba(0,0,0,.55); }
+  #PewmanPageHero-{{ section.id }} .pewman-breadcrumb, #PewmanPageHero-{{ section.id }} .pewman-breadcrumb a { color: #e2e2e2; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+  @media (prefers-reduced-motion: reduce) { #PewmanPageHero-{{ section.id }} .pewman-page-hero__bg { animation: none; } }
+  {%- endif -%}
+  #PewmanPageHero-{{ section.id }} .pewman-page-hero__wrap {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 54px 24px 60px;
+    min-height: {% if section.settings.tall %}{% if section.settings.background_image %}clamp(560px, 60vw, 860px){% else %}clamp(500px, 56vw, 820px){% endif %}{% else %}auto{% endif %};
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  #PewmanPageHero-{{ section.id }} h1 { font-size: clamp(30px, 4.4vw, 48px); color: #fff; margin-bottom: 14px; max-width: 760px; }
+  #PewmanPageHero-{{ section.id }} p { font-size: 18px; color: #d6d6d6; max-width: 660px; margin: 0; }
+  @media (max-width: 820px) {
+    #PewmanPageHero-{{ section.id }} .pewman-page-hero__wrap { min-height: {% if section.settings.tall and section.settings.background_image %}clamp(460px, 118vw, 620px){% elsif section.settings.tall %}clamp(500px, 56vw, 820px){% else %}auto{% endif %}; }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.style == 'title' -%}
+<div id="PewmanPageHero-{{ section.id }}" class="pewman-page-hero--title">
+  <div class="pewman-page-hero__title-wrap">
+    <h1>{{ section.settings.heading }}</h1>
+    {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+  </div>
+</div>
+{%- else -%}
+<div id="PewmanPageHero-{{ section.id }}">
+  {%- if section.settings.background_image -%}
+    <img
+      class="pewman-page-hero__bg"
+      src="{{ section.settings.background_image | image_url: width: 1800 }}"
+      srcset="{{ section.settings.background_image | image_url: width: 900 }} 900w, {{ section.settings.background_image | image_url: width: 1400 }} 1400w, {{ section.settings.background_image | image_url: width: 1800 }} 1800w"
+      sizes="100vw"
+      alt="{{ section.settings.background_image.alt | default: section.settings.heading | escape }}"
+      loading="eager"
+      fetchpriority="high"
+    >
+  {%- endif -%}
+  <div class="pewman-page-hero__wrap">
+    {% render 'pewman-breadcrumb', parent_1_label: 'Inicio', parent_1_url: routes.root_url, parent_2_label: section.settings.parent_2_label, parent_2_url: section.settings.parent_2_url, current_label: section.settings.current_label %}
+    {%- if section.settings.eyebrow != blank -%}<span class="pewman-eyebrow" style="color:#e2e2e2">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    <h1>{{ section.settings.heading }}</h1>
+    {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pewman · Hero de página",
+  "tag": "section",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Estilo", "options": [ { "value": "banner", "label": "Banner (fondo oscuro o foto)" }, { "value": "title", "label": "Solo título grande centrado" } ], "default": "banner" },
+    { "type": "text", "id": "parent_2_label", "label": "Nivel intermedio del breadcrumb (opcional)", "info": "Ej. \"Productos\" o \"Nosotros\"" },
+    { "type": "url", "id": "parent_2_url", "label": "Link del nivel intermedio (opcional)" },
+    { "type": "text", "id": "current_label", "label": "Página actual (breadcrumb)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Título (H1)" },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "image_picker", "id": "background_image", "label": "Imagen de fondo (opcional)" },
+    {
+      "type": "select",
+      "id": "zoom_intensity",
+      "label": "Zoom de la foto",
+      "info": "Acercamiento lento de la imagen de fondo",
+      "options": [
+        { "value": "1.09", "label": "Normal" },
+        { "value": "1.025", "label": "Sutil (muestra casi toda la foto)" }
+      ],
+      "default": "1.09",
+      "visible_if": "{{ section.settings.background_image != blank }}"
+    },
+    { "type": "checkbox", "id": "tall", "label": "Alto (como el hero de Home)", "default": false }
+  ],
+  "presets": [
+    { "name": "Pewman · Hero de página" }
+  ]
+}
+{% endschema %}

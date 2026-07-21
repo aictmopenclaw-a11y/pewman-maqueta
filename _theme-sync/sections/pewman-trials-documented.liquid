@@ -1,0 +1,66 @@
+{%- style -%}
+  #PewmanTrials-{{ section.id }} { background: var(--pewman-crema); padding: 78px 0; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__category { margin-bottom: 20px; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__cat-head { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__cat-head h3 { font-size: 21px; color: var(--pewman-tinta); white-space: nowrap; margin: 0; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__cat-line { flex: 1; height: 1px; background: var(--pewman-linea); }
+  #PewmanTrials-{{ section.id }} .pewman-trials__cat-count { font-size: 12.5px; color: var(--pewman-gris); font-weight: 600; white-space: nowrap; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 48px; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--pewman-linea); border-radius: 16px; overflow: hidden; transition: .2s; height: 100%; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card.has-pdf { cursor: pointer; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card:hover { box-shadow: var(--pewman-sh); transform: translateY(-3px); }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-ph { height: 152px; overflow: hidden; background: #eee; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-ph img { width: 100%; height: 100%; object-fit: cover; transition: .4s; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-ph--empty { display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #ececec, #ececec 12px, #f4f4f4 12px, #f4f4f4 24px); }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-ph--empty span { font-size: 12px; color: #9a9a9a; font-weight: 600; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card.has-pdf:hover .pewman-trials__card-ph img { transform: scale(1.05); }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-name { font-weight: 700; font-size: 15px; color: var(--pewman-tinta); line-height: 1.2; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-meta { font-size: 12px; color: var(--pewman-gris); margin: 2px 0 8px; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-desc { font-size: 13px; color: var(--pewman-gris-tx); line-height: 1.5; margin-bottom: 12px; flex: 1; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-go { font-weight: 600; font-size: 12.5px; color: var(--pewman-rojo); margin-top: auto; }
+  #PewmanTrials-{{ section.id }} .pewman-trials__card-go.soon { color: #aaa; }
+  @media (max-width: 860px) { #PewmanTrials-{{ section.id }} .pewman-trials__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { #PewmanTrials-{{ section.id }} .pewman-trials__grid { grid-template-columns: 1fr; } #PewmanTrials-{{ section.id }} .pewman-trials__cat-head h3 { white-space: normal; font-size: 18px; } #PewmanTrials-{{ section.id }} .pewman-trials__cat-count { display: none; } }
+{%- endstyle -%}
+
+<div id="PewmanTrials-{{ section.id }}">
+  <div class="pewman-trials__wrap">
+    {% render 'pewman-section-heading', eyebrow: 'Respaldo técnico', heading: section.settings.heading | default: 'Ensayos de campo documentados', subtext: section.settings.subtext %}
+    {% content_for 'blocks' %}
+  </div>
+
+  <pewman-pdf-modal>
+    <div class="pewman-modal-overlay" hidden>
+      <div class="pewman-modal-box" style="max-width:920px;height:88vh;padding:0;display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-bottom:1px solid var(--pewman-linea);background:#fafafa;">
+          <span data-pdf-title style="font-weight:700;font-size:14px;color:var(--pewman-tinta);flex:1;line-height:1.2;">Informe técnico</span>
+          <a class="pewman-btn pewman-btn--light" data-pdf-download href="#" download target="_blank" rel="noopener" style="padding:9px 18px;font-size:13px;">⬇ Descargar PDF</a>
+          <button class="pewman-modal-close" type="button" data-modal-close aria-label="Cerrar" style="position:static;font-size:26px;">&times;</button>
+        </div>
+        <iframe data-pdf-frame title="Informe técnico" style="flex:1;width:100%;border:0;background:#525659;"></iframe>
+      </div>
+    </div>
+  </pewman-pdf-modal>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Ensayos",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Ensayos de campo documentados" },
+    { "type": "text", "id": "subtext", "label": "Subtítulo", "default": "Resultados validados en distintos cultivos y regiones. Haz clic para ver el informe técnico y descargarlo." }
+  ],
+  "blocks": [
+    { "type": "pewman-trial-category" }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Ensayos",
+      "blocks": [{ "type": "pewman-trial-category" }]
+    }
+  ]
+}
+{% endschema %}

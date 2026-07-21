@@ -1,0 +1,453 @@
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "background_image": "shopify://shop_images/casos-hero-lab.jpg",
+        "current_label": "Casos",
+        "heading": "Biotecnología validada para enfrentar los desafíos del campo",
+        "text": "Casos de éxito que demuestran cómo la bionanotecnología de Pewman fortalece los cultivos frente al estrés climático, mejora la eficiencia hídrica y protege el rendimiento de campos nacionales e internacionales.",
+        "tall": true
+      }
+    },
+    "pewman_testimonios": {
+      "type": "pewman-testimonials-video-grid",
+      "settings": {
+        "channel_link": "https://www.youtube.com/@PewmanInnovation"
+      },
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "Iez3_9MoZzw",
+            "product_badge": "nano",
+            "product_badge_label": "Nanoforte",
+            "title": "Durazno",
+            "who": "Luis Fermín Orellana · Copequén, O'Higgins",
+            "description": "Compartió su experiencia usando Nanoforte en su campo de duraznos nectarín.",
+            "image": "shopify://shop_images/testi-durazno.jpg"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "bZugLiP_4rI",
+            "product_badge": "crio",
+            "product_badge_label": "Crioprotect",
+            "title": "Kiwis",
+            "who": "Pirque, Región Metropolitana",
+            "description": "Aumento de producción en kiwis tras la aplicación de Crioprotect.",
+            "image": "shopify://shop_images/testi-kiwis.jpg"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "Dg8WHq331e8",
+            "product_badge": "crio",
+            "product_badge_label": "Crioprotect",
+            "title": "Paltos",
+            "who": "Jean Carlos Lotito · V Región",
+            "description": "Aplicación de Crioprotect antiheladas en paltos de la V Región.",
+            "image": "shopify://shop_images/testi-paltos.jpg"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "AQVZtMkv6ng",
+            "product_badge": "crio",
+            "product_badge_label": "Crioprotect",
+            "title": "Papas",
+            "who": "Ángel Castro · Talagante, RM",
+            "description": "6 heladas consecutivas de −2 a −3°C sin sufrir daños significativos.",
+            "image": "shopify://shop_images/testi-papas.jpg"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "tDzo3pSMF9A",
+            "product_badge": "crio",
+            "product_badge_label": "Crioprotect",
+            "title": "Ensayo viña Concha y Toro",
+            "who": "Marcelo Gálvez · Chardonnay",
+            "description": "Ensayo aplicando Crioprotect en un cuartel de Chardonnay expuesto a heladas.",
+            "image": "shopify://shop_images/caso-fumigacion.png"
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "mc8fUEoEEg8",
+            "product_badge": "nano",
+            "product_badge_label": "Nanoforte",
+            "title": "Lechugas y coliflor",
+            "who": "Roberto del Pino",
+            "description": "En solo 7 días vio los resultados de Nanoforte en sus lechugas y coliflores.",
+            "image": "shopify://shop_images/testi-lechugas.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ]
+    },
+    "pewman_ensayos": {
+      "type": "pewman-trials-documented",
+      "blocks": {
+        "cat_crio": {
+          "type": "pewman-trial-category",
+          "settings": {
+            "category_title": "Crioprotect · Antiheladas"
+          },
+          "blocks": {
+            "c1": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos",
+                "location_meta": "Temuco · Agrocoop Araucanía",
+                "description": "Protección antiheladas sobre cerezos en Temuco, aplicado con drones junto a Agrocoop Araucanía.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-cerezos-agrocoop.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-cerezos-agrocoop.pdf?v=1784648291",
+                "report_title": "Cerezos · Temuco (Agrocoop Araucanía)"
+              }
+            },
+            "c2": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos",
+                "location_meta": "Naicura, O'Higgins · CER",
+                "description": "Protección antiheladas sobre cerezos en Naicura, evaluado por el Centro de Evaluación Rosario.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-cerezos-naicura.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-cerezos-naicura-cer.pdf?v=1784648290",
+                "report_title": "Cerezos · Naicura, O'Higgins (CER)"
+              }
+            },
+            "c3": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos",
+                "location_meta": "Agrícola Giddings · Río Negro",
+                "description": "Protección antiheladas en cerezos de la Agrícola Giddings, zona de Río Negro.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-cerezos-giddings-rio-negro.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-cerezos-giddings-rio-negro.pdf?v=1784648291",
+                "report_title": "Cerezos · Agrícola Giddings (Río Negro)"
+              }
+            },
+            "c4": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos y paltos jóvenes",
+                "location_meta": "Colina",
+                "description": "Protección antiheladas sobre árboles jóvenes de cerezo y palto en Colina.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-cerezos-paltos-colina.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-cerezos-y-paltos-colina.pdf?v=1784648291",
+                "report_title": "Cerezos y paltos jóvenes · Colina"
+              }
+            },
+            "c5": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Paltos cv. Hass",
+                "location_meta": "Los Graneros · Cabildo, Valparaíso",
+                "description": "Aplicación Crioprotect contra heladas en paltos cv. Hass de Agrícola Los Graneros.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-paltos-cabildo.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-paltos-cabildo.pdf?v=1784648291",
+                "report_title": "Paltos cv. Hass · Cabildo, Valparaíso"
+              }
+            },
+            "c6": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Paltos",
+                "location_meta": "Villa Alegre",
+                "description": "Protección antiheladas sobre paltos en la zona de Villa Alegre.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-paltos-villa-alegre.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-paltos-villa-alegre-v2.pdf?v=1784648290",
+                "report_title": "Paltos · Villa Alegre"
+              }
+            },
+            "c7": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Uva de mesa",
+                "location_meta": "Liray · Sta Marta de Liray",
+                "description": "Pruebas de campo de Crioprotect antiheladas en uva de mesa en Liray.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-uva-santa-marta.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-uva-de-mesa-santa-marta.pdf?v=1784648291",
+                "report_title": "Uva de mesa · Liray (Sta Marta)"
+              }
+            },
+            "c8": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Papas",
+                "location_meta": "INIA La Pampa · Purranque, Osorno",
+                "description": "Antiheladas en semillero de papas certificado de INIA La Pampa, Purranque.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-papas-inia.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-papas-inia-la-pampa-v2.pdf?v=1784648291",
+                "report_title": "Papas · INIA La Pampa, Purranque"
+              }
+            },
+            "c9": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Papas",
+                "location_meta": "El Monte",
+                "description": "Protección antiheladas en cultivos de papa de la zona de El Monte.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-papas-elmonte.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-papas-2021.pdf?v=1784648290",
+                "report_title": "Papas · El Monte"
+              }
+            },
+            "c10": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Arándanos",
+                "location_meta": "Agrícola Giddings",
+                "description": "Evaluación de Crioprotect antiheladas en arándanos de la Agrícola Giddings.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-arandanos-giddings.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-arandanos-giddings.pdf?v=1784648290",
+                "report_title": "Arándanos · Agrícola Giddings"
+              }
+            },
+            "c11": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Zarzaparrilla",
+                "location_meta": "Agrícola Giddings",
+                "description": "Protección antiheladas en zarzaparrillas de la Agrícola Giddings.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-zarzaparrilla-giddings.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-zarzaparrilla-giddings.pdf?v=1784648290",
+                "report_title": "Zarzaparrilla · Agrícola Giddings"
+              }
+            },
+            "c12": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Ornamentales",
+                "location_meta": "Colina",
+                "description": "Protección antiheladas sobre plantas ornamentales en Colina.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-ornamentales-colina.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-ornamentales-colina-v2.pdf?v=1784648291",
+                "report_title": "Ornamentales · Colina"
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9",
+            "c10",
+            "c11",
+            "c12"
+          ]
+        },
+        "cat_nano": {
+          "type": "pewman-trial-category",
+          "settings": {
+            "category_title": "Nanoforte · Antiestrés hídrico"
+          },
+          "blocks": {
+            "n1": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Tomate industrial",
+                "location_meta": "Sugal Group · Quinta de Tilcoco",
+                "description": "Nanoforte ante estrés abiótico en tomate industrial, junto a Sugal Group.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-tomates-sugal-2023.pdf?v=1784648309",
+                "report_title": "Tomate industrial · Sugal (Quinta de Tilcoco)"
+              }
+            },
+            "n2": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Tomates",
+                "location_meta": "Olmué",
+                "description": "Nanoforte para reducir el estrés abiótico y mejorar rendimiento de tomates bajo invernadero.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-tomates-olmue-2024.pdf?v=1784648309",
+                "report_title": "Tomates · Olmué (2024)"
+              }
+            },
+            "n3": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Tomates",
+                "location_meta": "Ontario, Canadá",
+                "description": "Nanoforte para reducir el estrés abiótico en tomates bajo invernadero, Ontario (Canadá).",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-tomates-canada-2024.pdf?v=1784648309",
+                "report_title": "Tomates · Ontario, Canadá (2024)"
+              }
+            },
+            "n4": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Maíz",
+                "location_meta": "Rengo · con Pioneer",
+                "description": "Pruebas de campo de Nanoforte en maíz en Rengo, en colaboración con Pioneer.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-maiz-rengo.pdf?v=1784648309",
+                "report_title": "Maíz · Rengo (con Pioneer)"
+              }
+            },
+            "n5": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Maíz",
+                "location_meta": "San Vicente de Tagua Tagua · con Pioneer",
+                "description": "Pruebas de Nanoforte en maíz en San Vicente de Tagua Tagua, junto a Pioneer.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-maiz-san-vicente-2021.pdf?v=1784648309",
+                "report_title": "Maíz · San Vicente de Tagua Tagua (con Pioneer)"
+              }
+            },
+            "n6": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos",
+                "location_meta": "Gorbea, Temuco",
+                "description": "Bioestimulación con Nanoforte en cerezos de la zona de Gorbea.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-cerezos-gorbea-2022.pdf?v=1784648309",
+                "report_title": "Cerezos · Gorbea, Temuco"
+              }
+            },
+            "n7": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos postcosecha",
+                "location_meta": "cv. Lapins · Sagrada Familia",
+                "description": "Nanoforte para optimizar la postcosecha en cerezos cv. Lapins, Agrícola La Campana.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-cerezos-postcosecha-sagrada-familia.pdf?v=1784648309",
+                "report_title": "Cerezos postcosecha cv. Lapins · Sagrada Familia"
+              }
+            },
+            "n8": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Paltos",
+                "location_meta": "Quillota · CER",
+                "description": "Biofortificación con Nanoforte en paltos de Quillota, evaluado por el CER.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-paltos-centro-cer-quillota-2022.pdf?v=1784648309",
+                "report_title": "Paltos · Quillota (CER)"
+              }
+            },
+            "n9": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Papas",
+                "location_meta": "Isla de Maipo",
+                "description": "Nanoforte ante estrés abiótico en cultivos de papa, Isla de Maipo.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-papas-qta-tilcoco-2022.pdf?v=1784648309",
+                "report_title": "Papas · Isla de Maipo"
+              }
+            },
+            "n10": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Uva de mesa",
+                "location_meta": "Autumn Crisp · Ica, Perú",
+                "description": "Efecto de Nanoforte en rendimiento y calidad de uva de mesa Autumn Crisp, Ica (Perú).",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-uva-de-mesa-peru.pdf?v=1784648309",
+                "report_title": "Uva de mesa Autumn Crisp · Ica, Perú"
+              }
+            },
+            "n11": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Soja",
+                "location_meta": "Ontario, Canadá",
+                "description": "Evaluación de Nanoforte en rendimiento y calidad de soja bajo condiciones de campo, Ontario (Canadá).",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-soja-peru.pdf?v=1784648309",
+                "report_title": "Soja · Ontario, Canadá"
+              }
+            },
+            "n12": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Vivero",
+                "location_meta": "Pueblito de Liray · Colina",
+                "description": "Nanoforte antiestrés hídrico en cultivos de huerto, junto al vivero Pueblito de Liray.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-vivero.pdf?v=1784648309",
+                "report_title": "Vivero · Colina (Pueblito de Liray)"
+              }
+            }
+          },
+          "block_order": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5",
+            "n6",
+            "n7",
+            "n8",
+            "n9",
+            "n10",
+            "n11",
+            "n12"
+          ]
+        }
+      },
+      "block_order": [
+        "cat_crio",
+        "cat_nano"
+      ],
+      "settings": {
+        "heading": "Ensayos de campo documentados",
+        "subtext": "Resultados validados en distintos cultivos y regiones."
+      }
+    },
+    "pewman_cta": {
+      "type": "pewman-cta-band",
+      "settings": {
+        "heading": "El próximo ensayo puede ser en tu campo",
+        "text": "Conversa con nuestro equipo y replica en tu cultivo el mismo protocolo de los ensayos que acabas de ver.",
+        "button_1_label": "Solicitar un ensayo",
+        "button_1_link": "/pages/contacto",
+        "button_2_label": "Ver productos →",
+        "button_2_link": "/#soluciones",
+        "background_image": "shopify://shop_images/casos-cta-campo.jpg"
+      }
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_testimonios",
+    "pewman_ensayos",
+    "pewman_cta"
+  ]
+}

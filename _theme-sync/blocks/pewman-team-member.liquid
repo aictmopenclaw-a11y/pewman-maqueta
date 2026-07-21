@@ -1,0 +1,38 @@
+{%- comment -%}
+  Block anidado: integrante del equipo, hijo de pewman-team-region.
+  Tarjeta vertical centrada: foto cuadrada + botón LinkedIn superpuesto
+  (solo si hay URL) + nombre + cargo. Sin foto muestra iniciales.
+{%- endcomment -%}
+<div class="pewman-team__card" {{ block.shopify_attributes }}>
+  <div class="pewman-team__ph-wrap">
+    <div class="pewman-team__ph">
+      {%- if block.settings.photo -%}
+        <img src="{{ block.settings.photo | image_url: width: 500 }}" alt="{{ block.settings.name | escape }}" loading="lazy">
+      {%- else -%}
+        <div class="pewman-team__ini">{{ block.settings.initials }}</div>
+      {%- endif -%}
+    </div>
+    {%- if block.settings.linkedin_url != blank -%}
+      <a class="pewman-team__li" href="{{ block.settings.linkedin_url }}" target="_blank" rel="noopener" aria-label="LinkedIn de {{ block.settings.name | escape }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+    {%- endif -%}
+  </div>
+  <h3>{{ block.settings.name }}</h3>
+  <div class="pewman-team__role">{{ block.settings.role }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Integrante",
+  "tag": null,
+  "settings": [
+    { "type": "image_picker", "id": "photo", "label": "Foto" },
+    { "type": "text", "id": "initials", "label": "Iniciales (si no hay foto)" },
+    { "type": "text", "id": "name", "label": "Nombre" },
+    { "type": "text", "id": "role", "label": "Cargo" },
+    { "type": "url", "id": "linkedin_url", "label": "LinkedIn (opcional)" }
+  ],
+  "presets": [
+    { "name": "Integrante", "settings": { "name": "Nombre Apellido", "role": "Cargo" } }
+  ]
+}
+{% endschema %}

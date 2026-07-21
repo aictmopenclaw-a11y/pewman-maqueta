@@ -1,0 +1,434 @@
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "current_label": "Empresa",
+        "eyebrow": "Nuestra Historia",
+        "heading": "De ecosistemas extremos a tecnologías agrícolas globales",
+        "text": "Más de 10 años transformando ciencia en tecnología.",
+        "tall": true,
+        "background_image": "shopify://shop_images/empresa-hero-ecosistemas.jpg",
+        "zoom_intensity": "1.09"
+      }
+    },
+    "pewman_intro": {
+      "type": "pewman-rich-text",
+      "settings": {
+        "cream_bg": false,
+        "text": "<p>Pewman Innovation es una empresa chilena de biotecnología que desarrolla soluciones sustentables para aumentar la resiliencia de los cultivos frente a los desafíos del cambio climático.</p><p>Desde hace más de una década, trabajamos en la investigación, desarrollo y validación de tecnologías biológicas capaces de ayudar a la agricultura a enfrentar factores de estrés ambiental como heladas, sequía y temperaturas extremas. Nuestro propósito es transformar conocimiento científico de frontera en soluciones con impacto real para los productores agrícolas y el planeta.</p>"
+      }
+    },
+    "pewman_timeline": {
+      "type": "pewman-history-timeline",
+      "blocks": {
+        "h1": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "image_alt": "Equipo Pewman Innovation en el Desierto de Atacama, origen de la investigación",
+            "eyebrow_text": "El origen",
+            "heading": "De ecosistemas extremos a soluciones agrícolas",
+            "body_text": "<p>Nuestra historia comenzó explorando algunos de los ecosistemas más extremos del planeta, incluyendo la Antártica, el Desierto de Atacama, la Patagonia, volcanes e islas australes de Chile.</p><p>Estos ambientes albergan microorganismos extraordinarios que han evolucionado durante miles de años para sobrevivir en condiciones de frío extremo, escasez de agua, alta radiación UV y otros desafíos ambientales. Comprender estos mecanismos de adaptación nos permitió identificar nuevas oportunidades para fortalecer la resiliencia de los cultivos frente al cambio climático.</p>",
+            "image": "shopify://shop_images/historia-origen-equipo-atacama.jpg",
+            "image_focus": 90
+          }
+        },
+        "h2": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "image_alt": "Científico de Pewman Innovation analizando placas de cultivo en laboratorio",
+            "eyebrow_text": "Lo que nos hace únicos",
+            "heading": "Ciencia propia desde el origen",
+            "body_text": "<p><b>No utilizamos microorganismos descubiertos por otros.</b> Descubrimos, aislamos, caracterizamos y desarrollamos nuestras propias tecnologías a partir de microorganismos provenientes de algunos de los ecosistemas más extremos del planeta.</p><p>A diferencia de muchas soluciones biológicas del mercado, conocemos en profundidad nuestros microorganismos, comprendemos sus mecanismos de acción y desarrollamos tecnologías basadas en evidencia científica sólida.</p><p>La combinación de este conocimiento con nanotecnología orgánica ha permitido crear una plataforma tecnológica única, diseñada para responder a desafíos agrícolas específicos de manera sustentable y eficiente.</p>",
+            "image": "shopify://shop_images/historia-unicos-laboratorio-placas.jpg",
+            "image_focus": 30
+          }
+        },
+        "h3": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "image_alt": "Observación de microorganismos con lupa en el laboratorio de Pewman",
+            "eyebrow_text": "Pioneros",
+            "heading": "Una nueva generación de biotecnologías agrícolas",
+            "body_text": "<p>Uno de nuestros principales hitos fue el descubrimiento y caracterización de bacterias asociadas a plantas antárticas, con propiedades capaces de contribuir a la protección frente a bajas temperaturas y otros factores de estrés ambiental.</p><p>Este trabajo dio origen a una nueva línea de innovación biotecnológica basada en microorganismos de ecosistemas extremos. Como pioneros en este campo, hoy colaboramos con empresas, productores e instituciones que buscan incorporar ciencia avanzada para enfrentar los desafíos productivos del futuro.</p>",
+            "image": "shopify://shop_images/historia-pioneros-bacterias-lupa.jpg",
+            "image_focus": 55
+          }
+        },
+        "h4": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "eyebrow_text": "Validado en condiciones reales",
+            "heading": "Tecnologías que funcionan en el campo",
+            "body_text": "<p>Tras más de 10 años de investigación, desarrollo y validación, nuestras tecnologías han demostrado su eficacia en miles de hectáreas agrícolas, ayudando a productores a enfrentar heladas, déficit hídrico y otros factores asociados al cambio climático.</p><p>Nuestro enfoque combina rigurosidad científica, validación en terreno y desarrollo tecnológico, generando soluciones con impacto medible y aplicabilidad comercial.</p>",
+            "image": "shopify://shop_images/historia-validado-cerezos-cosecha.jpg",
+            "image_focus": 45,
+            "image_alt": "Cosecha de cerezos protegidos, validación en campo"
+          }
+        },
+        "h5": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "eyebrow_text": "Proyección global",
+            "heading": "Desde Chile hacia el mundo",
+            "body_text": "<p>Lo que comenzó como investigación científica desarrollada en Chile hoy se proyecta a nivel internacional, a través de alianzas estratégicas, programas de validación y colaboraciones con actores del sector agrícola y de innovación.</p>",
+            "image": "shopify://shop_images/historia-global-mundo-cristal.jpg",
+            "image_focus": 40,
+            "image_alt": "Globo de cristal sobre un campo cultivado, proyección global"
+          },
+          "blocks": {
+            "c1": {
+              "type": "pewman-timeline-chip",
+              "settings": {
+                "label": "América Latina"
+              }
+            },
+            "c2": {
+              "type": "pewman-timeline-chip",
+              "settings": {
+                "label": "Europa"
+              }
+            },
+            "c3": {
+              "type": "pewman-timeline-chip",
+              "settings": {
+                "label": "Norteamérica"
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      },
+      "block_order": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5"
+      ]
+    },
+    "pewman_proposito": {
+      "type": "pewman-feature-columns",
+      "settings": {
+        "eyebrow": "Hacia dónde vamos",
+        "heading": "Propósito y visión"
+      },
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Nuestro propósito",
+            "text": "Fortalecer la resiliencia de la agricultura mediante tecnologías biológicas desarrolladas a partir de microorganismos de ecosistemas extremos."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Nuestra visión",
+            "text": "Convertirnos en referentes globales en biotecnología agrícola, llevando innovación desarrollada en Chile hacia los principales mercados agrícolas del mundo."
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2"
+      ]
+    },
+    "pewman_equipo": {
+      "type": "pewman-team-grid",
+      "settings": {
+        "heading": "Fundado por científicos",
+        "subtext": "Con equipos en Chile, Perú y Europa."
+      },
+      "blocks": {
+        "reg1": {
+          "type": "pewman-team-region",
+          "settings": {
+            "region_name": "Chile"
+          },
+          "blocks": {
+            "r1m1": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Dr. José Manuel Pérez-Donoso",
+                "role": "CEO y Director Fundador",
+                "photo": "shopify://shop_images/jose-perez-donoso.jpg",
+                "linkedin_url": "https://www.linkedin.com/in/jose-perez-donoso/"
+              }
+            },
+            "r1m2": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Denisse Bravo",
+                "role": "Directora Científica",
+                "photo": "shopify://shop_images/denisse-bravo.jpg",
+                "linkedin_url": "https://www.linkedin.com/in/denisse-bravo-069a4583/"
+              }
+            },
+            "r1m3": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Enzo Galliani",
+                "role": "Gerente de Proyectos",
+                "photo": "shopify://shop_images/enzo-galliani.jpg",
+                "linkedin_url": "https://www.linkedin.com/in/enzo-galliani/"
+              }
+            },
+            "r1m4": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Alberto Ríos",
+                "role": "Asesor técnico comercial",
+                "photo": "shopify://shop_images/alberto-rios.jpg"
+              }
+            },
+            "r1m5": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Matías Vargas",
+                "role": "Director de laboratorio e investigación",
+                "photo": "shopify://shop_images/matias-vargas.jpg"
+              }
+            },
+            "r1m6": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Felipe Pávez",
+                "role": "Director de ventas y administración",
+                "photo": "shopify://shop_images/felipe-pavez.jpg"
+              }
+            },
+            "r1m7": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Safka Hernández",
+                "role": "Asistente de laboratorio",
+                "photo": "shopify://shop_images/safka-hernandez.jpg"
+              }
+            }
+          },
+          "block_order": [
+            "r1m1",
+            "r1m2",
+            "r1m3",
+            "r1m4",
+            "r1m5",
+            "r1m6",
+            "r1m7"
+          ]
+        },
+        "reg2": {
+          "type": "pewman-team-region",
+          "settings": {
+            "region_name": "Perú"
+          },
+          "blocks": {
+            "r2m1": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Camila Gutiérrez",
+                "role": "Coordinadora de Operaciones Perú",
+                "photo": "shopify://shop_images/camila-gutierrez.jpg"
+              }
+            }
+          },
+          "block_order": [
+            "r2m1"
+          ]
+        },
+        "reg3": {
+          "type": "pewman-team-region",
+          "settings": {
+            "region_name": "Europa"
+          },
+          "blocks": {
+            "r3m1": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Dr. Isaac Bugueño",
+                "role": "Cofundador y CEO",
+                "photo": "shopify://shop_images/isaac-bugueno.jpg",
+                "linkedin_url": "https://www.linkedin.com/in/isaac-maximiliano-bugueno-valdebenito-1a282921/"
+              }
+            },
+            "r3m2": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Dr. Carla Galardo",
+                "role": "Oficial de I+D",
+                "photo": "shopify://shop_images/carla-galardo.jpg"
+              }
+            },
+            "r3m3": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Dr. Marion Pugliano",
+                "role": "Ingeniero de investigación",
+                "photo": "shopify://shop_images/marion-pugliano.jpg"
+              }
+            },
+            "r3m4": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Jeremy Hamm",
+                "role": "Ingeniero financiero y de operaciones",
+                "photo": "shopify://shop_images/jeremy-hamm.jpg"
+              }
+            },
+            "r3m5": {
+              "type": "pewman-team-member",
+              "settings": {
+                "name": "Alain Carpio Palza",
+                "role": "Marketing y Despliegue de Mercado",
+                "photo": "shopify://shop_images/alain-carpio-palza.jpg"
+              }
+            }
+          },
+          "block_order": [
+            "r3m1",
+            "r3m2",
+            "r3m3",
+            "r3m4",
+            "r3m5"
+          ]
+        }
+      },
+      "block_order": [
+        "reg1",
+        "reg2",
+        "reg3"
+      ]
+    },
+    "pewman_premios": {
+      "type": "pewman-awards",
+      "settings": {
+        "heading": "Premios y respaldo",
+        "subtext": "Nuestro crecimiento ha sido acompañado por reconocimientos nacionales e internacionales en innovación, emprendimiento científico y transferencia tecnológica.",
+        "featured_title": "Startup del Año 2024",
+        "featured_text": "Reconocimiento de El Mercurio Innovación, junto a Swiss Business Hub USA, PwC, Nestlé y Corfo.",
+        "featured_image": "shopify://shop_images/premio-startup.png"
+      },
+      "blocks": {
+        "a1": {
+          "type": "award_logo",
+          "settings": {
+            "alt": "Avonni",
+            "logo": "shopify://shop_images/premio-avonni.png"
+          }
+        },
+        "a2": {
+          "type": "award_logo",
+          "settings": {
+            "alt": "GoGlobal",
+            "logo": "shopify://shop_images/premio-goglobal.png"
+          }
+        },
+        "a3": {
+          "type": "award_logo",
+          "settings": {
+            "alt": "Corfo",
+            "logo": "shopify://shop_images/logo-corfo-azul.png"
+          }
+        },
+        "a4": {
+          "type": "award_logo",
+          "settings": {
+            "alt": "Reconocimiento",
+            "logo": "shopify://shop_images/premio-01.png"
+          }
+        },
+        "a5": {
+          "type": "award_logo",
+          "settings": {
+            "alt": "Reconocimiento",
+            "logo": "shopify://shop_images/premio-02.png"
+          }
+        },
+        "a6": {
+          "type": "award_logo",
+          "settings": {
+            "alt": "Reconocimiento",
+            "logo": "shopify://shop_images/premio-03.png"
+          }
+        },
+        "a7": {
+          "type": "award_logo",
+          "settings": {
+            "alt": "Reconocimiento",
+            "logo": "shopify://shop_images/premio-04.png"
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7"
+      ]
+    },
+    "pewman_patentes": {
+      "type": "pewman-patents-grid",
+      "settings": {
+        "heading": "Innovación protegida",
+        "dark_mode": true,
+        "show_description": false
+      },
+      "blocks": {
+        "p1": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Internacional",
+            "registration_number": "PCT/CL2021/050061",
+            "country": "intl"
+          }
+        },
+        "p2": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Estados Unidos",
+            "registration_number": "USPTO 63051414",
+            "country": "usa"
+          }
+        },
+        "p3": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Chile",
+            "registration_number": "1865-2021",
+            "country": "chile"
+          }
+        },
+        "p4": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "India",
+            "registration_number": "509159",
+            "country": "india"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_intro",
+    "pewman_timeline",
+    "pewman_proposito",
+    "pewman_equipo",
+    "pewman_premios",
+    "pewman_patentes"
+  ]
+}
