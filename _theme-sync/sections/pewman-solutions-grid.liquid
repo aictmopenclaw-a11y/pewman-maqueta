@@ -12,7 +12,6 @@
     position: relative; padding: 22px;
   }
   #PewmanSolutions-{{ section.id }} .pewman-solutions__top img.pack { height: 200px; width: auto; object-fit: contain; filter: drop-shadow(0 16px 22px rgba(52,52,52,.22)); }
-  #PewmanSolutions-{{ section.id }} .pewman-solutions__top img.brand { position: absolute; top: 18px; left: 20px; height: 30px; }
   #PewmanSolutions-{{ section.id }} .pewman-solutions__body { padding: 24px 26px 26px; display: flex; flex-direction: column; flex: 1; }
   #PewmanSolutions-{{ section.id }} .pewman-solutions__list { list-style: none; margin: 6px 0 18px; padding: 0; }
   #PewmanSolutions-{{ section.id }} .pewman-solutions__list li { font-size: 14px; padding-left: 24px; position: relative; margin-bottom: 13px; color: var(--pewman-gris-tx); line-height: 1.45; }
@@ -38,7 +37,6 @@
           {%- assign p = block.settings.product -%}
           <article class="pewman-solutions__card" style="--pewman-accent: {{ block.settings.accent_color | default: '#BD0028' }};" {{ block.shopify_attributes }}>
             <div class="pewman-solutions__top">
-              {%- if block.settings.brand_logo -%}<img class="brand" src="{{ block.settings.brand_logo | image_url: width: 200 }}" alt="{{ p.title | escape }}">{%- endif -%}
               <img class="pack" src="{{ p.featured_image | image_url: width: 500 }}" alt="{{ p.title | escape }}">
             </div>
             <div class="pewman-solutions__body">
