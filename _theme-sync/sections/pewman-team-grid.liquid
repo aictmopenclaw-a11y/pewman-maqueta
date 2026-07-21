@@ -41,7 +41,7 @@
 
 <div id="PewmanTeam-{{ section.id }}">
   <div class="pewman-team__wrap">
-    {% render 'pewman-section-heading', eyebrow: 'Equipo', heading: section.settings.heading | default: 'Fundado por científicos', subtext: section.settings.subtext %}
+    {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow | default: 'Equipo', heading: section.settings.heading | default: 'Fundado por científicos', subtext: section.settings.subtext %}
     {% content_for 'blocks' %}
   </div>
 </div>
@@ -51,6 +51,7 @@
   "name": "Pewman · Equipo",
   "tag": "section",
   "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Equipo" },
     { "type": "text", "id": "heading", "label": "Título", "default": "Fundado por científicos" },
     { "type": "text", "id": "subtext", "label": "Subtítulo", "default": "Con equipos en Chile, Perú y Europa." }
   ],

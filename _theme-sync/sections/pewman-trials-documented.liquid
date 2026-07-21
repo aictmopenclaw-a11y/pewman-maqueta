@@ -27,7 +27,7 @@
 
 <div id="PewmanTrials-{{ section.id }}">
   <div class="pewman-trials__wrap">
-    {% render 'pewman-section-heading', eyebrow: 'Respaldo técnico', heading: section.settings.heading | default: 'Ensayos de campo documentados', subtext: section.settings.subtext %}
+    {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow | default: 'Respaldo técnico', heading: section.settings.heading | default: 'Ensayos de campo documentados', subtext: section.settings.subtext %}
     {% content_for 'blocks' %}
   </div>
 
@@ -50,6 +50,7 @@
   "name": "Pewman · Ensayos",
   "tag": "section",
   "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Respaldo técnico" },
     { "type": "text", "id": "heading", "label": "Título", "default": "Ensayos de campo documentados" },
     { "type": "text", "id": "subtext", "label": "Subtítulo", "default": "Resultados validados en distintos cultivos y regiones. Haz clic para ver el informe técnico y descargarlo." }
   ],
