@@ -423,45 +423,12 @@
         "heading": "Prensa y medios",
         "tight_top": false,
         "view_all_link": "/pages/prensa-y-medios",
-        "view_all_label": "Ver todas las noticias"
-      },
-      "blocks": {
-        "news_1": {
-          "type": "news_card",
-          "settings": {
-            "image": "shopify://shop_images/prensa-campo.jpg",
-            "source_label": "El Mercurio Campo",
-            "title": "La biotecnología antiheladas que nació de la Antártica.",
-            "link": "#",
-            "open_new_tab": false
-          }
-        },
-        "news_2": {
-          "type": "news_card",
-          "settings": {
-            "image": "shopify://shop_images/prensa-financiero.jpg",
-            "source_label": "Diario Financiero",
-            "title": "Biotech chilena escala con biofortificantes de bacterias.",
-            "link": "#",
-            "open_new_tab": false
-          }
-        },
-        "news_3": {
-          "type": "news_card",
-          "settings": {
-            "image": "shopify://shop_images/prensa-radio.jpg",
-            "source_label": "Redagrícola",
-            "title": "Microorganismos extremos al servicio del agro.",
-            "link": "#",
-            "open_new_tab": false
-          }
-        }
-      },
-      "block_order": [
-        "news_1",
-        "news_2",
-        "news_3"
-      ]
+        "view_all_label": "Ver todas las noticias →",
+        "source": "blog",
+        "blog": "prensa",
+        "max_articles": 3,
+        "show_view_all": true
+      }
     },
     "pewman_articulos": {
       "type": "pewman-news-grid",
@@ -469,45 +436,12 @@
         "heading": "Artículos",
         "tight_top": true,
         "view_all_link": "/pages/prensa-y-medios",
-        "view_all_label": "Ver todos los artículos"
-      },
-      "blocks": {
-        "art_1": {
-          "type": "news_card",
-          "settings": {
-            "image": "shopify://shop_images/prensa-mercurio.png",
-            "source_label": "Paper",
-            "title": "Bacterias antárticas como agentes crioprotectores en cultivos frutales.",
-            "link": "/pages/prensa-y-medios",
-            "open_new_tab": false
-          }
-        },
-        "art_2": {
-          "type": "news_card",
-          "settings": {
-            "image": "shopify://shop_images/caso-frutal.png",
-            "source_label": "Artículo",
-            "title": "Eficiencia hídrica con nanoburbujas de oxígeno y microorganismos extremófilos.",
-            "link": "/pages/prensa-y-medios",
-            "open_new_tab": false
-          }
-        },
-        "art_3": {
-          "type": "news_card",
-          "settings": {
-            "image": "shopify://shop_images/caso-fumigacion.png",
-            "source_label": "Paper",
-            "title": "Respuesta sistémica del cultivo frente al estrés térmico por helada.",
-            "link": "/pages/prensa-y-medios",
-            "open_new_tab": false
-          }
-        }
-      },
-      "block_order": [
-        "art_1",
-        "art_2",
-        "art_3"
-      ]
+        "view_all_label": "Ver todos los artículos →",
+        "source": "blog",
+        "blog": "articulos",
+        "max_articles": 3,
+        "show_view_all": true
+      }
     },
     "pewman_banner_global": {
       "type": "pewman-image-banner",

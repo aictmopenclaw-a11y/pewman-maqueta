@@ -15,120 +15,27 @@
       "type": "pewman-news-grid",
       "settings": {
         "heading": "",
-        "subtext": "Lo último de Pewman Innovation: ciencia aplicada al campo, reconocimientos y cobertura en prensa. Las publicaciones y textos finales los administra el equipo de Pewman.",
-        "view_all_label": "Ver todas las noticias"
-      },
-      "blocks": {
-        "n1": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "Pewman",
-            "title": "El impacto de El Niño 2026 en el agro chileno: por qué más lluvia no elimina el riesgo de heladas polares.",
-            "link": "https://pewmaninnovation.net/el-impacto-de-el-nino-2026-en-el-agro-chileno-por-que-mas-lluvia-no-elimina-el-riesgo-de-heladas-polares/",
-            "image": "shopify://shop_images/prensa-campo.jpg"
-          }
-        },
-        "n2": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "Pewman",
-            "title": "Pewman Innovation explora el ecosistema de innovación suizo tras ser reconocida como Startup del Año.",
-            "link": "https://pewmaninnovation.net/pewman-innovation-explora-el-ecosistema-de-innovacion-suizo-tras-ser-reconocida-como-startup-del-ano/",
-            "image": "shopify://shop_images/caso-papas.jpg"
-          }
-        },
-        "n3": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "Pewman",
-            "title": "1er Encuentro de Capital Humano de Corfo.",
-            "link": "https://pewmaninnovation.net/1er-encuentro-de-capital-humano-de-corfo/",
-            "image": "shopify://shop_images/prensa-radio.jpg"
-          }
-        },
-        "n4": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "El Mercurio Campo",
-            "title": "La biotecnología antiheladas que nació de la Antártica.",
-            "link": "#",
-            "image": "shopify://shop_images/caso-cerezas.jpg"
-          }
-        },
-        "n5": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "Diario Financiero",
-            "title": "Biotech chilena escala con biofortificantes de bacterias.",
-            "link": "#",
-            "image": "shopify://shop_images/prensa-financiero.jpg"
-          }
-        },
-        "n6": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "Redagrícola",
-            "title": "Microorganismos extremos al servicio del agro.",
-            "link": "#",
-            "image": "shopify://shop_images/caso-uvas.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "n1",
-        "n2",
-        "n3",
-        "n4",
-        "n5",
-        "n6"
-      ]
+        "subtext": "Lo último de Pewman Innovation: ciencia aplicada al campo, reconocimientos y cobertura en prensa.",
+        "view_all_label": "Ver todas las noticias",
+        "source": "blog",
+        "blog": "prensa",
+        "max_articles": 12,
+        "show_view_all": false
+      }
     },
     "pewman_articulos": {
       "type": "pewman-news-grid",
       "settings": {
         "eyebrow": "Contenido técnico",
         "heading": "Artículos y papers",
-        "subtext": "Publicaciones científicas y documentos técnicos de Pewman Innovation. El contenido final lo administra el equipo de Pewman.",
+        "subtext": "Publicaciones científicas y documentos técnicos de Pewman Innovation.",
         "tight_top": true,
-        "view_all_label": "Ver todos los artículos"
-      },
-      "blocks": {
-        "a1": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "Paper",
-            "title": "Bacterias antárticas como agentes crioprotectores en cultivos frutales.",
-            "link": "#",
-            "open_new_tab": false,
-            "image": "shopify://shop_images/prensa-mercurio.png"
-          }
-        },
-        "a2": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "Artículo",
-            "title": "Eficiencia hídrica con nanoburbujas de oxígeno y microorganismos extremófilos.",
-            "link": "#",
-            "open_new_tab": false,
-            "image": "shopify://shop_images/caso-frutal.png"
-          }
-        },
-        "a3": {
-          "type": "news_card",
-          "settings": {
-            "source_label": "Paper",
-            "title": "Respuesta sistémica del cultivo frente al estrés térmico por helada.",
-            "link": "#",
-            "open_new_tab": false,
-            "image": "shopify://shop_images/caso-fumigacion.png"
-          }
-        }
-      },
-      "block_order": [
-        "a1",
-        "a2",
-        "a3"
-      ]
+        "view_all_label": "Ver todos los artículos →",
+        "source": "blog",
+        "blog": "articulos",
+        "max_articles": 6,
+        "show_view_all": true
+      }
     }
   },
   "order": [
