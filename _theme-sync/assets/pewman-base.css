@@ -1,0 +1,79 @@
+/* ===== Pewman Innovation — estilos base compartidos ===== */
+/* Cargar UNA vez desde layout/theme.liquid: {{ 'pewman-base.css' | asset_url | stylesheet_tag }} */
+/* Solo componentes atómicos reutilizados entre secciones (botón, heading, breadcrumb).       */
+/* El layout/composición de cada sección vive en su propio {% style %} scoped — no acá.       */
+
+:root{
+  --pewman-rojo: #BD0028;
+  --pewman-rojo-d: #a12423;
+  --pewman-tinta: #343434;
+  --pewman-gris: #8a8a8a;
+  --pewman-gris-tx: #6f6f6f;
+  --pewman-linea: #e4e4e4;
+  --pewman-crema: #f9f9f9;
+  --pewman-sh: 0 2px 4px rgba(52,52,52,.05), 0 16px 38px -20px rgba(52,52,52,.25);
+}
+
+.pewman-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: .2s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.pewman-btn--dark{ background: var(--pewman-tinta); color: #fff; }
+.pewman-btn--light{ background: #ececec; color: var(--pewman-tinta); border-color: #9a9a9a; }
+.pewman-btn--dark:hover,
+.pewman-btn--light:hover{ background: var(--pewman-rojo); color: #fff; border-color: var(--pewman-rojo); transform: translateY(-2px); }
+.pewman-btn--ghost{ background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.pewman-btn--ghost:hover{ background: var(--pewman-rojo); border-color: var(--pewman-rojo); transform: translateY(-2px); }
+.pewman-btn--wa{ background: #25d366; color: #063; }
+.pewman-btn--wa:hover{ background: #1fb855; transform: translateY(-2px); }
+.pewman-btn--red{ background: var(--pewman-rojo); color: #fff; border-color: var(--pewman-rojo); }
+.pewman-btn--red:hover{ background: var(--pewman-rojo-d); color: #fff; border-color: var(--pewman-rojo-d); transform: translateY(-2px); }
+
+.pewman-section-heading{ text-align: center; max-width: 680px; margin: 0 auto 44px; }
+.pewman-eyebrow{ font-weight: 700; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--pewman-rojo); }
+.pewman-section-heading__title{ font-size: clamp(27px, 3.6vw, 40px); color: var(--pewman-tinta); margin: 12px 0 12px; line-height: 1.15; }
+.pewman-section-heading__subtext{ font-size: 16.5px; color: var(--pewman-gris-tx); }
+
+.pewman-breadcrumb{ font-size: 13px; color: #cfcfcf; margin-bottom: 14px; }
+.pewman-breadcrumb a{ color: #d6d6d6; text-decoration: none; }
+.pewman-breadcrumb a:hover{ color: #fff; }
+
+/* Custom elements: sin esto el navegador los trata como <span> (display:inline,
+   position:static). Bug real detectado 2026-07-21: los dots del hero (position:
+   absolute, hijos directos de <pewman-slideshow>) se anclaban contra el documento
+   completo en vez del carrusel, apareciendo como un punto rojo flotando fuera de
+   la sección en cualquier parte de la página. Fix centralizado para los 8: */
+pewman-slideshow,
+pewman-horizontal-scroller,
+pewman-count-up-stat,
+pewman-variant-picker{ display: block; }
+pewman-slideshow{ position: relative; }
+
+/* Wrappers puramente funcionales (sin caja visual propia, solo agrupan JS) */
+pewman-modal,
+pewman-video-modal,
+pewman-pdf-modal,
+pewman-cals-banner{ display: contents; }
+.pewman-modal-overlay{
+  position: fixed; inset: 0; background: rgba(20,20,20,.64); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; z-index: 200; padding: 20px;
+}
+.pewman-modal-overlay[hidden]{ display: none; }
+.pewman-modal-box{
+  background: #fff; border-radius: 18px; padding: 34px; max-width: 520px; width: 100%;
+  position: relative; box-shadow: 0 30px 70px -20px rgba(0,0,0,.5); max-height: 92vh; overflow: auto;
+}
+.pewman-modal-close{
+  position: absolute; top: 14px; right: 16px; background: none; border: none;
+  font-size: 24px; cursor: pointer; color: #9a9a9a; line-height: 1;
+}
