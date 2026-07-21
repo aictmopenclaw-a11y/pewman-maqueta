@@ -67,50 +67,14 @@
       "settings": {
         "eyebrow": "Ciencia",
         "heading": "Artículos y papers",
-        "subtext": "Contenido técnico-científico para quien quiere ir más a fondo en cómo funciona la tecnología. El listado final de publicaciones lo administra el equipo de Pewman.",
+        "subtext": "Contenido técnico-científico para quien quiere ir más a fondo en cómo funciona la tecnología. El listado lo administra el equipo de Pewman.",
         "cream_bg": true,
-        "legal_note": "Sección en preparación: el contenido científico completo se incorporará con el equipo de Pewman."
-      },
-      "blocks": {
-        "pa1": {
-          "type": "paper",
-          "settings": {
-            "tag": "Paper",
-            "title": "Bacterias antárticas como agentes crioprotectores en cultivos frutales.",
-            "meta": "Microorganismos extremófilos · resistencia a heladas"
-          }
-        },
-        "pa2": {
-          "type": "paper",
-          "settings": {
-            "tag": "Artículo",
-            "title": "Eficiencia hídrica con nanoburbujas de oxígeno y microorganismos extremófilos.",
-            "meta": "Nanoforte · potencial hídrico"
-          }
-        },
-        "pa3": {
-          "type": "paper",
-          "settings": {
-            "tag": "Paper",
-            "title": "Respuesta sistémica del cultivo frente al estrés térmico por helada.",
-            "meta": "Crioprotect · mecanismo de defensa"
-          }
-        },
-        "pa4": {
-          "type": "paper",
-          "settings": {
-            "tag": "Artículo",
-            "title": "Biopolímeros y su rol en la protección natural del cultivo.",
-            "meta": "Formulación · barrera natural"
-          }
-        }
-      },
-      "block_order": [
-        "pa1",
-        "pa2",
-        "pa3",
-        "pa4"
-      ]
+        "legal_note": "Sección en preparación: el contenido científico completo se incorporará con el equipo de Pewman.",
+        "source": "blog",
+        "blog": "articulos",
+        "max_articles": 6,
+        "show_view_all": true
+      }
     },
     "pewman_cta": {
       "type": "pewman-cta-band",

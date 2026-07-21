@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "pewman_articulo": {
+      "type": "pewman-article",
+      "settings": {}
+    }
+  },
+  "order": [
+    "pewman_articulo"
+  ]
+}

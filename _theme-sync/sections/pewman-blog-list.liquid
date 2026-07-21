@@ -1,0 +1,70 @@
+{%- comment -%}
+  Listado del blog con la tarjeta de "Artículos y papers" de la maqueta.
+  Usa la paginación nativa de Shopify. Va en templates/blog.json.
+{%- endcomment -%}
+{%- style -%}
+  #PewmanBlogList-{{ section.id }} { background: var(--pewman-crema); padding: 60px 0 78px; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__card {
+    display: flex; flex-direction: column; background: #fff; border: 1px solid var(--pewman-linea);
+    border-radius: 16px; overflow: hidden; transition: .2s; height: 100%; text-decoration: none;
+  }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__card:hover { box-shadow: var(--pewman-sh); transform: translateY(-3px); }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__ph { height: 168px; overflow: hidden; background: var(--pewman-crema); }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__ph img { width: 100%; height: 100%; object-fit: cover; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__body { padding: 22px 24px; display: flex; flex-direction: column; flex: 1; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__tag {
+    display: inline-block; align-self: flex-start; font-weight: 700; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase;
+    color: #fff; background: #727272; padding: 3px 9px; border-radius: 4px; margin-bottom: 12px;
+  }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__card h3 { font-size: 16px; color: var(--pewman-tinta); line-height: 1.32; margin-bottom: 10px; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__meta { font-size: 12.5px; color: var(--pewman-gris); margin-top: auto; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__go { font-weight: 600; font-size: 12.5px; color: var(--pewman-rojo); margin-top: 10px; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__empty { text-align: center; color: var(--pewman-gris); padding: 40px 0; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__pager { display: flex; gap: 10px; justify-content: center; margin-top: 34px; }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__pager a, #PewmanBlogList-{{ section.id }} .pewman-bloglist__pager span {
+    padding: 8px 14px; border-radius: 100px; border: 1px solid var(--pewman-linea); font-size: 13.5px; color: var(--pewman-tinta); text-decoration: none;
+  }
+  #PewmanBlogList-{{ section.id }} .pewman-bloglist__pager span[aria-current] { background: var(--pewman-rojo); color: #fff; border-color: var(--pewman-rojo); }
+  @media (max-width: 860px) { #PewmanBlogList-{{ section.id }} .pewman-bloglist__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { #PewmanBlogList-{{ section.id }} .pewman-bloglist__grid { grid-template-columns: 1fr; } }
+{%- endstyle -%}
+
+<div id="PewmanBlogList-{{ section.id }}">
+  <div class="pewman-bloglist__wrap">
+    {%- paginate blog.articles by 12 -%}
+      <div class="pewman-bloglist__grid">
+        {%- for article in blog.articles -%}
+          <a class="pewman-bloglist__card" href="{{ article.url }}">
+            {%- if article.image -%}
+              <div class="pewman-bloglist__ph"><img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title | escape }}" loading="lazy"></div>
+            {%- endif -%}
+            <div class="pewman-bloglist__body">
+              {%- if article.tags.size > 0 -%}<span class="pewman-bloglist__tag">{{ article.tags.first }}</span>{%- endif -%}
+              <h3>{{ article.title }}</h3>
+              {%- if article.excerpt_or_content != blank -%}
+                <div class="pewman-bloglist__meta">{{ article.excerpt_or_content | strip_html | truncate: 110 }}</div>
+              {%- endif -%}
+              <span class="pewman-bloglist__go">Leer &rarr;</span>
+            </div>
+          </a>
+        {%- else -%}
+          <p class="pewman-bloglist__empty">Aún no hay publicaciones. El equipo de Pewman las administra desde el panel.</p>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <div class="pewman-bloglist__pager">{{ paginate | default_pagination }}</div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Lista de blog",
+  "tag": "section",
+  "settings": [],
+  "presets": [ { "name": "Pewman · Lista de blog" } ]
+}
+{% endschema %}

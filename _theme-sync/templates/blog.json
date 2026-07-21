@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "style": "title",
+        "heading": "Artículos y papers",
+        "text": "Contenido técnico y científico de Pewman Innovation."
+      }
+    },
+    "pewman_lista": {
+      "type": "pewman-blog-list",
+      "settings": {}
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_lista"
+  ]
+}
