@@ -2,11 +2,15 @@
   Block anidado: hito del timeline "Nuestra Historia". Acepta blocks hijo
   "pewman-timeline-chip" (opcional, usado en el último hito: continentes).
   Si no hay imagen, la tarjeta renderiza a ancho completo (.no-img), igual
-  que los hitos 4 y 5 del mockup. El número circular es forloop.index —
-  nunca un campo editable manual, para que no se desincronice al reordenar.
+  que los hitos 4 y 5 del mockup. El número circular NO puede ser
+  forloop.index: los blocks anidados se renderizan vía {% content_for
+  'blocks' %}, que según la documentación oficial de Shopify no es un
+  for-loop de Liquid (forloop siempre queda nil ahí). Se numera con un
+  contador CSS (counter-reset en .pewman-timeline__list, counter-increment
+  acá) para que además se recalcule solo si Dalila reordena los hitos.
 {%- endcomment -%}
 <div class="pewman-timeline__item">
-  <div class="pewman-timeline__num">{{ forloop.index }}</div>
+  <div class="pewman-timeline__num" aria-hidden="true"></div>
   <div class="pewman-timeline__card{% if block.settings.image == blank %} no-img{% endif %}">
     {%- if block.settings.image -%}
       <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.image_alt | escape }}" loading="lazy" style="object-position: center {{ block.settings.image_focus | default: 50 }}%">

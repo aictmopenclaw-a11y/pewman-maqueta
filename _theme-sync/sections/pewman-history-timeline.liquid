@@ -1,15 +1,16 @@
 {%- style -%}
   #PewmanTimeline-{{ section.id }} { background: var(--pewman-crema); padding: 78px 0; }
   #PewmanTimeline-{{ section.id }} .pewman-timeline__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  #PewmanTimeline-{{ section.id }} .pewman-timeline__list { position: relative; max-width: 880px; margin: 0 auto; }
+  #PewmanTimeline-{{ section.id }} .pewman-timeline__list { position: relative; max-width: 880px; margin: 0 auto; counter-reset: pewman-timeline-num; }
   #PewmanTimeline-{{ section.id }} .pewman-timeline__list::before { content: ""; position: absolute; left: 19px; top: 14px; bottom: 14px; width: 2px; background: var(--pewman-linea); }
-  #PewmanTimeline-{{ section.id }} .pewman-timeline__item { position: relative; padding: 0 0 26px 66px; }
+  #PewmanTimeline-{{ section.id }} .pewman-timeline__item { position: relative; padding: 0 0 26px 66px; counter-increment: pewman-timeline-num; }
   #PewmanTimeline-{{ section.id }} .pewman-timeline__item:last-child { padding-bottom: 0; }
   #PewmanTimeline-{{ section.id }} .pewman-timeline__num {
     position: absolute; left: 0; top: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--pewman-rojo);
     color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; z-index: 1;
     box-shadow: 0 6px 16px -4px rgba(189,0,40,.5);
   }
+  #PewmanTimeline-{{ section.id }} .pewman-timeline__num::before { content: counter(pewman-timeline-num); }
   #PewmanTimeline-{{ section.id }} .pewman-timeline__card {
     background: #fff; border: 1px solid var(--pewman-linea); border-radius: 16px; box-shadow: var(--pewman-sh);
     overflow: hidden; display: grid; grid-template-columns: 210px 1fr; transition: .2s;
