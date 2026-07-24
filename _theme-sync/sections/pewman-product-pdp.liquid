@@ -32,6 +32,16 @@
   #PewmanPdp-{{ section.id }} .pewman-pdp__format-btn.is-active { border-color: var(--pewman-prod); background: var(--pewman-prod); color: #fff; box-shadow: 0 10px 22px -10px rgba(0,0,0,.35); }
   #PewmanPdp-{{ section.id }} .pewman-pdp__format-sz { font-weight: 700; font-size: 16px; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__format-pr { font-size: 13px; margin-top: 3px; opacity: .85; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar {
+    display: flex; gap: 12px; align-items: flex-start; margin: 12px 0 2px; padding: 14px 16px;
+    background: #fff7e6; border: 1px solid #f2ddad; border-left: 4px solid #d97706; border-radius: 12px;
+  }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar[hidden] { display: none; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-ic { flex: 0 0 auto; width: 22px; height: 22px; color: #d97706; margin-top: 2px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-tx { font-size: 14px; line-height: 1.5; color: var(--pewman-tinta); }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-tx strong { display: block; font-size: 14.5px; margin-bottom: 3px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-tx p { margin: 0 0 10px; color: var(--pewman-gris-tx); font-size: 13.5px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-btn { display: inline-block; font-weight: 600; font-size: 13.5px; padding: 9px 18px; border-radius: 100px; text-decoration: none; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__buy { display: flex; align-items: center; gap: 12px 16px; margin-top: 22px; flex-wrap: wrap; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__price { font-weight: 800; font-size: clamp(28px, 3.2vw, 34px); color: var(--pewman-tinta); flex-basis: 100%; margin-bottom: 4px; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn {
@@ -46,12 +56,32 @@
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
   assign buy_box_mf = product.metafields.custom.buy_box_copy
+
+  comment
+    Franja "despacho a coordinar": Blue Express no acepta envíos sobre 20 kg
+    (decisión cliente 2026-07-24), así que los formatos cuyo nombre contiene
+    la keyword (default "20") muestran aviso + botón WhatsApp prefilled.
+  endcomment
+  assign coordinar_kw = section.settings.coordinar_keyword | default: '20'
+  assign wa_phone = settings.pewman_whatsapp_phone | default: '56990833908' | remove: '+' | remove: ' '
+  assign coordinar_msg = section.settings.coordinar_wa_msg | default: 'Hola, quiero comprar [PRODUCTO] en formato [FORMATO] y necesito coordinar el despacho a mi zona. ¿Me pueden ayudar?'
+  assign coordinar_msg = coordinar_msg | replace: '[PRODUCTO]', product.title
+  assign coordinar_on = true
+  if section.settings.coordinar_enabled == false
+    assign coordinar_on = false
+  endif
+  assign show_coordinar_now = false
+  if coordinar_on and current_variant.title contains coordinar_kw
+    assign show_coordinar_now = true
+  endif
 -%}
 {%- capture variants_json -%}
 [
   {%- for variant in product.variants -%}
     {%- assign v_image = variant.featured_image | default: product.featured_image -%}
-    {"id": {{ variant.id | json }}, "priceFormatted": {{ variant.price | money | json }}, "available": {{ variant.available | json }}, "image": {{ v_image | image_url: width: 1200 | json }}}{% unless forloop.last %},{% endunless %}
+    {%- assign v_coordinar = false -%}
+    {%- if coordinar_on and variant.title contains coordinar_kw -%}{%- assign v_coordinar = true -%}{%- endif -%}
+    {"id": {{ variant.id | json }}, "title": {{ variant.title | json }}, "priceFormatted": {{ variant.price | money | json }}, "available": {{ variant.available | json }}, "coordinar": {{ v_coordinar }}, "image": {{ v_image | image_url: width: 1200 | json }}}{% unless forloop.last %},{% endunless %}
   {%- endfor -%}
 ]
 {%- endcapture -%}
@@ -100,6 +130,29 @@
               {%- endfor -%}
             </div>
 
+            {%- if coordinar_on -%}
+              <div
+                class="pewman-pdp__coordinar"
+                data-coordinar-note
+                data-wa-phone="{{ wa_phone }}"
+                data-wa-template="{{ coordinar_msg | escape }}"
+                {% unless show_coordinar_now %}hidden{% endunless %}
+              >
+                <svg class="pewman-pdp__coordinar-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+                <div class="pewman-pdp__coordinar-tx">
+                  <strong>{{ section.settings.coordinar_title | default: 'Despacho a coordinar para este formato' }}</strong>
+                  <p>{{ section.settings.coordinar_text | default: 'Blue Express no acepta envíos sobre 20 kg, por eso el despacho de este formato lo coordina directamente nuestro equipo especializado según tu zona.' }}</p>
+                  <a
+                    class="pewman-btn pewman-btn--wa pewman-pdp__coordinar-btn"
+                    data-coordinar-wa
+                    target="_blank"
+                    rel="noopener"
+                    href="https://api.whatsapp.com/send/?phone={{ wa_phone }}&text={{ coordinar_msg | replace: '[FORMATO]', current_variant.title | url_encode }}"
+                  >{{ section.settings.coordinar_btn_label | default: 'Coordinar despacho por WhatsApp' }}</a>
+                </div>
+              </div>
+            {%- endif -%}
+
             <input type="hidden" name="id" ref="variantId" data-variant-id-input value="{{ current_variant.id }}">
             <input type="hidden" name="quantity" value="1">
 
@@ -128,6 +181,34 @@
 
 <script src="{{ 'product-form.js' | asset_url }}" type="module"></script>
 
+<script>
+  // Franja "despacho a coordinar": escucha el cambio de formato del picker
+  // y arma el link de WhatsApp con el formato elegido. No toca el flujo de
+  // compra; solo muestra/oculta el aviso según variant.coordinar.
+  (function () {
+    document.querySelectorAll('pewman-variant-picker').forEach(function (picker) {
+      var note = picker.querySelector('[data-coordinar-note]');
+      if (!note) return;
+      var btn = note.querySelector('[data-coordinar-wa]');
+      picker.addEventListener('pewman:variant-change', function (e) {
+        var v = e.detail || {};
+        if (v.coordinar) {
+          if (btn) {
+            btn.setAttribute(
+              'href',
+              'https://api.whatsapp.com/send/?phone=' + note.dataset.waPhone +
+              '&text=' + encodeURIComponent(note.dataset.waTemplate.replace('[FORMATO]', v.title || ''))
+            );
+          }
+          note.hidden = false;
+        } else {
+          note.hidden = true;
+        }
+      });
+    });
+  })();
+</script>
+
 {% schema %}
 {
   "name": "Pewman · Ficha producto",
@@ -136,7 +217,14 @@
     { "type": "image_picker", "id": "product_logo", "label": "Logo del producto (wordmark)" },
     { "type": "text", "id": "tag_text", "label": "Etiqueta (tag)", "info": "Ej. Antiheladas / Antiestrés hídrico" },
     { "type": "textarea", "id": "lead_text", "label": "Texto lead (bajo el H1)" },
-    { "type": "color", "id": "product_accent_color", "label": "Color de acento del producto", "default": "#1499c7" }
+    { "type": "color", "id": "product_accent_color", "label": "Color de acento del producto", "default": "#1499c7" },
+    { "type": "header", "content": "Despacho a coordinar (formatos pesados)" },
+    { "type": "checkbox", "id": "coordinar_enabled", "label": "Mostrar aviso en formatos a coordinar", "default": true },
+    { "type": "text", "id": "coordinar_keyword", "label": "Texto que identifica el formato", "default": "20", "info": "El aviso aparece cuando el nombre del formato contiene este texto" },
+    { "type": "text", "id": "coordinar_title", "label": "Título del aviso", "default": "Despacho a coordinar para este formato" },
+    { "type": "textarea", "id": "coordinar_text", "label": "Texto del aviso", "default": "Blue Express no acepta envíos sobre 20 kg, por eso el despacho de este formato lo coordina directamente nuestro equipo especializado según tu zona." },
+    { "type": "text", "id": "coordinar_btn_label", "label": "Texto del botón de WhatsApp", "default": "Coordinar despacho por WhatsApp" },
+    { "type": "textarea", "id": "coordinar_wa_msg", "label": "Mensaje prellenado de WhatsApp", "default": "Hola, quiero comprar [PRODUCTO] en formato [FORMATO] y necesito coordinar el despacho a mi zona. ¿Me pueden ayudar?", "info": "Comodines: [PRODUCTO] y [FORMATO] se reemplazan solos" }
   ],
   "presets": [
     { "name": "Pewman · Ficha producto" }
