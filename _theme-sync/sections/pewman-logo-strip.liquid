@@ -1,0 +1,61 @@
+{%- style -%}
+  #PewmanLogoStrip-{{ section.id }} { background: #fff; padding: 48px 0; }
+  #PewmanLogoStrip-{{ section.id }} .pewman-logo-strip__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanLogoStrip-{{ section.id }} .pewman-logo-strip__label {
+    text-align: center; font-weight: 600; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--pewman-gris-tx); margin-bottom: 22px;
+  }
+  #PewmanLogoStrip-{{ section.id }} .pewman-logo-strip__track {
+    display: flex; gap: 40px; align-items: center; flex-wrap: nowrap; overflow-x: auto;
+    scroll-snap-type: x mandatory; scrollbar-width: none; padding: 10px 4px 20px;
+  }
+  #PewmanLogoStrip-{{ section.id }} .pewman-logo-strip__track::-webkit-scrollbar { display: none; }
+  #PewmanLogoStrip-{{ section.id }} .pewman-logo-strip__track img {
+    height: 66px; width: auto; max-width: 204px; object-fit: contain; filter: grayscale(1); opacity: .65;
+    transition: .2s; flex: 0 0 auto; scroll-snap-align: center;
+  }
+  #PewmanLogoStrip-{{ section.id }} .pewman-logo-strip__track img:hover { filter: grayscale(0); opacity: 1; }
+{%- endstyle -%}
+
+<div id="PewmanLogoStrip-{{ section.id }}">
+  <div class="pewman-logo-strip__wrap">
+    {%- if section.settings.label != blank -%}
+      <div class="pewman-logo-strip__label">{{ section.settings.label }}</div>
+    {%- endif -%}
+    <div class="pewman-logo-strip__track">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'logo' and block.settings.image -%}
+          <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.alt | escape }}" loading="lazy" {{ block.shopify_attributes }}>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Franja de logos",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Etiqueta", "default": "Empresas que confían en nosotros" }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Logo" },
+        { "type": "text", "id": "alt", "label": "Texto alternativo" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Empresas",
+      "blocks": [
+        { "type": "logo" }, { "type": "logo" }, { "type": "logo" }, { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

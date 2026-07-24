@@ -1,0 +1,75 @@
+{%- style -%}
+  #PewmanStats-{{ section.id }} {
+    background: {% if section.settings.dark_mode %}linear-gradient(160deg, var(--pewman-tinta), #2b2b2b){% else %}var(--pewman-crema){% endif %};
+    border-top: 1px solid var(--pewman-linea);
+    border-bottom: 1px solid var(--pewman-linea);
+    padding: 56px 0;
+  }
+  #PewmanStats-{{ section.id }} .pewman-stats__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanStats-{{ section.id }} .pewman-stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+  #PewmanStats-{{ section.id }} .pewman-stats__value {
+    font-size: clamp(34px, 4.5vw, 52px); font-weight: 800; line-height: 1; letter-spacing: -.03em;
+    color: {% if section.settings.dark_mode %}#fff{% else %}var(--pewman-tinta){% endif %};
+  }
+  #PewmanStats-{{ section.id }} .pewman-stats__label {
+    font-size: 14px; margin-top: 10px; max-width: 190px; margin-left: auto; margin-right: auto;
+    color: {% if section.settings.dark_mode %}#cfcfcf{% else %}var(--pewman-gris-tx){% endif %};
+  }
+  @media (max-width: 900px) { #PewmanStats-{{ section.id }} .pewman-stats__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { #PewmanStats-{{ section.id }} .pewman-stats__grid { grid-template-columns: 1fr; } }
+{%- endstyle -%}
+
+<div id="PewmanStats-{{ section.id }}">
+  <div class="pewman-stats__wrap">
+    <div class="pewman-stats__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'stat' -%}
+          <pewman-count-up-stat {{ block.shopify_attributes }}
+            {% if section.settings.animate %}data-to="{{ block.settings.value }}" data-prefix="{{ block.settings.prefix }}" data-suffix="{{ block.settings.suffix }}"{% endif %}
+          >
+            {%- if section.settings.animate -%}
+              <div class="pewman-stats__value" data-value>{{ block.settings.prefix }}0{{ block.settings.suffix }}</div>
+            {%- else -%}
+              <div class="pewman-stats__value">{{ block.settings.prefix }}{{ block.settings.value }}{{ block.settings.suffix }}</div>
+            {%- endif -%}
+            <div class="pewman-stats__label">{{ block.settings.label }}</div>
+          </pewman-count-up-stat>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Estadísticas",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "dark_mode", "label": "Fondo oscuro (franja institucional)", "default": false },
+    { "type": "checkbox", "id": "animate", "label": "Animar conteo al hacer scroll", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Estadística",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Valor numérico", "info": "Solo el número, ej. 2000" },
+        { "type": "text", "id": "prefix", "label": "Prefijo", "info": "Ej. +" },
+        { "type": "text", "id": "suffix", "label": "Sufijo", "info": "Ej. %" },
+        { "type": "text", "id": "label", "label": "Descripción" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Contador (home)",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "2000", "prefix": "+", "label": "hectáreas protegidas" } },
+        { "type": "stat", "settings": { "value": "40", "suffix": "%", "label": "de rentabilidad generada por hectárea" } },
+        { "type": "stat", "settings": { "value": "8", "prefix": "+", "label": "regiones del país con presencia" } },
+        { "type": "stat", "settings": { "value": "10", "prefix": "+", "label": "años de investigación y desarrollo propio" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,131 @@
+{%- style -%}
+  #PewmanCals-{{ section.id }} { padding: 40px 0; }
+  #PewmanCals-{{ section.id }} .pewman-cals__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanCals-{{ section.id }} .pewman-cals__trigger { display: block; width: 100%; border: 0; padding: 0; background: none; cursor: pointer; border-radius: 16px; transition: .2s; }
+  #PewmanCals-{{ section.id }} .pewman-cals__trigger:hover { transform: translateY(-2px); filter: brightness(1.03); }
+  #PewmanCals-{{ section.id }} .pewman-cals__trigger img { width: 100%; height: auto; border-radius: 16px; display: block; box-shadow: var(--pewman-sh); }
+  #PewmanCals-{{ section.id }} .pewman-cals__modal-h3 { font-size: 22px; color: var(--pewman-tinta); margin: 8px 0 8px; }
+  #PewmanCals-{{ section.id }} .pewman-cals__modal-p { font-size: 14px; color: var(--pewman-gris-tx); margin-bottom: 18px; }
+  #PewmanCals-{{ section.id }} .pewman-cals__form { display: flex; flex-direction: column; gap: 12px; }
+  #PewmanCals-{{ section.id }} .pewman-cals__form label { font-weight: 600; font-size: 13px; color: var(--pewman-tinta); }
+  #PewmanCals-{{ section.id }} .pewman-cals__form select,
+  #PewmanCals-{{ section.id }} .pewman-cals__form input {
+    width: 100%; border: 1.5px solid var(--pewman-linea); border-radius: 10px; padding: 12px 14px; font-size: 14.5px; color: var(--pewman-tinta); background: #fff;
+  }
+  #PewmanCals-{{ section.id }} .pewman-cals__form select:focus,
+  #PewmanCals-{{ section.id }} .pewman-cals__form input:focus { outline: none; border-color: var(--pewman-rojo); box-shadow: 0 0 0 3px rgba(189,0,40,.12); }
+  #PewmanCals-{{ section.id }} .pewman-cals__ff2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  #PewmanCals-{{ section.id }} .pewman-cals__branch { background: #f0eef0; border-radius: 10px; padding: 11px 14px; font-size: 13px; color: var(--pewman-tinta); }
+  #PewmanCals-{{ section.id }} .pewman-cals__branch[hidden] { display: none; }
+  #PewmanCals-{{ section.id }} .pewman-cals__success { text-align: center; padding: 10px 4px; }
+  #PewmanCals-{{ section.id }} .pewman-cals__success-icon {
+    width: 56px; height: 56px; border-radius: 50%; background: #009633; color: #fff; font-size: 28px;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+  }
+  @media (max-width: 520px) { #PewmanCals-{{ section.id }} .pewman-cals__ff2 { grid-template-columns: 1fr; } }
+{%- endstyle -%}
+
+{%- capture zones_json -%}
+[
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'zone' -%}
+      {"key": {{ block.id | json }}, "label": {{ block.settings.zone_label | json }}, "branch": {{ block.settings.branch_name | json }}, "url": {{ block.settings.distributor_url | json }}}{% unless forloop.last %},{% endunless %}
+    {%- endif -%}
+  {%- endfor -%}
+]
+{%- endcapture -%}
+
+<div id="PewmanCals-{{ section.id }}">
+  <div class="pewman-cals__wrap">
+    <button class="pewman-cals__trigger" type="button" data-modal-open="PewmanCalsModal-{{ section.id }}" aria-label="{{ section.settings.trigger_alt | default: 'Encuentra nuestros productos en CALS, nuestro distribuidor oficial' }}">
+      {%- if section.settings.banner_image -%}
+        <img src="{{ section.settings.banner_image | image_url: width: 1600 }}" alt="{{ section.settings.trigger_alt | escape }}" loading="lazy">
+      {%- endif -%}
+    </button>
+  </div>
+
+  <pewman-modal id="PewmanCalsModal-{{ section.id }}" class="pewman-cals-modal">
+    <div class="pewman-modal-overlay" hidden>
+      <div class="pewman-modal-box">
+        <button class="pewman-modal-close" type="button" data-modal-close aria-label="Cerrar">&times;</button>
+
+        {%- assign cals_form_id = 'PewmanCalsForm-' | append: section.id -%}
+        {%- form 'contact', id: cals_form_id -%}
+          <pewman-cals-banner data-zones="{{ zones_json | strip_newlines | strip | escape }}">
+            {%- if form.posted_successfully? -%}
+              <div class="pewman-cals__success">
+                <span data-open-modal-now hidden></span>
+                <div class="pewman-cals__success-icon">✓</div>
+                <h3 class="pewman-cals__modal-h3">¡Listo! Te contactaremos pronto</h3>
+                <p class="pewman-cals__modal-p" data-branch-text>Nuestro equipo técnico te escribirá para acompañarte en la aplicación.</p>
+                <input type="hidden" data-selected-zone value="{{ form.previous_input_values['contact[Zona]'] | escape }}">
+                <a class="pewman-btn pewman-btn--dark" data-cals-go href="https://cals.cl/" target="_blank" rel="noopener">Ir a CALS</a>
+              </div>
+            {%- else -%}
+              <span class="pewman-eyebrow">Distribuidor oficial</span>
+              <h3 class="pewman-cals__modal-h3">Conecta con tu distribuidor CALS</h3>
+              <p class="pewman-cals__modal-p">CALS es nuestro distribuidor oficial. Cuéntanos de tu campo: te derivamos a tu sucursal más cercana y nuestro equipo técnico te acompaña en la aplicación.</p>
+              <div class="pewman-cals__form">
+                <label for="CalsZona-{{ section.id }}">¿En qué zona está tu campo?</label>
+                <select id="CalsZona-{{ section.id }}" name="contact[Zona]" data-zone-select required>
+                  <option value="">Selecciona tu zona</option>
+                  {%- for block in section.blocks -%}
+                    {%- if block.type == 'zone' -%}
+                      <option value="{{ block.id }}">{{ block.settings.zone_label }}</option>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </select>
+                <div class="pewman-cals__branch" data-branch-box hidden>
+                  <b>Tu sucursal CALS más cercana:</b> <span data-branch-text></span>
+                </div>
+                <div class="pewman-cals__ff2">
+                  <input type="text" name="contact[name]" placeholder="Nombre" required>
+                  <input type="tel" name="contact[phone]" placeholder="Teléfono" required>
+                </div>
+                <div class="pewman-cals__ff2">
+                  <input type="text" name="contact[Cultivo]" placeholder="Cultivo (cerezos, uva...)">
+                  <input type="number" name="contact[Hectáreas]" placeholder="Hectáreas" min="0">
+                </div>
+                <button class="pewman-btn pewman-btn--dark" type="submit" style="justify-content:center;width:100%">Ver mi distribuidor + recibir asesoría</button>
+              </div>
+            {%- endif -%}
+          </pewman-cals-banner>
+        {%- endform -%}
+      </div>
+    </div>
+  </pewman-modal>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Banner CALS",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "banner_image", "label": "Imagen del banner" },
+    { "type": "text", "id": "trigger_alt", "label": "Texto alternativo", "default": "Encuentra nuestros productos en CALS, nuestro distribuidor oficial" }
+  ],
+  "blocks": [
+    {
+      "type": "zone",
+      "name": "Zona",
+      "settings": [
+        { "type": "text", "id": "zone_label", "label": "Nombre de la zona", "info": "Ej. Norte · Arica, Copiapó" },
+        { "type": "text", "id": "branch_name", "label": "Sucursal(es) CALS", "info": "Ej. Arica y Copiapó" },
+        { "type": "url", "id": "distributor_url", "label": "URL de CALS para esta zona" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Banner CALS",
+      "blocks": [
+        { "type": "zone", "settings": { "zone_label": "Norte · Arica, Copiapó", "branch_name": "Arica y Copiapó", "distributor_url": "https://cals.cl/norte/" } },
+        { "type": "zone", "settings": { "zone_label": "Centro Norte · La Serena, Ovalle, San Felipe, Limache", "branch_name": "La Serena, Ovalle, Hijuelas, San Felipe y Limache", "distributor_url": "https://cals.cl/centro-norte/" } },
+        { "type": "zone", "settings": { "zone_label": "Centro · Santiago, Talagante, Buin, Melipilla", "branch_name": "Santiago, Talagante, Buin y Melipilla", "distributor_url": "https://cals.cl/zona-centro/" } },
+        { "type": "zone", "settings": { "zone_label": "Centro Sur · Rancagua, Curicó, Talca, Linares", "branch_name": "Rancagua, San Fernando, San Vicente, Curicó, Talca y Linares", "distributor_url": "https://cals.cl/zona-centro-sur/" } },
+        { "type": "zone", "settings": { "zone_label": "Sur · Chillán, Temuco, Osorno, Frutillar", "branch_name": "Chillán, Los Ángeles, Temuco, Osorno y Frutillar", "distributor_url": "https://cals.cl/zona-sur/" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

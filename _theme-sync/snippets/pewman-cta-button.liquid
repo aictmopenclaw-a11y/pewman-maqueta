@@ -1,0 +1,17 @@
+{%- comment -%}
+  Botón/link CTA con la paleta de marca Pewman.
+  Params:
+    text (string, requerido)
+    url (string, requerido)
+    variant (string, opcional): 'dark' | 'light' | 'ghost' | 'wa' — default 'dark'
+    new_tab (bool, opcional)
+  Uso: {% render 'pewman-cta-button', text: 'Ver producto', url: product.url, variant: 'dark' %}
+{%- endcomment -%}
+{%- liquid
+  assign btn_variant = variant | default: 'dark'
+-%}
+<a
+  href="{{ url | default: '#' }}"
+  class="pewman-btn pewman-btn--{{ btn_variant }}"
+  {%- if new_tab %} target="_blank" rel="noopener"{% endif %}
+>{{ text }}</a>

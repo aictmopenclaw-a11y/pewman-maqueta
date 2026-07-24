@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Pewman — Contacto",
+    "settings": [
+      {
+        "type": "text",
+        "id": "pewman_whatsapp_phone",
+        "label": "Teléfono de WhatsApp",
+        "info": "Solo dígitos con código de país, sin +. Ej. 56990833908",
+        "default": "56990833908"
+      },
+      {
+        "type": "text",
+        "id": "pewman_company_address",
+        "label": "Dirección",
+        "default": "Badajoz 100, of. 708, Las Condes, Santiago"
+      },
+      {
+        "type": "url",
+        "id": "pewman_company_maps_url",
+        "label": "Link de Google Maps"
+      }
+    ]
+  }
+]

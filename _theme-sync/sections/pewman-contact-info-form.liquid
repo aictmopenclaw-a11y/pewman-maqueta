@@ -1,0 +1,77 @@
+{%- style -%}
+  #PewmanContactInfo-{{ section.id }} { background: #fff; padding: 78px 0; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: start; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__ic {
+    width: 46px; height: 46px; border-radius: 12px; background: var(--pewman-rojo); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: 19px; flex: none;
+  }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__row .t { font-weight: 600; color: var(--pewman-tinta); font-size: 15px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__row .d { font-size: 14.5px; color: var(--pewman-gris-tx); }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__row a { color: inherit; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form { background: #fff; border: 1px solid var(--pewman-linea); border-radius: 26px; padding: 30px; box-shadow: var(--pewman-sh); }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__field { margin-bottom: 16px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form label { display: block; font-weight: 600; font-size: 13px; color: var(--pewman-tinta); margin: 0 0 6px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form input,
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form textarea { width: 100%; border: 1.5px solid var(--pewman-linea); border-radius: 12px; padding: 13px 15px; font-size: 15px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form input:focus,
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form textarea:focus { outline: none; border-color: var(--pewman-rojo); box-shadow: 0 0 0 3px rgba(189,0,40,.15); }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form textarea { min-height: 120px; resize: vertical; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__ok { font-size: 13px; color: var(--pewman-rojo); margin-top: 8px; }
+  @media (max-width: 920px) { #PewmanContactInfo-{{ section.id }} .pewman-cif__grid { grid-template-columns: 1fr; gap: 34px; } }
+{%- endstyle -%}
+
+<div id="PewmanContactInfo-{{ section.id }}">
+  <div class="pewman-cif__wrap">
+    <div class="pewman-cif__grid">
+      <div class="pewman-cif__info">
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic">💬</div>
+          <div><div class="t">{% render 'pewman-whatsapp-link', text: 'WhatsApp' %}</div><div class="d">{% render 'pewman-whatsapp-link', text: settings.pewman_whatsapp_phone | default: '+56 9 9083 3908' %}</div></div>
+        </div>
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic">📍</div>
+          <div><div class="t">Dirección</div><div class="d"><a href="{{ settings.pewman_company_maps_url | default: 'https://www.google.com/maps/search/?api=1&query=Badajoz%20100%20Las%20Condes' }}" target="_blank" rel="noopener">{{ settings.pewman_company_address | default: 'Badajoz 100, oficina 708, Las Condes, Santiago' }}</a></div></div>
+        </div>
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic">🏢</div>
+          <div><div class="t">Empresa</div><div class="d">Pewman Innovation SPA</div></div>
+        </div>
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic">🔗</div>
+          <div><div class="t">Redes</div><div class="d">
+            <a href="https://www.instagram.com/pewmaninnovation" target="_blank" rel="noopener">Instagram</a> ·
+            <a href="https://www.facebook.com/pewmaninnovation" target="_blank" rel="noopener">Facebook</a> ·
+            <a href="https://www.linkedin.com/company/pewman-innovation" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener">YouTube</a>
+          </div></div>
+        </div>
+      </div>
+
+      {%- assign cif_form_id = 'PewmanContactInfoForm-' | append: section.id -%}
+      {%- form 'contact', id: cif_form_id, class: 'pewman-cif__form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="pewman-cif__ok">✓ ¡Gracias! Te responderemos a la brevedad.</div>
+        {%- else -%}
+          <div class="pewman-cif__field"><label>Nombre</label><input type="text" name="contact[name]" required></div>
+          <div class="pewman-cif__field"><label>Correo</label><input type="email" name="contact[email]" required></div>
+          <div class="pewman-cif__field"><label>Teléfono</label><input type="tel" name="contact[phone]"></div>
+          <div class="pewman-cif__field"><label>Cultivo y zona</label><input type="text" name="contact[Cultivo y zona]" placeholder="Ej: cerezos en el Valle de Curicó"></div>
+          <div class="pewman-cif__field"><label>Mensaje</label><textarea name="contact[body]" rows="5"></textarea></div>
+          <button class="pewman-btn pewman-btn--dark" type="submit">Enviar mensaje</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Contacto full",
+  "tag": "section",
+  "presets": [
+    { "name": "Pewman · Contacto full" }
+  ]
+}
+{% endschema %}

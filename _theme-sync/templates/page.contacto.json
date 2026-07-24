@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "current_label": "Contacto",
+        "heading": "Conversemos sobre tu cultivo",
+        "text": "Cuéntanos qué cultivas y en qué zona. Te ayudamos a elegir el producto y la dosis ideal para proteger tu cosecha.",
+        "tall": false
+      }
+    },
+    "pewman_info_form": {
+      "type": "pewman-contact-info-form"
+    },
+    "pewman_cta": {
+      "type": "pewman-cta-band",
+      "settings": {
+        "heading": "¿Prefieres conversar ahora?",
+        "text": "Escríbenos por WhatsApp y te atendemos directamente.",
+        "button_1_label": "Abrir WhatsApp",
+        "button_1_link": "https://api.whatsapp.com/send/?phone=56990833908"
+      }
+    }
+  },
+  "order": ["pewman_hero", "pewman_info_form", "pewman_cta"]
+}

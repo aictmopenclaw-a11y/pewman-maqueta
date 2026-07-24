@@ -1,0 +1,24 @@
+{%- style -%}
+  #PewmanRichText-{{ section.id }} { background: {% if section.settings.cream_bg %}var(--pewman-crema){% else %}#fff{% endif %}; padding: 78px 0; }
+  #PewmanRichText-{{ section.id }} .pewman-prose { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  #PewmanRichText-{{ section.id }} .pewman-prose p { font-size: 16.5px; color: var(--pewman-gris-tx); margin-bottom: 16px; }
+  #PewmanRichText-{{ section.id }} .pewman-prose h3 { font-size: 22px; color: var(--pewman-tinta); margin: 26px 0 10px; }
+{%- endstyle -%}
+
+<div id="PewmanRichText-{{ section.id }}">
+  <div class="pewman-prose">{{ section.settings.text }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Texto (prosa)",
+  "tag": "section",
+  "settings": [
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "checkbox", "id": "cream_bg", "label": "Fondo crema", "default": false }
+  ],
+  "presets": [
+    { "name": "Pewman · Texto (prosa)" }
+  ]
+}
+{% endschema %}

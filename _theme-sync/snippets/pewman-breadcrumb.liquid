@@ -1,0 +1,23 @@
+{%- comment -%}
+  Breadcrumb usado en PDP, Casos, Empresa, Contacto, Patentes y papers, Prensa.
+  Soporta hasta 2 niveles padre + el actual (cubre todos los casos de la maqueta,
+  ej. "Inicio / Productos / Crioprotect" o simplemente "Inicio / Contacto").
+  Params:
+    parent_1_label / parent_1_url (opcional)
+    parent_2_label / parent_2_url (opcional, requiere parent_1)
+    current_label (requerido, se renderiza sin link)
+  Uso: {% render 'pewman-breadcrumb', parent_1_label: 'Inicio', parent_1_url: routes.root_url, current_label: product.title %}
+{%- endcomment -%}
+<div class="pewman-breadcrumb">
+  {%- if parent_1_label != blank -%}
+    <a href="{{ parent_1_url | default: routes.root_url }}">{{ parent_1_label }}</a><span aria-hidden="true"> / </span>
+  {%- endif -%}
+  {%- if parent_2_label != blank -%}
+    {%- if parent_2_url != blank -%}
+      <a href="{{ parent_2_url }}">{{ parent_2_label }}</a><span aria-hidden="true"> / </span>
+    {%- else -%}
+      <span>{{ parent_2_label }}</span><span aria-hidden="true"> / </span>
+    {%- endif -%}
+  {%- endif -%}
+  <span>{{ current_label }}</span>
+</div>

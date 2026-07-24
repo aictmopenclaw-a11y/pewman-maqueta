@@ -1,0 +1,21 @@
+{%- comment -%}
+  Patrón repetido ~20 veces en la maqueta: eyebrow + h2 + texto, centrado.
+  Params:
+    eyebrow (string, opcional)
+    heading (string, requerido)
+    subtext (string, opcional, admite HTML/richtext ya renderizado)
+    heading_tag (string, opcional): 'h1' | 'h2' | 'h3' — default 'h2'
+  Uso: {% render 'pewman-section-heading', eyebrow: 'Productos', heading: 'Nuestras soluciones' %}
+{%- endcomment -%}
+{%- liquid
+  assign tag = heading_tag | default: 'h2'
+-%}
+<div class="pewman-section-heading">
+  {%- if eyebrow != blank -%}
+    <span class="pewman-eyebrow">{{ eyebrow }}</span>
+  {%- endif -%}
+  <{{ tag }} class="pewman-section-heading__title">{{ heading }}</{{ tag }}>
+  {%- if subtext != blank -%}
+    <div class="pewman-section-heading__subtext">{{ subtext }}</div>
+  {%- endif -%}
+</div>

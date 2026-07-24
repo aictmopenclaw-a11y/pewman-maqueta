@@ -1,0 +1,48 @@
+{%- style -%}
+  #PewmanTrustMap-{{ section.id }} { background: #fff; overflow: hidden; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__tx {
+    display: flex; flex-direction: column; justify-content: center; padding: 70px 56px;
+  }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__tx h2 { font-size: clamp(25px, 3.2vw, 36px); color: var(--pewman-tinta); margin-bottom: 18px; max-width: 420px; line-height: 1.15; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__tx p { font-size: 15.5px; color: var(--pewman-gris-tx); max-width: 480px; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__map { background: #f0eeef; display: flex; align-items: center; justify-content: center; padding: 46px 56px; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__map img { max-width: 600px; width: 100%; height: auto; display: block; }
+  @media (max-width: 820px) {
+    #PewmanTrustMap-{{ section.id }} .pewman-trust-map__grid { grid-template-columns: 1fr; }
+    #PewmanTrustMap-{{ section.id }} .pewman-trust-map__tx { padding: 44px 24px 28px; }
+    #PewmanTrustMap-{{ section.id }} .pewman-trust-map__map { padding: 24px 24px 44px; }
+  }
+{%- endstyle -%}
+
+<section id="PewmanTrustMap-{{ section.id }}" aria-label="Confianza">
+  <div class="pewman-trust-map__grid">
+    <div class="pewman-trust-map__tx">
+      <h2>{{ section.settings.heading }}</h2>
+      <div>{{ section.settings.text }}</div>
+    </div>
+    <div class="pewman-trust-map__map">
+      {%- if section.settings.map_image -%}
+        <img src="{{ section.settings.map_image | image_url: width: 1200 }}" alt="{{ section.settings.map_image.alt | escape }}" loading="lazy">
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pewman · Confianza + mapa",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "La confianza es nuestra tecnología más importante." },
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "image_picker", "id": "map_image", "label": "Imagen de mapa" }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Confianza + mapa",
+      "settings": { "text": "<p>La ciencia nos permite desarrollar soluciones innovadoras; la confianza, convertirlas en impacto. Por eso trabajamos con rigor científico, validación en campo y relaciones de largo plazo con agricultores, distribuidores e instituciones a nivel global.</p>" }
+    }
+  ]
+}
+{% endschema %}

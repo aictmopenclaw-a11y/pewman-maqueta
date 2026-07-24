@@ -1,0 +1,37 @@
+{%- comment -%}
+  Block anidado: categoría de ensayos documentados (Casos de éxito).
+  Acepta blocks hijo de tipo "pewman-trial-card". El conteo ("N ensayos") se
+  calcula solo desde block.blocks.size — nunca se desincroniza al agregar/quitar tarjetas.
+{%- endcomment -%}
+<div class="pewman-trials__category">
+  <div class="pewman-trials__cat-head">
+    <h3>{{ block.settings.category_title }}</h3>
+    <span class="pewman-trials__cat-line"></span>
+    <span class="pewman-trials__cat-count">{{ block.blocks.size }} ensayo{% if block.blocks.size != 1 %}s{% endif %}</span>
+  </div>
+  <div class="pewman-trials__grid">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Categoría de ensayos",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "category_title", "label": "Nombre de la categoría", "info": "Ej. Frutales, Hortalizas y cultivos anuales, Otros" }
+  ],
+  "blocks": [
+    { "type": "pewman-trial-card" }
+  ],
+  "presets": [
+    {
+      "name": "Categoría de ensayos",
+      "settings": { "category_title": "Frutales" },
+      "blocks": [
+        { "type": "pewman-trial-card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

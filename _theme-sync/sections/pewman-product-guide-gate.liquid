@@ -1,0 +1,144 @@
+{%- style -%}
+  #PewmanGuideGate-{{ section.id }} {
+    background: var(--pewman-crema); padding: 78px 0;
+    --pewman-prod: {{ section.settings.product_accent_color | default: '#1499c7' }};
+  }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__head { text-align: center; max-width: 680px; margin: 0 auto 44px; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__head .pewman-eyebrow { color: var(--pewman-prod); }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__head h2 { font-size: clamp(27px, 3.6vw, 40px); color: var(--pewman-tinta); margin-top: 12px; }
+
+  #PewmanGuideGate-{{ section.id }} .guia2 { display: grid; grid-template-columns: .85fr 1.15fr; gap: 32px; align-items: stretch; }
+  #PewmanGuideGate-{{ section.id }} .guia2-media {
+    position: relative; border-radius: 20px; overflow: hidden; min-height: 430px;
+    display: flex; align-items: center; justify-content: center; padding: 30px;
+    background: {% if section.settings.cover_bg %}url('{{ section.settings.cover_bg | image_url: width: 900 }}') center/cover{% else %}#2b2b2b{% endif %};
+  }
+  #PewmanGuideGate-{{ section.id }} .guia2-media::before { content: ""; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(0,0,0,.42), rgba(0,0,0,.62)); }
+  #PewmanGuideGate-{{ section.id }} .gcover {
+    position: relative; z-index: 1; background: #fff; border-radius: 14px; padding: 26px 24px 20px;
+    text-align: center; box-shadow: 0 26px 54px -20px rgba(0,0,0,.55); max-width: 272px;
+  }
+  #PewmanGuideGate-{{ section.id }} .gcover-prod { height: 158px; width: auto; margin: 0 auto 12px; display: block; filter: drop-shadow(0 14px 20px rgba(0,0,0,.20)); }
+  #PewmanGuideGate-{{ section.id }} .gcover-t { font-weight: 800; font-size: 22px; color: var(--pewman-prod); line-height: 1.1; }
+  #PewmanGuideGate-{{ section.id }} .gcover-s { font-size: 13.5px; color: #5a5a5a; margin-top: 4px; }
+  #PewmanGuideGate-{{ section.id }} .gcover-brands { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee; }
+  #PewmanGuideGate-{{ section.id }} .gcover-brands img { height: 26px; width: auto; object-fit: contain; }
+
+  #PewmanGuideGate-{{ section.id }} .guia2-form { background: #fff; border: 1px solid var(--pewman-linea); border-radius: 20px; padding: 32px; box-shadow: var(--pewman-sh); }
+  #PewmanGuideGate-{{ section.id }} .gf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  #PewmanGuideGate-{{ section.id }} .guia2-form label { display: block; font-weight: 600; font-size: 12.5px; color: #3d3d3d; margin: 0 0 5px; }
+  #PewmanGuideGate-{{ section.id }} .guia2-form input,
+  #PewmanGuideGate-{{ section.id }} .guia2-form select,
+  #PewmanGuideGate-{{ section.id }} .guia2-form textarea {
+    width: 100%; border: 1.5px solid var(--pewman-linea); border-radius: 10px; padding: 11px 13px; font-size: 14.5px; background: #fff; color: var(--pewman-tinta);
+  }
+  #PewmanGuideGate-{{ section.id }} .guia2-form input:focus,
+  #PewmanGuideGate-{{ section.id }} .guia2-form select:focus,
+  #PewmanGuideGate-{{ section.id }} .guia2-form textarea:focus {
+    outline: none; border-color: var(--pewman-prod); box-shadow: 0 0 0 3px color-mix(in srgb, var(--pewman-prod) 22%, transparent);
+  }
+  #PewmanGuideGate-{{ section.id }} .guia2-form textarea { min-height: 92px; resize: vertical; margin-bottom: 14px; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__submit {
+    font-weight: 600; font-size: 15px; padding: 13px 30px; border-radius: 100px; border: none; cursor: pointer;
+    background: var(--pewman-prod); color: #fff; transition: .2s;
+  }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__submit:hover { filter: brightness(.94); transform: translateY(-2px); }
+
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__success { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__success-icon {
+    width: 56px; height: 56px; border-radius: 50%; background: #009633; color: #fff; font-size: 26px;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+  }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__success h3 { font-weight: 800; font-size: 22px; color: var(--pewman-tinta); margin: 6px 0 8px; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__success p { color: #5a5a5a; margin: 0 0 20px; max-width: 420px; }
+
+  @media (max-width: 820px) {
+    #PewmanGuideGate-{{ section.id }} .guia2 { grid-template-columns: 1fr; }
+    #PewmanGuideGate-{{ section.id }} .gf-grid { grid-template-columns: 1fr; }
+    #PewmanGuideGate-{{ section.id }} .guia2-media { min-height: 300px; }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign guide_pdf = product.metafields.custom.application_guide_pdf.value.url
+  assign guide_form_id = 'PewmanGuideForm-' | append: section.id
+-%}
+<div id="PewmanGuideGate-{{ section.id }}">
+  <div class="pewman-guide__wrap">
+    <div class="pewman-guide__head">
+      <span class="pewman-eyebrow">Conoce en profundidad {{ product.title }}</span>
+      <h2>Descarga la guía de aplicación</h2>
+    </div>
+
+    <div class="guia2">
+      <div class="guia2-media">
+        <div class="gcover">
+          {%- if product.featured_image -%}
+            <img class="gcover-prod" src="{{ product.featured_image | image_url: width: 400 }}" alt="Guía de aplicación {{ product.title | escape }}">
+          {%- endif -%}
+          <div class="gcover-t">Guía de aplicación</div>
+          <div class="gcover-s">y preguntas frecuentes</div>
+          {%- if section.settings.brand_logo_pewman or section.settings.brand_logo_cals -%}
+            <div class="gcover-brands">
+              {%- if section.settings.brand_logo_pewman -%}<img src="{{ section.settings.brand_logo_pewman | image_url: width: 220 }}" alt="Pewman Innovation">{%- endif -%}
+              {%- if section.settings.brand_logo_cals -%}<img src="{{ section.settings.brand_logo_cals | image_url: width: 220 }}" alt="CALS">{%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- form 'contact', id: guide_form_id -%}
+        {%- if form.posted_successfully? -%}
+          <div class="guia2-form pewman-guide__success">
+            <div class="pewman-guide__success-icon">✓</div>
+            <h3>¡Listo! Aquí está tu guía</h3>
+            <p>Te enviamos una copia a tu correo. También puedes descargarla directamente:</p>
+            {%- if guide_pdf -%}
+              {% render 'pewman-cta-button', text: '⬇ Descargar guía de aplicación (PDF)', url: guide_pdf, variant: 'dark', new_tab: true %}
+            {%- else -%}
+              <p><em>PDF pendiente de subir en product.metafields.custom.application_guide_pdf.</em></p>
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          <div class="guia2-form">
+            <input type="hidden" name="contact[Guía solicitada]" value="{{ product.title }}">
+            <div class="gf-grid">
+              <div><label>Nombre</label><input type="text" name="contact[name]" placeholder="Nombre" required></div>
+              <div><label>Correo electrónico</label><input type="email" name="contact[email]" placeholder="Correo electrónico" required></div>
+              <div><label>Teléfono</label><input type="tel" name="contact[phone]" placeholder="Teléfono"></div>
+              <div><label>Tipo de cultivo</label><input type="text" name="contact[Tipo de cultivo]" placeholder="Cerezos, uva, papas..."></div>
+              <div><label>Hectáreas</label><input type="number" min="0" name="contact[Hectáreas]" placeholder="Ej. 25"></div>
+              <div>
+                <label>Producto de interés</label>
+                <select name="contact[Producto de interés]">
+                  <option{% if product.title == 'Crioprotect' %} selected{% endif %}>Crioprotect</option>
+                  <option{% if product.title == 'Nanoforte' %} selected{% endif %}>Nanoforte</option>
+                </select>
+              </div>
+            </div>
+            <label>Mensaje</label>
+            <textarea name="contact[body]" placeholder="Cuéntanos sobre tu cultivo"></textarea>
+            <button class="pewman-guide__submit" type="submit">Enviar y descargar guía</button>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Guía gated",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "cover_bg", "label": "Fondo de la portada" },
+    { "type": "image_picker", "id": "brand_logo_pewman", "label": "Logo Pewman (co-marca)" },
+    { "type": "image_picker", "id": "brand_logo_cals", "label": "Logo CALS (co-marca)" },
+    { "type": "color", "id": "product_accent_color", "label": "Color de acento del producto", "default": "#1499c7" }
+  ],
+  "presets": [
+    { "name": "Pewman · Guía gated" }
+  ]
+}
+{% endschema %}

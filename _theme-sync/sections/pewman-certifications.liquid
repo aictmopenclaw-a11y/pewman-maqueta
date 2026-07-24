@@ -1,0 +1,58 @@
+{%- style -%}
+  #PewmanCerts-{{ section.id }} { background: #fff; padding: 58px 0; }
+  #PewmanCerts-{{ section.id }} .pewman-certs__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanCerts-{{ section.id }} .pewman-certs__label { text-align: center; font-weight: 700; font-size: clamp(18px, 2.4vw, 26px); color: var(--pewman-tinta); margin-bottom: 28px; }
+  #PewmanCerts-{{ section.id }} .pewman-certs__row { display: flex; gap: 52px; justify-content: center; align-items: center; flex-wrap: wrap; }
+  #PewmanCerts-{{ section.id }} .pewman-certs__row img { height: 98px; width: auto; object-fit: contain; }
+{%- endstyle -%}
+
+{%- liquid
+  assign certs = product.metafields.custom.certifications.value
+-%}
+<div id="PewmanCerts-{{ section.id }}">
+  <div class="pewman-certs__wrap">
+    <p class="pewman-certs__label">{{ section.settings.heading | default: 'Solución 100% Orgánica y certificada' }}</p>
+    <div class="pewman-certs__row">
+      {%- if certs.size > 0 -%}
+        {%- for cert in certs -%}
+          {%- if cert.logo.value -%}<img src="{{ cert.logo.value | image_url: width: 300 }}" alt="{{ cert.name.value | escape }}">{%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'fallback_cert' and block.settings.logo -%}
+            <img src="{{ block.settings.logo | image_url: width: 300 }}" alt="{{ block.settings.name | escape }}">
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Certificaciones",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Solución 100% Orgánica y certificada" }
+  ],
+  "blocks": [
+    {
+      "type": "fallback_cert",
+      "name": "Certificación (respaldo)",
+      "settings": [
+        { "type": "image_picker", "id": "logo", "label": "Logo" },
+        { "type": "text", "id": "name", "label": "Nombre" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Certificaciones",
+      "blocks": [
+        { "type": "fallback_cert", "settings": { "name": "SAG" } },
+        { "type": "fallback_cert", "settings": { "name": "Ecocert" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

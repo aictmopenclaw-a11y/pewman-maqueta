@@ -1,0 +1,15 @@
+{%- comment -%}Chip hijo de pewman-timeline-item (ej. "América Latina", "Europa", "Norteamérica").{%- endcomment -%}
+<span class="pewman-chip" {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
+
+{% schema %}
+{
+  "name": "Chip",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "label", "label": "Texto" }
+  ],
+  "presets": [
+    { "name": "Chip", "settings": { "label": "Chip" } }
+  ]
+}
+{% endschema %}
