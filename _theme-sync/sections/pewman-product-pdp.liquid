@@ -50,6 +50,7 @@
   #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-tx p { margin: 0 0 12px; color: var(--pewman-gris-tx); font-size: 13.5px; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-btn { display: inline-block; font-weight: 600; font-size: 13.5px; padding: 10px 20px; border-radius: 100px; text-decoration: none; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn[hidden] { display: none; }
+  #PewmanPdp-{{ section.id }} [data-cotizar-wa][hidden] { display: none; }
   @media (max-width: 600px) { #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar { padding: 15px; gap: 12px; } #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-ic { width: 38px; height: 38px; } }
   #PewmanPdp-{{ section.id }} .pewman-pdp__buy { display: flex; align-items: center; gap: 12px 16px; margin-top: 22px; flex-wrap: wrap; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__price { font-weight: 800; font-size: clamp(28px, 3.2vw, 34px); color: var(--pewman-tinta); flex-basis: 100%; margin-bottom: 4px; }
@@ -181,7 +182,9 @@
                 {% unless current_variant.available %}disabled{% endunless %}
                 {% if show_coordinar_now %}hidden{% endif %}
               >{% if current_variant.available %}Añadir al carrito{% else %}Agotado{% endif %}</button>
-              {% render 'pewman-whatsapp-link', text: 'Cotizar por WhatsApp', prefill: 'Hola, quiero cotizar ' | append: product.title, class: 'pewman-btn pewman-btn--wa' %}
+              <span data-cotizar-wa {% if show_coordinar_now %}hidden{% endif %}>
+                {%- render 'pewman-whatsapp-link', text: 'Cotizar por WhatsApp', prefill: 'Hola, quiero cotizar ' | append: product.title, class: 'pewman-btn pewman-btn--wa' -%}
+              </span>
             </div>
 
             {% render 'pewman-cta-button', text: 'Conoce todo sobre ' | append: product.title, url: '#pewman-mecanismo', variant: 'ghost' %}
@@ -205,6 +208,7 @@
       if (!note) return;
       var btn = note.querySelector('[data-coordinar-wa]');
       var addBtn = picker.querySelector('[data-add-to-cart]');
+      var cotizarWa = picker.querySelector('[data-cotizar-wa]');
       picker.addEventListener('pewman:variant-change', function (e) {
         var v = e.detail || {};
         if (v.coordinar) {
@@ -217,9 +221,11 @@
           }
           note.hidden = false;
           if (addBtn) addBtn.hidden = true;
+          if (cotizarWa) cotizarWa.hidden = true;
         } else {
           note.hidden = true;
           if (addBtn) addBtn.hidden = false;
+          if (cotizarWa) cotizarWa.hidden = false;
         }
       });
     });
