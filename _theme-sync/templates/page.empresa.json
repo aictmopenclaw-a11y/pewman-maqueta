@@ -138,6 +138,33 @@
         "f2"
       ]
     },
+    "pewman_sostenibilidad": {
+      "type": "pewman-sustainability",
+      "settings": {
+        "eyebrow": "Compromiso",
+        "heading": "Sostenibilidad",
+        "subtext": "Biotecnología 100% orgánica para una agricultura limpia, circular y regenerativa, alineada con los Objetivos de Desarrollo Sostenible.",
+        "banner_heading": "Agricultura limpia, circular y regenerativa",
+        "banner_text": "Soluciones biológicas que fortalecen la resiliencia del campo frente al cambio climático, sin comprometer el medio ambiente.",
+        "policy": "<p>La política de sostenibilidad de Pewman Innovation se fundamenta en el desarrollo de <strong>soluciones biotecnológicas 100% orgánicas, biodegradables y residuo cero</strong>, concebidas para fortalecer la resiliencia agrícola frente al cambio climático sin comprometer el medio ambiente. A través del aprovechamiento sustentable de <strong>microorganismos extremófilos de la Antártica y del Desierto de Atacama</strong>, la empresa reduce la huella de carbono al reemplazar métodos intensivos en combustibles (calefactores a gas, tractores y helicópteros) por bioinsumos de aplicación foliar o radicular. Su enfoque integra la <strong>optimización del agua (hasta −40% de riego)</strong>, la <strong>regeneración de suelos vivos</strong> y la <strong>captura de carbono</strong>.</p>",
+        "cert_label": "Certificaciones",
+        "cert_logo_1": "shopify://shop_images/pewman-logo-sag-organico.png",
+        "cert_logo_2": "shopify://shop_images/pewman-logo-ecocert-insumos.png",
+        "docs_eyebrow": "Transparencia",
+        "docs_heading": "Documentos y reportes"
+      },
+      "blocks": {
+        "p1": { "type": "pillar", "settings": { "icon": "leaf", "title": "100% orgánico y residuo cero", "text": "Bioinsumos biodegradables, sin residuos ni contaminantes en el cultivo ni en el suelo." } },
+        "p2": { "type": "pillar", "settings": { "icon": "water", "figure": "−40%", "title": "Menos agua de riego", "text": "Optimización de recursos hídricos: reduce la necesidad de riego hasta en un 40%." } },
+        "p3": { "type": "pillar", "settings": { "icon": "carbon", "title": "Menor huella de carbono", "text": "Reemplaza calefactores a gas, tractores y helicópteros por aplicación foliar o radicular." } },
+        "p4": { "type": "pillar", "settings": { "icon": "soil", "title": "Suelos vivos y captura de carbono", "text": "Regenera el suelo fomentando la actividad microbiana y la captura de carbono." } },
+        "p5": { "type": "pillar", "settings": { "icon": "microbe", "title": "Microorganismos extremófilos", "text": "Provenientes de la Antártica y el Desierto de Atacama, aprovechados de forma sustentable." } },
+        "p6": { "type": "pillar", "settings": { "icon": "certified", "title": "Certificada y alineada con los ODS", "text": "Agricultura limpia y circular, con certificaciones orgánicas internacionales." } },
+        "d1": { "type": "doc", "settings": { "title": "Reporte de validación", "url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/pewman-reporte-validacion-2025.pdf?v=1784922538", "meta": "PDF · 26 págs" } },
+        "d2": { "type": "doc", "settings": { "title": "Huella de carbono (CO₂)", "url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/pewman-huella-carbono-co2-2025.pdf?v=1784922538", "meta": "PDF · 19 págs" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6", "d1", "d2"]
+    },
     "pewman_equipo": {
       "type": "pewman-team-grid",
       "settings": {
@@ -427,6 +454,7 @@
     "pewman_intro",
     "pewman_timeline",
     "pewman_proposito",
+    "pewman_sostenibilidad",
     "pewman_equipo",
     "pewman_premios",
     "pewman_patentes"

@@ -2,8 +2,12 @@
   #PewmanCerts-{{ section.id }} { background: #fff; padding: 58px 0; }
   #PewmanCerts-{{ section.id }} .pewman-certs__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   #PewmanCerts-{{ section.id }} .pewman-certs__label { text-align: center; font-weight: 700; font-size: clamp(18px, 2.4vw, 26px); color: var(--pewman-tinta); margin-bottom: 28px; }
-  #PewmanCerts-{{ section.id }} .pewman-certs__row { display: flex; gap: 52px; justify-content: center; align-items: center; flex-wrap: wrap; }
-  #PewmanCerts-{{ section.id }} .pewman-certs__row img { height: 98px; width: auto; object-fit: contain; }
+  #PewmanCerts-{{ section.id }} .pewman-certs__row { display: flex; gap: 64px; justify-content: center; align-items: center; flex-wrap: wrap; }
+  #PewmanCerts-{{ section.id }} .pewman-certs__row img { height: 150px; width: auto; object-fit: contain; }
+  @media (max-width: 700px) {
+    #PewmanCerts-{{ section.id }} .pewman-certs__row { gap: 36px; }
+    #PewmanCerts-{{ section.id }} .pewman-certs__row img { height: 96px; }
+  }
 {%- endstyle -%}
 
 {%- liquid
