@@ -52,7 +52,7 @@
           <div class="pewman-mech__card">
             <div class="pewman-mech__num">{{ forloop.index }}</div>
             <h3>{{ step.title.value }}</h3>
-            <p>{{ step.description.value }}</p>
+            <div class="pewman-mech__card-desc">{{ step.description | metafield_tag }}</div>
           </div>
         {%- endfor -%}
       {%- else -%}
