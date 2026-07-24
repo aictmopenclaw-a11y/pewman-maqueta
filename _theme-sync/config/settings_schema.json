@@ -2131,7 +2131,7 @@
         "type": "text",
         "id": "pewman_company_address",
         "label": "Dirección",
-        "default": "Badajoz 100, of. 708, Las Condes, Santiago"
+        "default": "Badajoz 100, of. 726, Las Condes, Santiago"
       },
       {
         "type": "url",
