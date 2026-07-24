@@ -70,10 +70,11 @@
         {%- endif -%}
         {%- if section.settings.address != blank -%}
           {%- if section.settings.maps_url != blank -%}
-            <a href="{{ section.settings.maps_url }}" target="_blank" rel="noopener">{{ section.settings.address }}</a>
+            {%- assign ft_maps_url = section.settings.maps_url -%}
           {%- else -%}
-            <a href="#">{{ section.settings.address }}</a>
+            {%- assign ft_maps_url = section.settings.address | url_param_escape | prepend: 'https://www.google.com/maps/search/?api=1&query=' -%}
           {%- endif -%}
+          <a href="{{ ft_maps_url }}" target="_blank" rel="noopener">{{ section.settings.address }}</a>
         {%- endif -%}
       </div>
     </div>
