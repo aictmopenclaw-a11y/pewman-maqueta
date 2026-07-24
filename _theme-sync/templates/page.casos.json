@@ -281,7 +281,8 @@
                 "description": "Nanoforte ante estrés abiótico en tomate industrial, junto a Sugal Group.",
                 "has_report": true,
                 "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-tomates-sugal-2023.pdf?v=1784648309",
-                "report_title": "Tomate industrial · Sugal (Quinta de Tilcoco)"
+                "report_title": "Tomate industrial · Sugal (Quinta de Tilcoco)",
+                "image": "shopify://shop_images/caso-ens-nano-tomate-sugal-tilcoco.jpg"
               }
             },
             "n2": {
@@ -292,18 +293,8 @@
                 "description": "Nanoforte para reducir el estrés abiótico y mejorar rendimiento de tomates bajo invernadero.",
                 "has_report": true,
                 "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-tomates-olmue-2024.pdf?v=1784648309",
-                "report_title": "Tomates · Olmué (2024)"
-              }
-            },
-            "n3": {
-              "type": "pewman-trial-card",
-              "settings": {
-                "crop_name": "Tomates",
-                "location_meta": "Ontario, Canadá",
-                "description": "Nanoforte para reducir el estrés abiótico en tomates bajo invernadero, Ontario (Canadá).",
-                "has_report": true,
-                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-tomates-canada-2024.pdf?v=1784648309",
-                "report_title": "Tomates · Ontario, Canadá (2024)"
+                "report_title": "Tomates · Olmué (2024)",
+                "image": "shopify://shop_images/caso-ens-nano-tomates-olmue.jpg"
               }
             },
             "n4": {
@@ -314,18 +305,8 @@
                 "description": "Pruebas de campo de Nanoforte en maíz en Rengo, en colaboración con Pioneer.",
                 "has_report": true,
                 "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-maiz-rengo.pdf?v=1784648309",
-                "report_title": "Maíz · Rengo (con Pioneer)"
-              }
-            },
-            "n5": {
-              "type": "pewman-trial-card",
-              "settings": {
-                "crop_name": "Maíz",
-                "location_meta": "San Vicente de Tagua Tagua · con Pioneer",
-                "description": "Pruebas de Nanoforte en maíz en San Vicente de Tagua Tagua, junto a Pioneer.",
-                "has_report": true,
-                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-maiz-san-vicente-2021.pdf?v=1784648309",
-                "report_title": "Maíz · San Vicente de Tagua Tagua (con Pioneer)"
+                "report_title": "Maíz · Rengo (con Pioneer)",
+                "image": "shopify://shop_images/caso-ens-nano-maiz-rengo.jpg"
               }
             },
             "n6": {
@@ -336,7 +317,8 @@
                 "description": "Bioestimulación con Nanoforte en cerezos de la zona de Gorbea.",
                 "has_report": true,
                 "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-cerezos-gorbea-2022.pdf?v=1784648309",
-                "report_title": "Cerezos · Gorbea, Temuco"
+                "report_title": "Cerezos · Gorbea, Temuco",
+                "image": "shopify://shop_images/caso-ens-nano-cerezos-gorbea.jpg"
               }
             },
             "n7": {
@@ -358,7 +340,8 @@
                 "description": "Biofortificación con Nanoforte en paltos de Quillota, evaluado por el CER.",
                 "has_report": true,
                 "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-paltos-centro-cer-quillota-2022.pdf?v=1784648309",
-                "report_title": "Paltos · Quillota (CER)"
+                "report_title": "Paltos · Quillota (CER)",
+                "image": "shopify://shop_images/caso-ens-nano-paltos-quillota.jpg"
               }
             },
             "n9": {
@@ -369,29 +352,8 @@
                 "description": "Nanoforte ante estrés abiótico en cultivos de papa, Isla de Maipo.",
                 "has_report": true,
                 "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-papas-qta-tilcoco-2022.pdf?v=1784648309",
-                "report_title": "Papas · Isla de Maipo"
-              }
-            },
-            "n10": {
-              "type": "pewman-trial-card",
-              "settings": {
-                "crop_name": "Uva de mesa",
-                "location_meta": "Autumn Crisp · Ica, Perú",
-                "description": "Efecto de Nanoforte en rendimiento y calidad de uva de mesa Autumn Crisp, Ica (Perú).",
-                "has_report": true,
-                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-uva-de-mesa-peru.pdf?v=1784648309",
-                "report_title": "Uva de mesa Autumn Crisp · Ica, Perú"
-              }
-            },
-            "n11": {
-              "type": "pewman-trial-card",
-              "settings": {
-                "crop_name": "Soja",
-                "location_meta": "Ontario, Canadá",
-                "description": "Evaluación de Nanoforte en rendimiento y calidad de soja bajo condiciones de campo, Ontario (Canadá).",
-                "has_report": true,
-                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-soja-peru.pdf?v=1784648309",
-                "report_title": "Soja · Ontario, Canadá"
+                "report_title": "Papas · Isla de Maipo",
+                "image": "shopify://shop_images/caso-ens-nano-papas-isla-maipo.jpg"
               }
             },
             "n12": {
@@ -402,22 +364,19 @@
                 "description": "Nanoforte antiestrés hídrico en cultivos de huerto, junto al vivero Pueblito de Liray.",
                 "has_report": true,
                 "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-vivero.pdf?v=1784648309",
-                "report_title": "Vivero · Colina (Pueblito de Liray)"
+                "report_title": "Vivero · Colina (Pueblito de Liray)",
+                "image": "shopify://shop_images/caso-ens-nano-vivero-colina.jpg"
               }
             }
           },
           "block_order": [
             "n1",
             "n2",
-            "n3",
             "n4",
-            "n5",
             "n6",
             "n7",
             "n8",
             "n9",
-            "n10",
-            "n11",
             "n12"
           ]
         }
