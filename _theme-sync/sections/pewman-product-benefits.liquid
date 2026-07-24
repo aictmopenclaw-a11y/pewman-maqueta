@@ -21,7 +21,7 @@
             {%- if benefit.icon.value -%}
               <span class="pewman-benefits__icon"><img src="{{ benefit.icon.value | image_url: width: 120 }}" alt=""></span>
             {%- endif -%}
-            <p>{{ benefit.description.value }}</p>
+            <div class="pewman-benefits__desc">{{ benefit.description | metafield_tag }}</div>
           </div>
         {%- endfor -%}
       {%- else -%}
