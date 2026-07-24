@@ -33,10 +33,12 @@
   #PewmanPdp-{{ section.id }} .pewman-pdp__format-sz { font-weight: 700; font-size: 16px; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__format-pr { font-size: 13px; margin-top: 3px; opacity: .85; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar {
-    display: flex; gap: 15px; align-items: flex-start; margin: 14px 0 4px; padding: 18px;
+    display: flex; gap: 15px; align-items: flex-start; margin: 18px 0 6px; padding: 18px;
     background: #fff; border: 1.5px solid var(--pewman-linea); border-radius: 16px;
     box-shadow: var(--pewman-sh);
   }
+  #PewmanPdp-{{ section.id }} .pewman-btn--ghost { color: var(--pewman-tinta); border-color: var(--pewman-linea); background: #fff; }
+  #PewmanPdp-{{ section.id }} .pewman-btn--ghost:hover { color: #fff; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar[hidden] { display: none; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-ic {
     flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%;
@@ -142,6 +144,26 @@
               {%- endfor -%}
             </div>
 
+            <input type="hidden" name="id" ref="variantId" data-variant-id-input value="{{ current_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+
+            <div class="pewman-pdp__buy">
+              <div class="pewman-pdp__price" data-price>{{ current_variant.price | money }}</div>
+              <button
+                type="submit"
+                name="add"
+                class="pewman-pdp__add-btn"
+                data-add-to-cart
+                data-available-label="Añadir al carrito"
+                data-sold-out-label="Agotado"
+                {% unless current_variant.available %}disabled{% endunless %}
+                {% if show_coordinar_now %}hidden{% endif %}
+              >{% if current_variant.available %}Añadir al carrito{% else %}Agotado{% endif %}</button>
+              <span data-cotizar-wa {% if show_coordinar_now %}hidden{% endif %}>
+                {%- render 'pewman-whatsapp-link', text: 'Cotizar por WhatsApp', prefill: 'Hola, quiero cotizar ' | append: product.title, class: 'pewman-btn pewman-btn--wa' -%}
+              </span>
+            </div>
+
             {%- if coordinar_on -%}
               <div
                 class="pewman-pdp__coordinar"
@@ -166,26 +188,6 @@
                 </div>
               </div>
             {%- endif -%}
-
-            <input type="hidden" name="id" ref="variantId" data-variant-id-input value="{{ current_variant.id }}">
-            <input type="hidden" name="quantity" value="1">
-
-            <div class="pewman-pdp__buy">
-              <div class="pewman-pdp__price" data-price>{{ current_variant.price | money }}</div>
-              <button
-                type="submit"
-                name="add"
-                class="pewman-pdp__add-btn"
-                data-add-to-cart
-                data-available-label="Añadir al carrito"
-                data-sold-out-label="Agotado"
-                {% unless current_variant.available %}disabled{% endunless %}
-                {% if show_coordinar_now %}hidden{% endif %}
-              >{% if current_variant.available %}Añadir al carrito{% else %}Agotado{% endif %}</button>
-              <span data-cotizar-wa {% if show_coordinar_now %}hidden{% endif %}>
-                {%- render 'pewman-whatsapp-link', text: 'Cotizar por WhatsApp', prefill: 'Hola, quiero cotizar ' | append: product.title, class: 'pewman-btn pewman-btn--wa' -%}
-              </span>
-            </div>
 
             {% render 'pewman-cta-button', text: 'Conoce todo sobre ' | append: product.title, url: '#pewman-mecanismo', variant: 'ghost' %}
           </div>
