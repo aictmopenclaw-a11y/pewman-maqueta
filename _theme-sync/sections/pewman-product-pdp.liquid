@@ -70,6 +70,8 @@
     Franja "despacho a coordinar": Blue Express no acepta envíos sobre 20 kg
     (decisión cliente 2026-07-24), así que los formatos cuyo nombre contiene
     la keyword (default "20") muestran aviso + botón WhatsApp prefilled.
+    Además el botón Añadir al carrito se oculta: estos formatos se venden
+    solo por WhatsApp (sin tarifa $0 = sin "GRATIS" en el checkout).
   endcomment
   assign coordinar_kw = section.settings.coordinar_keyword | default: '20'
   assign wa_phone = settings.pewman_whatsapp_phone | default: '56990833908' | remove: '+' | remove: ' '
@@ -195,8 +197,8 @@
 
 <script>
   // Franja "despacho a coordinar": escucha el cambio de formato del picker
-  // y arma el link de WhatsApp con el formato elegido. No toca el flujo de
-  // compra; solo muestra/oculta el aviso según variant.coordinar.
+  // y arma el link de WhatsApp con el formato elegido. Oculta Añadir al
+  // carrito en formatos a coordinar: esos se venden solo por WhatsApp.
   (function () {
     document.querySelectorAll('pewman-variant-picker').forEach(function (picker) {
       var note = picker.querySelector('[data-coordinar-note]');
