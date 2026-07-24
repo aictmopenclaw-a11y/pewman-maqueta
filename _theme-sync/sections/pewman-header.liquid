@@ -1,0 +1,171 @@
+{%- liquid
+  # Transparente-al-cargar solo en paginas cuyo hero trae foto de fondo real
+  # (home, ambos productos, casos, empresa, prensa). Contacto/Patentes/Terminos
+  # no llevan foto (style: title o sin background_image), asi que mantienen
+  # el header solido desde el inicio, igual que la maqueta.
+  assign has_photo_hero = false
+  if template.name == 'index' or template.name == 'product'
+    assign has_photo_hero = true
+  endif
+  if template.name == 'page' and template.suffix == 'casos'
+    assign has_photo_hero = true
+  endif
+  if template.name == 'page' and template.suffix == 'empresa'
+    assign has_photo_hero = true
+  endif
+  if template.name == 'page' and template.suffix == 'prensa'
+    assign has_photo_hero = true
+  endif
+  assign menu = linklists[section.settings.menu]
+-%}
+{%- style -%}
+  #PewmanHeader-{{ section.id }} .pewman-topbar { background: #dcdcdc; color: #5a5a5a; font-size: 12.5px; }
+  #PewmanHeader-{{ section.id }} .pewman-topbar__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; align-items: center; height: 38px; text-align: center; }
+  #PewmanHeader-{{ section.id }} .pewman-topbar__l { letter-spacing: .02em; }
+
+  #PewmanHeader-{{ section.id }} .pewman-hd {
+    position: sticky; top: 0; z-index: 60; border-bottom: 1px solid rgba(255,255,255,.08);
+    transition: background .3s ease, border-color .3s ease;
+    {% if has_photo_hero %}background: transparent;{% else %}background: rgba(24,24,24,.98);{% endif %}
+  }
+  #PewmanHeader-{{ section.id }} .pewman-hd.is-scrolled { background: rgba(24,24,24,.96); backdrop-filter: blur(12px); }
+  #PewmanHeader-{{ section.id }} .pewman-hd__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 120px; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__logo img { height: 56px; width: auto; display: block; filter: brightness(0) invert(1); }
+
+  #PewmanHeader-{{ section.id }} .pewman-hd__nav { display: flex; gap: 26px; font-weight: 600; font-size: 15px; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__nav > a,
+  #PewmanHeader-{{ section.id }} .pewman-hd__dd > .pewman-hd__dd-top { color: #e8e8e8; padding: 4px 0; position: relative; text-decoration: none; cursor: pointer; background: none; border: 0; font: inherit; display: inline-flex; align-items: center; gap: 4px; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__nav > a::after,
+  #PewmanHeader-{{ section.id }} .pewman-hd__dd-top::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: var(--pewman-rojo); transition: .25s; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__nav > a:hover::after,
+  #PewmanHeader-{{ section.id }} .pewman-hd__nav > a.is-active::after,
+  #PewmanHeader-{{ section.id }} .pewman-hd__dd:hover .pewman-hd__dd-top::after { width: 100%; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__nav > a:hover,
+  #PewmanHeader-{{ section.id }} .pewman-hd__nav > a.is-active { color: #fff; }
+
+  #PewmanHeader-{{ section.id }} .pewman-hd__dd { position: relative; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__dd-menu {
+    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(6px);
+    background: #fff; border: 1px solid var(--pewman-linea); border-radius: 12px; box-shadow: 0 16px 36px -14px rgba(0,0,0,.22);
+    padding: 8px; min-width: 190px; display: flex; flex-direction: column; gap: 2px; opacity: 0; visibility: hidden; transition: .2s; z-index: 80;
+  }
+  #PewmanHeader-{{ section.id }} .pewman-hd__dd:hover .pewman-hd__dd-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  #PewmanHeader-{{ section.id }} .pewman-hd__dd-menu a { padding: 9px 13px; border-radius: 8px; font-size: 14px; white-space: nowrap; color: var(--pewman-tinta); text-decoration: none; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__dd-menu a:hover { background: #f0f0f0; color: var(--pewman-rojo); }
+
+  #PewmanHeader-{{ section.id }} .pewman-hd__cta { display: flex; align-items: center; gap: 18px; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__icon { color: #fff; font-size: 21px; text-decoration: none; line-height: 1; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__icon--srch { font-size: 18px; }
+
+  #PewmanHeader-{{ section.id }} .pewman-hd__hamb { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 38px; height: 38px; background: none; border: none; cursor: pointer; padding: 8px; margin: 0; }
+  #PewmanHeader-{{ section.id }} .pewman-hd__hamb span { display: block; height: 2px; width: 100%; background: #fff; border-radius: 2px; transition: .25s; }
+  #PewmanHeader-{{ section.id }} .pewman-hd.is-mnav-open .pewman-hd__hamb span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  #PewmanHeader-{{ section.id }} .pewman-hd.is-mnav-open .pewman-hd__hamb span:nth-child(2) { opacity: 0; }
+  #PewmanHeader-{{ section.id }} .pewman-hd.is-mnav-open .pewman-hd__hamb span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  {% if has_photo_hero %}.content-for-layout { margin-top: -120px; }{% endif %}
+
+  @media (max-width: 900px) {
+    #PewmanHeader-{{ section.id }} .pewman-hd__hamb { display: flex; }
+    #PewmanHeader-{{ section.id }} .pewman-hd__nav {
+      position: absolute; top: 100%; left: 0; right: 0; display: none; flex-direction: column; gap: 0;
+      background: #181818; padding: 6px 24px 16px; border-top: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 24px 44px -18px rgba(0,0,0,.7); max-height: calc(100vh - 120px); overflow-y: auto;
+    }
+    #PewmanHeader-{{ section.id }} .pewman-hd.is-mnav-open .pewman-hd__nav { display: flex; }
+    #PewmanHeader-{{ section.id }} .pewman-hd__nav > a,
+    #PewmanHeader-{{ section.id }} .pewman-hd__dd-top { padding: 13px 2px; border-bottom: 1px solid rgba(255,255,255,.07); width: 100%; }
+    #PewmanHeader-{{ section.id }} .pewman-hd__nav > a::after,
+    #PewmanHeader-{{ section.id }} .pewman-hd__dd-top::after { display: none; }
+    #PewmanHeader-{{ section.id }} .pewman-hd__dd { position: static; }
+    #PewmanHeader-{{ section.id }} .pewman-hd__dd-menu { position: static; opacity: 1; visibility: visible; transform: none; background: none; border: none; box-shadow: none; padding: 0 0 4px 14px; min-width: 0; margin: 0; }
+    #PewmanHeader-{{ section.id }} .pewman-hd__dd-menu a { color: #b7b7b7; padding: 11px 2px; }
+    #PewmanHeader-{{ section.id }} .pewman-topbar { font-size: 11px; }
+    #PewmanHeader-{{ section.id }} .pewman-topbar__wrap { display: block; height: auto; padding: 8px 16px; line-height: 1.35; }
+  }
+{%- endstyle -%}
+
+<div id="PewmanHeader-{{ section.id }}">
+  {%- if section.settings.topbar_text != blank -%}
+    <div class="pewman-topbar">
+      <div class="pewman-topbar__wrap">
+        <span class="pewman-topbar__l">{{ section.settings.topbar_text }}</span>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <header class="pewman-hd" data-pewman-header>
+    <div class="pewman-hd__wrap">
+      <a class="pewman-hd__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+        {%- if section.settings.logo -%}
+          <img src="{{ section.settings.logo | image_url: width: 320 }}" alt="{{ shop.name | escape }}" width="200" height="56">
+        {%- else -%}
+          <span style="color:#fff;font-weight:700;font-size:22px">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+
+      <nav class="pewman-hd__nav" aria-label="Menú principal">
+        {%- for link in menu.links -%}
+          {%- if link.links != blank -%}
+            <div class="pewman-hd__dd">
+              {%- if link.url and link.url != '#' -%}
+                <a class="pewman-hd__dd-top{% if link.active %} is-active{% endif %}" href="{{ link.url }}">{{ link.title }} ▾</a>
+              {%- else -%}
+                <button type="button" class="pewman-hd__dd-top" aria-haspopup="true">{{ link.title }} ▾</button>
+              {%- endif -%}
+              <div class="pewman-hd__dd-menu">
+                {%- for child in link.links -%}
+                  <a href="{{ child.url }}">{{ child.title }}</a>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- else -%}
+            <a href="{{ link.url }}"{% if link.active %} class="is-active"{% endif %}>{{ link.title }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+
+      <div class="pewman-hd__cta">
+        <button type="button" class="pewman-hd__hamb" data-pewman-hamb aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        {%- if section.settings.show_search -%}
+          <a class="pewman-hd__icon pewman-hd__icon--srch" href="{{ routes.search_url }}" title="Buscar" aria-label="Buscar">🔍</a>
+        {%- endif -%}
+        <a class="pewman-hd__icon" href="{{ routes.cart_url }}" title="Carro" aria-label="Carro de compras">🛒</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('PewmanHeader-{{ section.id }}');
+    if (!root) return;
+    var hd = root.querySelector('[data-pewman-header]');
+    var hamb = root.querySelector('[data-pewman-hamb]');
+    if (hd) {
+      var onScroll = function () { hd.classList.toggle('is-scrolled', window.scrollY > 60); };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+    if (hamb && hd) {
+      hamb.addEventListener('click', function () {
+        var open = hd.classList.toggle('is-mnav-open');
+        hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Pewman · Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo (versión clara)" },
+    { "type": "link_list", "id": "menu", "label": "Menú", "default": "main-menu" },
+    { "type": "text", "id": "topbar_text", "label": "Texto de la barra superior", "default": "Todas nuestras soluciones son 100% Orgánicas | Certificadas por SAG y Ecocert" },
+    { "type": "checkbox", "id": "show_search", "label": "Mostrar ícono de búsqueda", "default": true }
+  ]
+}
+{% endschema %}
