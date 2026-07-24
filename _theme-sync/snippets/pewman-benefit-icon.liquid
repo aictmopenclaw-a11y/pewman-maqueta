@@ -1,0 +1,23 @@
+{%- comment -%}
+  Íconos SVG de los beneficios de producto, dibujados inline (mismos trazos que
+  la maqueta aprobada). Heredan el color vía currentColor. Uso:
+  {% render 'pewman-benefit-icon', name: 'snowflake' %}
+  Valores: snowflake · leaf · chart · thermometer · molecule · roots
+{%- endcomment -%}
+{%- liquid
+  assign n = name | default: 'leaf'
+-%}
+{%- case n -%}
+  {%- when 'snowflake' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M3.34 7 20.66 17M20.66 7 3.34 17"/><path d="M12 6.5 9.7 5.2M12 6.5l2.3-1.3M12 17.5 9.7 18.8M12 17.5l2.3 1.3M6.9 8.7l-2.3-.4M6.9 8.7l-.4-2.3M17.1 15.3l2.3.4M17.1 15.3l.4 2.3M17.1 8.7l2.3-.4M17.1 8.7l.4-2.3M6.9 15.3l-2.3.4M6.9 15.3l-.4 2.3"/></svg>
+  {%- when 'leaf' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13C4 8 8 4 20 4c0 8-4 12-9 12z"/><path d="M4 20c1.5-3 4.5-5.5 8-6.5"/></svg>
+  {%- when 'chart' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M7 20v-5M12 20V9M17 20v-8"/><path d="M4 12l5-5 3 2.5L20 4"/></svg>
+  {%- when 'thermometer' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z"/></svg>
+  {%- when 'molecule' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2.3"/><circle cx="19" cy="18" r="2.3"/><circle cx="12" cy="5" r="2.3"/><path d="M10.4 6.6 6.6 15.8M13.6 6.6 17.4 15.8M7.3 18h9.4"/></svg>
+  {%- when 'roots' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V11M12 11c0-3-2.4-5-5.4-5H4.2v1.5C4.2 10.4 6.6 12.4 9.6 12.4M12 11c0-3.3 2.6-6 5.9-6H20v1.7C20 10 17.4 12.4 14.1 12.4"/></svg>
+{%- endcase -%}

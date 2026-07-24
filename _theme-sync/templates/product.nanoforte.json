@@ -12,21 +12,24 @@
       "type": "pewman-product-benefits",
       "blocks": {
         "b1": {
-          "type": "fallback_benefit",
+          "type": "benefit",
           "settings": {
-            "text": "Mejora la respuesta de la planta frente a altas temperaturas y baja disponibilidad de agua."
+            "text": "Mejora la respuesta de la planta frente a altas temperaturas y baja disponibilidad de agua.",
+            "icon": "thermometer"
           }
         },
         "b2": {
-          "type": "fallback_benefit",
+          "type": "benefit",
           "settings": {
-            "text": "Favorece el aprovechamiento de nutrientes en suelos degradados o con baja disponibilidad de fósforo."
+            "text": "Favorece el aprovechamiento de nutrientes en suelos degradados o con baja disponibilidad de fósforo.",
+            "icon": "molecule"
           }
         },
         "b3": {
-          "type": "fallback_benefit",
+          "type": "benefit",
           "settings": {
-            "text": "Contribuye al desarrollo radicular en suelos compactados, salinos o con presencia de metales pesados."
+            "text": "Contribuye al desarrollo radicular en suelos compactados, salinos o con presencia de metales pesados.",
+            "icon": "roots"
           }
         }
       },

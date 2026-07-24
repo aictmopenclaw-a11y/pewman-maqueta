@@ -12,21 +12,24 @@
       "type": "pewman-product-benefits",
       "blocks": {
         "b1": {
-          "type": "fallback_benefit",
+          "type": "benefit",
           "settings": {
-            "text": "Hasta 12 horas de acción frente a temperaturas de hasta −4 °C."
+            "text": "Hasta 12 horas de acción frente a temperaturas de hasta −4 °C.",
+            "icon": "snowflake"
           }
         },
         "b2": {
-          "type": "fallback_benefit",
+          "type": "benefit",
           "settings": {
-            "text": "Reduce entre 80% y 100% del daño en yemas, flores, hojas y tejidos vegetales."
+            "text": "Reduce entre 80% y 100% del daño en yemas, flores, hojas y tejidos vegetales.",
+            "icon": "leaf"
           }
         },
         "b3": {
-          "type": "fallback_benefit",
+          "type": "benefit",
           "settings": {
-            "text": "Hasta 15% más rendimiento gracias a su efecto bioestimulante."
+            "text": "Hasta 15% más rendimiento gracias a su efecto bioestimulante.",
+            "icon": "chart"
           }
         }
       },

@@ -4,36 +4,32 @@
   #PewmanBenefits-{{ section.id }} .pewman-benefits__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
   #PewmanBenefits-{{ section.id }} .pewman-benefits__item { text-align: center; padding: 0 10px; }
   #PewmanBenefits-{{ section.id }} .pewman-benefits__icon { display: inline-flex; width: 58px; height: 58px; color: var(--pewman-tinta); margin-bottom: 16px; }
+  #PewmanBenefits-{{ section.id }} .pewman-benefits__icon svg { width: 100%; height: 100%; }
   #PewmanBenefits-{{ section.id }} .pewman-benefits__icon img { width: 100%; height: 100%; object-fit: contain; }
   #PewmanBenefits-{{ section.id }} .pewman-benefits__item p { font-size: 18.75px; color: #5a5a5a; line-height: 1.55; }
   @media (max-width: 820px) { #PewmanBenefits-{{ section.id }} .pewman-benefits__grid { grid-template-columns: 1fr; gap: 30px; max-width: 440px; margin: 0 auto; } }
 {%- endstyle -%}
 
-{%- liquid
-  assign benefits = product.metafields.custom.key_benefits.value
--%}
+{%- comment -%}
+  Beneficios de producto: texto directo editable + ícono elegible desde el
+  Customizer. Sin metaobjects ni metafields (decisión Cris 2026-07-24): cada
+  bloque trae su ícono (select con los 6 SVG de la maqueta) y su texto.
+{%- endcomment -%}
 <div id="PewmanBenefits-{{ section.id }}">
   <div class="pewman-benefits__wrap">
     <div class="pewman-benefits__grid">
-      {%- if benefits.size > 0 -%}
-        {%- for benefit in benefits -%}
-          <div class="pewman-benefits__item">
-            {%- if benefit.icon.value -%}
-              <span class="pewman-benefits__icon"><img src="{{ benefit.icon.value | image_url: width: 120 }}" alt=""></span>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'benefit' -%}
+          <div class="pewman-benefits__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon_image != blank -%}
+              <span class="pewman-benefits__icon"><img src="{{ block.settings.icon_image | image_url: width: 120 }}" alt=""></span>
+            {%- elsif block.settings.icon != 'none' -%}
+              <span class="pewman-benefits__icon">{% render 'pewman-benefit-icon', name: block.settings.icon %}</span>
             {%- endif -%}
-            <div class="pewman-benefits__desc">{{ benefit.description | metafield_tag }}</div>
+            {%- if block.settings.text != blank -%}<p>{{ block.settings.text }}</p>{%- endif -%}
           </div>
-        {%- endfor -%}
-      {%- else -%}
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'fallback_benefit' -%}
-            <div class="pewman-benefits__item">
-              {%- if block.settings.icon -%}<span class="pewman-benefits__icon"><img src="{{ block.settings.icon | image_url: width: 120 }}" alt=""></span>{%- endif -%}
-              <p>{{ block.settings.text }}</p>
-            </div>
-          {%- endif -%}
-        {%- endfor -%}
-      {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
     </div>
   </div>
 </div>
@@ -43,25 +39,35 @@
   "name": "Pewman · Beneficios",
   "tag": "section",
   "settings": [
-    { "type": "paragraph", "content": "Lee product.metafields.custom.key_benefits (metaobjects product_feature). Los blocks de abajo son solo un respaldo visual mientras el metafield no tenga datos." }
+    { "type": "paragraph", "content": "Cada beneficio es un bloque con ícono y texto, editables directamente aquí. No depende de datos externos." }
   ],
   "blocks": [
     {
-      "type": "fallback_benefit",
-      "name": "Beneficio (respaldo)",
+      "type": "benefit",
+      "name": "Beneficio",
       "settings": [
-        { "type": "image_picker", "id": "icon", "label": "Ícono" },
-        { "type": "text", "id": "text", "label": "Texto" }
+        { "type": "select", "id": "icon", "label": "Ícono", "default": "leaf", "options": [
+          { "value": "snowflake", "label": "Copo de nieve (frío / heladas)" },
+          { "value": "leaf", "label": "Hoja (protección vegetal)" },
+          { "value": "chart", "label": "Crecimiento (rendimiento)" },
+          { "value": "thermometer", "label": "Termómetro (temperatura / agua)" },
+          { "value": "molecule", "label": "Nutrientes (moléculas)" },
+          { "value": "roots", "label": "Raíces (desarrollo radicular)" },
+          { "value": "none", "label": "Sin ícono" }
+        ] },
+        { "type": "textarea", "id": "text", "label": "Texto del beneficio" },
+        { "type": "image_picker", "id": "icon_image", "label": "Ícono personalizado (opcional)", "info": "Si subes una imagen, reemplaza al ícono elegido arriba" }
       ]
     }
   ],
+  "max_blocks": 6,
   "presets": [
     {
       "name": "Pewman · Beneficios",
       "blocks": [
-        { "type": "fallback_benefit", "settings": { "text": "Hasta 12 horas de acción frente a temperaturas de hasta −4 °C." } },
-        { "type": "fallback_benefit", "settings": { "text": "Reduce entre 80% y 100% del daño en yemas, flores, hojas y tejidos vegetales." } },
-        { "type": "fallback_benefit", "settings": { "text": "Hasta 15% más rendimiento gracias a su efecto bioestimulante." } }
+        { "type": "benefit", "settings": { "icon": "snowflake", "text": "Hasta 12 horas de acción frente a temperaturas de hasta −4 °C." } },
+        { "type": "benefit", "settings": { "icon": "leaf", "text": "Reduce entre 80% y 100% del daño en yemas, flores, hojas y tejidos vegetales." } },
+        { "type": "benefit", "settings": { "icon": "chart", "text": "Hasta 15% más rendimiento gracias a su efecto bioestimulante." } }
       ]
     }
   ]
