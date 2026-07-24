@@ -59,21 +59,21 @@
       },
       "blocks": {
         "m1": {
-          "type": "fallback_step",
+          "type": "step",
           "settings": {
             "title": "Nanoburbujas de oxígeno",
             "description": "Mejora la relación CO₂:O₂, la absorción de nutrientes y promueve la diversidad de microorganismos benéficos."
           }
         },
         "m2": {
-          "type": "fallback_step",
+          "type": "step",
           "settings": {
             "title": "Consorcio de bacterias",
             "description": "Compuestos orgánicos y microorganismos antárticos y desérticos promueven el crecimiento radicular, solubilizan fosfatos y capturan metales pesados."
           }
         },
         "m3": {
-          "type": "fallback_step",
+          "type": "step",
           "settings": {
             "title": "Nanobiopolímeros",
             "description": "Contribuyen a disminuir la pérdida de agua a través de los estomas y la retienen en la zona radicular de la planta."

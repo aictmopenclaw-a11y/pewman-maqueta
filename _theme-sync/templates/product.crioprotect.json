@@ -59,21 +59,21 @@
       },
       "blocks": {
         "m1": {
-          "type": "fallback_step",
+          "type": "step",
           "settings": {
             "title": "Biológico",
             "description": "Nanobiopolímeros generan una barrera física protectora, anticongelante y aislante sobre el tejido del cultivo."
           }
         },
         "m2": {
-          "type": "fallback_step",
+          "type": "step",
           "settings": {
             "title": "Físico",
             "description": "Nuestras bacterias desplazan a las bacterias nucleadoras de hielo en hojas, troncos, ramas, brotes y flores."
           }
         },
         "m3": {
-          "type": "fallback_step",
+          "type": "step",
           "settings": {
             "title": "Sistémico",
             "description": "Los compuestos orgánicos y volátiles actúan como precursores hormonales, aumentando los solutos intracelulares."

@@ -36,9 +36,11 @@
   @media (max-width: 820px) { #PewmanMechanism-{{ section.id }} .pewman-mech__grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
 {%- endstyle -%}
 
-{%- liquid
-  assign steps = product.metafields.custom.mechanism_steps.value
--%}
+{%- comment -%}
+  Triple mecanismo: texto directo editable (número automático + título +
+  descripción por bloque). Sin metaobjects ni metafields (decisión Cris
+  2026-07-24), igual que los beneficios.
+{%- endcomment -%}
 <div id="PewmanMechanism-{{ section.id }}">
   <span id="pewman-mecanismo" style="scroll-margin-top:90px" aria-hidden="true"></span>
   <div class="pewman-mech__wrap">
@@ -47,25 +49,15 @@
       <h2>{{ section.settings.heading | default: 'Triple mecanismo de protección' }}</h2>
     </div>
     <div class="pewman-mech__grid">
-      {%- if steps.size > 0 -%}
-        {%- for step in steps -%}
-          <div class="pewman-mech__card">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' -%}
+          <div class="pewman-mech__card" {{ block.shopify_attributes }}>
             <div class="pewman-mech__num">{{ forloop.index }}</div>
-            <h3>{{ step.title.value }}</h3>
-            <div class="pewman-mech__card-desc">{{ step.description | metafield_tag }}</div>
+            {%- if block.settings.title != blank -%}<h3>{{ block.settings.title }}</h3>{%- endif -%}
+            {%- if block.settings.description != blank -%}<p>{{ block.settings.description }}</p>{%- endif -%}
           </div>
-        {%- endfor -%}
-      {%- else -%}
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'fallback_step' -%}
-            <div class="pewman-mech__card">
-              <div class="pewman-mech__num">{{ forloop.index }}</div>
-              <h3>{{ block.settings.title }}</h3>
-              <p>{{ block.settings.description }}</p>
-            </div>
-          {%- endif -%}
-        {%- endfor -%}
-      {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
     </div>
   </div>
 </div>
@@ -84,21 +76,22 @@
   ],
   "blocks": [
     {
-      "type": "fallback_step",
-      "name": "Paso (respaldo)",
+      "type": "step",
+      "name": "Paso",
       "settings": [
         { "type": "text", "id": "title", "label": "Título" },
         { "type": "textarea", "id": "description", "label": "Descripción" }
       ]
     }
   ],
+  "max_blocks": 3,
   "presets": [
     {
       "name": "Pewman · Mecanismo",
       "blocks": [
-        { "type": "fallback_step", "settings": { "title": "Biológico", "description": "Nanobiopolímeros generan una barrera física protectora, anticongelante y aislante sobre el tejido del cultivo." } },
-        { "type": "fallback_step", "settings": { "title": "Físico", "description": "Nuestras bacterias desplazan a las bacterias nucleadoras de hielo en hojas, troncos, ramas, brotes y flores." } },
-        { "type": "fallback_step", "settings": { "title": "Sistémico", "description": "Los compuestos orgánicos y volátiles actúan como precursores hormonales, aumentando los solutos intracelulares." } }
+        { "type": "step", "settings": { "title": "Biológico", "description": "Nanobiopolímeros generan una barrera física protectora, anticongelante y aislante sobre el tejido del cultivo." } },
+        { "type": "step", "settings": { "title": "Físico", "description": "Nuestras bacterias desplazan a las bacterias nucleadoras de hielo en hojas, troncos, ramas, brotes y flores." } },
+        { "type": "step", "settings": { "title": "Sistémico", "description": "Los compuestos orgánicos y volátiles actúan como precursores hormonales, aumentando los solutos intracelulares." } }
       ]
     }
   ]
