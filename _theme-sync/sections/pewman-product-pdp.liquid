@@ -37,8 +37,6 @@
     background: #fff; border: 1.5px solid var(--pewman-linea); border-radius: 16px;
     box-shadow: var(--pewman-sh);
   }
-  #PewmanPdp-{{ section.id }} .pewman-btn--ghost { color: var(--pewman-tinta); border-color: var(--pewman-linea); background: #fff; }
-  #PewmanPdp-{{ section.id }} .pewman-btn--ghost:hover { color: #fff; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar[hidden] { display: none; }
   #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-ic {
     flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%;
@@ -188,8 +186,6 @@
                 </div>
               </div>
             {%- endif -%}
-
-            {% render 'pewman-cta-button', text: 'Conoce todo sobre ' | append: product.title, url: '#pewman-mecanismo', variant: 'ghost' %}
           </div>
         </div>
       {%- endform -%}
