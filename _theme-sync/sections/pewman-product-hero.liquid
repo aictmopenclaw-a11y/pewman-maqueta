@@ -17,7 +17,9 @@
   #PewmanProductHero-{{ section.id }} .pewman-phero__logo { height: 52px; width: auto; margin-bottom: 24px; align-self: flex-start; }
   #PewmanProductHero-{{ section.id }} .pewman-phero__heading { font-size: clamp(30px, 4.4vw, 50px); color: #fff; max-width: 640px; margin-bottom: 16px; line-height: 1.08; }
   #PewmanProductHero-{{ section.id }} .pewman-phero__body { font-size: clamp(15px, 1.5vw, 18px); color: #eaeaea; max-width: 520px; margin-bottom: 28px; }
-  @media (max-width: 820px) { #PewmanProductHero-{{ section.id }} .pewman-phero__inner { min-height: clamp(460px, 88vw, 580px); padding-top: 44px; padding-bottom: 52px; } }
+  /* padding-top >= alto del header movil (76px) + aire: el logo del producto quedaba bajo el logo Pewman */
+  @media (max-width: 820px) { #PewmanProductHero-{{ section.id }} .pewman-phero__inner { min-height: clamp(460px, 88vw, 580px); padding-top: 96px; padding-bottom: 52px; } }
+  @media (max-width: 560px) { #PewmanProductHero-{{ section.id }} .pewman-phero__logo { height: 44px; margin-bottom: 18px; } }
 {%- endstyle -%}
 
 {%- liquid

@@ -61,6 +61,13 @@
   #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn:hover:not(:disabled) { background: var(--pewman-prod); }
   #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn:disabled { opacity: .5; cursor: not-allowed; }
   @media (max-width: 920px) { #PewmanPdp-{{ section.id }} .pewman-pdp__grid { grid-template-columns: 1fr; gap: 34px; } #PewmanPdp-{{ section.id }} .pewman-pdp__gallery { position: static; } }
+  /* Movil: los CTA de compra a ancho completo y con area tactil comoda
+     (antes "Anadir al carrito" quedaba en 171x43, chico para el dedo). */
+  @media (max-width: 600px) {
+    #PewmanPdp-{{ section.id }} .pewman-pdp__buy { flex-direction: column; align-items: stretch; gap: 10px; }
+    #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn,
+    #PewmanPdp-{{ section.id }} .pewman-pdp__buy .pewman-btn { width: 100%; min-height: 52px; justify-content: center; }
+  }
 {%- endstyle -%}
 
 {%- liquid

@@ -68,11 +68,19 @@
   {% if has_photo_hero %}.content-for-layout { margin-top: -120px; }{% endif %}
 
   @media (max-width: 900px) {
+    /* Header compacto en movil: 120px se comia 1/5 de la pantalla y el logo
+       chocaba con el contenido del hero. 76px deja aire y respeta el hero. */
+    #PewmanHeader-{{ section.id }} .pewman-hd__wrap { height: 76px; }
+    #PewmanHeader-{{ section.id }} .pewman-hd__logo img { height: 38px; }
+    #PewmanHeader-{{ section.id }} .pewman-hd__cta { gap: 6px; }
+    /* area tactil de 44px (minimo recomendado en movil) sin agrandar el icono */
+    #PewmanHeader-{{ section.id }} .pewman-hd__icon { width: 44px; height: 44px; }
+    {% if has_photo_hero %}.content-for-layout { margin-top: -76px; }{% endif %}
     #PewmanHeader-{{ section.id }} .pewman-hd__hamb { display: flex; }
     #PewmanHeader-{{ section.id }} .pewman-hd__nav {
       position: absolute; top: 100%; left: 0; right: 0; display: none; flex-direction: column; gap: 0;
       background: #181818; padding: 6px 24px 16px; border-top: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 24px 44px -18px rgba(0,0,0,.7); max-height: calc(100vh - 120px); overflow-y: auto;
+      box-shadow: 0 24px 44px -18px rgba(0,0,0,.7); max-height: calc(100vh - 76px); overflow-y: auto;
     }
     #PewmanHeader-{{ section.id }} .pewman-hd.is-mnav-open .pewman-hd__nav { display: flex; }
     #PewmanHeader-{{ section.id }} .pewman-hd__nav > a,

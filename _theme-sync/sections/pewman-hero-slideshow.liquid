@@ -28,7 +28,8 @@
   }
   #PewmanHero-{{ section.id }} .pewman-hero__dots button.is-active { background: var(--pewman-rojo); border-color: var(--pewman-rojo); width: 26px; border-radius: 7px; }
   @media (max-width: 820px) {
-    #PewmanHero-{{ section.id }} .pewman-hero__inner { min-height: clamp(460px, 84vw, 580px); padding-top: 46px; padding-bottom: 54px; }
+    /* padding-top >= alto del header movil (76px) + aire: el kicker se montaba sobre el logo */
+    #PewmanHero-{{ section.id }} .pewman-hero__inner { min-height: clamp(460px, 84vw, 580px); padding-top: 96px; padding-bottom: 54px; }
     #PewmanHero-{{ section.id }} .pewman-hero__slide::after {
       background: linear-gradient(180deg, rgba(18,18,18, calc(var(--pewman-overlay, .86) * .55)) 0%, rgba(18,18,18, calc(var(--pewman-overlay, .86) * .82)) 100%);
     }
