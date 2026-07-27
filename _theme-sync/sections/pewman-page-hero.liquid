@@ -24,7 +24,6 @@
   @keyframes pewmanHeroZoom-{{ section.id }} { from { transform: scale(1); } to { transform: scale({{ zoom_max }}); } }
   #PewmanPageHero-{{ section.id }} h1 { text-shadow: 0 2px 14px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.45); }
   #PewmanPageHero-{{ section.id }} p { color: #eef3f5; text-shadow: 0 1px 8px rgba(0,0,0,.55); }
-  #PewmanPageHero-{{ section.id }} .pewman-breadcrumb, #PewmanPageHero-{{ section.id }} .pewman-breadcrumb a { color: #e2e2e2; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
   @media (prefers-reduced-motion: reduce) { #PewmanPageHero-{{ section.id }} .pewman-page-hero__bg { animation: none; } }
   {%- endif -%}
   #PewmanPageHero-{{ section.id }} .pewman-page-hero__wrap {
@@ -61,7 +60,7 @@
     >
   {%- endif -%}
   <div class="pewman-page-hero__wrap">
-    {% render 'pewman-breadcrumb', parent_1_label: 'Inicio', parent_1_url: routes.root_url, parent_2_label: section.settings.parent_2_label, parent_2_url: section.settings.parent_2_url, current_label: section.settings.current_label %}
+    {%- comment -%} Sin breadcrumb en el hero: sobre la foto no se lee bien (decision Cris 2026-07-24). {%- endcomment -%}
     {%- if section.settings.eyebrow != blank -%}<span class="pewman-eyebrow" style="color:#e2e2e2">{{ section.settings.eyebrow }}</span>{%- endif -%}
     <h1>{{ section.settings.heading }}</h1>
     {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
