@@ -88,7 +88,15 @@
     #PewmanHeader-{{ section.id }} .pewman-hd__nav > a::after,
     #PewmanHeader-{{ section.id }} .pewman-hd__dd-top::after { display: none; }
     #PewmanHeader-{{ section.id }} .pewman-hd__dd { position: static; }
-    #PewmanHeader-{{ section.id }} .pewman-hd__dd-menu { position: static; opacity: 1; visibility: visible; transform: none; background: none; border: none; box-shadow: none; padding: 0 0 4px 14px; min-width: 0; margin: 0; }
+    /* El submenu se dibuja en linea dentro del menu movil. Hay que anular el
+       transform TAMBIEN en :hover: esa regla de escritorio tiene mas
+       especificidad y al tocar el item corria el submenu media pantalla a la
+       izquierda con una animacion de 0.2s (el "swipe" que se veia mal). */
+    #PewmanHeader-{{ section.id }} .pewman-hd__dd-menu,
+    #PewmanHeader-{{ section.id }} .pewman-hd__dd:hover .pewman-hd__dd-menu {
+      position: static; opacity: 1; visibility: visible; transform: none; transition: none;
+      background: none; border: none; box-shadow: none; padding: 0 0 4px 14px; min-width: 0; margin: 0;
+    }
     #PewmanHeader-{{ section.id }} .pewman-hd__dd-menu a { color: #b7b7b7; padding: 11px 2px; }
     #PewmanHeader-{{ section.id }} .pewman-topbar { font-size: 11px; }
     #PewmanHeader-{{ section.id }} .pewman-topbar__wrap { display: block; height: auto; padding: 8px 16px; line-height: 1.35; }
