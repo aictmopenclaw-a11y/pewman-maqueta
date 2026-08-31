@@ -1,0 +1,78 @@
+{%- comment -%}
+  Artículo del blog con tipografía y ancho de lectura Pewman.
+  Incluye JSON-LD de Article para SEO. Va en templates/article.json.
+{%- endcomment -%}
+{%- style -%}
+  #PewmanArticle-{{ section.id }} { background: #fff; padding: 54px 0 78px; }
+  #PewmanArticle-{{ section.id }} .pewman-article__wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+  #PewmanArticle-{{ section.id }} .pewman-article__tag {
+    display: inline-block; font-weight: 700; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase;
+    color: #fff; background: var(--pewman-rojo); padding: 4px 10px; border-radius: 4px; margin-bottom: 14px;
+  }
+  #PewmanArticle-{{ section.id }} h1 { font-size: clamp(28px, 4vw, 42px); color: var(--pewman-tinta); line-height: 1.15; margin-bottom: 12px; }
+  #PewmanArticle-{{ section.id }} .pewman-article__meta { font-size: 13.5px; color: var(--pewman-gris); margin-bottom: 26px; }
+  #PewmanArticle-{{ section.id }} .pewman-article__hero { width: 100%; border-radius: 18px; margin-bottom: 30px; display: block; }
+  #PewmanArticle-{{ section.id }} .pewman-article__body { font-size: 16.5px; color: var(--pewman-gris-tx); line-height: 1.7; }
+  #PewmanArticle-{{ section.id }} .pewman-article__body h2 { font-size: 24px; color: var(--pewman-tinta); margin: 30px 0 12px; }
+  #PewmanArticle-{{ section.id }} .pewman-article__body h3 { font-size: 19px; color: var(--pewman-tinta); margin: 24px 0 10px; }
+  #PewmanArticle-{{ section.id }} .pewman-article__body p { margin-bottom: 16px; }
+  #PewmanArticle-{{ section.id }} .pewman-article__body a { color: var(--pewman-rojo); }
+  #PewmanArticle-{{ section.id }} .pewman-article__body img { max-width: 100%; height: auto; border-radius: 14px; }
+  {%- comment -%}
+    Los videos pegados en el cuerpo (iframe de YouTube) traen width=560 fijo:
+    en un celular de 375px desbordaban la pagina 249px medidos. Igual las
+    tablas: scrollean dentro de su caja, no arrastran la pagina entera.
+  {%- endcomment -%}
+  #PewmanArticle-{{ section.id }} .pewman-article__body iframe,
+  #PewmanArticle-{{ section.id }} .pewman-article__body video { max-width: 100%; border: 0; }
+  #PewmanArticle-{{ section.id }} .pewman-article__body iframe[src*="youtube"],
+  #PewmanArticle-{{ section.id }} .pewman-article__body iframe[src*="vimeo"] { width: 100%; aspect-ratio: 16 / 9; height: auto; border-radius: 14px; }
+  #PewmanArticle-{{ section.id }} .pewman-article__body table { display: block; max-width: 100%; overflow-x: auto; }
+  {%- comment -%}
+    El editor de Shopify envuelve los videos en <figure>, y el margen por
+    defecto del navegador (40px por lado) achicaba el video a 247px en un
+    contenedor de 327. Sin margen lateral, el video usa todo el ancho.
+  {%- endcomment -%}
+  #PewmanArticle-{{ section.id }} .pewman-article__body figure { margin: 0 0 16px; max-width: 100%; }
+  #PewmanArticle-{{ section.id }} .pewman-article__back { margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--pewman-linea); }
+{%- endstyle -%}
+
+<div id="PewmanArticle-{{ section.id }}">
+  <div class="pewman-article__wrap">
+    {% render 'pewman-breadcrumb', parent_1_label: 'Inicio', parent_1_url: routes.root_url, parent_2_label: blog.title, parent_2_url: blog.url, current_label: article.title %}
+    {%- if article.tags.size > 0 -%}<span class="pewman-article__tag">{{ article.tags.first }}</span>{%- endif -%}
+    <h1>{{ article.title }}</h1>
+    <div class="pewman-article__meta">
+      {{ article.published_at | date: '%d de %B, %Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}
+    </div>
+    {%- if article.image -%}
+      <img class="pewman-article__hero" src="{{ article.image | image_url: width: 2000 }}" alt="{{ article.title | escape }}" loading="eager">
+    {%- endif -%}
+    <div class="pewman-article__body">{{ article.content }}</div>
+    <div class="pewman-article__back">
+      {% render 'pewman-cta-button', text: '← Volver a ' | append: blog.title, url: blog.url, variant: 'light' %}
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ article.title | json }},
+  "articleBody": {{ article.content | strip_html | truncate: 900 | json }},
+  "datePublished": {{ article.published_at | date: '%Y-%m-%d' | json }},
+  "author": { "@type": "Organization", "name": {{ article.author | default: shop.name | json }} },
+  "publisher": { "@type": "Organization", "name": {{ shop.name | json }} }{% if article.image %},
+  "image": {{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}{% endif %}
+}
+</script>
+
+{% schema %}
+{
+  "name": "Pewman · Artículo",
+  "tag": "section",
+  "settings": [],
+  "presets": [ { "name": "Pewman · Artículo" } ]
+}
+{% endschema %}

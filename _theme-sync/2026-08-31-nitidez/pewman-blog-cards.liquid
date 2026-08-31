@@ -1,0 +1,104 @@
+{%- comment -%}
+  Grilla de tarjetas de noticias/artículos leyendo del blog nativo de Shopify.
+  Mismo diseño que las tarjetas de prensa de la maqueta: foto con overlay,
+  badge de fuente (primer tag del artículo) y titular sobre la imagen.
+  Se administra publicando en Contenido, Entradas de blog.
+{%- endcomment -%}
+{%- liquid
+  assign the_blog = blogs[section.settings.blog]
+  assign shown = section.settings.max_articles | default: 3
+-%}
+{%- style -%}
+  #PewmanBlogCards-{{ section.id }} { background: #fff; padding: 78px 0; }
+  #PewmanBlogCards-{{ section.id }}.pewman-bc--tight { padding-top: 0; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__intro { max-width: 680px; margin: 0 0 30px; font-size: 16.5px; color: var(--pewman-gris-tx); line-height: 1.5; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__card { border-radius: 16px; overflow: hidden; position: relative; height: 230px; box-shadow: var(--pewman-sh); display: block; background: #343434; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__card img { width: 100%; height: 100%; object-fit: cover; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__card::after { content: ""; position: absolute; inset: 0; background: rgba(52,52,52,.55); transition: .3s; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__card:hover::after { background: rgba(52,52,52,.2); }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__content { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 18px 16px; z-index: 2; color: #fff; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__source {
+    font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: #fff;
+    background: var(--pewman-rojo); display: inline-block; padding: 3px 9px; border-radius: 4px; margin-bottom: 7px;
+  }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__content h3 { font-size: 15.5px; color: #fff; line-height: 1.3; margin: 0; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__more { text-align: center; margin-top: 32px; }
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__empty { color: var(--pewman-gris); font-size: 15px; }
+  @media (max-width: 860px) { #PewmanBlogCards-{{ section.id }} .pewman-bc__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { #PewmanBlogCards-{{ section.id }} .pewman-bc__grid { grid-template-columns: 1fr; } }
+  {%- comment -%} La fecha va sobre la foto oscura de la tarjeta: en gris no se leia. {%- endcomment -%}
+  #PewmanBlogCards-{{ section.id }} .pewman-bc__date { display: block; margin-top: 6px; font-size: 12px; color: rgba(255,255,255,.85); }
+{%- endstyle -%}
+
+<div id="PewmanBlogCards-{{ section.id }}" class="{% if section.settings.tight_top %}pewman-bc--tight{% endif %}">
+  <div class="pewman-bc__wrap">
+    {%- if section.settings.heading != blank -%}
+      {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading %}
+    {%- endif -%}
+    {%- if section.settings.subtext != blank -%}
+      <p class="pewman-bc__intro">{{ section.settings.subtext }}</p>
+    {%- endif -%}
+
+    <div class="pewman-bc__grid">
+      {%- for article in the_blog.articles limit: shown -%}
+        <a class="pewman-bc__card" href="{{ article.url }}">
+          {%- if article.image -%}
+            <img src="{{ article.image | image_url: width: 1000 }}" alt="{{ article.title | escape }}" loading="lazy">
+          {%- endif -%}
+          <div class="pewman-bc__content">
+            {%- if article.tags.size > 0 -%}
+              <span class="pewman-bc__source">{{ article.tags.first }}</span>
+            {%- endif -%}
+            <h3>{{ article.title }}</h3>
+            {%- comment -%}
+              Fecha visible (Denisse 2026-08-18: "lo pondria por fecha... para que
+              sea ordenado"). El orden ya es cronologico inverso porque Shopify
+              lista por fecha de publicacion; faltaba solo mostrarla.
+            {%- endcomment -%}
+            {%- if section.settings.show_date -%}
+              {%- comment -%}
+                El mes se arma con una lista propia: el filtro date con %B
+                devuelve el mes en INGLES ("28 de March de 2025"), porque no
+                toma el idioma de la tienda. Verificado en vivo antes de publicar.
+              {%- endcomment -%}
+              {%- assign meses_es = 'enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre' | split: ',' -%}
+              {%- assign mes_i = article.published_at | date: '%-m' | minus: 1 -%}
+              <time class="pewman-bc__date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%-d' }} de {{ meses_es[mes_i] }} de {{ article.published_at | date: '%Y' }}</time>
+            {%- endif -%}
+          </div>
+        </a>
+      {%- else -%}
+        <p class="pewman-bc__empty">Aun no hay publicaciones en este blog.</p>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_view_all -%}
+      <div class="pewman-bc__more">
+        {% render 'pewman-cta-button', text: section.settings.view_all_label, url: the_blog.url, variant: 'light' %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Noticias blog",
+  "tag": "section",
+  "settings": [
+    { "type": "blog", "id": "blog", "label": "Blog del que se muestran las entradas" },
+    { "type": "range", "id": "max_articles", "label": "Cuantas mostrar", "min": 3, "max": 12, "step": 1, "default": 3 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Titulo", "info": "Vacio para no mostrar titulo" },
+    { "type": "textarea", "id": "subtext", "label": "Texto de introduccion" },
+    { "type": "checkbox", "id": "tight_top", "label": "Sin espacio superior", "default": false },
+    { "type": "checkbox", "id": "show_date", "label": "Mostrar la fecha de cada publicación", "default": true },
+    { "type": "checkbox", "id": "show_view_all", "label": "Mostrar boton al blog completo", "default": true },
+    { "type": "text", "id": "view_all_label", "label": "Texto del boton", "default": "Ver todas las noticias" }
+  ],
+  "presets": [
+    { "name": "Pewman · Noticias blog" }
+  ]
+}
+{% endschema %}

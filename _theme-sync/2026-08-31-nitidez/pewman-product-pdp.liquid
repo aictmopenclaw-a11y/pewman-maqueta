@@ -1,0 +1,293 @@
+{%- style -%}
+  #PewmanPdp-{{ section.id }} {
+    background: var(--pewman-crema); padding-top: 64px; padding-bottom: 64px;
+    --pewman-prod: {{ product.metafields.custom.accent_color.value | default: section.settings.product_accent_color | default: '#1499c7' }};
+  }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: start; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__gallery { position: sticky; top: 24px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__gallery-main {
+    border-radius: 26px; overflow: hidden; border: 1px solid var(--pewman-linea); box-shadow: var(--pewman-sh);
+    display: flex; align-items: center; justify-content: center; padding: 30px; aspect-ratio: 1/1;
+    background: linear-gradient(155deg, #ececec, #f6f6f6);
+  }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__gallery-main img { max-height: 88%; width: auto; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(52,52,52,.25)); }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__tag {
+    display: inline-block; font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px; margin-bottom: 14px; background: #f1f1f1; color: var(--pewman-prod);
+  }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__logo { display: block; height: 40px; width: auto; margin-bottom: 12px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__info h2 { font-size: 38px; color: var(--pewman-tinta); margin-bottom: 10px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__lead { font-size: 16.5px; color: var(--pewman-gris-tx); margin-bottom: 22px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__bullets { margin: 0 0 24px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__bullets p { font-size: 15px; padding-left: 28px; position: relative; margin-bottom: 11px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__bullets p::before { content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 16px; border-radius: 50%; background: var(--pewman-prod); }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__format-label { font-weight: 600; font-size: 14px; color: var(--pewman-tinta); margin-bottom: 10px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__formats { display: flex; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__format-btn {
+    flex: 1; min-width: 90px; border: 1.5px solid var(--pewman-linea); border-radius: 14px; padding: 14px;
+    cursor: pointer; text-align: center; transition: .18s; background: #fff; font-family: inherit;
+  }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__format-btn:hover { border-color: var(--pewman-prod); }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__format-btn.is-active { border-color: var(--pewman-prod); background: var(--pewman-prod); color: #fff; box-shadow: 0 10px 22px -10px rgba(0,0,0,.35); }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__format-sz { font-weight: 700; font-size: 16px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__format-pr { font-size: 13px; margin-top: 3px; opacity: .85; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar {
+    display: flex; gap: 15px; align-items: flex-start; margin: 18px 0 6px; padding: 18px;
+    background: #fff; border: 1.5px solid var(--pewman-linea); border-radius: 16px;
+    box-shadow: var(--pewman-sh);
+  }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar[hidden] { display: none; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-ic {
+    flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: #eef5f9; background: color-mix(in srgb, var(--pewman-prod) 12%, #fff);
+    color: var(--pewman-prod);
+  }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-ic svg { width: 22px; height: 22px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-tx { font-size: 14px; line-height: 1.55; color: var(--pewman-tinta); }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-tx strong { display: block; font-size: 15px; margin-bottom: 4px; color: var(--pewman-tinta); }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-tx p { margin: 0 0 12px; color: var(--pewman-gris-tx); font-size: 13.5px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-btn { display: inline-block; font-weight: 600; font-size: 13.5px; padding: 10px 20px; border-radius: 100px; text-decoration: none; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn[hidden] { display: none; }
+  #PewmanPdp-{{ section.id }} [data-cotizar-wa][hidden] { display: none; }
+  @media (max-width: 600px) { #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar { padding: 15px; gap: 12px; } #PewmanPdp-{{ section.id }} .pewman-pdp__coordinar-ic { width: 38px; height: 38px; } }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__buy { display: flex; align-items: center; gap: 12px 16px; margin-top: 22px; flex-wrap: wrap; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__price { font-weight: 800; font-size: clamp(28px, 3.2vw, 34px); color: var(--pewman-tinta); flex-basis: 100%; margin-bottom: 4px; }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn {
+    font-weight: 600; font-size: 15px; padding: 13px 28px; border-radius: 100px; cursor: pointer; border: none;
+    background: var(--pewman-tinta); color: #fff; transition: .2s;
+  }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn:hover:not(:disabled) { background: var(--pewman-prod); }
+  #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn:disabled { opacity: .5; cursor: not-allowed; }
+  @media (max-width: 920px) { #PewmanPdp-{{ section.id }} .pewman-pdp__grid { grid-template-columns: 1fr; gap: 34px; } #PewmanPdp-{{ section.id }} .pewman-pdp__gallery { position: static; } }
+  /* Movil: los CTA de compra a ancho completo y con area tactil comoda
+     (antes "Anadir al carrito" quedaba en 171x43, chico para el dedo). */
+  @media (max-width: 600px) {
+    #PewmanPdp-{{ section.id }} .pewman-pdp__buy { flex-direction: column; align-items: stretch; gap: 10px; }
+    #PewmanPdp-{{ section.id }} .pewman-pdp__add-btn,
+    #PewmanPdp-{{ section.id }} .pewman-pdp__buy .pewman-btn { width: 100%; min-height: 52px; justify-content: center; }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign buy_box_mf = product.metafields.custom.buy_box_copy
+
+  comment
+    Franja "despacho a coordinar": Blue Express no acepta envíos sobre 20 kg
+    (decisión cliente 2026-07-24), así que los formatos cuyo nombre contiene
+    la keyword (default "20") muestran aviso + botón WhatsApp prefilled.
+    Además el botón Añadir al carrito se oculta: estos formatos se venden
+    solo por WhatsApp (sin tarifa $0 = sin "GRATIS" en el checkout).
+  endcomment
+  assign coordinar_kw = section.settings.coordinar_keyword | default: '20'
+  assign wa_phone = settings.pewman_whatsapp_phone | default: '56990833908' | remove: '+' | remove: ' '
+  assign coordinar_msg = section.settings.coordinar_wa_msg | default: 'Hola, quiero comprar [PRODUCTO] en formato [FORMATO] y necesito coordinar el despacho a mi zona. ¿Me pueden ayudar?'
+  assign coordinar_msg = coordinar_msg | replace: '[PRODUCTO]', product.title
+  assign coordinar_on = true
+  if section.settings.coordinar_enabled == false
+    assign coordinar_on = false
+  endif
+  assign show_coordinar_now = false
+  if coordinar_on and current_variant.title contains coordinar_kw
+    assign show_coordinar_now = true
+  endif
+-%}
+{%- capture variants_json -%}
+[
+  {%- for variant in product.variants -%}
+    {%- assign v_image = variant.featured_image | default: product.featured_image -%}
+    {%- assign v_coordinar = false -%}
+    {%- if coordinar_on and variant.title contains coordinar_kw -%}{%- assign v_coordinar = true -%}{%- endif -%}
+    {"id": {{ variant.id | json }}, "title": {{ variant.title | json }}, "priceFormatted": {{ variant.price | money | json }}, "available": {{ variant.available | json }}, "coordinar": {{ v_coordinar }}, "image": {{ v_image | image_url: width: 1400 | json }}}{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+]
+{%- endcapture -%}
+
+<div id="PewmanPdp-{{ section.id }}">
+  <div class="pewman-pdp__wrap">
+    {% render 'pewman-breadcrumb', parent_1_label: 'Inicio', parent_1_url: routes.root_url, parent_2_label: 'Productos', parent_2_url: '/#soluciones', current_label: product.title %}
+    <pewman-variant-picker id="pewman-comprar" data-variants="{{ variants_json | strip_newlines | strip | escape }}">
+      <product-form-component
+        id="PewmanPForm-{{ section.id }}"
+        data-section-id="{{ section.id }}"
+        data-product-id="{{ product.id }}"
+        data-product-url="{{ product.url }}"
+        on:submit="/handleSubmit"
+        data-quantity-default="1"
+      >
+        <div ref="liveRegion" aria-live="assertive" role="status" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></div>
+      {%- form 'product', product -%}
+        <div class="pewman-pdp__grid">
+          <div class="pewman-pdp__gallery">
+            <div class="pewman-pdp__gallery-main">
+              <img data-gallery-image src="{{ current_variant.featured_image | default: product.featured_image | image_url: width: 1400 }}" alt="{{ product.title | escape }}">
+            </div>
+          </div>
+          <div class="pewman-pdp__info">
+            {%- if section.settings.tag_text != blank -%}<span class="pewman-pdp__tag">{{ section.settings.tag_text }}</span>{%- endif -%}
+            {%- if section.settings.product_logo -%}<img class="pewman-pdp__logo" src="{{ section.settings.product_logo | image_url: width: 240 }}" alt="{{ product.title | escape }}">{%- endif -%}
+            {%- comment -%} H2, no H1: el H1 de la pagina es el titular del hero. Dos H1 confunden a los buscadores. {%- endcomment -%}
+            <h2>{{ product.title }}</h2>
+            {%- if section.settings.lead_text != blank -%}<p class="pewman-pdp__lead">{{ section.settings.lead_text }}</p>{%- endif -%}
+
+            {%- if buy_box_mf.value != blank -%}
+              <div class="pewman-pdp__bullets">{{ buy_box_mf | metafield_tag }}</div>
+            {%- endif -%}
+
+            <div class="pewman-pdp__format-label">Elige tu formato</div>
+            <div class="pewman-pdp__formats">
+              {%- for variant in product.variants -%}
+                <button
+                  type="button"
+                  class="pewman-pdp__format-btn{% if variant == current_variant %} is-active{% endif %}"
+                  data-variant-option="{{ variant.id }}"
+                >
+                  <div class="pewman-pdp__format-sz">{{ variant.title }}</div>
+                  <div class="pewman-pdp__format-pr">{{ variant.price | money }}</div>
+                </button>
+              {%- endfor -%}
+            </div>
+
+            <input type="hidden" name="id" ref="variantId" data-variant-id-input value="{{ current_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+
+            <div class="pewman-pdp__buy">
+              <div class="pewman-pdp__price" data-price>{{ current_variant.price | money }}</div>
+              <button
+                type="submit"
+                name="add"
+                class="pewman-pdp__add-btn"
+                data-add-to-cart
+                data-available-label="Añadir al carrito"
+                data-sold-out-label="Agotado"
+                {% unless current_variant.available %}disabled{% endunless %}
+                {% if show_coordinar_now %}hidden{% endif %}
+              >{% if current_variant.available %}Añadir al carrito{% else %}Agotado{% endif %}</button>
+              <span data-cotizar-wa {% if show_coordinar_now %}hidden{% endif %}>
+                {%- render 'pewman-whatsapp-link', text: 'Cotizar por WhatsApp', prefill: 'Hola, quiero cotizar ' | append: product.title, class: 'pewman-btn pewman-btn--wa' -%}
+              </span>
+            </div>
+
+            {%- if coordinar_on -%}
+              <div
+                class="pewman-pdp__coordinar"
+                data-coordinar-note
+                data-wa-phone="{{ wa_phone }}"
+                data-wa-template="{{ coordinar_msg | escape }}"
+                {% unless show_coordinar_now %}hidden{% endunless %}
+              >
+                <span class="pewman-pdp__coordinar-ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                </span>
+                <div class="pewman-pdp__coordinar-tx">
+                  <strong>{{ section.settings.coordinar_title | default: 'Este formato se compra directo con nuestro equipo' }}</strong>
+                  <p>{{ section.settings.coordinar_text | default: 'Blue Express no acepta envíos sobre 20 kg, así que la compra y el despacho del formato de 20 L se coordinan por WhatsApp según tu zona.' }}</p>
+                  <a
+                    class="pewman-btn pewman-btn--wa pewman-pdp__coordinar-btn"
+                    data-coordinar-wa
+                    target="_blank"
+                    rel="noopener"
+                    href="https://api.whatsapp.com/send/?phone={{ wa_phone }}&text={{ coordinar_msg | replace: '[FORMATO]', current_variant.title | url_encode }}"
+                  >{{ section.settings.coordinar_btn_label | default: 'Comprar por WhatsApp' }}</a>
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endform -%}
+      </product-form-component>
+    </pewman-variant-picker>
+  </div>
+</div>
+
+<script src="{{ 'product-form.js' | asset_url }}" type="module"></script>
+
+<script>
+  // Franja "despacho a coordinar": escucha el cambio de formato del picker
+  // y arma el link de WhatsApp con el formato elegido. Oculta Añadir al
+  // carrito en formatos a coordinar: esos se venden solo por WhatsApp.
+  (function () {
+    document.querySelectorAll('pewman-variant-picker').forEach(function (picker) {
+      var note = picker.querySelector('[data-coordinar-note]');
+      if (!note) return;
+      var btn = note.querySelector('[data-coordinar-wa]');
+      var addBtn = picker.querySelector('[data-add-to-cart]');
+      var cotizarWa = picker.querySelector('[data-cotizar-wa]');
+      picker.addEventListener('pewman:variant-change', function (e) {
+        var v = e.detail || {};
+        if (v.coordinar) {
+          if (btn) {
+            btn.setAttribute(
+              'href',
+              'https://api.whatsapp.com/send/?phone=' + note.dataset.waPhone +
+              '&text=' + encodeURIComponent(note.dataset.waTemplate.replace('[FORMATO]', v.title || ''))
+            );
+          }
+          note.hidden = false;
+          if (addBtn) addBtn.hidden = true;
+          if (cotizarWa) cotizarWa.hidden = true;
+        } else {
+          note.hidden = true;
+          if (addBtn) addBtn.hidden = false;
+          if (cotizarWa) cotizarWa.hidden = false;
+        }
+      });
+    });
+  })();
+</script>
+
+{%- comment -%}
+  JSON-LD de Product con las 3 variantes como offers: sin esto Google no ve
+  precio ni stock (verificado 2026-08-05: las PDP no emitian ningun dato
+  estructurado). El precio de Liquid viene en centavos, por eso el /100.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ request.origin | append: product.url | json }},
+  "description": {{ product.description | strip_html | default: section.settings.lead_text | truncate: 500 | json }},
+  "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+  "brand": { "@type": "Brand", "name": "Pewman Innovation" },
+  "offers": [
+    {%- for variant in product.variants -%}
+    {
+      "@type": "Offer",
+      "name": {{ variant.title | json }},
+      "url": {{ request.origin | append: product.url | append: '?variant=' | append: variant.id | json }},
+      "price": {{ variant.price | divided_by: 100.0 | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+      "itemCondition": "https://schema.org/NewCondition"{% if variant.sku != blank %},
+      "sku": {{ variant.sku | json }}{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Pewman · Ficha producto",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "product_logo", "label": "Logo del producto (wordmark)" },
+    { "type": "text", "id": "tag_text", "label": "Etiqueta (tag)", "info": "Ej. Antiheladas / Antiestrés hídrico" },
+    { "type": "textarea", "id": "lead_text", "label": "Texto lead (bajo el H1)" },
+    { "type": "color", "id": "product_accent_color", "label": "Color de respaldo", "info": "Se usa solo si el producto no tiene su propio Color del producto cargado en su ficha", "default": "#1499c7" },
+    { "type": "header", "content": "Despacho a coordinar (formatos pesados)" },
+    { "type": "checkbox", "id": "coordinar_enabled", "label": "Mostrar aviso en formatos a coordinar", "default": true },
+    { "type": "text", "id": "coordinar_keyword", "label": "Texto que identifica el formato", "default": "20", "info": "El aviso aparece cuando el nombre del formato contiene este texto" },
+    { "type": "text", "id": "coordinar_title", "label": "Título del aviso", "default": "Este formato se compra directo con nuestro equipo" },
+    { "type": "textarea", "id": "coordinar_text", "label": "Texto del aviso", "default": "Blue Express no acepta envíos sobre 20 kg, así que la compra y el despacho del formato de 20 L se coordinan por WhatsApp según tu zona." },
+    { "type": "text", "id": "coordinar_btn_label", "label": "Texto del botón de WhatsApp", "default": "Comprar por WhatsApp" },
+    { "type": "textarea", "id": "coordinar_wa_msg", "label": "Mensaje prellenado de WhatsApp", "default": "Hola, quiero comprar [PRODUCTO] en formato [FORMATO] y necesito coordinar el despacho a mi zona. ¿Me pueden ayudar?", "info": "Comodines: [PRODUCTO] y [FORMATO] se reemplazan solos" }
+  ],
+  "presets": [
+    { "name": "Pewman · Ficha producto" }
+  ]
+}
+{% endschema %}

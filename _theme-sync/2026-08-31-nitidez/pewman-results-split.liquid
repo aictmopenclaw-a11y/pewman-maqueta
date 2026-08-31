@@ -1,0 +1,75 @@
+{%- style -%}
+  #PewmanResults-{{ section.id }} {
+    background: var(--pewman-crema); padding: 78px 0;
+    --pewman-prod: {{ product.metafields.custom.accent_color.value | default: section.settings.product_accent_color | default: '#1499c7' }};
+  }
+  #PewmanResults-{{ section.id }} .pewman-results__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanResults-{{ section.id }} .pewman-results__split { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+  #PewmanResults-{{ section.id }} .pewman-results__media img { border-radius: 18px; box-shadow: var(--pewman-sh); width: 100%; object-fit: cover; aspect-ratio: 1/1; }
+  #PewmanResults-{{ section.id }} .pewman-eyebrow { color: var(--pewman-prod); }
+  #PewmanResults-{{ section.id }} .pewman-results__tx h2 { font-size: 30px; color: var(--pewman-tinta); margin: 12px 0 16px; }
+  #PewmanResults-{{ section.id }} .pewman-results__tx p { font-size: 16px; color: var(--pewman-gris-tx); margin-bottom: 14px; }
+  @media (max-width: 920px) { #PewmanResults-{{ section.id }} .pewman-results__split { grid-template-columns: 1fr; } }
+{%- endstyle -%}
+
+{%- comment -%}
+  Sin resultado cargado en el producto Y sin texto de respaldo, la seccion no
+  se renderiza. Antes quedaba el titulo "Resultados reales en heladas" con el
+  parrafo vacio y el boton "Ver casos de exito" flotando solo, que es lo que
+  pasaria en un producto nuevo sin el metafield poblado.
+{%- endcomment -%}
+{%- liquid
+  assign result = product.metafields.custom.featured_result.value
+  assign hay_resultado = false
+  if result
+    assign hay_resultado = true
+  elsif section.settings.fallback_text != blank
+    assign hay_resultado = true
+  endif
+-%}
+{%- if hay_resultado -%}
+<div id="PewmanResults-{{ section.id }}">
+  <div class="pewman-results__wrap">
+    <div class="pewman-results__split">
+      <div class="pewman-results__media">
+        {%- assign result_image = result.result_image.value | default: section.settings.fallback_image -%}
+        {%- if result_image -%}
+          <img src="{{ result_image | image_url: width: 1000 }}" srcset="{{ result_image | image_url: width: 700 }} 700w, {{ result_image | image_url: width: 1000 }} 1000w, {{ result_image | image_url: width: 1400 }} 1400w" sizes="(min-width: 990px) 560px, calc(100vw - 48px)" alt="Resultados validados en campo" loading="lazy">
+        {%- endif -%}
+      </div>
+      <div class="pewman-results__tx">
+        <span class="pewman-eyebrow">Validado en campo</span>
+        <h2>{{ section.settings.heading | default: 'Resultados reales en heladas' }}</h2>
+        {%- if result -%}
+          <p>{{ result.description.value }}</p>
+          {%- if result.farmer_name.value != blank -%}
+            <p>&ldquo;{{ result.description.value | strip_html | truncate: 160 }}&rdquo;, relata {{ result.farmer_name.value }}{% if result.location.value != blank %}, {{ result.location.value }}{% endif %}.</p>
+          {%- endif -%}
+        {%- else -%}
+          <p>{{ section.settings.fallback_text }}</p>
+        {%- endif -%}
+        {% render 'pewman-cta-button', text: 'Ver casos de éxito', url: '/pages/casos', variant: 'red' %}
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pewman · Resultados",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Resultados reales en heladas" },
+    { "type": "image_picker", "id": "fallback_image", "label": "Imagen de respaldo" },
+    { "type": "textarea", "id": "fallback_text", "label": "Texto de respaldo", "info": "Se usa mientras product.metafields.custom.featured_result no tenga datos" },
+    { "type": "color", "id": "product_accent_color", "label": "Color de respaldo", "info": "Se usa solo si el producto no tiene su propio Color del producto cargado en su ficha", "default": "#1499c7" }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Resultados",
+      "settings": { "fallback_text": "En la temporada 2022 a 2023, Crioprotect protegió más de 2.000 hectáreas en Chile. Agricultores de papas, cerezos, paltos y uva de mesa resistieron heladas consecutivas sin daños significativos." }
+    }
+  ]
+}
+{% endschema %}

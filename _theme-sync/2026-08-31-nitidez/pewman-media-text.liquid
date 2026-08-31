@@ -1,0 +1,83 @@
+{%- comment -%}
+  Pewman · Imagen + texto. Seccion generica para el "builder": una imagen a un
+  lado y texto al otro, con la imagen a izquierda o derecha. Es la pieza que
+  faltaba para que el equipo arme paginas nuevas sin pedir codigo (antes solo
+  existian texto suelto o banner de imagen completa, nunca las dos juntas).
+{%- endcomment -%}
+{%- style -%}
+  #PewmanMediaText-{{ section.id }} {
+    background: {% if section.settings.cream_bg %}var(--pewman-crema){% else %}#fff{% endif %};
+    padding: {{ section.settings.pad_top }}px 0 {{ section.settings.pad_bottom }}px;
+  }
+  #PewmanMediaText-{{ section.id }} .pmt__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanMediaText-{{ section.id }} .pmt__grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  {%- comment -%} Invertir el orden visual sin tocar el HTML: el texto sigue primero para lectores de pantalla. {%- endcomment -%}
+  {%- if section.settings.image_position == 'right' -%}
+    #PewmanMediaText-{{ section.id }} .pmt__media { order: 2; }
+  {%- endif -%}
+  #PewmanMediaText-{{ section.id }} .pmt__media img {
+    width: 100%; height: auto; display: block; border-radius: {{ section.settings.image_radius }}px;
+    {% if section.settings.image_shadow %}box-shadow: 0 26px 54px -22px rgba(0,0,0,.4);{% endif %}
+  }
+  #PewmanMediaText-{{ section.id }} .pmt__tx h2 { font-size: clamp(24px, 3vw, 34px); color: var(--pewman-tinta); margin-bottom: 14px; line-height: 1.18; }
+  #PewmanMediaText-{{ section.id }} .pmt__tx .pewman-eyebrow { color: var(--pewman-rojo); }
+  #PewmanMediaText-{{ section.id }} .pmt__body { font-size: 16px; color: var(--pewman-gris-tx); }
+  #PewmanMediaText-{{ section.id }} .pmt__body p { margin: 0 0 12px; }
+  #PewmanMediaText-{{ section.id }} .pmt__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+  @media (max-width: 860px) {
+    #PewmanMediaText-{{ section.id }} .pmt__grid { grid-template-columns: 1fr; gap: 28px; }
+    {%- comment -%} En movil la imagen siempre va arriba: invertida quedaba el texto colgando sin contexto. {%- endcomment -%}
+    #PewmanMediaText-{{ section.id }} .pmt__media { order: -1; }
+  }
+{%- endstyle -%}
+
+<div id="PewmanMediaText-{{ section.id }}">
+  <div class="pmt__wrap">
+    <div class="pmt__grid">
+      {%- if section.settings.image -%}
+        <div class="pmt__media">
+          <img src="{{ section.settings.image | image_url: width: 1600 }}"
+               alt="{{ section.settings.image_alt | default: section.settings.heading | escape }}" loading="lazy">
+        </div>
+      {%- endif -%}
+      <div class="pmt__tx">
+        {%- if section.settings.eyebrow != blank -%}<span class="pewman-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="pmt__body">{{ section.settings.text }}</div>{%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <div class="pmt__cta">
+            {% render 'pewman-cta-button', text: section.settings.button_label, url: section.settings.button_link, variant: 'dark' %}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Imagen + texto",
+  "tag": "section",
+  "settings": [
+    { "type": "paragraph", "content": "Bloque de una imagen y un texto al lado. Sirve para armar cualquier página nueva." },
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "text", "id": "image_alt", "label": "Descripción de la imagen", "info": "Para accesibilidad y buscadores." },
+    { "type": "select", "id": "image_position", "label": "Posición de la imagen", "options": [ { "value": "left", "label": "Izquierda" }, { "value": "right", "label": "Derecha" } ], "default": "left" },
+    { "type": "range", "id": "image_radius", "label": "Esquinas redondeadas", "min": 0, "max": 30, "step": 2, "unit": "px", "default": 18 },
+    { "type": "checkbox", "id": "image_shadow", "label": "Sombra en la imagen", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo (texto chico de arriba)" },
+    { "type": "text", "id": "heading", "label": "Título" },
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "button_label", "label": "Botón · texto", "info": "Déjalo vacío si no quieres botón." },
+    { "type": "url", "id": "button_link", "label": "Botón · link" },
+    { "type": "checkbox", "id": "cream_bg", "label": "Fondo crema", "default": false },
+    { "type": "range", "id": "pad_top", "label": "Espacio arriba", "min": 0, "max": 120, "step": 6, "unit": "px", "default": 72 },
+    { "type": "range", "id": "pad_bottom", "label": "Espacio abajo", "min": 0, "max": 120, "step": 6, "unit": "px", "default": 72 }
+  ],
+  "presets": [
+    { "name": "Pewman · Imagen + texto" }
+  ]
+}
+{% endschema %}

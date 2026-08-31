@@ -1,0 +1,114 @@
+{%- style -%}
+  #PewmanTestimonials-{{ section.id }} { background: #fff; padding: 78px 0; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tg__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tg__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc {
+    display: grid; grid-template-columns: 150px 1fr; background: #fff; border: 1px solid var(--pewman-linea);
+    border-radius: 16px; overflow: hidden; cursor: pointer; transition: .2s;
+  }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc:hover { box-shadow: var(--pewman-sh); transform: translateY(-3px); }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__ph { position: relative; overflow: hidden; background: #222; min-height: 190px; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__ph img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__play {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 46px; height: 46px;
+    border-radius: 50%; background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center; z-index: 2;
+  }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__play::before { content: ""; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent var(--pewman-rojo); margin-left: 3px; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__body { padding: 18px 20px; display: flex; flex-direction: column; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__badge {
+    display: inline-block; align-self: flex-start; font-size: 10px; font-weight: 700; letter-spacing: .05em;
+    text-transform: uppercase; color: #fff; padding: 3px 8px; border-radius: 4px; margin-bottom: 8px;
+  }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__badge.crio { background: #1499c7; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__badge.nano { background: #009633; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__stars { color: #f5b301; font-size: 13px; letter-spacing: 2px; margin-bottom: 5px; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__body h3 { font-size: 16px; color: var(--pewman-tinta); line-height: 1.2; margin: 0 0 4px; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__who { font-size: 12px; color: var(--pewman-gris); margin-bottom: 8px; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tc__desc { font-size: 13px; color: var(--pewman-gris-tx); line-height: 1.45; margin-bottom: 0; flex: 1; }
+  #PewmanTestimonials-{{ section.id }} .pewman-tg__more { text-align: center; margin-top: 34px; }
+  {%- comment -%}
+    El .pewman-btn compartido trae white-space nowrap: con este texto largo el
+    boton media 370px y empujaba la pagina 19px hacia el lado en un celular de
+    375px. Aca puede quebrar linea; este selector con id le gana al compartido.
+  {%- endcomment -%}
+  #PewmanTestimonials-{{ section.id }} .pewman-tg__more .pewman-btn { max-width: 100%; white-space: normal; text-align: center; justify-content: center; }
+  @media (max-width: 820px) { #PewmanTestimonials-{{ section.id }} .pewman-tg__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 430px) { #PewmanTestimonials-{{ section.id }} .pewman-tc { grid-template-columns: 1fr; } #PewmanTestimonials-{{ section.id }} .pewman-tc__ph { min-height: 150px; } }
+{%- endstyle -%}
+
+<div id="PewmanTestimonials-{{ section.id }}">
+  <div class="pewman-tg__wrap">
+    {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow | default: 'Testimonios', heading: section.settings.heading | default: 'Resultados en video', subtext: section.settings.subtext %}
+    <div class="pewman-tg__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'testimonial' -%}
+          <div class="pewman-tc" data-yt="{{ block.settings.youtube_id }}" role="button" tabindex="0" aria-label="Ver video: {{ block.settings.title }}" {{ block.shopify_attributes }}>
+            <div class="pewman-tc__ph">
+              {%- if block.settings.image -%}<img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.title | escape }}" loading="lazy">{%- endif -%}
+              <span class="pewman-tc__play"></span>
+            </div>
+            <div class="pewman-tc__body">
+              <span class="pewman-tc__badge {{ block.settings.product_badge }}">{{ block.settings.product_badge_label }}</span>
+              <div class="pewman-tc__stars">★★★★★</div>
+              <h3>{{ block.settings.title }}</h3>
+              <div class="pewman-tc__who">{{ block.settings.who }}</div>
+              <p class="pewman-tc__desc">{{ block.settings.description }}</p>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.channel_link != blank -%}
+      {%- comment -%}
+        Variante roja, no ghost: el boton ghost es texto blanco sobre fondo
+        transparente y esta seccion tiene fondo blanco, asi que quedaba
+        invisible hasta pasar el mouse por encima (ahi el fondo se pone rojo
+        y recien se leia). El ghost sirve solo sobre fondo oscuro, como en la
+        franja de CTA.
+      {%- endcomment -%}
+      <div class="pewman-tg__more">{% render 'pewman-cta-button', text: 'Ver más en nuestro canal de YouTube →', url: section.settings.channel_link, variant: 'red', new_tab: true %}</div>
+    {%- endif -%}
+  </div>
+
+  <pewman-video-modal>
+    <div class="pewman-modal-overlay" hidden>
+      <div class="pewman-modal-box" style="max-width:940px;padding:0;background:#000;border-radius:14px;">
+        <button class="pewman-modal-close" type="button" data-modal-close aria-label="Cerrar video" style="color:#fff;top:-38px;right:-6px">&times;</button>
+        <div style="aspect-ratio:16/9;">
+          <iframe data-yt-frame title="Video de caso de éxito" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </pewman-video-modal>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Testimonios",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Testimonios" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Resultados en video" },
+    { "type": "text", "id": "subtext", "label": "Subtítulo", "default": "Agricultores de Chile cuentan sus resultados con Crioprotect y Nanoforte. Haz clic para ver el video." },
+    { "type": "url", "id": "channel_link", "label": "Link al canal de YouTube" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonio",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Foto miniatura" },
+        { "type": "text", "id": "youtube_id", "label": "ID del video de YouTube", "info": "Solo el ID, ej. de youtube.com/watch?v=Iez3_9MoZzw → Iez3_9MoZzw" },
+        { "type": "select", "id": "product_badge", "label": "Producto", "options": [{"value": "crio", "label": "Crioprotect"}, {"value": "nano", "label": "Nanoforte"}], "default": "crio" },
+        { "type": "text", "id": "product_badge_label", "label": "Texto del badge", "default": "Crioprotect" },
+        { "type": "text", "id": "title", "label": "Título (cultivo)" },
+        { "type": "text", "id": "who", "label": "Quién / ubicación" },
+        { "type": "textarea", "id": "description", "label": "Descripción corta" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Pewman · Testimonios", "blocks": [{ "type": "testimonial" }] }
+  ]
+}
+{% endschema %}

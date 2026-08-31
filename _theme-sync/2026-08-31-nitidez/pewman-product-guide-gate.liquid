@@ -1,0 +1,225 @@
+{%- style -%}
+  #PewmanGuideGate-{{ section.id }} {
+    background: var(--pewman-crema); padding: 78px 0;
+    --pewman-prod: {{ product.metafields.custom.accent_color.value | default: section.settings.product_accent_color | default: '#1499c7' }};
+  }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__head { text-align: center; max-width: 680px; margin: 0 auto 44px; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__head .pewman-eyebrow { color: var(--pewman-prod); }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__head h2 { font-size: clamp(27px, 3.6vw, 40px); color: var(--pewman-tinta); margin-top: 12px; }
+
+  #PewmanGuideGate-{{ section.id }} .guia2 { display: grid; grid-template-columns: {% if section.settings.cover_image %}1fr 1.1fr{% else %}.85fr 1.15fr{% endif %}; gap: 32px; align-items: stretch; }
+  #PewmanGuideGate-{{ section.id }} .guia2-media {
+    position: relative; border-radius: 20px; overflow: hidden; min-height: 430px;
+    display: flex; align-items: center; justify-content: center; padding: 30px;
+    background: {% if section.settings.cover_bg %}url('{{ section.settings.cover_bg | image_url: width: 1600 }}') center/cover{% else %}#2b2b2b{% endif %};
+  }
+  #PewmanGuideGate-{{ section.id }} .guia2-media::before { content: ""; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(0,0,0,.42), rgba(0,0,0,.62)); }
+  {%- comment -%}
+    Portada REAL de la guia (Cris 2026-08-17): antes se armaba una portada
+    falsa con la foto de la botella + textos + logos, y no correspondia a la
+    tapa del PDF que el usuario despues descarga. Con cover_image cargada se
+    muestra la tapa tal cual, sin overlay oscuro ni tarjeta armada.
+  {%- endcomment -%}
+  {%- comment -%}
+    Fondo con el color del producto (no blanco): sobre la crema del sitio un
+    marco blanco desaparecia y la portada quedaba flotando sin peso visual.
+  {%- endcomment -%}
+  #PewmanGuideGate-{{ section.id }} .guia2-media--real {
+    background: linear-gradient(155deg,
+      color-mix(in srgb, var(--pewman-prod) 16%, #ffffff),
+      color-mix(in srgb, var(--pewman-prod) 42%, #ffffff));
+    padding: 34px 30px;
+  }
+  #PewmanGuideGate-{{ section.id }} .guia2-media--real::before { display: none; }
+  {%- comment -%}
+    La portada va ABSOLUTA dentro del marco: si queda en el flujo, una tapa
+    vertical estira su columna y el formulario (que es mas bajo) deja un
+    hueco blanco debajo. Absoluta no aporta altura, asi que la fila la manda
+    el formulario y ambas columnas quedan parejas. max-width/max-height +
+    margin auto conservan la proporcion y dejan la caja del <img> del tamano
+    real de la imagen, para que la sombra caiga pegada a la tapa (con
+    object-fit: contain la sombra quedaria flotando en el rectangulo vacio).
+  {%- endcomment -%}
+  #PewmanGuideGate-{{ section.id }} .gcover-real {
+    position: absolute; inset: 0; margin: auto; z-index: 1; display: block;
+    {%- comment -%} El margen va en el max-*, no en el inset: con inset + max-height 100% la tapa crecia mas alla del inset y tocaba los bordes del marco. {%- endcomment -%}
+    max-width: calc(100% - 60px); max-height: calc(100% - 68px); width: auto; height: auto;
+    border-radius: 12px;
+    box-shadow: 0 34px 60px -20px rgba(0,0,0,.45), 0 3px 10px rgba(0,0,0,.14);
+  }
+  {%- comment -%}
+    El grid item es el <form> que genera Shopify; la caja blanca visible es un
+    div adentro. Sin estas dos reglas el <form> se estira pero la caja no, y
+    quedaba el espacio vacio bajo el boton.
+  {%- endcomment -%}
+  #PewmanGuideGate-{{ section.id }} .guia2 > form { display: flex; flex-direction: column; }
+  #PewmanGuideGate-{{ section.id }} .guia2 > form > .guia2-form { flex: 1 1 auto; }
+  #PewmanGuideGate-{{ section.id }} .gcover {
+    position: relative; z-index: 1; background: #fff; border-radius: 14px; padding: 26px 24px 20px;
+    text-align: center; box-shadow: 0 26px 54px -20px rgba(0,0,0,.55); max-width: 272px;
+  }
+  #PewmanGuideGate-{{ section.id }} .gcover-prod { height: 158px; width: auto; margin: 0 auto 12px; display: block; filter: drop-shadow(0 14px 20px rgba(0,0,0,.20)); }
+  #PewmanGuideGate-{{ section.id }} .gcover-t { font-weight: 800; font-size: 22px; color: var(--pewman-prod); line-height: 1.1; }
+  #PewmanGuideGate-{{ section.id }} .gcover-s { font-size: 13.5px; color: #5a5a5a; margin-top: 4px; }
+  #PewmanGuideGate-{{ section.id }} .gcover-brands { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee; }
+  #PewmanGuideGate-{{ section.id }} .gcover-brands img { height: 26px; width: auto; object-fit: contain; }
+
+  #PewmanGuideGate-{{ section.id }} .guia2-form { background: #fff; border: 1px solid var(--pewman-linea); border-radius: 20px; padding: 32px; box-shadow: var(--pewman-sh); }
+  #PewmanGuideGate-{{ section.id }} .gf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  #PewmanGuideGate-{{ section.id }} .guia2-form label { display: block; font-weight: 600; font-size: 12.5px; color: #3d3d3d; margin: 0 0 5px; }
+  {%- comment -%} 16px minimo en los campos: bajo eso iOS hace zoom automatico al tocar. {%- endcomment -%}
+  #PewmanGuideGate-{{ section.id }} .guia2-form input,
+  #PewmanGuideGate-{{ section.id }} .guia2-form select,
+  #PewmanGuideGate-{{ section.id }} .guia2-form textarea {
+    width: 100%; border: 1.5px solid var(--pewman-linea); border-radius: 10px; padding: 11px 13px; font-size: 16px; background: #fff; color: var(--pewman-tinta);
+  }
+  #PewmanGuideGate-{{ section.id }} .guia2-form input:focus,
+  #PewmanGuideGate-{{ section.id }} .guia2-form select:focus,
+  #PewmanGuideGate-{{ section.id }} .guia2-form textarea:focus {
+    outline: none; border-color: var(--pewman-prod); box-shadow: 0 0 0 3px color-mix(in srgb, var(--pewman-prod) 22%, transparent);
+  }
+  #PewmanGuideGate-{{ section.id }} .guia2-form textarea { min-height: 92px; resize: vertical; margin-bottom: 14px; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__submit {
+    font-weight: 600; font-size: 15px; padding: 13px 30px; border-radius: 100px; border: none; cursor: pointer;
+    background: var(--pewman-prod); color: #fff; transition: .2s;
+  }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__submit:hover { filter: brightness(.94); transform: translateY(-2px); }
+
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__success { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__success-icon {
+    width: 56px; height: 56px; border-radius: 50%; background: #009633; color: #fff; font-size: 26px;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+  }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__success h3 { font-weight: 800; font-size: 22px; color: var(--pewman-tinta); margin: 6px 0 8px; }
+  #PewmanGuideGate-{{ section.id }} .pewman-guide__success p { color: #5a5a5a; margin: 0 0 20px; max-width: 420px; }
+
+  @media (max-width: 820px) {
+    #PewmanGuideGate-{{ section.id }} .guia2 { grid-template-columns: 1fr; }
+    #PewmanGuideGate-{{ section.id }} .gf-grid { grid-template-columns: 1fr; }
+    #PewmanGuideGate-{{ section.id }} .guia2-media { min-height: 300px; }
+    #PewmanGuideGate-{{ section.id }} .guia2-media--real { padding: 24px 20px; min-height: 0; }
+    {%- comment -%} En una sola columna no hay hermano que igualar: la tapa vuelve al flujo y manda su propio alto. {%- endcomment -%}
+    #PewmanGuideGate-{{ section.id }} .gcover-real { position: relative; inset: auto; max-width: 100%; max-height: 460px; margin: 0 auto; }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign guide_pdf = product.metafields.custom.application_guide_pdf.value.url
+  assign guide_form_id = 'PewmanGuideForm-' | append: section.id
+-%}
+<div id="PewmanGuideGate-{{ section.id }}">
+  <div class="pewman-guide__wrap">
+    <div class="pewman-guide__head">
+      <span class="pewman-eyebrow">Conoce en profundidad {{ product.title }}</span>
+      <h2>Descarga la guía de aplicación</h2>
+    </div>
+
+    <div class="guia2">
+      {%- comment -%}
+        Sin style inline aca: un "background-image:none" inline tumbaba el
+        degradado de .guia2-media--real (un gradiente tambien es background-image).
+        La clase ya redefine el background completo, asi que basta con ella.
+      {%- endcomment -%}
+      <div class="guia2-media{% if section.settings.cover_image %} guia2-media--real{% endif %}">
+        {%- if section.settings.cover_image -%}
+          <img class="gcover-real" src="{{ section.settings.cover_image | image_url: width: 900 }}" alt="Portada de la guia de aplicacion de {{ product.title | escape }}" loading="lazy">
+        {%- else -%}
+        <div class="gcover">
+          {%- if product.featured_image -%}
+            <img class="gcover-prod" src="{{ product.featured_image | image_url: width: 700 }}" alt="Guía de aplicación {{ product.title | escape }}">
+          {%- endif -%}
+          <div class="gcover-t">Guía de aplicación</div>
+          <div class="gcover-s">y preguntas frecuentes</div>
+          {%- if section.settings.brand_logo_pewman or section.settings.brand_logo_cals -%}
+            <div class="gcover-brands">
+              {%- if section.settings.brand_logo_pewman -%}<img src="{{ section.settings.brand_logo_pewman | image_url: width: 220 }}" alt="Pewman Innovation">{%- endif -%}
+              {%- if section.settings.brand_logo_cals -%}<img src="{{ section.settings.brand_logo_cals | image_url: width: 220 }}" alt="CALS">{%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+        {%- endif -%}
+      </div>
+
+      {%- form 'contact', id: guide_form_id, data-hs-form: 'guia' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="guia2-form pewman-guide__success">
+            <div class="pewman-guide__success-icon">✓</div>
+            <h3>¡Listo! Aquí está tu guía</h3>
+            <p>Te enviamos una copia a tu correo. También puedes descargarla directamente:</p>
+            {%- if guide_pdf -%}
+              {% render 'pewman-cta-button', text: '⬇ Descargar guía de aplicación (PDF)', url: guide_pdf, variant: 'dark', new_tab: true %}
+            {%- else -%}
+              {%- comment -%}
+                Sin PDF cargado en el producto. Antes aparecia aca la ruta
+                tecnica del metafield, que la veia el visitante despues de
+                enviar sus datos. El contacto igual quedo registrado, asi que
+                el mensaje dice lo que de verdad va a pasar.
+              {%- endcomment -%}
+              <p>Nuestro equipo te enviará la guía por correo a la brevedad.</p>
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          <div class="guia2-form">
+            <input type="hidden" name="contact[Guía solicitada]" value="{{ product.title }}">
+            <div class="gf-grid">
+              {%- comment -%}
+                label for + id y autocomplete: sin la asociacion los lectores
+                de pantalla no anuncian el campo y el navegador no rellena
+                nombre/correo/telefono solo (clave en movil).
+              {%- endcomment -%}
+              <div><label for="GateName-{{ section.id }}">Nombre</label><input type="text" id="GateName-{{ section.id }}" name="contact[name]" placeholder="Nombre" autocomplete="name" required></div>
+              <div><label for="GateEmail-{{ section.id }}">Correo electrónico</label><input type="email" id="GateEmail-{{ section.id }}" name="contact[email]" placeholder="Correo electrónico" autocomplete="email" required></div>
+              <div><label for="GatePhone-{{ section.id }}">Teléfono</label><input type="tel" id="GatePhone-{{ section.id }}" name="contact[phone]" placeholder="Teléfono" autocomplete="tel"></div>
+              <div><label for="GateCrop-{{ section.id }}">Tipo de cultivo</label><input type="text" id="GateCrop-{{ section.id }}" name="contact[Tipo de cultivo]" placeholder="Cerezos, uva, papas..."></div>
+              <div><label for="GateHa-{{ section.id }}">Hectáreas</label><input type="number" min="0" id="GateHa-{{ section.id }}" name="contact[Hectáreas]" placeholder="Ej. 25"></div>
+              <div>
+                <label for="GateProduct-{{ section.id }}">Producto de interés</label>
+                {%- comment -%}
+                  El producto de la pagina va SIEMPRE primero y preseleccionado,
+                  fuera del recorrido. Motivo verificado en vivo: collections.all
+                  solo trae los productos activos, asi que un producto en estado
+                  "No listado" no aparecia en su propio formulario y el envio
+                  salia con el primero de la lista, o sea con un dato falso.
+                  El resto de los productos se listan despues, sin repetirlo.
+                  Ojo con el CRM: la propiedad "producto_de_interes" de HubSpot
+                  es una lista cerrada, asi que un producto nuevo entra como
+                  "otro" hasta que se agregue esa opcion alla.
+                {%- endcomment -%}
+                <select id="GateProduct-{{ section.id }}" name="contact[Producto de interés]">
+                  <option selected>{{ product.title }}</option>
+                  {%- for p in collections.all.products -%}
+                    {%- unless p.title == product.title -%}
+                      <option>{{ p.title }}</option>
+                    {%- endunless -%}
+                  {%- endfor -%}
+                </select>
+              </div>
+            </div>
+            <label for="GateBody-{{ section.id }}">Mensaje</label>
+            <textarea id="GateBody-{{ section.id }}" name="contact[body]" placeholder="Cuéntanos sobre tu cultivo"></textarea>
+            {% render 'pewman-consent' %}
+            <button class="pewman-guide__submit" type="submit">Enviar y descargar guía</button>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Guía gated",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "cover_image", "label": "Portada de la guía (imagen real)", "info": "La tapa del PDF. Si la cargas, se muestra tal cual y se ignoran el fondo y los logos de abajo." },
+    { "type": "image_picker", "id": "cover_bg", "label": "Fondo de la portada", "info": "Solo se usa si no cargaste la portada real." },
+    { "type": "image_picker", "id": "brand_logo_pewman", "label": "Logo Pewman (co-marca)" },
+    { "type": "image_picker", "id": "brand_logo_cals", "label": "Logo CALS (co-marca)" },
+    { "type": "color", "id": "product_accent_color", "label": "Color de respaldo", "info": "Se usa solo si el producto no tiene su propio Color del producto cargado en su ficha", "default": "#1499c7" }
+  ],
+  "presets": [
+    { "name": "Pewman · Guía gated" }
+  ]
+}
+{% endschema %}

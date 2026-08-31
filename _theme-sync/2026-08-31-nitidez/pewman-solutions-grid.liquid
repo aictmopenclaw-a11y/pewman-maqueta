@@ -1,0 +1,97 @@
+{%- style -%}
+  #PewmanSolutions-{{ section.id }} { background: #fff; padding: 78px 0; }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__card {
+    border: 1px solid var(--pewman-linea); border-radius: 18px; overflow: hidden; background: #fff;
+    box-shadow: var(--pewman-sh); display: flex; flex-direction: column; transition: .25s;
+  }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__card:hover { transform: translateY(-5px); }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__top {
+    height: 230px; display: flex; align-items: center; justify-content: center; background: var(--pewman-crema);
+    position: relative; padding: 22px;
+  }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__top img.pack { height: 200px; width: auto; object-fit: contain; filter: drop-shadow(0 16px 22px rgba(52,52,52,.22)); }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__body { padding: 24px 26px 26px; display: flex; flex-direction: column; flex: 1; }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__list { list-style: none; margin: 6px 0 18px; padding: 0; }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__list li { font-size: 14px; padding-left: 24px; position: relative; margin-bottom: 13px; color: var(--pewman-gris-tx); line-height: 1.45; }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__list li b { display: block; color: var(--pewman-tinta); font-size: 14.5px; font-weight: 700; margin-bottom: 1px; }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__list li::before { content: ""; position: absolute; left: 0; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--pewman-accent, var(--pewman-rojo)); }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__foot {
+    margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    padding-top: 16px; border-top: 1px solid var(--pewman-linea);
+  }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__price .s { font-size: 12px; color: var(--pewman-gris-tx); }
+  #PewmanSolutions-{{ section.id }} .pewman-solutions__price .p { font-weight: 800; font-size: 22px; color: var(--pewman-tinta); }
+  @media (max-width: 900px) { #PewmanSolutions-{{ section.id }} .pewman-solutions__grid { grid-template-columns: 1fr; } }
+{%- endstyle -%}
+
+<div id="PewmanSolutions-{{ section.id }}">
+  <span id="soluciones" style="scroll-margin-top:90px" aria-hidden="true"></span>
+  <span id="productos" style="scroll-margin-top:90px" aria-hidden="true"></span>
+  <div class="pewman-solutions__wrap">
+    {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow | default: 'Productos', heading: section.settings.heading | default: 'Nuestras soluciones' %}
+    <div class="pewman-solutions__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'product_card' and block.settings.product != blank -%}
+          {%- assign p = block.settings.product -%}
+          <article class="pewman-solutions__card" style="--pewman-accent: {{ block.settings.accent_color | default: '#BD0028' }};" {{ block.shopify_attributes }}>
+            <div class="pewman-solutions__top">
+              <img class="pack" src="{{ p.featured_image | image_url: width: 900 }}" alt="{{ p.title | escape }}">
+            </div>
+            <div class="pewman-solutions__body">
+              <ul class="pewman-solutions__list">
+                {%- assign feature_lines = block.settings.summary_features | newline_to_br | split: '<br />' -%}
+                {%- for line in feature_lines -%}
+                  {%- assign parts = line | strip | split: '|' -%}
+                  {%- if parts.first != blank -%}
+                    <li><b>{{ parts.first | strip }}</b>{%- if parts.size > 1 -%}{{ parts.last | strip }}{%- endif -%}</li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+              <div class="pewman-solutions__foot">
+                <div class="pewman-solutions__price">
+                  <div class="s">Desde</div>
+                  <div class="p">{{ p.price_min | money }}</div>
+                </div>
+                {% render 'pewman-cta-button', text: 'Ver producto', url: p.url, variant: 'dark' %}
+              </div>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Soluciones",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Productos" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Nuestras soluciones" }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Tarjeta de producto",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Producto" },
+        { "type": "image_picker", "id": "brand_logo", "label": "Logo de marca del producto" },
+        { "type": "color", "id": "accent_color", "label": "Color de acento (viñetas)", "default": "#BD0028" },
+        { "type": "textarea", "id": "summary_features", "label": "Beneficios resumidos", "info": "Un beneficio por línea, con el formato Título|Descripción" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Soluciones",
+      "blocks": [
+        { "type": "product_card", "settings": { "accent_color": "#1499c7" } },
+        { "type": "product_card", "settings": { "accent_color": "#009633" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

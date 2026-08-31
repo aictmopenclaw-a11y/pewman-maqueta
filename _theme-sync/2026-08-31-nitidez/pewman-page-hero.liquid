@@ -1,0 +1,156 @@
+{%- liquid
+  assign zoom_max = section.settings.zoom_intensity | default: '1.09'
+-%}
+{%- style -%}
+  {%- if section.settings.style == 'title' -%}
+  #PewmanPageHero-{{ section.id }}.pewman-page-hero--title { background: #fff; color: var(--pewman-tinta); }
+  #PewmanPageHero-{{ section.id }} .pewman-page-hero__title-wrap { max-width: 1200px; margin: 0 auto; padding: 70px 24px 12px; text-align: center; }
+  {%- comment -%}
+    El max-width y el margin van SIEMPRE juntos. Mas abajo la regla generica del
+    banner le pone max-width:760px a este mismo h1, y como aca no se declaraba
+    margin horizontal, la caja quedaba pegada a la izquierda: el text-align del
+    contenedor centraba el texto DENTRO de esos 760px, no el bloque en la pagina.
+    Resultado medido a 1440px: el titulo caia 196px a la izquierda del centro
+    mientras el parrafo (que si trae margin auto) quedaba centrado. Los dos
+    desalineados entre si. En movil no se notaba porque el titulo nunca alcanza
+    los 760px. Si algun dia se toca el max-width, mantener el auto.
+  {%- endcomment -%}
+  #PewmanPageHero-{{ section.id }}.pewman-page-hero--title h1 { font-size: clamp(30px, 4.5vw, 46px); color: var(--pewman-tinta); max-width: 900px; margin: 0 auto; }
+  #PewmanPageHero-{{ section.id }}.pewman-page-hero--title p { font-size: 17px; color: var(--pewman-gris-tx); max-width: 660px; margin: 12px auto 0; }
+  @media (max-width: 560px) {
+    #PewmanPageHero-{{ section.id }} .pewman-page-hero__title-wrap { padding: 46px 20px 10px; }
+    #PewmanPageHero-{{ section.id }}.pewman-page-hero--title p { font-size: 15.5px; }
+  }
+  {%- endif -%}
+  #PewmanPageHero-{{ section.id }} {
+    position: relative; overflow: hidden; color: #eafaf2;
+    background: {% if section.settings.background_image %}#101820{% else %}linear-gradient(155deg, #2b2b2b, #3d3d3d){% endif %};
+  }
+  {%- if section.settings.background_image -%}
+  #PewmanPageHero-{{ section.id }} .pewman-page-hero__bg {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+    animation: pewmanHeroZoom-{{ section.id }} 20s ease-out infinite alternate;
+  }
+  @keyframes pewmanHeroZoom-{{ section.id }} { from { transform: scale(1); } to { transform: scale({{ zoom_max }}); } }
+  @media (prefers-reduced-motion: reduce) { #PewmanPageHero-{{ section.id }} .pewman-page-hero__bg { animation: none; } }
+  {%- endif -%}
+  #PewmanPageHero-{{ section.id }} .pewman-page-hero__wrap {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 54px 24px 60px;
+    {%- comment -%} Mismo alto que el hero del Home: el recuadro debe caer en la misma posicion en todas las paginas (Dalila 2026-08-13). {%- endcomment -%}
+    min-height: {% if section.settings.tall %}clamp(500px, 56vw, 820px){% else %}auto{% endif %};
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  {%- comment -%}
+    Recuadro SEMITRANSPARENTE (alpha .82) en vez de degradado sobre toda la
+    foto (referencia Dalila 2026-08-12), igual que el hero del Home. Paginas
+    de marca (Casos, Empresa, Prensa) sin producto asociado, por eso el color
+    por defecto es el rojo de marca, no un acento de producto.
+  {%- endcomment -%}
+  {%- if section.settings.background_image -%}
+  {%- comment -%}
+    GEOMETRIA COMPARTIDA con el hero del Home (Dalila 2026-08-13): caja mas
+    cuadrada de tamano fijo, identica en todo el sitio. Cambios en conjunto
+    con pewman-hero-slideshow y pewman-product-hero.
+  {%- endcomment -%}
+  #PewmanPageHero-{{ section.id }} .pewman-page-hero__tx {
+    max-width: 600px; min-height: clamp(340px, 23vw, 420px); width: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    background: var(--pewman-box, rgba(189, 0, 40, 0.82)); border-radius: 20px; padding: 36px 40px;
+    transform: translateY(48px);
+  }
+  @media (min-width: 1400px) {
+    #PewmanPageHero-{{ section.id }} .pewman-page-hero__tx { transform: translate(-70px, 48px); }
+  }
+  {%- endif -%}
+  #PewmanPageHero-{{ section.id }} h1 { font-size: clamp(24px, 2.5vw, 36px); color: #fff; margin-bottom: 10px; max-width: 760px; }
+  #PewmanPageHero-{{ section.id }} p { font-size: 16px; color: #d6d6d6; max-width: 660px; margin: 0; }
+  @media (max-width: 820px) {
+    #PewmanPageHero-{{ section.id }} .pewman-page-hero__wrap { min-height: {% if section.settings.tall and section.settings.background_image %}clamp(460px, 118vw, 620px){% elsif section.settings.tall %}clamp(500px, 56vw, 820px){% else %}auto{% endif %}; }
+    #PewmanPageHero-{{ section.id }} .pewman-page-hero__tx { padding: 24px 22px; border-radius: 16px; transform: none; min-height: 0; }
+  }
+{%- endstyle -%}
+
+{%- comment -%}
+  El listado de blog usa UN template para todos los blogs. Con el titulo fijo
+  en los ajustes, el blog de Prensa mostraba "Articulos y papers" (verificado
+  en vivo). Si el titulo se deja vacio, la seccion toma el nombre del blog, del
+  articulo o de la pagina donde esta: asi un blog nuevo sale con su propio
+  nombre sin que nadie tenga que tocar el theme.
+{%- endcomment -%}
+{%- liquid
+  assign hero_heading = section.settings.heading
+  if hero_heading == blank
+    if article != blank
+      assign hero_heading = article.title
+    elsif blog != blank
+      assign hero_heading = blog.title
+    elsif page != blank
+      assign hero_heading = page.title
+    endif
+  endif
+-%}
+{%- if section.settings.style == 'title' -%}
+<div id="PewmanPageHero-{{ section.id }}" class="pewman-page-hero--title">
+  <div class="pewman-page-hero__title-wrap">
+    <h1>{{ hero_heading }}</h1>
+    {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+  </div>
+</div>
+{%- else -%}
+<div id="PewmanPageHero-{{ section.id }}" style="--pewman-box: {{ section.settings.box_color | default: '#BD0028' | color_modify: 'alpha', 0.82 }};">
+  {%- if section.settings.background_image -%}
+    <img
+      class="pewman-page-hero__bg"
+      src="{{ section.settings.background_image | image_url: width: 1800 }}"
+      srcset="{{ section.settings.background_image | image_url: width: 900 }} 900w, {{ section.settings.background_image | image_url: width: 1400 }} 1400w, {{ section.settings.background_image | image_url: width: 1800 }} 1800w, {{ section.settings.background_image | image_url: width: 2400 }} 2400w, {{ section.settings.background_image | image_url: width: 3200 }} 3200w"
+      sizes="100vw"
+      alt="{{ section.settings.background_image.alt | default: hero_heading | escape }}"
+      loading="eager"
+      fetchpriority="high"
+    >
+  {%- endif -%}
+  <div class="pewman-page-hero__wrap">
+    {%- comment -%} Sin breadcrumb en el hero: sobre la foto no se lee bien (decision Cris 2026-07-24). {%- endcomment -%}
+    <div class="pewman-page-hero__tx">
+      {%- if section.settings.eyebrow != blank -%}<span class="pewman-eyebrow" style="color:#e2e2e2">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1>{{ hero_heading }}</h1>
+      {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pewman · Hero de página",
+  "tag": "section",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Estilo", "options": [ { "value": "banner", "label": "Banner (fondo oscuro o foto)" }, { "value": "title", "label": "Solo título grande centrado" } ], "default": "banner" },
+    { "type": "text", "id": "parent_2_label", "label": "Nivel intermedio del breadcrumb (opcional)", "info": "Ej. \"Productos\" o \"Nosotros\"" },
+    { "type": "url", "id": "parent_2_url", "label": "Link del nivel intermedio (opcional)" },
+    { "type": "text", "id": "current_label", "label": "Página actual (breadcrumb)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Título (H1)", "info": "Si lo dejas vacío, se muestra solo el nombre de la página, del blog o del artículo donde está." },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "image_picker", "id": "background_image", "label": "Imagen de fondo (opcional)" },
+    { "type": "color", "id": "box_color", "label": "Color del recuadro de texto", "default": "#BD0028", "visible_if": "{{ section.settings.background_image != blank }}" },
+    {
+      "type": "select",
+      "id": "zoom_intensity",
+      "label": "Zoom de la foto",
+      "info": "Acercamiento lento de la imagen de fondo",
+      "options": [
+        { "value": "1.09", "label": "Normal" },
+        { "value": "1.025", "label": "Sutil (muestra casi toda la foto)" }
+      ],
+      "default": "1.09",
+      "visible_if": "{{ section.settings.background_image != blank }}"
+    },
+    { "type": "checkbox", "id": "tall", "label": "Alto (como el hero de Home)", "default": false }
+  ],
+  "presets": [
+    { "name": "Pewman · Hero de página" }
+  ]
+}
+{% endschema %}

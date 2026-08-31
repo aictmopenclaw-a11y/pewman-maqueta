@@ -1,0 +1,88 @@
+{%- style -%}
+  #PewmanContact-{{ section.id }} {
+    position: relative;
+    background: linear-gradient(rgba(38,38,38,.82), rgba(38,38,38,.62)){% if section.settings.background_image %}, url({{ section.settings.background_image | image_url: width: 2048 }}) center/cover{% endif %};
+    padding: 78px 0;
+  }
+  #PewmanContact-{{ section.id }} .pewman-section-heading__title,
+  #PewmanContact-{{ section.id }} .pewman-eyebrow { color: #fff; }
+  #PewmanContact-{{ section.id }} .pewman-contact__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__box {
+    max-width: 760px; margin: 0 auto; background: #fff; border: 1px solid var(--pewman-linea);
+    border-radius: 20px; padding: 40px; box-shadow: var(--pewman-sh);
+  }
+  #PewmanContact-{{ section.id }} .pewman-contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__box label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__box input,
+  #PewmanContact-{{ section.id }} .pewman-contact__box select,
+  #PewmanContact-{{ section.id }} .pewman-contact__box textarea {
+    width: 100%; border: 1.5px solid var(--pewman-linea); border-radius: 10px; padding: 12px 14px; font-size: 16px; transition: .18s;
+  }
+  {%- comment -%} 16px minimo en los campos: bajo eso iOS hace zoom automatico al tocar. {%- endcomment -%}
+  #PewmanContact-{{ section.id }} .pewman-contact__box input:focus,
+  #PewmanContact-{{ section.id }} .pewman-contact__box select:focus,
+  #PewmanContact-{{ section.id }} .pewman-contact__box textarea:focus { outline: none; border-color: var(--pewman-rojo); box-shadow: 0 0 0 3px rgba(189,0,40,.12); }
+  #PewmanContact-{{ section.id }} .pewman-contact__full { margin-bottom: 14px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__box textarea { min-height: 96px; resize: vertical; }
+  #PewmanContact-{{ section.id }} .pewman-contact__ok { font-size: 13px; color: var(--pewman-rojo); margin-top: 10px; font-weight: 600; }
+  @media (max-width: 900px) { #PewmanContact-{{ section.id }} .pewman-contact__grid { grid-template-columns: 1fr; } }
+  {% if section.settings.background_image %}@media (max-width: 749px) { #PewmanContact-{{ section.id }} { background: linear-gradient(rgba(38,38,38,.82), rgba(38,38,38,.62)), url({{ section.settings.background_image | image_url: width: 1080 }}) center/cover; } }{% endif %}
+{%- endstyle -%}
+
+<div id="PewmanContact-{{ section.id }}">
+  <div class="pewman-contact__wrap">
+    {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow | default: 'Contacto', heading: section.settings.heading | default: '¿Quieres saber más de nuestras soluciones?' %}
+    <div class="pewman-contact__box">
+      {%- assign cf_form_id = 'PewmanContactForm-' | append: section.id -%}
+      {%- form 'contact', id: cf_form_id, data-hs-form: 'contacto' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="pewman-contact__ok">✓ ¡Gracias! Te contactaremos pronto.</div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div class="pewman-contact__ok">{{ form.errors | default_errors }}</div>
+          {%- endif -%}
+          <div class="pewman-contact__grid">
+            <div><label for="ContactName-{{ section.id }}">Nombre</label><input type="text" id="ContactName-{{ section.id }}" name="contact[name]" autocomplete="name" required></div>
+            <div><label for="ContactEmail-{{ section.id }}">Correo electrónico</label><input type="email" id="ContactEmail-{{ section.id }}" name="contact[email]" autocomplete="email" required></div>
+          </div>
+          <div class="pewman-contact__grid">
+            <div><label for="ContactPhone-{{ section.id }}">Teléfono</label><input type="tel" id="ContactPhone-{{ section.id }}" name="contact[phone]" autocomplete="tel"></div>
+            <div><label for="ContactCrop-{{ section.id }}">Tipo de cultivo</label><input type="text" id="ContactCrop-{{ section.id }}" name="contact[Tipo de cultivo]" placeholder="Cerezos, uva, papas..."></div>
+          </div>
+          <div class="pewman-contact__grid">
+            <div><label for="ContactHectares-{{ section.id }}">Hectáreas</label><input type="number" min="0" id="ContactHectares-{{ section.id }}" name="contact[Hectáreas]" placeholder="Ej: 25"></div>
+            <div>
+              <label for="ContactProduct-{{ section.id }}">Producto de interés</label>
+              <select id="ContactProduct-{{ section.id }}" name="contact[Producto de interés]">
+                <option>Crioprotect</option>
+                <option>Nanoforte</option>
+                <option>Ambos</option>
+              </select>
+            </div>
+          </div>
+          <div class="pewman-contact__full">
+            <label for="ContactMessage-{{ section.id }}">Mensaje</label>
+            <textarea id="ContactMessage-{{ section.id }}" name="contact[body]" placeholder="Cuéntanos sobre tu cultivo"></textarea>
+          </div>
+          {% render 'pewman-consent' %}
+          <button class="pewman-btn pewman-btn--dark" type="submit">Enviar mensaje</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Formulario",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Contacto" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "¿Quieres saber más de nuestras soluciones?" },
+    { "type": "image_picker", "id": "background_image", "label": "Imagen de fondo" }
+  ],
+  "presets": [
+    { "name": "Pewman · Formulario" }
+  ]
+}
+{% endschema %}

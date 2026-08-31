@@ -1,0 +1,49 @@
+{%- comment -%}
+  Block hijo de pewman-trial-category. Si has_report está apagado (o el PDF
+  no está subido todavía), muestra "Informe en preparación" sin interacción
+  — igual que casos.html hoy con arándanos/zarzaparrillas/cerezos-Giddings.
+{%- endcomment -%}
+{%- liquid
+  assign has_pdf = false
+  if block.settings.has_report and block.settings.report_pdf_url != blank
+    assign has_pdf = true
+  endif
+-%}
+<div class="pewman-trials__card{% if has_pdf %} has-pdf{% endif %}" {% if has_pdf %}data-pdf="{{ block.settings.report_pdf_url }}" data-title="{{ block.settings.report_title | escape }}"{% endif %} {{ block.shopify_attributes }}>
+  <div class="pewman-trials__card-ph{% unless block.settings.image %} pewman-trials__card-ph--empty{% endunless %}">
+    {%- if block.settings.image -%}
+      <img src="{{ block.settings.image | image_url: width: 740 }}" alt="{{ block.settings.crop_name | escape }}" loading="lazy">
+    {%- else -%}
+      <span>Falta imagen</span>
+    {%- endif -%}
+  </div>
+  <div class="pewman-trials__card-body">
+    <div class="pewman-trials__card-name">{{ block.settings.crop_name }}</div>
+    <div class="pewman-trials__card-meta">{{ block.settings.location_meta }}</div>
+    <div class="pewman-trials__card-desc">{{ block.settings.description }}</div>
+    {%- if has_pdf -%}
+      <span class="pewman-trials__card-go">Ver informe técnico →</span>
+    {%- else -%}
+      <span class="pewman-trials__card-go soon">Informe en preparación</span>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ensayo",
+  "tag": null,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Foto" },
+    { "type": "text", "id": "crop_name", "label": "Cultivo" },
+    { "type": "text", "id": "location_meta", "label": "Ubicación / empresa validadora" },
+    { "type": "textarea", "id": "description", "label": "Descripción" },
+    { "type": "checkbox", "id": "has_report", "label": "Tiene informe técnico (PDF)", "default": false },
+    { "type": "url", "id": "report_pdf_url", "label": "PDF del informe", "info": "Sube el archivo en Configuración → Archivos y pega aquí la URL", "visible_if": "{{ block.settings.has_report }}" },
+    { "type": "text", "id": "report_title", "label": "Título del informe (modal)", "visible_if": "{{ block.settings.has_report }}" }
+  ],
+  "presets": [
+    { "name": "Ensayo", "settings": { "crop_name": "Cultivo", "location_meta": "Ubicación" } }
+  ]
+}
+{% endschema %}
