@@ -1,0 +1,158 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pewman_p_hero": {
+      "type": "pewman-product-hero",
+      "settings": {
+        "logo": "shopify://shop_images/logo-nano.svg",
+        "body_text": "<p>Bioestimulante en base a microorganismos de ambientes extremos (desérticos y antárticos) que mejora la disponibilidad de nutrientes en el suelo mediante la solubilización de fósforo (P) y potasio (K). También aumenta la eficiencia en el uso del agua, mejorando el potencial hídrico de la planta en más de un 40%.</p>",
+        "product_accent_color": "#009633"
+      }
+    },
+    "pewman_p_benefits": {
+      "type": "pewman-product-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "thermometer",
+            "text": "Mejora la respuesta de la planta frente a altas temperaturas y baja disponibilidad de agua."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "molecule",
+            "text": "Favorece el aprovechamiento de nutrientes en suelos degradados o con baja disponibilidad de fósforo y potasio."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "roots",
+            "text": "Contribuye al desarrollo radicular en suelos compactados, salinos o con presencia de metales pesados."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {}
+    },
+    "pewman_p_pdp": {
+      "type": "pewman-product-pdp",
+      "settings": {
+        "product_logo": "shopify://shop_images/logo-nano.svg",
+        "tag_text": "Antiestrés hídrico",
+        "lead_text": "Formulación a partir de bacterias aisladas de la Antártica y el Desierto de Atacama, enriquecida con nanoburbujas de oxígeno y biopolímeros. Un bioestimulante antiestrés hídrico para cultivos resistentes a la sequía.",
+        "product_accent_color": "#009633"
+      }
+    },
+    "pewman_p_mechanism": {
+      "type": "pewman-product-mechanism",
+      "blocks": {
+        "m1": {
+          "type": "step",
+          "settings": {
+            "title": "Nanoburbujas de oxígeno",
+            "description": "Mejora la relación CO₂:O₂, la absorción de nutrientes y promueve la diversidad de microorganismos benéficos."
+          }
+        },
+        "m2": {
+          "type": "step",
+          "settings": {
+            "title": "Consorcio de bacterias",
+            "description": "Compuestos orgánicos y microorganismos antárticos y desérticos promueven el crecimiento radicular, solubilizan fosfatos y capturan metales pesados."
+          }
+        },
+        "m3": {
+          "type": "step",
+          "settings": {
+            "title": "Nanobiopolímeros",
+            "description": "Contribuyen a disminuir la pérdida de agua a través de los estomas y la retienen en la zona radicular de la planta."
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/hero-nano-dalila.jpg",
+        "bg_focus_y": 74,
+        "bg_opacity": 70,
+        "base_color": "#0f1a12",
+        "product_accent_color": "#009633"
+      }
+    },
+    "pewman_p_crops": {
+      "type": "pewman-product-crops",
+      "settings": {
+        "product_accent_color": "#009633",
+        "fallback_list": "Acelga | Ají | Brócoli | Coliflor | Espárrago | Frutilla | Lechuga | Melón | Pimentón | Repollo | Sandía | Tomate | Zanahoria | Zapallo guarda | Zapallo italiano | Papas | Choclo | Cerezo | Duraznero | Manzanero | Cítricos"
+      }
+    },
+    "pewman_p_guide": {
+      "type": "pewman-product-guide-gate",
+      "settings": {
+        "cover_image": "shopify://shop_images/guia-portada-nanoforte-v2-2026.png",
+        "cover_bg": "shopify://shop_images/form-bg.jpg",
+        "brand_logo_pewman": "shopify://shop_images/logo-pewman.png",
+        "brand_logo_cals": "shopify://shop_images/logo-cals.jpg",
+        "product_accent_color": "#009633"
+      }
+    },
+    "pewman_p_certs": {
+      "type": "pewman-certifications",
+      "blocks": {
+        "c1": {
+          "type": "fallback_cert",
+          "settings": {
+            "name": "SAG"
+          }
+        },
+        "c2": {
+          "type": "fallback_cert",
+          "settings": {
+            "name": "Ecocert"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "settings": {}
+    },
+    "pewman_p_results": {
+      "type": "pewman-results-split",
+      "settings": {
+        "heading": "Resultados reales ante estrés en el campo",
+        "fallback_image": "shopify://shop_images/res-nano-comparativa-testigo.jpg",
+        "fallback_text": "Don Luis Fermín Orellana, productor de Copequén en la 6ta región de O'Higgins, compartió su experiencia usando Nanoforte en su campo de duraznos nectarín. Tras solo 1 mes de aplicación, logró mejorar el follaje de sus árboles y potenciar la producción de frutos.",
+        "product_accent_color": "#009633"
+      }
+    }
+  },
+  "order": [
+    "pewman_p_hero",
+    "pewman_p_benefits",
+    "pewman_p_pdp",
+    "pewman_p_mechanism",
+    "pewman_p_crops",
+    "pewman_p_guide",
+    "pewman_p_certs",
+    "pewman_p_results"
+  ]
+}

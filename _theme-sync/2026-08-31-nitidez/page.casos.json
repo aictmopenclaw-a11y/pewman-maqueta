@@ -1,0 +1,266 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "background_image": "shopify://shop_images/hero-casos-laboratorio-vinedo-2026.png",
+        "current_label": "Casos",
+        "heading": "Biotecnología validada para enfrentar los desafíos del campo",
+        "text": "Casos de éxito que demuestran cómo la bionanotecnología de Pewman fortalece los cultivos frente al estrés climático, mejora la eficiencia hídrica y protege el rendimiento de campos nacionales e internacionales.",
+        "tall": true
+      }
+    },
+    "pewman_testimonios": {
+      "type": "pewman-testimonials-video-grid",
+      "settings": {
+        "channel_link": "https://www.youtube.com/@PewmanInnovation"
+      },
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "Iez3_9MoZzw",
+            "product_badge": "nano",
+            "product_badge_label": "Nanoforte",
+            "title": "Durazno",
+            "who": "Luis Fermín Orellana · Copequén, O'Higgins",
+            "description": "Compartió su experiencia usando Nanoforte en su campo de duraznos nectarín.",
+            "image": "shopify://shop_images/testi-durazno.jpg"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "bZugLiP_4rI",
+            "product_badge": "crio",
+            "product_badge_label": "Crioprotect",
+            "title": "Kiwis",
+            "who": "Pirque, Región Metropolitana",
+            "description": "Aumento de producción en kiwis tras la aplicación de Crioprotect.",
+            "image": "shopify://shop_images/testi-kiwis.jpg"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "Dg8WHq331e8",
+            "product_badge": "crio",
+            "product_badge_label": "Crioprotect",
+            "title": "Paltos",
+            "who": "Jean Carlos Lotito · V Región",
+            "description": "Aplicación de Crioprotect antiheladas en paltos de la V Región.",
+            "image": "shopify://shop_images/testi-paltos.jpg"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "AQVZtMkv6ng",
+            "product_badge": "crio",
+            "product_badge_label": "Crioprotect",
+            "title": "Papas",
+            "who": "Ángel Castro · Talagante, RM",
+            "description": "6 heladas consecutivas de −2 a −3°C sin sufrir daños significativos.",
+            "image": "shopify://shop_images/testi-papas.jpg"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "tDzo3pSMF9A",
+            "product_badge": "crio",
+            "product_badge_label": "Crioprotect",
+            "title": "Día en terreno · Viña Concha y Toro",
+            "who": "Marcelo Gálvez · Chardonnay",
+            "description": "Un día en terreno aplicando Crioprotect en un cuartel de Chardonnay expuesto a heladas.",
+            "image": "shopify://shop_images/caso-fumigacion.png"
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_id": "mc8fUEoEEg8",
+            "product_badge": "nano",
+            "product_badge_label": "Nanoforte",
+            "title": "Lechugas y coliflor",
+            "who": "Roberto del Pino",
+            "description": "En solo 7 días vio los resultados de Nanoforte en sus lechugas y coliflores.",
+            "image": "shopify://shop_images/testi-lechugas.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ]
+    },
+    "pewman_ensayos": {
+      "type": "pewman-trials-documented",
+      "blocks": {
+        "cat_crio": {
+          "type": "pewman-trial-category",
+          "settings": {
+            "category_title": "Crioprotect · Antiheladas"
+          },
+          "blocks": {
+            "c2": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos",
+                "location_meta": "Naicura, O'Higgins · CER",
+                "description": "Protección antiheladas sobre cerezos en Naicura, evaluado por el Centro de Evaluación Rosario.",
+                "has_report": true,
+                "image": "shopify://shop_images/caso-ens-cerezos-naicura.jpg",
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-cerezos-naicura-cer.pdf?v=1784648290",
+                "report_title": "Cerezos · Naicura, O'Higgins (CER)"
+              }
+            },
+            "c_arroyos": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos cv. Santina",
+                "location_meta": "Agrícola Los Arroyos, Rosario · O'Higgins · CER",
+                "description": "75% más protección frente a heladas de -3°C y 1.960 kg extra por hectárea, evaluado por el CER.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-cerezos-los-arroyos-cer.pdf?v=1786399160",
+                "report_title": "Cerezos cv. Santina · Agrícola Los Arroyos (CER)",
+                "image": "shopify://shop_images/caso-ens-crio-cerezos-los-arroyos.png"
+              }
+            },
+            "c_avoamerica": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Paltos cv. Hass",
+                "location_meta": "Agrícola Avoamerica, Santo Domingo · Valparaíso · CER",
+                "description": "84% de protección frente a -4°C y 51% más de rendimiento por hectárea, evaluado por el CER.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-paltos-avoamerica.pdf?v=1786399160",
+                "report_title": "Paltos cv. Hass · Agrícola Avoamerica (CER)",
+                "image": "shopify://shop_images/caso-ens-crio-paltos-avoamerica.png"
+              }
+            },
+            "c_colun": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Maíz forrajero",
+                "location_meta": "Río Bueno, Región de Los Ríos · COLUN",
+                "description": "6.473 litros extra de leche por hectárea (+27,6%) y 26,4% más materia seca en híbridos precoces, evaluado por COLUN.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-crioprotect-maiz-colun.pdf?v=1786401644",
+                "report_title": "Maíz forrajero · Río Bueno, Los Ríos (COLUN)",
+                "image": "shopify://shop_images/caso-ens-crio-maiz-colun.png"
+              }
+            }
+          },
+          "block_order": [
+            "c2",
+            "c_arroyos",
+            "c_avoamerica",
+            "c_colun"
+          ]
+        },
+        "cat_nano": {
+          "type": "pewman-trial-category",
+          "settings": {
+            "category_title": "Nanoforte · Antiestrés hídrico"
+          },
+          "blocks": {
+            "n2": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Tomates",
+                "location_meta": "Olmué",
+                "description": "Nanoforte para reducir el estrés abiótico y mejorar rendimiento de tomates bajo invernadero.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-tomates-olmue-2024.pdf?v=1784648309",
+                "report_title": "Tomates · Olmué (2024)",
+                "image": "shopify://shop_images/caso-ens-nano-tomates-olmue.jpg"
+              }
+            },
+            "n7": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Cerezos postcosecha",
+                "location_meta": "cv. Lapins · Sagrada Familia",
+                "description": "Nanoforte para optimizar la postcosecha en cerezos cv. Lapins, Agrícola La Campana.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-cerezos-postcosecha-sagrada-familia.pdf?v=1784648309",
+                "report_title": "Cerezos postcosecha cv. Lapins · Sagrada Familia",
+                "image": "shopify://shop_images/caso-ens-nano-cerezos-sagrada-familia.png"
+              }
+            },
+            "n9": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Papas",
+                "location_meta": "Isla de Maipo",
+                "description": "Nanoforte ante estrés abiótico en cultivos de papa, Isla de Maipo.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-papas-qta-tilcoco-2022.pdf?v=1784648309",
+                "report_title": "Papas · Isla de Maipo",
+                "image": "shopify://shop_images/caso-ens-nano-papas-isla-maipo.jpg"
+              }
+            },
+            "n_uva": {
+              "type": "pewman-trial-card",
+              "settings": {
+                "crop_name": "Uva de mesa cv. Autumn Crisp",
+                "location_meta": "Global Agro, Ica · Perú",
+                "description": "16% más rendimiento por planta y 14,6% más firmeza en la baya con la dosis de 28 L/ha, ensayo en conjunto con Pinagro.",
+                "has_report": true,
+                "report_pdf_url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/ensayo-nanoforte-uva-mesa-peru.pdf?v=1786402303",
+                "report_title": "Uva de mesa cv. Autumn Crisp · Ica, Perú (Global Agro)",
+                "image": "shopify://shop_images/caso-ens-nano-uva-mesa-peru.png"
+              }
+            }
+          },
+          "block_order": [
+            "n2",
+            "n7",
+            "n9",
+            "n_uva"
+          ]
+        }
+      },
+      "block_order": [
+        "cat_crio",
+        "cat_nano"
+      ],
+      "settings": {
+        "heading": "Ensayos de campo documentados",
+        "subtext": "Resultados validados en distintos cultivos y regiones."
+      }
+    },
+    "pewman_cta": {
+      "type": "pewman-cta-band",
+      "settings": {
+        "heading": "El próximo ensayo puede ser en tu campo",
+        "text": "Conversa con nuestro equipo y replica en tu cultivo el mismo protocolo de los ensayos que acabas de ver.",
+        "button_1_label": "Solicitar un ensayo",
+        "button_1_link": "/pages/contacto",
+        "button_2_label": "Ver productos →",
+        "button_2_link": "/#soluciones",
+        "background_image": "shopify://shop_images/casos-cta-campo.jpg"
+      }
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_testimonios",
+    "pewman_ensayos",
+    "pewman_cta"
+  ]
+}

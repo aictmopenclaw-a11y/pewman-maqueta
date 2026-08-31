@@ -1,0 +1,477 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-hero-slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero-home-desierto-glaciar-cientifica-2026.png",
+            "kicker_text": "",
+            "heading": "Biotecnología basada en microorganismos de ambientes extremos",
+            "body_text": "<p>Para aumentar la productividad agrícola y reducir el impacto del estrés climático.</p>",
+            "box_color": "#BD0028",
+            "button_1_label": "Conoce más de nuestras tecnologías",
+            "button_1_link": "#soluciones",
+            "button_2_label": "",
+            "button_2_link": ""
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero-crio-bottles-2026.webp",
+            "kicker_text": "",
+            "heading": "¿Estás preparado para proteger tus cultivos de las heladas?",
+            "body_text": "<p>Crioprotect activa las defensas naturales del cultivo frente a heladas de hasta −4°C.</p>",
+            "box_color": "#1499c7",
+            "button_1_label": "Ver Crioprotect",
+            "button_1_link": "shopify://products/crioprotect",
+            "button_2_label": "",
+            "button_2_link": ""
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero-home-nanoforte-botellas-2026.png",
+            "kicker_text": "",
+            "heading": "¿Estás preparado para enfrentar la sequía?",
+            "body_text": "<p>Nanoforte mejora el potencial hídrico de la planta en más de un 40%.</p>",
+            "box_color": "#009633",
+            "button_1_label": "Ver Nanoforte",
+            "button_1_link": "shopify://products/nanoforte",
+            "button_2_label": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "pewman_premios": {
+      "type": "pewman-awards-carousel",
+      "blocks": {
+        "logo_1": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-startup.png",
+            "alt": "Startup del Año"
+          }
+        },
+        "logo_2": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-avonni.png",
+            "alt": "Avonni"
+          }
+        },
+        "logo_3": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-goglobal.png",
+            "alt": "GoGlobal"
+          }
+        },
+        "logo_4": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-01.png",
+            "alt": "Premio"
+          }
+        },
+        "logo_5": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-02.png",
+            "alt": "Premio"
+          }
+        },
+        "logo_6": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-03.png",
+            "alt": "Premio"
+          }
+        },
+        "logo_7": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-04.png",
+            "alt": "Premio"
+          }
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4",
+        "logo_5",
+        "logo_6",
+        "logo_7"
+      ],
+      "settings": {
+        "heading": "Premios que respaldan nuestra ciencia",
+        "text": "<p>Pewman fue reconocido con el <b>Premio Avonni 2025</b> en la categoría <b>Transferencia Tecnológica</b> y con <b>Startup del Año 2024</b> de El Mercurio Innovación, por transformar investigación científica en <b>soluciones biotecnológicas aplicables para la agricultura.</b></p>",
+        "featured_image": "shopify://shop_images/premio-avonni-agrotech.png"
+      }
+    },
+    "pewman_contador": {
+      "type": "pewman-stats-band",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "5000",
+            "prefix": "+",
+            "suffix": "",
+            "label": "Hectáreas protegidas"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "20",
+            "prefix": "+",
+            "suffix": "",
+            "label": "Tipos de cultivos"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "8",
+            "prefix": "+",
+            "suffix": "",
+            "label": "Regiones del país con presencia"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "value": "10",
+            "prefix": "+",
+            "suffix": "",
+            "label": "Años de investigación y desarrollo propio"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "dark_mode": false,
+        "animate": true
+      }
+    },
+    "pewman_soluciones": {
+      "type": "pewman-solutions-grid",
+      "blocks": {
+        "card_crio": {
+          "type": "product_card",
+          "settings": {
+            "product": "crioprotect",
+            "brand_logo": "shopify://shop_images/logo-crio.svg",
+            "accent_color": "#1499c7",
+            "summary_features": "Protección comprobada contra heladas|Protección frente a heladas de hasta −4 °C.\nMayor productividad|Incrementos de rendimiento entre 20% y 30%.\nAcción preventiva|Prepara el cultivo antes de la ocurrencia del estrés climático.\nMayor seguridad productiva|Reduce el riesgo de pérdidas asociadas a eventos climáticos extremos."
+          }
+        },
+        "card_nano": {
+          "type": "product_card",
+          "settings": {
+            "product": "nanoforte",
+            "brand_logo": "shopify://shop_images/logo-nano.svg",
+            "accent_color": "#009633",
+            "summary_features": "Mejora más de un 40% la eficiencia hídrica|Mayor aprovechamiento del agua para una agricultura más resiliente.\nEstimula el desarrollo radicular|Favorece una mayor exploración del suelo y captación de agua y nutrientes.\nMejora la nutrición de la planta|Incrementa la disponibilidad y absorción de fósforo y potasio.\nMayor tolerancia a sequía y temperaturas extremas|Ayuda a mantener el desempeño productivo bajo condiciones adversas."
+          }
+        }
+      },
+      "block_order": [
+        "card_crio",
+        "card_nano"
+      ],
+      "settings": {
+        "heading": "Nuestras soluciones"
+      }
+    },
+    "pewman_casos": {
+      "type": "pewman-cases-carousel",
+      "blocks": {
+        "case_1": {
+          "type": "case_card",
+          "settings": {
+            "image": "shopify://shop_images/testi-durazno.jpg",
+            "label": "Durazno",
+            "link": "/pages/casos"
+          }
+        },
+        "case_2": {
+          "type": "case_card",
+          "settings": {
+            "image": "shopify://shop_images/testi-kiwis.jpg",
+            "label": "Kiwis",
+            "link": "/pages/casos"
+          }
+        },
+        "case_3": {
+          "type": "case_card",
+          "settings": {
+            "image": "shopify://shop_images/testi-paltos.jpg",
+            "label": "Paltos",
+            "link": "/pages/casos"
+          }
+        },
+        "case_4": {
+          "type": "case_card",
+          "settings": {
+            "image": "shopify://shop_images/testi-papas.jpg",
+            "label": "Papas",
+            "link": "/pages/casos"
+          }
+        },
+        "case_5": {
+          "type": "case_card",
+          "settings": {
+            "image": "shopify://shop_images/testi-lechugas.jpg",
+            "label": "Lechugas y coliflor",
+            "link": "/pages/casos"
+          }
+        },
+        "case_6": {
+          "type": "case_card",
+          "settings": {
+            "image": "shopify://shop_images/caso-fumigacion.png",
+            "label": "Día en terreno · Viña Concha y Toro",
+            "link": "/pages/casos"
+          }
+        }
+      },
+      "block_order": [
+        "case_1",
+        "case_2",
+        "case_3",
+        "case_4",
+        "case_5",
+        "case_6"
+      ],
+      "settings": {
+        "heading": "Casos de éxito",
+        "subtext": "Probado en los cultivos de Chile.",
+        "view_all_link": "/pages/casos",
+        "view_all_label": "Ver todos los casos de éxito"
+      }
+    },
+    "pewman_clientes": {
+      "type": "pewman-logo-strip",
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cli-corteva.jpg",
+            "alt": "Corteva"
+          }
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cli-gidding.jpg",
+            "alt": "Giddings"
+          }
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cli-santamarta.jpg",
+            "alt": "Santa Marta"
+          }
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cli-sugal.jpg",
+            "alt": "Sugal Group"
+          }
+        },
+        "logo_5": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cli-24.png",
+            "alt": "Cran Chile"
+          }
+        },
+        "logo_6": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cli-25.png",
+            "alt": "Colún"
+          }
+        },
+        "logo_7": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cli-26.png",
+            "alt": "Agro Ingenium"
+          }
+        },
+        "logo_8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cli-27.png",
+            "alt": "Montes"
+          }
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4",
+        "logo_5",
+        "logo_6",
+        "logo_7",
+        "logo_8"
+      ],
+      "settings": {
+        "label": "Empresas que confían en nosotros"
+      }
+    },
+    "pewman_confianza": {
+      "type": "pewman-trust-map-split",
+      "settings": {
+        "heading": "La confianza es nuestra tecnología más importante.",
+        "text": "<p>La ciencia nos permite desarrollar soluciones innovadoras; la confianza, convertirlas en impacto. Por eso trabajamos con <b>rigor científico, validación en campo y relaciones de largo plazo con agricultores, distribuidores e instituciones a nivel global.</b></p>",
+        "map_image": "shopify://shop_images/mapa-presencia.jpg"
+      }
+    },
+    "pewman_formulario": {
+      "type": "pewman-contact-form",
+      "settings": {
+        "heading": "¿Quieres saber más de nuestras soluciones?",
+        "background_image": "shopify://shop_images/form-bg.jpg"
+      }
+    },
+    "pewman_cals": {
+      "type": "pewman-cals-distributor-banner",
+      "blocks": {
+        "zona_norte": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Norte · Arica, Copiapó",
+            "branch_name": "Arica y Copiapó",
+            "distributor_url": "https://cals.cl/norte/"
+          }
+        },
+        "zona_centro_norte": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Centro Norte · La Serena, Ovalle, San Felipe, Limache",
+            "branch_name": "La Serena, Ovalle, Hijuelas, San Felipe y Limache",
+            "distributor_url": "https://cals.cl/centro-norte/"
+          }
+        },
+        "zona_centro": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Centro · Santiago, Talagante, Buin, Melipilla",
+            "branch_name": "Santiago, Talagante, Buin y Melipilla",
+            "distributor_url": "https://cals.cl/zona-centro/"
+          }
+        },
+        "zona_centro_sur": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Centro Sur · Rancagua, Curicó, Talca, Linares",
+            "branch_name": "Rancagua, San Fernando, San Vicente, Curicó, Talca y Linares",
+            "distributor_url": "https://cals.cl/zona-centro-sur/"
+          }
+        },
+        "zona_sur": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Sur · Chillán, Temuco, Osorno, Frutillar",
+            "branch_name": "Chillán, Los Ángeles, Temuco, Osorno y Frutillar",
+            "distributor_url": "https://cals.cl/zona-sur/"
+          }
+        }
+      },
+      "block_order": [
+        "zona_norte",
+        "zona_centro_norte",
+        "zona_centro",
+        "zona_centro_sur",
+        "zona_sur"
+      ],
+      "settings": {
+        "banner_image": "shopify://shop_images/banner-cals.png",
+        "trigger_alt": "Encuentra nuestros productos en CALS, nuestro distribuidor oficial"
+      }
+    },
+    "pewman_prensa": {
+      "type": "pewman-blog-cards",
+      "settings": {
+        "blog": "prensa",
+        "max_articles": 3,
+        "heading": "Prensa y medios",
+        "tight_top": false,
+        "show_date": true,
+        "show_view_all": true,
+        "view_all_label": "Ver todas las noticias →"
+      }
+    },
+    "pewman_articulos": {
+      "type": "pewman-blog-cards",
+      "settings": {
+        "blog": "articulos",
+        "max_articles": 3,
+        "heading": "Artículos",
+        "tight_top": true,
+        "show_date": true,
+        "show_view_all": true,
+        "view_all_label": "Ver todos los artículos →"
+      }
+    },
+    "pewman_banner_global": {
+      "type": "pewman-image-banner",
+      "settings": {
+        "image": "shopify://shop_images/banner-origen-chileno-alcance-global.jpg",
+        "image_alt": "Origen chileno. Alcance global. Habla con nuestro equipo para comprar desde el extranjero.",
+        "link": "/pages/contacto",
+        "bg_color": "#0a1230"
+      }
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_premios",
+    "pewman_contador",
+    "pewman_soluciones",
+    "pewman_casos",
+    "pewman_clientes",
+    "pewman_confianza",
+    "pewman_formulario",
+    "pewman_cals",
+    "pewman_prensa",
+    "pewman_banner_global",
+    "pewman_articulos"
+  ]
+}
