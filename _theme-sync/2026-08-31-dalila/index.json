@@ -68,13 +68,6 @@
     "pewman_premios": {
       "type": "pewman-awards-carousel",
       "blocks": {
-        "logo_1": {
-          "type": "award_logo",
-          "settings": {
-            "logo": "shopify://shop_images/premio-startup.png",
-            "alt": "Startup del Año"
-          }
-        },
         "logo_2": {
           "type": "award_logo",
           "settings": {
@@ -119,7 +112,6 @@
         }
       },
       "block_order": [
-        "logo_1",
         "logo_2",
         "logo_3",
         "logo_4",
