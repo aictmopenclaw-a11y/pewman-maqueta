@@ -1,0 +1,123 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "style": "title",
+        "heading": "Patentes y papers"
+      }
+    },
+    "pewman_patentes": {
+      "type": "pewman-patents-grid",
+      "settings": {
+        "eyebrow": "Propiedad intelectual",
+        "heading": "Nuestras patentes",
+        "subtext": "La tecnología de Crioprotect y Nanoforte está protegida en Chile y en mercados internacionales.",
+        "dark_mode": false,
+        "show_description": true,
+        "legal_note": "Marco legal: Ley N° 21.516, Art. 23."
+      },
+      "blocks": {
+        "p1": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Internacional (PCT)",
+            "registration_number": "PCT/CL2021/050061",
+            "description": "Solicitud internacional bajo el Tratado de Cooperación en materia de Patentes, que abre la protección de la tecnología base en los países miembros.",
+            "country": "intl"
+          }
+        },
+        "p2": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Estados Unidos",
+            "registration_number": "USPTO 63051414",
+            "description": "Registro ante la Oficina de Patentes y Marcas de Estados Unidos (USPTO).",
+            "country": "usa"
+          }
+        },
+        "p3": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "Chile",
+            "registration_number": "N° 1865-2021",
+            "description": "Registro nacional ante INAPI, que protege la tecnología en el mercado chileno.",
+            "country": "chile"
+          }
+        },
+        "p4": {
+          "type": "patent",
+          "settings": {
+            "jurisdiction": "India",
+            "registration_number": "N° 509159",
+            "description": "Patente registrada en India, ampliando la cobertura internacional de la tecnología.",
+            "country": "india"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "pewman_papers": {
+      "type": "pewman-papers-list",
+      "settings": {
+        "eyebrow": "Ciencia",
+        "heading": "Papers",
+        "subtext": "Publicaciones científicas de Pewman Innovation.",
+        "filter_tag": "Paper",
+        "view_all_label": "Ver todos los papers →",
+        "cream_bg": true,
+        "legal_note": "",
+        "source": "blog",
+        "blog": "articulos",
+        "max_articles": 6,
+        "show_view_all": true
+      },
+      "blocks": {
+        "paper1": {
+          "type": "paper",
+          "settings": {
+            "tag": "Paper",
+            "title": "Complete genome sequence of Microbacterium sp. PI-SA-G, a polyextremotolerant bacterium isolated from Festuca orthophylla in the Salar de Aguilar (Atacama Desert, Chile)",
+            "meta": "Castro-Severyn et al. · Microbiology Resource Announcements (ASM) · Mayo 2026 · DOI 10.1128/mra.00555-26",
+            "url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/paper-microbacterium-pi-sa-g-2026.pdf?v=1788178255"
+          }
+        }
+      },
+      "block_order": [
+        "paper1"
+      ]
+    },
+    "pewman_cta": {
+      "type": "pewman-cta-band",
+      "settings": {
+        "heading": "¿Quieres conocer la ciencia detrás de Pewman?",
+        "text": "Conversa con nuestro equipo técnico y resuelve tus dudas sobre la tecnología, su aplicación y respaldo.",
+        "button_1_label": "Hablar con un asesor",
+        "button_1_link": "https://api.whatsapp.com/send/?phone=56990833908",
+        "button_2_label": "Conocer Pewman →",
+        "button_2_link": "/pages/empresa",
+        "background_image": "shopify://shop_images/casos-cta-campo.jpg"
+      }
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_patentes",
+    "pewman_papers",
+    "pewman_cta"
+  ]
+}

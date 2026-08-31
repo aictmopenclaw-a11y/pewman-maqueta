@@ -1,0 +1,187 @@
+{%- comment -%}
+  Contribución a los ODS (spec Dalila/Cloandco 2026-08-27): tarjetas clickeables
+  con los colores del documento (no aproximar) que abren un modal con el detalle.
+  Cada ODS es un block editable: número, título, colores y los 4 textos del modal.
+  El modal cierra con la X, clic en el fondo o ESC.
+{%- endcomment -%}
+{%- style -%}
+  #PewmanOds-{{ section.id }} { background: {% if section.settings.cream_bg %}var(--pewman-crema){% else %}#fff{% endif %}; padding: 78px 0; }
+  #PewmanOds-{{ section.id }} .pewman-ods__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  {%- comment -%} Grilla acotada a ~80% (Cris 2026-08-31): tarjetas 20% mas chicas, centradas. {%- endcomment -%}
+  #PewmanOds-{{ section.id }} .pewman-ods__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 1080px; margin: 0 auto; }
+  #PewmanOds-{{ section.id }} .pewman-ods__card {
+    border: none; border-radius: 16px; padding: 26px 24px 22px; text-align: left; cursor: pointer;
+    display: flex; flex-direction: column; gap: 4px; min-height: 0; width: 100%;
+    transition: transform .2s, box-shadow .2s; font-family: inherit;
+  }
+  #PewmanOds-{{ section.id }} .pewman-ods__card:hover { transform: scale(1.05); box-shadow: 0 8px 16px rgba(0,0,0,.15); }
+  #PewmanOds-{{ section.id }} .pewman-ods__card:active { transform: scale(.98); }
+  {%- comment -%}
+    Modo estandar (Denisse 2026-08-29): la tarjeta muestra el simbolo oficial de la
+    ONU (numero + nombre + grafica) sobre blanco; el color oficial queda en la
+    cabecera del modal. El modo de color solo persiste como respaldo si un bloque
+    quedara sin icono.
+  {%- endcomment -%}
+  #PewmanOds-{{ section.id }} .pewman-ods__card--icono {
+    background: #fff; border: 1px solid var(--pewman-linea); padding: 12px 12px 10px; gap: 8px;
+  }
+  #PewmanOds-{{ section.id }} .pewman-ods__icono { width: 100%; height: auto; display: block; }
+  #PewmanOds-{{ section.id }} .pewman-ods__card--icono .pewman-ods__pista { opacity: 1; align-self: center; }
+  #PewmanOds-{{ section.id }} .pewman-ods__num { font-size: 40px; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+  #PewmanOds-{{ section.id }} .pewman-ods__tit { font-size: 17px; font-weight: 800; line-height: 1.25; margin-top: 8px; }
+  #PewmanOds-{{ section.id }} .pewman-ods__sub { font-size: 13.5px; font-weight: 600; opacity: .85; line-height: 1.3; }
+  #PewmanOds-{{ section.id }} .pewman-ods__pista { margin-top: auto; padding-top: 12px; font-size: 12px; font-weight: 700; opacity: .75; }
+  {%- comment -%} Modal {%- endcomment -%}
+  #PewmanOds-{{ section.id }} .pewman-ods__velo {
+    display: none; position: fixed; inset: 0; z-index: 90; background: rgba(12,14,12,.62);
+    align-items: center; justify-content: center; padding: 22px;
+  }
+  #PewmanOds-{{ section.id }} .pewman-ods__velo.on { display: flex; animation: pewmanOdsFade-{{ section.id }} .22s ease; }
+  @keyframes pewmanOdsFade-{{ section.id }} { from { opacity: 0; } to { opacity: 1; } }
+  #PewmanOds-{{ section.id }} .pewman-ods__modal {
+    background: #fff; border-radius: 18px; max-width: 600px; width: 100%; max-height: min(84vh, 720px);
+    overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 30px 70px -20px rgba(0,0,0,.5);
+  }
+  #PewmanOds-{{ section.id }} .pewman-ods__mhead { padding: 22px 58px 18px 26px; position: relative; }
+  #PewmanOds-{{ section.id }} .pewman-ods__mhead h3 { font-size: 19px; line-height: 1.3; margin: 0; }
+  #PewmanOds-{{ section.id }} .pewman-ods__x {
+    position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border: none; border-radius: 50%;
+    background: rgba(255,255,255,.25); cursor: pointer; font-size: 20px; line-height: 1; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; color: inherit;
+  }
+  #PewmanOds-{{ section.id }} .pewman-ods__x:hover { background: rgba(255,255,255,.45); }
+  #PewmanOds-{{ section.id }} .pewman-ods__mbody { padding: 22px 26px 26px; overflow-y: auto; }
+  #PewmanOds-{{ section.id }} .pewman-ods__label {
+    font-size: 11.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--pewman-rojo); margin: 18px 0 6px;
+  }
+  #PewmanOds-{{ section.id }} .pewman-ods__label:first-child { margin-top: 0; }
+  #PewmanOds-{{ section.id }} .pewman-ods__mbody p { font-size: 14.5px; color: var(--pewman-gris-tx, #444); line-height: 1.6; margin: 0; }
+  @media (max-width: 860px) { #PewmanOds-{{ section.id }} .pewman-ods__grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { #PewmanOds-{{ section.id }} .pewman-ods__grid { grid-template-columns: 1fr 1fr; } }
+{%- endstyle -%}
+
+<div id="PewmanOds-{{ section.id }}">
+  <div class="pewman-ods__wrap">
+    {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow | default: 'Compromiso global', heading: section.settings.heading | default: 'Contribución a los Objetivos de Desarrollo Sostenible (ODS)', subtext: section.settings.subtext %}
+    <div class="pewman-ods__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'ods' -%}
+          {%- if block.settings.icon_image -%}
+            <button type="button" class="pewman-ods__card pewman-ods__card--icono" data-ods-abre="{{ forloop.index }}" {{ block.shopify_attributes }}
+              aria-label="ODS {{ block.settings.num }} · {{ block.settings.title }}: ver impacto">
+              <img class="pewman-ods__icono" src="{{ block.settings.icon_image | image_url: width: 640 }}" alt="ODS {{ block.settings.num }} · {{ block.settings.title }}" loading="lazy" width="640" height="640">
+              <span class="pewman-ods__pista" style="color: {{ block.settings.color }};">Ver impacto +</span>
+            </button>
+          {%- else -%}
+            <button type="button" class="pewman-ods__card" data-ods-abre="{{ forloop.index }}" {{ block.shopify_attributes }}
+              style="background: {{ block.settings.color }}; color: {{ block.settings.text_color }};">
+              <span class="pewman-ods__num">{{ block.settings.num }}</span>
+              <span class="pewman-ods__tit">{{ block.settings.title }}</span>
+              {%- if block.settings.subtitle != blank -%}<span class="pewman-ods__sub">{{ block.settings.subtitle }}</span>{%- endif -%}
+              <span class="pewman-ods__pista">Ver impacto +</span>
+            </button>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'ods' -%}
+      <div class="pewman-ods__velo" data-ods-velo="{{ forloop.index }}" role="dialog" aria-modal="true" aria-label="ODS {{ block.settings.num }} · {{ block.settings.title }}">
+        <div class="pewman-ods__modal">
+          <div class="pewman-ods__mhead" style="background: {{ block.settings.color }}; color: {{ block.settings.text_color }};">
+            <h3>ODS {{ block.settings.num }} – {{ block.settings.title }}{% if block.settings.subtitle != blank %} {{ block.settings.subtitle }}{% endif %}</h3>
+            <button type="button" class="pewman-ods__x" data-ods-cierra aria-label="Cerrar">&times;</button>
+          </div>
+          <div class="pewman-ods__mbody">
+            {%- if block.settings.objetivo != blank -%}
+              <div class="pewman-ods__label">Objetivo</div>
+              <p>{{ block.settings.objetivo | newline_to_br }}</p>
+            {%- endif -%}
+            {%- if block.settings.contribucion != blank -%}
+              <div class="pewman-ods__label">Nuestra contribución</div>
+              <p>{{ block.settings.contribucion | newline_to_br }}</p>
+            {%- endif -%}
+            {%- if block.settings.metas != blank -%}
+              <div class="pewman-ods__label">Metas alineadas</div>
+              <p>{{ block.settings.metas | newline_to_br }}</p>
+            {%- endif -%}
+            {%- if block.settings.impacto != blank -%}
+              <div class="pewman-ods__label">Impacto medible</div>
+              <p>{{ block.settings.impacto | newline_to_br }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+<script>
+  (function () {
+    var raiz = document.getElementById('PewmanOds-{{ section.id }}');
+    if (!raiz) return;
+    function cerrarTodos() {
+      raiz.querySelectorAll('.pewman-ods__velo.on').forEach(function (v) { v.classList.remove('on'); });
+      document.documentElement.style.overflow = '';
+    }
+    raiz.querySelectorAll('[data-ods-abre]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        cerrarTodos();
+        var velo = raiz.querySelector('[data-ods-velo="' + btn.getAttribute('data-ods-abre') + '"]');
+        if (velo) { velo.classList.add('on'); document.documentElement.style.overflow = 'hidden'; }
+      });
+    });
+    raiz.querySelectorAll('[data-ods-cierra]').forEach(function (x) {
+      x.addEventListener('click', cerrarTodos);
+    });
+    raiz.querySelectorAll('.pewman-ods__velo').forEach(function (velo) {
+      velo.addEventListener('click', function (e) { if (e.target === velo) cerrarTodos(); });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrarTodos(); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Pewman · ODS",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Compromiso global" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Contribución a los Objetivos de Desarrollo Sostenible (ODS)" },
+    { "type": "textarea", "id": "subtext", "label": "Subtítulo", "default": "Pewman está comprometida con los Objetivos de Desarrollo Sostenible de la FAO. Haz clic en cada ODS para conocer su impacto." },
+    { "type": "checkbox", "id": "cream_bg", "label": "Fondo crema", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "ods",
+      "name": "ODS",
+      "settings": [
+        { "type": "image_picker", "id": "icon_image", "label": "Símbolo oficial del ODS", "info": "El ícono oficial de la ONU en español. Con ícono, la tarjeta lo muestra sobre blanco (diseño estándar del sitio)" },
+        { "type": "text", "id": "num", "label": "Número del ODS", "info": "Ej. 2" },
+        { "type": "text", "id": "title", "label": "Título de la tarjeta", "info": "Ej. Hambre Cero" },
+        { "type": "text", "id": "subtitle", "label": "Bajada de la tarjeta (opcional)", "info": "Ej. Agricultura sostenible" },
+        { "type": "color", "id": "color", "label": "Color de fondo (oficial UN-ODS)", "default": "#407D52" },
+        { "type": "color", "id": "text_color", "label": "Color del texto", "default": "#ffffff" },
+        { "type": "textarea", "id": "objetivo", "label": "Ventana · Objetivo" },
+        { "type": "textarea", "id": "contribucion", "label": "Ventana · Nuestra contribución" },
+        { "type": "textarea", "id": "metas", "label": "Ventana · Metas alineadas" },
+        { "type": "textarea", "id": "impacto", "label": "Ventana · Impacto medible", "info": "Una línea por punto; se muestran tal cual" }
+      ]
+    }
+  ],
+  "max_blocks": 17,
+  "presets": [
+    {
+      "name": "Pewman · ODS",
+      "blocks": [
+        { "type": "ods", "settings": { "num": "2", "title": "Hambre Cero", "subtitle": "Agricultura sostenible", "color": "#DDD84B", "text_color": "#5a5a00" } },
+        { "type": "ods", "settings": { "num": "6", "title": "Agua limpia", "subtitle": "y saneamiento", "color": "#26BDE2", "text_color": "#003d52" } },
+        { "type": "ods", "settings": { "num": "13", "title": "Acción", "subtitle": "por el clima", "color": "#407D52", "text_color": "#ffffff" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

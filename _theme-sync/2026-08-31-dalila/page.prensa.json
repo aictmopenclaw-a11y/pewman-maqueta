@@ -1,0 +1,57 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "current_label": "Prensa y medios",
+        "heading": "Prensa y medios",
+        "text": "Novedades, publicaciones y apariciones de Pewman Innovation en medios especializados del agro y la innovación.",
+        "background_image": "shopify://shop_images/prensa-hero-microfonos.jpg",
+        "zoom_intensity": "1.025",
+        "tall": true
+      }
+    },
+    "pewman_noticias": {
+      "type": "pewman-blog-cards",
+      "settings": {
+        "blog": "prensa",
+        "max_articles": 12,
+        "heading": "Noticias",
+        "tight_top": true,
+        "subtext": "Lo último de Pewman Innovation: ciencia aplicada al campo, reconocimientos y cobertura en prensa.",
+        "show_date": true,
+        "show_view_all": false,
+        "view_all_label": "Ver todas las noticias"
+      }
+    },
+    "pewman_articulos": {
+      "type": "pewman-blog-cards",
+      "settings": {
+        "blog": "articulos",
+        "max_articles": 6,
+        "eyebrow": "Contenido técnico",
+        "heading": "Artículos",
+        "subtext": "Artículos técnicos y de divulgación de Pewman Innovation.",
+        "filter_tag": "Artículo",
+        "tight_top": false,
+        "show_date": true,
+        "show_view_all": true,
+        "view_all_label": "Ver todos los artículos →"
+      }
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_articulos",
+    "pewman_noticias"
+  ]
+}
