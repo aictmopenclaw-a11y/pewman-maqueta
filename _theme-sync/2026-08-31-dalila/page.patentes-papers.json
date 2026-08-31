@@ -84,7 +84,7 @@
         "source": "blog",
         "blog": "articulos",
         "max_articles": 6,
-        "show_view_all": true
+        "show_view_all": false
       },
       "blocks": {
         "paper1": {
