@@ -68,7 +68,7 @@
           {%- for block in section.blocks -%}
             {%- if block.type == 'award_logo' and block.settings.logo -%}
               <div class="pewman-awards__logo" {% if pass == 1 %}{{ block.shopify_attributes }}{% else %}aria-hidden="true"{% endif %}>
-                <img src="{{ block.settings.logo | image_url: width: 360 }}" alt="{{ block.settings.alt | escape }}" loading="lazy">
+                <img src="{{ block.settings.logo | image_url: width: 520 }}" alt="{{ block.settings.alt | escape }}" loading="lazy">
               </div>
             {%- endif -%}
           {%- endfor -%}
