@@ -130,7 +130,8 @@
       "settings": {
         "heading": "Premios que respaldan nuestra ciencia",
         "text": "<p>Pewman fue reconocido con el <b>Premio Avonni 2025</b> en la categoría <b>Transferencia Tecnológica</b> y con <b>Startup del Año 2024</b> de El Mercurio Innovación, por transformar investigación científica en <b>soluciones biotecnológicas aplicables para la agricultura.</b></p>",
-        "featured_image": "shopify://shop_images/premio-avonni-agrotech.png"
+        "featured_image": "shopify://shop_images/premio-avonni-agrotech.png",
+        "featured_image_2": "shopify://shop_images/premio-startup.png"
       }
     },
     "pewman_contador": {
