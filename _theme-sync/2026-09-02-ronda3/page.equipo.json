@@ -1,0 +1,261 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "style": "title",
+        "current_label": "Equipo",
+        "text": "Fundado por científicos. Un equipo de investigadores, ingenieros y agrónomos con base en Chile, Perú y Europa."
+      }
+    },
+    "pewman_equipo": {
+      "type": "pewman-team-grid",
+      "blocks": {
+        "reg_fund": {
+          "type": "pewman-team-region",
+          "settings": {
+            "region_name": "Fundadores"
+          },
+          "blocks": {
+            "f1": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/denisse-bravo.jpg",
+                "name": "Denisse Bravo",
+                "role": "CSO y Co-fundadora",
+                "credential": "Bioquímica · PhD en Bioquímica",
+                "linkedin_url": "https://www.linkedin.com/in/denisse-bravo-069a4583/"
+              }
+            },
+            "f2": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/jose-perez-donoso.jpg",
+                "name": "José Manuel Pérez-Donoso",
+                "role": "CEO y Fundador",
+                "credential": "Bioquímico · PhD en Microbiología",
+                "linkedin_url": "https://www.linkedin.com/in/jose-perez-donoso/"
+              }
+            },
+            "f3": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/enzo-galliani.jpg",
+                "name": "Enzo Galliani",
+                "role": "Co-fundador",
+                "credential": "Ingeniero en Biotecnología Molecular",
+                "linkedin_url": "https://www.linkedin.com/in/enzo-galliani/"
+              }
+            }
+          },
+          "block_order": [
+            "f1",
+            "f2",
+            "f3"
+          ]
+        },
+        "reg_equipo": {
+          "type": "pewman-team-region",
+          "settings": {
+            "region_name": "Equipo"
+          },
+          "blocks": {
+            "e1": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/juan-castro.jpg",
+                "name": "Juan Castro",
+                "role": "Director de I+D",
+                "credential": "Biólogo · MSc. en Microbiología · PhD en Biotecnología"
+              }
+            },
+            "e2": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/matias-vargas.jpg",
+                "name": "Matías Vargas",
+                "role": "Director de laboratorio",
+                "credential": "PhD en Bioinformática y Sistemas Biológicos · Magíster en Biotecnología"
+              }
+            },
+            "e3": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/alberto-rios.jpg",
+                "name": "Alberto Ríos",
+                "role": "Asesor técnico-comercial",
+                "credential": "Ingeniero Agrónomo"
+              }
+            },
+            "e4": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/safka-hernandez.jpg",
+                "name": "Safka Hernández",
+                "role": "Investigadora",
+                "credential": "Bioquímica"
+              }
+            },
+            "e5": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/felipe-pavez.jpg",
+                "name": "Felipe Pávez",
+                "role": "Director de ventas",
+                "credential": "Contador Auditor"
+              }
+            },
+            "e6": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/javier-riveros.jpg",
+                "name": "Javier Ignacio Riveros Jara",
+                "role": "Asistente de Administración y Finanzas",
+                "credential": "Ingeniero en Administración"
+              }
+            },
+            "e7": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/dioselin-rodriguez.jpg",
+                "name": "Dioselin Rodríguez López",
+                "role": "Encargada de aseo, orden y limpieza"
+              }
+            }
+          },
+          "block_order": [
+            "e1",
+            "e2",
+            "e3",
+            "e4",
+            "e5",
+            "e6",
+            "e7"
+          ]
+        },
+        "reg_pasantes": {
+          "type": "pewman-team-region",
+          "settings": {
+            "region_name": "Pasantes"
+          },
+          "blocks": {
+            "pa1": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/esperanza-troncozo.jpg",
+                "name": "Esperanza Troncozo",
+                "role": "Práctica Profesional",
+                "credential": "Estudiante de Ingeniería en Agronomía"
+              }
+            },
+            "pa2": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/constanza-valderrama.jpg",
+                "name": "Constanza Angélica Valderrama Mejías",
+                "role": "Práctica Extramural",
+                "credential": "Estudiante de Bioquímica"
+              }
+            }
+          },
+          "block_order": [
+            "pa1",
+            "pa2"
+          ]
+        },
+        "reg_peru": {
+          "type": "pewman-team-region",
+          "settings": {
+            "region_name": "Perú"
+          },
+          "blocks": {
+            "pe1": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/camila-gutierrez.jpg",
+                "name": "Camila Gutiérrez",
+                "role": "Coordinadora de Operaciones Perú"
+              }
+            }
+          },
+          "block_order": [
+            "pe1"
+          ]
+        },
+        "reg_europa": {
+          "type": "pewman-team-region",
+          "settings": {
+            "region_name": "Europa"
+          },
+          "blocks": {
+            "eu1": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/isaac-bugueno.jpg",
+                "name": "Isaac Bugueño",
+                "role": "Co-fundador y CEO de Pewman Europe",
+                "credential": "Cirujano Dentista · Magíster en Ciencias · PhD en Ciencias de la Vida y la Salud",
+                "linkedin_url": "https://www.linkedin.com/in/isaac-maximiliano-bugueno-valdebenito-1a282921/"
+              }
+            },
+            "eu2": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/marion-pugliano.jpg",
+                "name": "Dr. Marion Pugliano",
+                "role": "Ingeniero de investigación"
+              }
+            },
+            "eu3": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/jeremy-hamm.jpg",
+                "name": "Jeremy Hamm",
+                "role": "Ingeniero financiero y de operaciones"
+              }
+            },
+            "eu4": {
+              "type": "pewman-team-member",
+              "settings": {
+                "photo": "shopify://shop_images/alain-carpio-palza.jpg",
+                "name": "Alain Carpio Palza",
+                "role": "Marketing y Despliegue de Mercado"
+              }
+            }
+          },
+          "block_order": [
+            "eu1",
+            "eu2",
+            "eu3",
+            "eu4"
+          ]
+        }
+      },
+      "block_order": [
+        "reg_fund",
+        "reg_equipo",
+        "reg_pasantes",
+        "reg_peru",
+        "reg_europa"
+      ],
+      "settings": {
+        "heading": "Fundado por científicos",
+        "show_heading": false,
+        "subtext": ""
+      }
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_equipo"
+  ]
+}

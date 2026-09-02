@@ -1,0 +1,74 @@
+{%- comment -%}
+  Equipo por regiones (rediseño empresa.html 2026-07-16): 13 personas en
+  Chile / Perú / Europa, grilla de 3 tarjetas verticales por fila, foto
+  cuadrada con botón LinkedIn superpuesto. Blocks anidados:
+  pewman-team-region → pewman-team-member.
+{%- endcomment -%}
+{%- style -%}
+  {%- comment -%} En la pagina Equipo el H1 ya lo pone el hero: el encabezado interno se apaga (Cris 2026-09-02, "titulo doble") y el aire de arriba baja para que Fundadores quede cerca de la bajada. {%- endcomment -%}
+  #PewmanTeam-{{ section.id }} { background: #fff; padding: {% if section.settings.show_heading %}78px{% else %}34px{% endif %} 0 78px; }
+  #PewmanTeam-{{ section.id }} .pewman-team__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanTeam-{{ section.id }} .pewman-team__region { margin-top: 44px; }
+  #PewmanTeam-{{ section.id }} .pewman-team__region:first-child { margin-top: 0; }
+  #PewmanTeam-{{ section.id }} .pewman-team__region-label { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+  #PewmanTeam-{{ section.id }} .pewman-team__region-label span { font-weight: 700; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--pewman-rojo); white-space: nowrap; }
+  #PewmanTeam-{{ section.id }} .pewman-team__region-label::after { content: ""; flex: 1; height: 1px; background: var(--pewman-linea); }
+  #PewmanTeam-{{ section.id }} .pewman-team__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  #PewmanTeam-{{ section.id }} .pewman-team__card {
+    background: #fff; border: 1px solid var(--pewman-linea); border-radius: 22px; padding: 18px;
+    text-align: center; box-shadow: var(--pewman-sh); transition: .2s;
+  }
+  #PewmanTeam-{{ section.id }} .pewman-team__card:hover { box-shadow: 0 14px 34px -14px rgba(0,0,0,.22); transform: translateY(-3px); }
+  #PewmanTeam-{{ section.id }} .pewman-team__ph-wrap { position: relative; margin-bottom: 14px; }
+  #PewmanTeam-{{ section.id }} .pewman-team__ph { width: 100%; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; background: var(--pewman-crema); }
+  #PewmanTeam-{{ section.id }} .pewman-team__ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #PewmanTeam-{{ section.id }} .pewman-team__ini {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 44px; color: #fff; background: linear-gradient(145deg, var(--pewman-rojo), #d23a4a);
+  }
+  #PewmanTeam-{{ section.id }} .pewman-team__li {
+    position: absolute; right: 8px; bottom: 8px; width: 32px; height: 32px; border-radius: 50%;
+    background: #fff; border: 1px solid var(--pewman-linea); box-shadow: var(--pewman-sh);
+    display: flex; align-items: center; justify-content: center; transition: .2s;
+  }
+  #PewmanTeam-{{ section.id }} .pewman-team__li svg { width: 16px; height: 16px; fill: #0a66c2; display: block; }
+  #PewmanTeam-{{ section.id }} .pewman-team__li:hover { background: #0a66c2; }
+  #PewmanTeam-{{ section.id }} .pewman-team__li:hover svg { fill: #fff; }
+  #PewmanTeam-{{ section.id }} .pewman-team__card h3 { font-size: 15.5px; color: var(--pewman-tinta); margin: 0 0 4px; line-height: 1.28; }
+  #PewmanTeam-{{ section.id }} .pewman-team__role { font-weight: 600; font-size: 12px; color: var(--pewman-gris); line-height: 1.35; }
+  {%- comment -%} Titulo academico: mas discreto que el cargo, en el color de marca para que se note como credencial. {%- endcomment -%}
+  #PewmanTeam-{{ section.id }} .pewman-team__cred { font-size: 11.5px; color: var(--pewman-rojo); line-height: 1.3; margin-top: 3px; }
+  @media (max-width: 680px) { #PewmanTeam-{{ section.id }} .pewman-team__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 400px) { #PewmanTeam-{{ section.id }} .pewman-team__grid { grid-template-columns: 1fr; } }
+{%- endstyle -%}
+
+<div id="PewmanTeam-{{ section.id }}">
+  <div class="pewman-team__wrap">
+    {%- if section.settings.show_heading -%}
+      {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow | default: 'Equipo', heading: section.settings.heading | default: 'Fundado por científicos', subtext: section.settings.subtext %}
+    {%- endif -%}
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Equipo",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_heading", "label": "Mostrar encabezado de la sección", "info": "Apágalo cuando la página ya tiene su propio título arriba (ej. la página Equipo).", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Equipo" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Fundado por científicos" },
+    { "type": "text", "id": "subtext", "label": "Subtítulo", "default": "Con equipos en Chile, Perú y Europa." }
+  ],
+  "blocks": [
+    { "type": "pewman-team-region" }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Equipo",
+      "blocks": [{ "type": "pewman-team-region" }]
+    }
+  ]
+}
+{% endschema %}
