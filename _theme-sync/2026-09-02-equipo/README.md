@@ -14,3 +14,6 @@ Secuencia pendiente:
 1. Cris revisa en preview del theme 159037915367.
 2. Cris publica el theme.
 3. Recién ahí se agrega "Equipo" al menú `main-menu` (Nosotros ▾, entre "Nosotros" y "Patentes y papers"). El menú se aplica al instante en la web viva, por eso va al final.
+
+
+**Actualización 20:14:** `page.equipo.json` reemplazado por la v2 (MD5 `9e58d99dc8913a2733cea07a4a3b3574`, en `../2026-09-02-ronda3/`): un solo encabezado, la sección con `show_heading: false`. La v1 de esta carpeta queda solo como historial.

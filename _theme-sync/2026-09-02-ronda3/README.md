@@ -26,6 +26,8 @@ Mapeo de iconos (decisión Cris, pregunta B): Biológico = bacteria (7.png) · F
 | `templates/product.crioprotect.json` | `1a07349944dbcf38375876fe06bc31a8` | icon + subtitle por bloque; textos INTACTOS (los de la web, decisión A). Subtítulos: Bacterias Antárticas · Nanobiopolímeros · Anti-Estrés Abiótico. |
 | `templates/product.nanoforte.json` | `378ff3f79ee662413d76b218a53c5acf` | icon + subtitle; textos intactos. Subtítulos: (sin) · Microorganismos y nutrición · Resistencia a estrés hídrico. |
 | `sections/header-group.json` | `399b275c730545f6ef7afca9cbe2a177` | `menu: main-menu-equipo` (menú COPIA de `main-menu` + ítem "Equipo" → `/pages/equipo` entre "Nosotros" y "Patentes y papers"; gid Menu 253667049703). Así "Equipo" se ve en el preview y se activa al publicar, sin tocar la web viva. |
+| `sections/pewman-team-grid.liquid` | `98e8dba1331fe8f36bdc232465111a9f` | Setting `show_heading` (default true). Apagado, no pinta el encabezado interno y el padding superior baja de 78 a 34px. Base transcrita del espejo y verificada por MD5 (`eb3ef614…`); la copia en `_theme-sync/sections/` estaba desactualizada. |
+| `templates/page.equipo.json` (v2) | `9e58d99dc8913a2733cea07a4a3b3574` | Un solo encabezado (Cris: "título doble, resuélvelo mejor"): hero H1 "Equipo" + bajada "Fundado por científicos. Un equipo de investigadores, ingenieros y agrónomos con base en Chile, Perú y Europa."; sección con `show_heading: false`, `subtext: ""` (ojo: quitar la clave NO basta, cae al default del schema). |
 
 Las fichas de producto NO llevan Empresa B (decisión C): Crioprotect SAG + Ecocert, Nanoforte solo Ecocert (27 ago). Solo reciben los archivos nuevos por el reemplazo in-place.
 
