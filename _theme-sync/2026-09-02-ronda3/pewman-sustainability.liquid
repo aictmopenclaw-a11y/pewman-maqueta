@@ -60,6 +60,17 @@
   }
   {%- comment -%} Icono propio: llena la casilla completa, para logos como los ODS. {%- endcomment -%}
   #PewmanSustain-{{ section.id }} .pewman-sust__icon-img { width: 100%; height: 100%; object-fit: contain; border-radius: 6px; display: block; }
+  {%- comment -%}
+    Mobile (Cris 2026-09-02, "los 3 sellos se tienen que ver bien en mobile"):
+    con tres logos mas la etiqueta en una sola fila, a 390px el tercero quedaba
+    cortado en el borde. La etiqueta pasa a su propia linea y los logos bajan a
+    62px: SAG + Ecocert + Empresa B suman ~160px mas separaciones, caben holgados.
+  {%- endcomment -%}
+  @media (max-width: 560px) {
+    #PewmanSustain-{{ section.id }} .pewman-sus__certs { gap: 10px 18px; padding: 18px 14px; max-width: 100%; box-sizing: border-box; }
+    #PewmanSustain-{{ section.id }} .pewman-sus__certs .lbl { flex: 0 0 100%; text-align: center; margin-bottom: 2px; }
+    #PewmanSustain-{{ section.id }} .pewman-sus__certs img { height: 62px; }
+  }
 {%- endstyle -%}
 
 <div id="PewmanSustain-{{ section.id }}">
