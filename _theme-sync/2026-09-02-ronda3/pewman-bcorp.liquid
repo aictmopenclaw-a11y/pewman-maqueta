@@ -1,0 +1,61 @@
+{%- comment -%}
+  Bloque "Empresa B Certificada" (Cris 2026-09-02): sello a la izquierda, texto a
+  la derecha, dentro de una tarjeta con el MISMO estilo que las tarjetas
+  destacadas de premios (Startup del Año / Avonni) para que se lea como parte
+  de la misma familia. Reutilizable: va en el Home bajo el banner de CALS y en
+  Nosotros bajo "Premios y respaldo".
+{%- endcomment -%}
+{%- style -%}
+  #PewmanBcorp-{{ section.id }} { background: #fff; padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px; }
+  #PewmanBcorp-{{ section.id }} .pewman-bcorp__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanBcorp-{{ section.id }} .pewman-bcorp__card {
+    display: flex; align-items: center; gap: 48px; max-width: 1000px; margin: 0 auto;
+    {%- if section.settings.card %}
+    background: linear-gradient(155deg, #fff, var(--pewman-crema)); border: 1px solid var(--pewman-linea);
+    border-radius: 26px; padding: 36px 48px; box-shadow: var(--pewman-sh);
+    {%- endif %}
+  }
+  #PewmanBcorp-{{ section.id }} .pewman-bcorp__logo { flex: none; width: 124px; }
+  #PewmanBcorp-{{ section.id }} .pewman-bcorp__logo img { width: 100%; height: auto; display: block; }
+  #PewmanBcorp-{{ section.id }} .pewman-bcorp__tx h2 { font-size: clamp(20px, 2.2vw, 26px); color: var(--pewman-tinta); margin: 0 0 10px; }
+  #PewmanBcorp-{{ section.id }} .pewman-bcorp__tx p { font-size: 15.5px; color: var(--pewman-gris-tx); line-height: 1.62; margin: 0; max-width: 640px; }
+  #PewmanBcorp-{{ section.id }} .pewman-bcorp__tx p + p { margin-top: 10px; }
+  @media (max-width: 700px) {
+    #PewmanBcorp-{{ section.id }} .pewman-bcorp__card { flex-direction: column; text-align: center; gap: 22px; padding: 28px 22px; border-radius: 20px; }
+    #PewmanBcorp-{{ section.id }} .pewman-bcorp__logo { width: 100px; }
+    #PewmanBcorp-{{ section.id }} .pewman-bcorp__tx p { font-size: 15px; }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.logo or section.settings.text != blank -%}
+<div id="PewmanBcorp-{{ section.id }}">
+  <div class="pewman-bcorp__wrap">
+    <div class="pewman-bcorp__card">
+      {%- if section.settings.logo -%}
+        <div class="pewman-bcorp__logo"><img src="{{ section.settings.logo | image_url: width: 400 }}" alt="{{ section.settings.logo_alt | default: 'Empresa B Certificada' | escape }}" loading="lazy" width="124" height="204"></div>
+      {%- endif -%}
+      <div class="pewman-bcorp__tx">
+        {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+        {{ section.settings.text }}
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pewman · Empresa B",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Sello", "info": "PNG con fondo transparente" },
+    { "type": "text", "id": "logo_alt", "label": "Texto alternativo del sello", "default": "Empresa B Certificada" },
+    { "type": "text", "id": "heading", "label": "Título (opcional)" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Pewman Innovation cumple con los estándares transversales de B Lab en materia social, ambiental y de gobernanza. Este enfoque incorpora nuestro propósito y nuestro compromiso con generar un impacto positivo en el ADN de nuestra empresa, promoviendo una gestión más consciente de nuestro impacto en las personas y el planeta.</p>" },
+    { "type": "checkbox", "id": "card", "label": "Mostrar como tarjeta (borde y sombra)", "default": true },
+    { "type": "range", "id": "padding_top", "label": "Espacio arriba", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio abajo", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 }
+  ],
+  "presets": [ { "name": "Pewman · Empresa B" } ]
+}
+{% endschema %}

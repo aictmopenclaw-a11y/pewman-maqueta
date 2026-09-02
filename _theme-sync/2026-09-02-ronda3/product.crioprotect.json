@@ -1,0 +1,163 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pewman_p_hero": {
+      "type": "pewman-product-hero",
+      "settings": {
+        "logo": "shopify://shop_images/logo-crio.svg",
+        "body_text": "<p>Crioprotect® es una formulación innovadora, desarrollada a partir de bacterias antárticas y enriquecida con biopolímeros que potencian su acción protectora frente a las heladas, sin afectar el medioambiente.</p>",
+        "product_accent_color": "#1499c7"
+      }
+    },
+    "pewman_p_benefits": {
+      "type": "pewman-product-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "snowflake",
+            "text": "Protección frente a heladas de hasta −4 °C."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "text": "Reduce entre 80% y 100% del daño en yemas, flores, hojas y tejidos vegetales."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "chart",
+            "text": "Hasta 15% más rendimiento en los ensayos de campo."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {}
+    },
+    "pewman_p_pdp": {
+      "type": "pewman-product-pdp",
+      "settings": {
+        "product_logo": "shopify://shop_images/logo-crio.svg",
+        "tag_text": "Antiheladas",
+        "lead_text": "Formulación a partir de bacterias antárticas y biopolímeros que activan las defensas naturales del cultivo frente a las heladas. Sin afectar el suelo ni el medioambiente.",
+        "product_accent_color": "#1499c7"
+      }
+    },
+    "pewman_p_mechanism": {
+      "type": "pewman-product-mechanism",
+      "blocks": {
+        "m1": {
+          "type": "step",
+          "settings": {
+            "title": "Biológico",
+            "description": "Nuestras bacterias desplazan a las bacterias nucleadoras de hielo en hojas, troncos, ramas, brotes y flores.",
+            "subtitle": "Bacterias Antárticas",
+            "icon": "shopify://shop_images/pewman-icono-crio-biologico.png"
+          }
+        },
+        "m2": {
+          "type": "step",
+          "settings": {
+            "title": "Físico",
+            "description": "Nanobiopolímeros generan una barrera física protectora, anticongelante y aislante sobre el tejido del cultivo.",
+            "subtitle": "Nanobiopolímeros",
+            "icon": "shopify://shop_images/pewman-icono-crio-fisico.png"
+          }
+        },
+        "m3": {
+          "type": "step",
+          "settings": {
+            "title": "Sistémico",
+            "description": "Los compuestos orgánicos y volátiles estabilizan la estructura celular, preservando la productividad ante estrés por frío.",
+            "subtitle": "Anti-Estrés Abiótico",
+            "icon": "shopify://shop_images/pewman-icono-crio-sistemico.png"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/mech-crio-dalila.jpg",
+        "bg_focus_y": 50,
+        "bg_opacity": 90,
+        "base_color": "#0b1620",
+        "product_accent_color": "#1499c7"
+      }
+    },
+    "pewman_p_crops": {
+      "type": "pewman-product-crops",
+      "settings": {
+        "product_accent_color": "#1499c7",
+        "fallback_list": "Acelga | Ají | Brócoli | Coliflor | Espárrago | Frutilla | Lechuga | Melón | Pimentón | Repollo | Sandía | Tomate | Zanahoria | Zapallo guarda | Zapallo italiano | Papas | Choclo | Cerezo | Duraznero | Manzanero | Cítricos"
+      }
+    },
+    "pewman_p_guide": {
+      "type": "pewman-product-guide-gate",
+      "settings": {
+        "cover_image": "shopify://shop_images/guia-portada-crioprotect-v2-2026.png",
+        "cover_bg": "shopify://shop_images/form-bg.jpg",
+        "brand_logo_pewman": "shopify://shop_images/logo-pewman.png",
+        "brand_logo_cals": "shopify://shop_images/logo-cals.jpg",
+        "product_accent_color": "#1499c7"
+      }
+    },
+    "pewman_p_certs": {
+      "type": "pewman-certifications",
+      "blocks": {
+        "c1": {
+          "type": "fallback_cert",
+          "settings": {
+            "name": "SAG"
+          }
+        },
+        "c2": {
+          "type": "fallback_cert",
+          "settings": {
+            "name": "Ecocert"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "settings": {}
+    },
+    "pewman_p_results": {
+      "type": "pewman-results-split",
+      "settings": {
+        "fallback_image": "shopify://shop_images/res-crio-dalila.jpg",
+        "fallback_text": "En la temporada 2022 a 2023, Crioprotect protegió más de 2.000 hectáreas en Chile. Agricultores de papas, cerezos, paltos y uva de mesa resistieron heladas consecutivas sin daños significativos. \"Resistimos 6 heladas consecutivas de −2 a −3 °C sin sufrir daños significativos\", relata Ángel Castro, productor de papas en Talagante.",
+        "product_accent_color": "#1499c7"
+      }
+    }
+  },
+  "order": [
+    "pewman_p_hero",
+    "pewman_p_benefits",
+    "pewman_p_pdp",
+    "pewman_p_mechanism",
+    "pewman_p_crops",
+    "pewman_p_guide",
+    "pewman_p_certs",
+    "pewman_p_results"
+  ]
+}

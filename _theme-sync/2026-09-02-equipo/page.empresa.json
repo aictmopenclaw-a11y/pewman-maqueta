@@ -1,0 +1,486 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pewman_hero": {
+      "type": "pewman-page-hero",
+      "settings": {
+        "current_label": "Empresa",
+        "eyebrow": "Nuestra Historia",
+        "heading": "De ecosistemas extremos a tecnologías agrícolas globales",
+        "text": "Más de 10 años transformando ciencia en tecnología.",
+        "background_image": "shopify://shop_images/hero-empresa-cientifica-hielo-molecula-2026.png",
+        "zoom_intensity": "1.09",
+        "tall": true
+      }
+    },
+    "pewman_intro": {
+      "type": "pewman-rich-text",
+      "settings": {
+        "text": "<p>Pewman Innovation es una empresa chilena de biotecnología que desarrolla soluciones sustentables para aumentar la resiliencia de los cultivos frente a los desafíos del cambio climático.</p><p>Desde hace más de una década, trabajamos en la investigación, desarrollo y validación de tecnologías biológicas capaces de ayudar a la agricultura a enfrentar factores de estrés ambiental como heladas, sequía y temperaturas extremas. Nuestro propósito es transformar conocimiento científico de frontera en soluciones con impacto real para los productores agrícolas y el planeta.</p>",
+        "cream_bg": false
+      }
+    },
+    "pewman_timeline": {
+      "type": "pewman-history-timeline",
+      "blocks": {
+        "h1": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "image": "shopify://shop_images/historia-origen-equipo-atacama.jpg",
+            "image_alt": "Equipo Pewman Innovation en el Desierto de Atacama, origen de la investigación",
+            "image_focus": 90,
+            "eyebrow_text": "El origen",
+            "heading": "De ecosistemas extremos a soluciones agrícolas",
+            "body_text": "<p>Nuestra historia comenzó explorando algunos de los ecosistemas más extremos del planeta, incluyendo la Antártica, el Desierto de Atacama, la Patagonia, volcanes e islas australes de Chile.</p><p>Estos ambientes albergan microorganismos extraordinarios que han evolucionado durante miles de años para sobrevivir en condiciones de frío extremo, escasez de agua, alta radiación UV y otros desafíos ambientales. Comprender estos mecanismos de adaptación nos permitió identificar nuevas oportunidades para fortalecer la resiliencia de los cultivos frente al cambio climático.</p>"
+          }
+        },
+        "h2": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "image": "shopify://shop_images/historia-unicos-laboratorio-placas.jpg",
+            "image_alt": "Científico de Pewman Innovation analizando placas de cultivo en laboratorio",
+            "image_focus": 30,
+            "eyebrow_text": "Lo que nos hace únicos",
+            "heading": "Ciencia propia desde el origen",
+            "body_text": "<p><b>No utilizamos microorganismos descubiertos por otros.</b> Descubrimos, aislamos, caracterizamos y desarrollamos nuestras propias tecnologías a partir de microorganismos provenientes de algunos de los ecosistemas más extremos del planeta.</p><p>A diferencia de muchas soluciones biológicas del mercado, conocemos en profundidad nuestros microorganismos, comprendemos sus mecanismos de acción y desarrollamos tecnologías basadas en evidencia científica sólida.</p><p>La combinación de este conocimiento con nanotecnología orgánica ha permitido crear una plataforma tecnológica única, diseñada para responder a desafíos agrícolas específicos de manera sustentable y eficiente.</p>"
+          }
+        },
+        "h3": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "image": "shopify://shop_images/historia-pioneros-bacterias-lupa.jpg",
+            "image_alt": "Observación de microorganismos con lupa en el laboratorio de Pewman",
+            "image_focus": 55,
+            "eyebrow_text": "Pioneros",
+            "heading": "Una nueva generación de biotecnologías agrícolas",
+            "body_text": "<p>Uno de nuestros principales hitos fue el descubrimiento y caracterización de bacterias asociadas a plantas antárticas, con propiedades capaces de contribuir a la protección frente a bajas temperaturas y otros factores de estrés ambiental.</p><p>Este trabajo dio origen a una nueva línea de innovación biotecnológica basada en microorganismos de ecosistemas extremos. Como pioneros en este campo, hoy colaboramos con empresas, productores e instituciones que buscan incorporar ciencia avanzada para enfrentar los desafíos productivos del futuro.</p>"
+          }
+        },
+        "h4": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "image": "shopify://shop_images/historia-validado-cerezos-cosecha.jpg",
+            "image_alt": "Cosecha de cerezos protegidos, validación en campo",
+            "image_focus": 45,
+            "eyebrow_text": "Validado en condiciones reales",
+            "heading": "Tecnologías que funcionan en el campo",
+            "body_text": "<p>Tras más de 10 años de investigación, desarrollo y validación, nuestras tecnologías han demostrado su eficacia en miles de hectáreas agrícolas, ayudando a productores a enfrentar heladas, déficit hídrico y otros factores asociados al cambio climático.</p><p>Nuestro enfoque combina rigurosidad científica, validación en terreno y desarrollo tecnológico, generando soluciones con impacto medible y aplicabilidad comercial.</p>"
+          }
+        },
+        "h5": {
+          "type": "pewman-timeline-item",
+          "settings": {
+            "image": "shopify://shop_images/historia-global-mundo-cristal.jpg",
+            "image_alt": "Globo de cristal sobre un campo cultivado, proyección global",
+            "image_focus": 40,
+            "eyebrow_text": "Proyección global",
+            "heading": "Desde Chile hacia el mundo",
+            "body_text": "<p>Lo que comenzó como investigación científica desarrollada en Chile hoy se proyecta a nivel internacional, a través de alianzas estratégicas, programas de validación y colaboraciones con actores del sector agrícola y de innovación.</p>"
+          },
+          "blocks": {
+            "c1": {
+              "type": "pewman-timeline-chip",
+              "settings": {
+                "label": "América Latina"
+              }
+            },
+            "c2": {
+              "type": "pewman-timeline-chip",
+              "settings": {
+                "label": "Europa"
+              }
+            },
+            "c3": {
+              "type": "pewman-timeline-chip",
+              "settings": {
+                "label": "Norteamérica"
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      },
+      "block_order": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5"
+      ],
+      "settings": {}
+    },
+    "pewman_proposito": {
+      "type": "pewman-feature-columns",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Nuestro propósito",
+            "text": "Fortalecer la resiliencia de la agricultura mediante tecnologías biológicas desarrolladas a partir de microorganismos de ecosistemas extremos."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Nuestra visión",
+            "text": "Convertirnos en referentes globales en biotecnología agrícola, llevando innovación desarrollada en Chile hacia los principales mercados agrícolas del mundo."
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2"
+      ],
+      "settings": {
+        "eyebrow": "Hacia dónde vamos",
+        "heading": "Propósito y visión"
+      }
+    },
+    "pewman_sostenibilidad": {
+      "type": "pewman-sustainability",
+      "blocks": {
+        "p1": {
+          "type": "pillar",
+          "settings": {
+            "icon": "leaf",
+            "title": "100% orgánico y residuo cero",
+            "text": "Bioinsumos biodegradables, sin residuos ni contaminantes en el cultivo ni en el suelo."
+          }
+        },
+        "p2": {
+          "type": "pillar",
+          "settings": {
+            "icon": "water",
+            "figure": "−40%",
+            "title": "Menos agua de riego",
+            "text": "Optimización de recursos hídricos: reduce la necesidad de riego hasta en un 40%."
+          }
+        },
+        "p3": {
+          "type": "pillar",
+          "settings": {
+            "icon": "carbon",
+            "title": "Menor huella de carbono",
+            "text": "Reemplaza calefactores a gas, tractores y helicópteros por aplicación foliar o radicular."
+          }
+        },
+        "p4": {
+          "type": "pillar",
+          "settings": {
+            "icon": "soil",
+            "title": "Suelos vivos y captura de carbono",
+            "text": "Regenera el suelo fomentando la actividad microbiana y la captura de carbono."
+          }
+        },
+        "p5": {
+          "type": "pillar",
+          "settings": {
+            "icon": "microbe",
+            "title": "Microorganismos extremófilos",
+            "text": "Provenientes de la Antártica y el Desierto de Atacama, aprovechados de forma sustentable."
+          }
+        },
+        "p6": {
+          "type": "pillar",
+          "settings": {
+            "icon": "certified",
+            "title": "Certificada y alineada con los ODS",
+            "text": "Agricultura limpia y circular, con certificaciones orgánicas internacionales."
+          }
+        },
+        "d1": {
+          "type": "doc",
+          "settings": {
+            "title": "Reporte de validación",
+            "url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/pewman-reporte-validacion-2025.pdf?v=1784922538",
+            "meta": "PDF · 26 págs"
+          }
+        },
+        "d2": {
+          "type": "doc",
+          "settings": {
+            "title": "Huella de carbono (CO₂)",
+            "url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/pewman-huella-carbono-co2-2025.pdf?v=1784922538",
+            "meta": "PDF · 19 págs"
+          }
+        },
+        "d3": {
+          "type": "doc",
+          "settings": {
+            "title": "Validación de impacto climático (CIF)",
+            "url": "https://cdn.shopify.com/s/files/1/0798/6348/0551/files/pewman-validacion-impacto-climatico-cif-2025.pdf?v=1788178255",
+            "meta": "PDF · Impact Forecast · EIT Climate-KIC"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "settings": {
+        "eyebrow": "Compromiso",
+        "heading": "Sostenibilidad",
+        "subtext": "Biotecnología 100% orgánica para una agricultura limpia, circular y regenerativa, alineada con los Objetivos de Desarrollo Sostenible.",
+        "banner_image": "shopify://shop_images/pewman-banner-sostenibilidad.jpg",
+        "banner_heading": "Agricultura limpia, circular y regenerativa",
+        "banner_text": "Soluciones biológicas que fortalecen la resiliencia del campo frente al cambio climático, sin comprometer el medio ambiente.",
+        "policy": "<p>La política de sostenibilidad de Pewman Innovation se fundamenta en el desarrollo de <strong>soluciones biotecnológicas 100% orgánicas, biodegradables y residuo cero</strong>, concebidas para fortalecer la resiliencia agrícola frente al cambio climático sin comprometer el medio ambiente. A través del aprovechamiento sustentable de <strong>microorganismos extremófilos de la Antártica y del Desierto de Atacama</strong>, la empresa reduce la huella de carbono al reemplazar métodos intensivos en combustibles (calefactores a gas, tractores y helicópteros) por bioinsumos de aplicación foliar o radicular. Su enfoque integra la <strong>optimización del agua (hasta −40% de riego)</strong>, la <strong>regeneración de suelos vivos</strong> y la <strong>captura de carbono</strong>.</p>",
+        "cert_label": "Certificaciones",
+        "cert_logo_1": "shopify://shop_images/pewman-logo-sag-organico.png",
+        "cert_logo_2": "shopify://shop_images/pewman-logo-ecocert-insumos.png",
+        "docs_eyebrow": "Transparencia",
+        "docs_heading": "Documentos y reportes"
+      }
+    },
+    "pewman_ods": {
+      "type": "pewman-ods",
+      "blocks": {
+        "o2": {
+          "type": "ods",
+          "settings": {
+            "icon_image": "shopify://shop_images/ods-02.png",
+            "num": "2",
+            "title": "Hambre Cero",
+            "subtitle": "Agricultura sostenible",
+            "color": "#DDD84B",
+            "text_color": "#5a5a00",
+            "objetivo": "Garantizar la seguridad alimentaria y mejorar la nutrición mediante sistemas agrícolas sostenibles y resilientes ante la variabilidad climática.",
+            "contribucion": "Las biotecnologías CRIOPROTECT® y NANOFORTE® mejoran la productividad agrícola en condiciones de estrés ambiental extremo (heladas, sequía, cambios climáticos), reduciendo pérdidas de cosecha y fortaleciendo la resiliencia de los cultivos de pequeños y medianos productores.",
+            "metas": "Meta 2.4 · Sistemas agrícolas sostenibles: Nuestras soluciones promueven prácticas de agricultura resiliente que mantienen la productividad bajo estrés climático, sin comprometer la sostenibilidad del suelo.",
+            "impacto": "• Reducción de pérdidas de cosecha hasta 30% en eventos de estrés climático\n• Mantenimiento de rendimiento en condiciones de sequía prolongada\n• Adopción por productores en regiones vulnerables a cambios climáticos"
+          }
+        },
+        "o6": {
+          "type": "ods",
+          "settings": {
+            "icon_image": "shopify://shop_images/ods-06.png",
+            "num": "6",
+            "title": "Agua limpia",
+            "subtitle": "y saneamiento",
+            "color": "#26BDE2",
+            "text_color": "#003d52",
+            "objetivo": "Garantizar la disponibilidad y gestión sostenible del agua potable mediante la reducción de consumo en sectores clave como la agricultura.",
+            "contribucion": "NANOFORTE® optimiza la absorción y utilización del agua en cultivos, mejorando la eficiencia hídrica a nivel celular. Esta biotecnología reduce el consumo de agua de riego manteniendo o mejorando la productividad, contribuyendo a la conservación de recursos hídricos escasos en regiones áridas y semiáridas.",
+            "metas": "Meta 6.4 · Uso eficiente del agua: Nuestras soluciones fomentan la agricultura de precisión hídrica, permitiendo a los productores mantener rendimientos con menor demanda de agua.",
+            "impacto": "• Reducción de 20-25% en consumo de agua de riego\n• Mejor aprovechamiento de periodos de precipitación limitada\n• Adaptación de cultivos a ciclos de sequía prolongada\n• Contribución a la disponibilidad hídrica en acuíferos locales"
+          }
+        },
+        "o9": {
+          "type": "ods",
+          "settings": {
+            "icon_image": "shopify://shop_images/ods-09.png",
+            "num": "9",
+            "title": "Industria",
+            "subtitle": "innovación e infraestructura",
+            "color": "#DD1E34",
+            "text_color": "#ffffff",
+            "objetivo": "Desarrollar infraestructuras fiables e innovadoras que promuevan la industrialización inclusiva y sostenible.",
+            "contribucion": "Pewman opera como empresa de base científico-tecnológica que canaliza la investigación en biotecnología agrícola hacia soluciones de mercado. Nuestro modelo integra I+D, fabricación y transferencia tecnológica para pequeños y medianos productores, democratizando el acceso a innovación agroclimática de clase mundial.",
+            "metas": "Meta 9.5 · Investigación e innovación: Invertimos continuamente en I+D para desarrollar biotecnologías que resuelvan desafíos reales de productores. Nuestro portfolio (CRIOPROTECT®, NANOFORTE®) es resultado directo de esta estrategia de innovación basada en ciencia.",
+            "impacto": "• 2 biotecnologías patentadas en desarrollo/comercialización\n• Alianzas con centros de investigación agrícola regional\n• Adopción por productores en 5+ países\n• Capacitación técnica a más de 500 agricultores anuales"
+          }
+        },
+        "o12": {
+          "type": "ods",
+          "settings": {
+            "icon_image": "shopify://shop_images/ods-12.png",
+            "num": "12",
+            "title": "Producción y consumo",
+            "subtitle": "responsables",
+            "color": "#BF8B2E",
+            "text_color": "#ffffff",
+            "objetivo": "Garantizar patrones de producción y consumo sostenibles mediante la reducción de residuos y el uso eficiente de recursos naturales.",
+            "contribucion": "Aplicamos un modelo de economía circular en el diseño y manufactura de CRIOPROTECT® y NANOFORTE®. Optimizamos el ciclo de vida del producto, reducimos el uso de materiales vírgenes, minimizamos residuos de proceso, y promovemos la reutilización y reciclaje de envases.\nNuestras soluciones también reducen el consumo de agua y agroquímicos sintéticos en las operaciones de los productores, amplificando el impacto de reducción de consumo en toda la cadena agrícola.",
+            "metas": "Meta 12.2 · Uso eficiente de recursos: Optimizamos la extracción y transformación de materias primas, reduciendo pérdidas de proceso.\nMeta 12.5 · Prevención y gestión de residuos: Diseño de empaques con 100% material reciclable, programa de devolución de envases, y eliminación progresiva de plásticos de un solo uso.",
+            "impacto": "• 80% reducción de residuos de proceso vs. 2023\n• 100% empaques primarios reciclables\n• Ahorro de 2.5M litros agua anuales en producción\n• Reducción de 15-20% agroquímicos en cultivos tratados\n• Certificación B (Empresa con propósito)"
+          }
+        },
+        "o13": {
+          "type": "ods",
+          "settings": {
+            "icon_image": "shopify://shop_images/ods-13.png",
+            "num": "13",
+            "title": "Acción",
+            "subtitle": "por el clima",
+            "color": "#407D52",
+            "text_color": "#ffffff",
+            "objetivo": "Adoptar medidas urgentes para combatir el cambio climático y sus efectos mediante la adaptación y resiliencia de sistemas productivos estratégicos.",
+            "contribucion": "CRIOPROTECT® y NANOFORTE® son biotecnologías de adaptación que fortalecen la resiliencia de cultivos frente a eventos climáticos extremos cada vez más frecuentes: heladas intempestivas, sequías prolongadas, variabilidad de precipitación, y estrés térmico.\nAl reducir la vulnerabilidad agrícola al cambio climático, nuestras soluciones permiten que productores mantengan ingresos y seguridad alimentaria en contextos de mayor incertidumbre climática. Esto contribuye tanto a la adaptación local como a la mitigación global, evitando la expansión de frontera agrícola en zonas protegidas.",
+            "metas": "Meta 13.1 · Fortalecimiento de la resiliencia: Nuestras biotecnologías equipan a productores con herramientas para adaptarse a impactos climáticos inmediatos y proyectados.\nMeta 13.2 · Integración de cambio climático en políticas: Colaboramos con instituciones públicas para integrar nuestras soluciones en políticas agroclimáticas regionales.",
+            "impacto": "• 1,200+ productores protegidos contra heladas extremas\n• Agricultura resiliente en 5 regiones de vulnerabilidad climática\n• Reducción de 10 millones toneladas CO2-eq evitadas (evitar nuevas deforestaciones)\n• Documentación científica de efectos adaptativos en 8 cultivos"
+          }
+        }
+      },
+      "block_order": [
+        "o2",
+        "o6",
+        "o9",
+        "o12",
+        "o13"
+      ],
+      "settings": {
+        "eyebrow": "Compromiso global",
+        "heading": "Contribución a los Objetivos de Desarrollo Sostenible (ODS)",
+        "subtext": "Pewman está comprometida con los Objetivos de Desarrollo Sostenible de la FAO. Haz clic en cada ODS para conocer su impacto.",
+        "cream_bg": true
+      }
+    },
+    "pewman_premios": {
+      "type": "pewman-awards",
+      "blocks": {
+        "feat1": {
+          "type": "featured",
+          "settings": {
+            "image": "shopify://shop_images/premio-startup.png",
+            "title": "Startup del Año 2024",
+            "text": "Reconocimiento de El Mercurio Innovación, junto a Swiss Business Hub USA, PwC, Nestlé y Corfo."
+          }
+        },
+        "feat2": {
+          "type": "featured",
+          "settings": {
+            "image": "shopify://shop_images/premio-avonni-agrotech.png",
+            "title": "Premio Avonni 2025",
+            "text": "Categoría Transferencia Tecnológica: por transformar investigación científica en soluciones aplicables para la agricultura."
+          }
+        },
+        "a2": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-goglobal.png",
+            "alt": "GoGlobal"
+          }
+        },
+        "a3": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo-corfo-azul.png",
+            "alt": "Corfo"
+          }
+        },
+        "a4": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-01.png",
+            "alt": "Reconocimiento"
+          }
+        },
+        "a5": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-02.png",
+            "alt": "Reconocimiento"
+          }
+        },
+        "a6": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-03.png",
+            "alt": "Reconocimiento"
+          }
+        },
+        "a7": {
+          "type": "award_logo",
+          "settings": {
+            "logo": "shopify://shop_images/premio-04.png",
+            "alt": "Reconocimiento"
+          }
+        }
+      },
+      "block_order": [
+        "feat1",
+        "feat2",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7"
+      ],
+      "settings": {
+        "heading": "Premios y respaldo",
+        "subtext": "Nuestro crecimiento ha sido acompañado por reconocimientos nacionales e internacionales: Premio Avonni 2025 en Transferencia Tecnológica y Startup del Año 2024 de El Mercurio Innovación, entre otros en innovación y emprendimiento científico.",
+        "featured_title": "Startup del Año 2024",
+        "featured_text": "Reconocimiento de El Mercurio Innovación, junto a Swiss Business Hub USA, PwC, Nestlé y Corfo.",
+        "featured_image": "shopify://shop_images/premio-startup.png"
+      }
+    },
+    "pewman_patentes": {
+      "type": "pewman-patents-grid",
+      "blocks": {
+        "p1": {
+          "type": "patent",
+          "settings": {
+            "country": "intl",
+            "jurisdiction": "Internacional",
+            "registration_number": "PCT/CL2021/050061"
+          }
+        },
+        "p2": {
+          "type": "patent",
+          "settings": {
+            "country": "usa",
+            "jurisdiction": "Estados Unidos",
+            "registration_number": "USPTO 63051414"
+          }
+        },
+        "p3": {
+          "type": "patent",
+          "settings": {
+            "country": "chile",
+            "jurisdiction": "Chile",
+            "registration_number": "1865-2021"
+          }
+        },
+        "p4": {
+          "type": "patent",
+          "settings": {
+            "country": "india",
+            "jurisdiction": "India",
+            "registration_number": "509159"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "heading": "Innovación protegida",
+        "show_description": false,
+        "dark_mode": true
+      }
+    }
+  },
+  "order": [
+    "pewman_hero",
+    "pewman_intro",
+    "pewman_timeline",
+    "pewman_proposito",
+    "pewman_sostenibilidad",
+    "pewman_ods",
+    "pewman_premios",
+    "pewman_patentes"
+  ]
+}

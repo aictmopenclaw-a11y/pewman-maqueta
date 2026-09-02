@@ -1,0 +1,130 @@
+{%- style -%}
+  #PewmanMechanism-{{ section.id }} {
+    position: relative; overflow: hidden; color: #fff;
+    background: {{ section.settings.base_color | default: '#0b1620' }};
+    --pewman-prod: {{ product.metafields.custom.accent_color.value | default: section.settings.product_accent_color | default: '#1499c7' }};
+    min-height: clamp(780px, 92vh, 1080px);
+    display: flex; align-items: center;
+  }
+  {%- if section.settings.background_image -%}
+  #PewmanMechanism-{{ section.id }}::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background-image: url({{ section.settings.background_image | image_url: width: 2560 }});
+    background-size: cover;
+    background-position: 50% {{ section.settings.bg_focus_y | default: 50 }}%;
+    background-attachment: fixed;
+    opacity: {{ section.settings.bg_opacity | default: 70 | divided_by: 100.0 }};
+  }
+  {%- endif -%}
+  #PewmanMechanism-{{ section.id }}::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, {{ section.settings.base_color | default: '#0b1620' | color_modify: 'alpha', 0.42 }}, {{ section.settings.base_color | default: '#0b1620' | color_modify: 'alpha', 0.6 }});
+  }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__wrap { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 96px 24px; }
+  @media (min-width: 821px) { #PewmanMechanism-{{ section.id }} { min-height: clamp(780px, 56.25vw, 1400px); } }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__head { text-align: center; margin-bottom: 44px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__head .pewman-eyebrow { color: var(--pewman-prod); }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__head h2 { font-size: clamp(28px, 3.6vw, 40px); color: #fff; margin-top: 10px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__card { background: var(--pewman-prod); border-radius: 18px; padding: 32px 26px; box-shadow: 0 22px 44px -22px rgba(0,0,0,.65); }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__num {
+    font-weight: 800; font-size: 20px; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+  }
+  {%- comment -%} Modo con icono (referencia Cris 2026-09-02): icono blanco arriba, número dentro del título en mayúsculas y subtítulo en negrita. Sin icono se mantiene el número en recuadro. {%- endcomment -%}
+  #PewmanMechanism-{{ section.id }} .pewman-mech__icon { width: 64px; height: 64px; object-fit: contain; display: block; margin-bottom: 20px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__card h3 { font-size: 19px; margin-bottom: 10px; color: #fff; line-height: 1.15; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__card h3.pewman-mech__title--upper { text-transform: uppercase; letter-spacing: .03em; font-size: 20px; margin-bottom: 4px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__sub { display: block; font-weight: 700; font-size: 15px; color: #fff; line-height: 1.3; margin-bottom: 14px; }
+  #PewmanMechanism-{{ section.id }} .pewman-mech__card p { font-size: 14px; color: rgba(255,255,255,.94); line-height: 1.55; }
+  @media (max-width: 820px) { #PewmanMechanism-{{ section.id }} .pewman-mech__grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
+  {%- comment -%} Esquema del mecanismo: fondo claro para que un PNG con fondo blanco no se vea como parche sobre la tarjeta oscura. {%- endcomment -%}
+  #PewmanMechanism-{{ section.id }} .pewman-mech__diagram {
+    display: block; width: 100%; height: auto; max-height: 190px; object-fit: contain;
+    background: rgba(255,255,255,.94); border-radius: 12px; padding: 12px; margin-bottom: 16px;
+  }
+  @media (max-width: 749px) { #PewmanMechanism-{{ section.id }}::before { background-image: url({{ section.settings.background_image | image_url: width: 1080 }}); } }
+{%- endstyle -%}
+
+{%- comment -%}
+  Triple mecanismo: texto directo editable (número automático + título +
+  descripción por bloque). Sin metaobjects ni metafields (decisión Cris
+  2026-07-24), igual que los beneficios.
+
+  Misma razon que en beneficios: sin bloques la seccion no se renderiza. Es
+  una franja alta con foto de fondo, asi que vacia se notaria mucho en un
+  producto nuevo que todavia no la haya llenado.
+{%- endcomment -%}
+{%- if section.blocks.size > 0 -%}
+<div id="PewmanMechanism-{{ section.id }}">
+  <span id="pewman-mecanismo" style="scroll-margin-top:90px" aria-hidden="true"></span>
+  <div class="pewman-mech__wrap">
+    <div class="pewman-mech__head">
+      <span class="pewman-eyebrow">¿Cómo funciona?</span>
+      <h2>{{ section.settings.heading | default: 'Triple mecanismo de protección' }}</h2>
+    </div>
+    <div class="pewman-mech__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' -%}
+          <div class="pewman-mech__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon -%}
+              <img class="pewman-mech__icon" src="{{ block.settings.icon | image_url: width: 256 }}" alt="" loading="lazy" width="64" height="64">
+            {%- else -%}
+              <div class="pewman-mech__num">{{ forloop.index }}</div>
+            {%- endif -%}
+            {%- comment -%} Esquema opcional (Denisse 2026-08-18): explica el mecanismo con una imagen, no solo texto. {%- endcomment -%}
+            {%- if block.settings.diagram != blank -%}
+              <img class="pewman-mech__diagram" src="{{ block.settings.diagram | image_url: width: 640 }}" alt="{{ block.settings.diagram_alt | default: block.settings.title | escape }}" loading="lazy">
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              {%- if block.settings.icon -%}<h3 class="pewman-mech__title--upper">{{ forloop.index }}. {{ block.settings.title }}</h3>{%- else -%}<h3>{{ block.settings.title }}</h3>{%- endif -%}
+            {%- endif -%}
+            {%- if block.settings.subtitle != blank -%}<span class="pewman-mech__sub">{{ block.settings.subtitle }}</span>{%- endif -%}
+            {%- if block.settings.description != blank -%}<p>{{ block.settings.description }}</p>{%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pewman · Triple mecanismo",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Triple mecanismo de protección" },
+    { "type": "image_picker", "id": "background_image", "label": "Imagen de fondo", "info": "Queda fija mientras las tarjetas pasan por encima al hacer scroll" },
+    { "type": "range", "id": "bg_focus_y", "label": "Encuadre vertical del fondo", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 50, "visible_if": "{{ section.settings.background_image != blank }}" },
+    { "type": "range", "id": "bg_opacity", "label": "Opacidad del fondo", "min": 30, "max": 100, "step": 5, "unit": "%", "default": 70, "visible_if": "{{ section.settings.background_image != blank }}" },
+    { "type": "color", "id": "base_color", "label": "Color base de la sección", "default": "#0b1620" },
+    { "type": "color", "id": "product_accent_color", "label": "Color de respaldo", "info": "Se usa solo si el producto no tiene su propio Color del producto cargado en su ficha", "default": "#1499c7" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Paso",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título" },
+        { "type": "text", "id": "subtitle", "label": "Subtítulo", "info": "Va en negrita bajo el título. Ej. \"Bacterias Antárticas\"" },
+        { "type": "image_picker", "id": "icon", "label": "Icono", "info": "PNG blanco con fondo transparente. Con icono, el número pasa al título en mayúsculas (1. BIOLÓGICO)." },
+        { "type": "textarea", "id": "description", "label": "Descripción" },
+        { "type": "image_picker", "id": "diagram", "label": "Esquema (opcional)", "info": "Dibujo o diagrama que explica el mecanismo. Se ve sobre el título. Ideal PNG horizontal con fondo blanco o transparente." },
+        { "type": "text", "id": "diagram_alt", "label": "Descripción del esquema", "info": "Para accesibilidad y buscadores. Si lo dejas vacío se usa el título.", "visible_if": "{{ block.settings.diagram != blank }}" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Pewman · Mecanismo",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Biológico", "description": "Nanobiopolímeros generan una barrera física protectora, anticongelante y aislante sobre el tejido del cultivo." } },
+        { "type": "step", "settings": { "title": "Físico", "description": "Nuestras bacterias desplazan a las bacterias nucleadoras de hielo en hojas, troncos, ramas, brotes y flores." } },
+        { "type": "step", "settings": { "title": "Sistémico", "description": "Los compuestos orgánicos y volátiles actúan como precursores hormonales, aumentando los solutos intracelulares." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
