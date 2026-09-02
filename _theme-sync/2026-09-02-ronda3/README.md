@@ -25,6 +25,7 @@ Mapeo de iconos (decisión Cris, pregunta B): Biológico = bacteria (7.png) · F
 | `templates/index.json` | `8f0b679ec613aaa9277d3df88d567219` | `pewman_empresa_b` entre `pewman_cals` y `pewman_prensa`. |
 | `templates/product.crioprotect.json` | `1a07349944dbcf38375876fe06bc31a8` | icon + subtitle por bloque; textos INTACTOS (los de la web, decisión A). Subtítulos: Bacterias Antárticas · Nanobiopolímeros · Anti-Estrés Abiótico. |
 | `templates/product.nanoforte.json` | `378ff3f79ee662413d76b218a53c5acf` | icon + subtitle; textos intactos. Subtítulos: (sin) · Microorganismos y nutrición · Resistencia a estrés hídrico. |
+| `sections/header-group.json` | `399b275c730545f6ef7afca9cbe2a177` | `menu: main-menu-equipo` (menú COPIA de `main-menu` + ítem "Equipo" → `/pages/equipo` entre "Nosotros" y "Patentes y papers"; gid Menu 253667049703). Así "Equipo" se ve en el preview y se activa al publicar, sin tocar la web viva. |
 
 Las fichas de producto NO llevan Empresa B (decisión C): Crioprotect SAG + Ecocert, Nanoforte solo Ecocert (27 ago). Solo reciben los archivos nuevos por el reemplazo in-place.
 
@@ -32,3 +33,6 @@ Las fichas de producto NO llevan Empresa B (decisión C): Crioprotect SAG + Ecoc
 - Checksums en Shopify = locales para los 7 archivos del theme.
 - Preview por curl y en pantalla (escritorio + emulación móvil 375px): 3 sellos en Sostenibilidad, tarjeta Empresa B bajo CALS (Home) y bajo Premios (Nosotros), iconos + subtítulos en las 2 fichas con textos sin cambios, sin desborde horizontal (documento = 375px).
 - Nota: capturas con Chrome headless a 390px muestran contenido cortado a la derecha desde Sostenibilidad hacia abajo. Es artefacto del headless (sin emulación móvil), no del sitio: la emulación real da `scrollWidth` = 375.
+
+## Menú: limpieza después de publicar
+El theme apunta a `main-menu-equipo` (copia). Cuando el theme esté en vivo: agregar "Equipo" a `main-menu` (el que edita Dalila en Navegación), volver a apuntar `header-group.json` a `main-menu` y borrar `main-menu-equipo`. Hasta entonces, cualquier cambio de menú hay que hacerlo en la copia.
