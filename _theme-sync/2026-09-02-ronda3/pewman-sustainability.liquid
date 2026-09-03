@@ -42,7 +42,8 @@
     Los descargables van en una sola fila en escritorio (Cris 2026-08-31):
     auto-fit reparte N documentos en columnas iguales mientras quepan.
   {%- endcomment -%}
-  #PewmanSustain-{{ section.id }} .pewman-sus__docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; max-width: 1100px; margin: 0 auto; }
+  {%- comment -%} Tope de 350px por tarjeta y centrado: con 3 documentos se ve igual que antes; con 2 (desde 2026-09-02) no se estiran a media pantalla. {%- endcomment -%}
+  #PewmanSustain-{{ section.id }} .pewman-sus__docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 350px)); justify-content: center; gap: 18px; max-width: 1100px; margin: 0 auto; }
   #PewmanSustain-{{ section.id }} .pewman-sus__doc { display: flex; flex-direction: column; gap: 12px; background: #fff; border: 1px solid var(--pewman-linea); border-radius: 14px; padding: 20px; text-decoration: none; color: inherit; transition: .2s; }
   #PewmanSustain-{{ section.id }} .pewman-sus__doc:hover { border-color: var(--pewman-rojo); transform: translateY(-3px); box-shadow: var(--pewman-sh); }
   #PewmanSustain-{{ section.id }} .pewman-sus__doc-ic { width: 40px; height: 40px; border-radius: 10px; background: #fdeef0; color: var(--pewman-rojo); display: flex; align-items: center; justify-content: center; }
