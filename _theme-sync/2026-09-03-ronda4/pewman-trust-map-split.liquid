@@ -1,0 +1,64 @@
+{%- style -%}
+  #PewmanTrustMap-{{ section.id }} { background: #fff; overflow: hidden; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__tx {
+    display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 70px 56px;
+  }
+  {%- comment -%}
+    align-items: center de .pewman-trust-map__tx no gana la cascada (el theme
+    base lo resuelve como "normal" — verificado en vivo, computed style real).
+    Centrado a prueba de eso: margin auto directo en el h2/p, que no depende
+    del align-items del padre (decision Cris 2026-08-10, "se ve muy pegado a
+    la izquierda").
+  {%- endcomment -%}
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__tx h2 { font-size: clamp(25px, 3.2vw, 36px); color: var(--pewman-tinta); margin: 0 auto 18px; max-width: 420px; line-height: 1.15; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__tx p { font-size: 15.5px; color: var(--pewman-gris-tx); max-width: 480px; margin-left: auto; margin-right: auto; }
+  {%- comment -%}
+    Foto a sangre completa dentro de su columna (Cris 2026-08-31, "sin bordes,
+    se nota el limite, solo la imagen"): sin padding ni panel visible, la
+    imagen llena el 100% del bloque con object-fit:cover.
+  {%- endcomment -%}
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__map { background: #f0eeef; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__map picture { display: block; height: 100%; line-height: 0; }
+  #PewmanTrustMap-{{ section.id }} .pewman-trust-map__map img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 820px) {
+    #PewmanTrustMap-{{ section.id }} .pewman-trust-map__grid { grid-template-columns: 1fr; }
+    #PewmanTrustMap-{{ section.id }} .pewman-trust-map__tx { padding: 44px 24px 28px; }
+    {%- comment -%} Movil (Cris 2026-09-03, "el mapa no se ve bien en mobile"): con cover se recortaban los paises de los bordes. Aca el mapa se muestra ENTERO a todo el ancho, a su proporcion natural. Si se carga una imagen movil (vertical), se usa esa. {%- endcomment -%}
+    #PewmanTrustMap-{{ section.id }} .pewman-trust-map__map { min-height: 0; }
+    #PewmanTrustMap-{{ section.id }} .pewman-trust-map__map img { height: auto; object-fit: contain; }
+  }
+{%- endstyle -%}
+
+<section id="PewmanTrustMap-{{ section.id }}" aria-label="Confianza">
+  <div class="pewman-trust-map__grid">
+    <div class="pewman-trust-map__tx">
+      <h2>{{ section.settings.heading }}</h2>
+      <div>{{ section.settings.text }}</div>
+    </div>
+    <div class="pewman-trust-map__map">
+      {%- if section.settings.map_image -%}
+        <picture>{%- if section.settings.mobile_map_image -%}<source media="(max-width: 820px)" srcset="{{ section.settings.mobile_map_image | image_url: width: 480 }} 480w, {{ section.settings.mobile_map_image | image_url: width: 800 }} 800w, {{ section.settings.mobile_map_image | image_url: width: 1200 }} 1200w" sizes="100vw">{%- endif -%}<img src="{{ section.settings.map_image | image_url: width: 1200 }}" srcset="{{ section.settings.map_image | image_url: width: 600 }} 600w, {{ section.settings.map_image | image_url: width: 900 }} 900w, {{ section.settings.map_image | image_url: width: 1200 }} 1200w, {{ section.settings.map_image | image_url: width: 1600 }} 1600w, {{ section.settings.map_image | image_url: width: 2000 }} 2000w" sizes="(max-width: 820px) 100vw, 50vw" alt="{{ section.settings.map_image.alt | escape }}" loading="lazy"></picture>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pewman · Confianza + mapa",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "La confianza es nuestra tecnología más importante." },
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "image_picker", "id": "map_image", "label": "Imagen de mapa" },
+    { "type": "image_picker", "id": "mobile_map_image", "label": "Imagen de mapa (móvil, opcional)", "info": "Versión vertical para pantallas de hasta 820px, con los países más grandes. Si se deja vacío, en móvil se muestra el mapa completo." }
+  ],
+  "presets": [
+    {
+      "name": "Pewman · Confianza + mapa",
+      "settings": { "text": "<p>La ciencia nos permite desarrollar soluciones innovadoras; la confianza, convertirlas en impacto. Por eso trabajamos con rigor científico, validación en campo y relaciones de largo plazo con agricultores, distribuidores e instituciones a nivel global.</p>" }
+    }
+  ]
+}
+{% endschema %}

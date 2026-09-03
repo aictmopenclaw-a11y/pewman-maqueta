@@ -1,0 +1,128 @@
+{%- style -%}
+  #PewmanContactInfo-{{ section.id }} { background: #fff; padding: 78px 0; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: start; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+  {%- comment -%}
+    Iconos vectoriales, no emoji (decision Cris 2026-08-05): un emoji se ve
+    distinto en cada sistema operativo y no se puede tenir del color de marca.
+    Sin fondo, solo el trazo (decision Cris 2026-08-10): se saco el circulo
+    rojo, queda el icono lineal solo en el color de marca.
+  {%- endcomment -%}
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__ic {
+    width: 24px; height: 24px; color: var(--pewman-rojo);
+    display: flex; align-items: center; justify-content: center; flex: none; margin-top: 2px;
+  }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__ic svg { width: 24px; height: 24px; display: block; }
+  {%- comment -%} WhatsApp: glifo oficial relleno en el color de marca (Cris 2026-09-03, "el original de whatsapp pero con rojo"); un pelo mas chico para que pese igual que los iconos de trazo. {%- endcomment -%}
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__ic svg[fill="currentColor"] { width: 22px; height: 22px; margin: 1px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__row .t { font-weight: 600; color: var(--pewman-tinta); font-size: 15px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__row .d { font-size: 14.5px; color: var(--pewman-gris-tx); }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__row a { color: inherit; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form { background: #fff; border: 1px solid var(--pewman-linea); border-radius: 26px; padding: 30px; box-shadow: var(--pewman-sh); }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__field { margin-bottom: 16px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form label { display: block; font-weight: 600; font-size: 13px; color: var(--pewman-tinta); margin: 0 0 6px; }
+  {%- comment -%} 16px minimo en los campos: bajo eso iOS hace zoom automatico al tocar. {%- endcomment -%}
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form input,
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form textarea { width: 100%; border: 1.5px solid var(--pewman-linea); border-radius: 12px; padding: 13px 15px; font-size: 16px; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form input:focus,
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form textarea:focus { outline: none; border-color: var(--pewman-rojo); box-shadow: 0 0 0 3px rgba(189,0,40,.15); }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__form textarea { min-height: 120px; resize: vertical; }
+  #PewmanContactInfo-{{ section.id }} .pewman-cif__ok { font-size: 13px; color: var(--pewman-rojo); margin-top: 8px; }
+  @media (max-width: 920px) { #PewmanContactInfo-{{ section.id }} .pewman-cif__grid { grid-template-columns: 1fr; gap: 34px; } }
+{%- endstyle -%}
+
+{%- liquid
+  comment
+    El setting pewman_whatsapp_phone guarda solo dígitos (para armar la URL de
+    wa.me) — mostrarlo tal cual quedaba ilegible: "56990833908". Se formatea
+    acá como +56 9 9083 3908 (código país 2 + celular 9 + 4 + 4) solo cuando
+    calza el formato chileno estándar (11 dígitos); si no, se muestra crudo.
+  endcomment
+  assign wa_raw = settings.pewman_whatsapp_phone | default: '56990833908' | remove: '+' | remove: ' '
+  if wa_raw.size == 11
+    assign wa_p0 = wa_raw | slice: 0, 2
+    assign wa_p1 = wa_raw | slice: 2, 1
+    assign wa_p2 = wa_raw | slice: 3, 4
+    assign wa_p3 = wa_raw | slice: 7, 4
+    assign wa_display = '+' | append: wa_p0 | append: ' ' | append: wa_p1 | append: ' ' | append: wa_p2 | append: ' ' | append: wa_p3
+  else
+    assign wa_display = wa_raw
+  endif
+-%}
+<div id="PewmanContactInfo-{{ section.id }}">
+  <div class="pewman-cif__wrap">
+    <div class="pewman-cif__grid">
+      <div class="pewman-cif__info">
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
+          <div><div class="t">{% render 'pewman-whatsapp-link', text: 'WhatsApp' %}</div><div class="d">{% render 'pewman-whatsapp-link', text: wa_display %}</div></div>
+        </div>
+        {%- comment -%}
+          Telefono con tel: y correo con mailto: (decision Cris 2026-08-05).
+          En el campo se llama, no solo se escribe: el numero clickeable
+          marca directo desde el celular. El correo antes no aparecia.
+        {%- endcomment -%}
+        {%- liquid
+          assign cif_tel = settings.pewman_whatsapp_phone | default: '+56 9 9083 3908'
+          assign cif_tel_href = cif_tel | remove: ' ' | remove: '+'
+        -%}
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="t">Teléfono</div><div class="d"><a href="tel:+{{ cif_tel_href }}">{{ cif_tel }}</a></div></div>
+        </div>
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><div class="t">Correo</div><div class="d"><a href="mailto:contacto@pewmaninnovation.com">contacto@pewmaninnovation.com</a></div></div>
+        </div>
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="t">Dirección</div><div class="d"><a href="{{ settings.pewman_company_maps_url | default: 'https://www.google.com/maps/search/?api=1&query=Badajoz%20100%2C%20Las%20Condes%2C%20Santiago' }}" target="_blank" rel="noopener">{{ settings.pewman_company_address | default: 'Badajoz 100, of. 726, Las Condes, Santiago' }}</a></div></div>
+        </div>
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V7l6-4 6 4v14M10 21v-6h4v6M9 11h1M14 11h1M9 15h1M14 15h1"/></svg></div>
+          <div><div class="t">Empresa</div><div class="d">Pewman Innovation SPA</div></div>
+        </div>
+        <div class="pewman-cif__row">
+          <div class="pewman-cif__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div><div class="t">Redes</div><div class="d">
+            <a href="https://www.instagram.com/pewmaninnovation" target="_blank" rel="noopener">Instagram</a> ·
+            <a href="https://www.facebook.com/pewmaninnovation" target="_blank" rel="noopener">Facebook</a> ·
+            <a href="https://www.linkedin.com/company/pewman-innovation" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://www.youtube.com/@PewmanInnovation" target="_blank" rel="noopener">YouTube</a>
+          </div></div>
+        </div>
+      </div>
+
+      {%- assign cif_form_id = 'PewmanContactInfoForm-' | append: section.id -%}
+      {%- form 'contact', id: cif_form_id, class: 'pewman-cif__form', data-hs-form: 'contacto' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="pewman-cif__ok">✓ ¡Gracias! Te responderemos a la brevedad.</div>
+        {%- else -%}
+          {%- comment -%}
+            label for + id: sin la asociacion los lectores de pantalla no
+            anuncian el campo y el navegador no autocompleta. El autocomplete
+            ademas rellena nombre/correo/telefono solo, clave en movil.
+          {%- endcomment -%}
+          <div class="pewman-cif__field"><label for="CifName-{{ section.id }}">Nombre</label><input type="text" id="CifName-{{ section.id }}" name="contact[name]" autocomplete="name" required></div>
+          <div class="pewman-cif__field"><label for="CifEmail-{{ section.id }}">Correo</label><input type="email" id="CifEmail-{{ section.id }}" name="contact[email]" autocomplete="email" required></div>
+          <div class="pewman-cif__field"><label for="CifPhone-{{ section.id }}">Teléfono</label><input type="tel" id="CifPhone-{{ section.id }}" name="contact[phone]" autocomplete="tel"></div>
+          <div class="pewman-cif__field"><label for="CifCrop-{{ section.id }}">Cultivo y zona</label><input type="text" id="CifCrop-{{ section.id }}" name="contact[Cultivo y zona]" placeholder="Ej: cerezos en el Valle de Curicó"></div>
+          <div class="pewman-cif__field"><label for="CifBody-{{ section.id }}">Mensaje</label><textarea id="CifBody-{{ section.id }}" name="contact[body]" rows="5"></textarea></div>
+          {% render 'pewman-consent' %}
+          <button class="pewman-btn pewman-btn--dark" type="submit">Enviar mensaje</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Contacto full",
+  "tag": "section",
+  "presets": [
+    { "name": "Pewman · Contacto full" }
+  ]
+}
+{% endschema %}

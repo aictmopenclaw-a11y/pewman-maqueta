@@ -1,0 +1,66 @@
+{%- comment -%}
+  Boton flotante "volver arriba" (Cris 2026-09-03), movil y escritorio.
+  Vive en el grupo del footer para no tocar layout/theme.liquid. Aparece al
+  pasar el umbral de scroll. OJO: en este theme el scroll vive en
+  .page-wrapper, no en window (ver pewman-header): se escuchan los dos.
+{%- endcomment -%}
+{%- style -%}
+  #PewmanToTop-{{ section.id }} {
+    position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 60;
+    width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer; padding: 0;
+    background: {{ section.settings.color | default: '#BD0028' }}; color: #fff;
+    box-shadow: 0 10px 24px -10px rgba(0,0,0,.45);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transform: translateY(12px); pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease, background .2s;
+  }
+  #PewmanToTop-{{ section.id }}.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+  #PewmanToTop-{{ section.id }}:hover { background: #a10022; }
+  #PewmanToTop-{{ section.id }}:focus-visible { outline: 3px solid rgba(189,0,40,.35); outline-offset: 2px; }
+  #PewmanToTop-{{ section.id }} svg { width: 22px; height: 22px; display: block; }
+  @media (max-width: 600px) { #PewmanToTop-{{ section.id }} { width: 42px; height: 42px; right: 14px; } }
+  @media (prefers-reduced-motion: reduce) { #PewmanToTop-{{ section.id }} { transition: none; } }
+{%- endstyle -%}
+
+<button type="button" id="PewmanToTop-{{ section.id }}" class="pewman-totop" aria-label="Volver arriba" title="Volver arriba" data-pewman-totop data-threshold="{{ section.settings.threshold | default: 600 }}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+</button>
+
+<script>
+  (function () {
+    var btn = document.getElementById('PewmanToTop-{{ section.id }}');
+    if (!btn) return;
+    var umbral = parseInt(btn.getAttribute('data-threshold'), 10) || 600;
+    var sc = document.querySelector('.page-wrapper');
+    var leerY = function () {
+      var a = sc ? sc.scrollTop : 0;
+      var b = window.scrollY || document.documentElement.scrollTop || 0;
+      return Math.max(a, b);
+    };
+    var tick = false;
+    var onScroll = function () {
+      if (tick) return; tick = true;
+      requestAnimationFrame(function () { btn.classList.toggle('is-visible', leerY() > umbral); tick = false; });
+    };
+    if (sc) sc.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    btn.addEventListener('click', function () {
+      var suave = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      if (sc && sc.scrollTo) sc.scrollTo({ top: 0, behavior: suave }); else if (sc) sc.scrollTop = 0;
+      window.scrollTo({ top: 0, behavior: suave });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Pewman · Volver arriba",
+  "tag": "div",
+  "settings": [
+    { "type": "range", "id": "threshold", "label": "Aparece después de (px de scroll)", "min": 200, "max": 1600, "step": 100, "default": 600 },
+    { "type": "color", "id": "color", "label": "Color del botón", "default": "#BD0028" }
+  ],
+  "presets": [ { "name": "Pewman · Volver arriba" } ]
+}
+{% endschema %}
