@@ -1,0 +1,68 @@
+{%- comment -%}
+  Banner de imagen contenido (NO full-bleed), opcionalmente clickeable.
+  Usado en Home para "Origen chileno. Alcance global" (imagen entregada por
+  el cliente 2026-07-21). El texto vive dentro de la imagen; el alt lo replica
+  para accesibilidad/SEO.
+  La imagen se contiene a max_width con márgenes laterales y esquinas
+  redondeadas, sobre el fondo de la página (blanco). El bg_color queda SOLO
+  detrás de la imagen (mientras carga), no a todo el ancho, para no dejar
+  franjas oscuras a los costados. Padding inferior configurable para separarla
+  de la sección siguiente.
+{%- endcomment -%}
+{%- style -%}
+  #PewmanImageBanner-{{ section.id }} {
+    display: block;
+    padding: {{ section.settings.pad_top | default: 28 }}px 24px {{ section.settings.pad_bottom | default: 60 }}px;
+  }
+  #PewmanImageBanner-{{ section.id }} .pewman-ib__inner {
+    max-width: {{ section.settings.max_width | default: 1200 }}px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    line-height: 0;
+    background: {{ section.settings.bg_color | default: '#0a1230' }};
+    box-shadow: var(--pewman-sh, 0 18px 40px -24px rgba(0,0,0,.35));
+  }
+  #PewmanImageBanner-{{ section.id }} picture { display: block; line-height: 0; }
+  #PewmanImageBanner-{{ section.id }} img { width: 100%; height: auto; display: block; }
+  @media (max-width: 600px) {
+    #PewmanImageBanner-{{ section.id }} { padding-left: 16px; padding-right: 16px; }
+    #PewmanImageBanner-{{ section.id }} .pewman-ib__inner { border-radius: 12px; }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.image -%}
+  {%- if section.settings.link != blank -%}
+    <a id="PewmanImageBanner-{{ section.id }}" href="{{ section.settings.link }}">
+      <div class="pewman-ib__inner">
+        <picture>{%- if section.settings.mobile_image -%}<source media="(max-width: 767px)" srcset="{{ section.settings.mobile_image | image_url: width: 480 }} 480w, {{ section.settings.mobile_image | image_url: width: 800 }} 800w, {{ section.settings.mobile_image | image_url: width: 1200 }} 1200w" sizes="100vw">{%- endif -%}<img src="{{ section.settings.image | image_url: width: 2000 }}" srcset="{{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1400 }} 1400w, {{ section.settings.image | image_url: width: 2000 }} 2000w, {{ section.settings.image | image_url: width: 2400 }} 2400w" sizes="(min-width: 1248px) 1200px, calc(100vw - 48px)" alt="{{ section.settings.image_alt | escape }}" loading="lazy"></picture>
+      </div>
+    </a>
+  {%- else -%}
+    <div id="PewmanImageBanner-{{ section.id }}">
+      <div class="pewman-ib__inner">
+        <picture>{%- if section.settings.mobile_image -%}<source media="(max-width: 767px)" srcset="{{ section.settings.mobile_image | image_url: width: 480 }} 480w, {{ section.settings.mobile_image | image_url: width: 800 }} 800w, {{ section.settings.mobile_image | image_url: width: 1200 }} 1200w" sizes="100vw">{%- endif -%}<img src="{{ section.settings.image | image_url: width: 2000 }}" srcset="{{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1400 }} 1400w, {{ section.settings.image | image_url: width: 2000 }} 2000w, {{ section.settings.image | image_url: width: 2400 }} 2400w" sizes="(min-width: 1248px) 1200px, calc(100vw - 48px)" alt="{{ section.settings.image_alt | escape }}" loading="lazy"></picture>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pewman · Banner imagen",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen del banner" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Imagen del banner (móvil)", "info": "Versión vertical para pantallas de hasta 767px. Exportar a 2x o más (mínimo 750×1000) para que se vea nítida." },
+    { "type": "text", "id": "image_alt", "label": "Texto alternativo", "info": "Describe el texto que aparece dentro de la imagen (accesibilidad y SEO)" },
+    { "type": "url", "id": "link", "label": "Link al hacer clic (opcional)" },
+    { "type": "color", "id": "bg_color", "label": "Color de fondo mientras carga", "default": "#0a1230" },
+    { "type": "range", "id": "max_width", "label": "Ancho máximo del banner (px)", "min": 900, "max": 1600, "step": 50, "default": 1200, "info": "El banner queda centrado con márgenes a los lados" },
+    { "type": "range", "id": "pad_top", "label": "Espacio arriba (px)", "min": 0, "max": 100, "step": 4, "default": 28 },
+    { "type": "range", "id": "pad_bottom", "label": "Espacio abajo (px)", "min": 0, "max": 120, "step": 4, "default": 60 }
+  ],
+  "presets": [
+    { "name": "Pewman · Banner imagen" }
+  ]
+}
+{% endschema %}
