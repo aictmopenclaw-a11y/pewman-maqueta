@@ -38,5 +38,5 @@ Las fichas de producto NO llevan Empresa B (decisión C): Crioprotect SAG + Ecoc
 - Preview por curl y en pantalla (escritorio + emulación móvil 375px): 3 sellos en Sostenibilidad, tarjeta Empresa B bajo CALS (Home) y bajo Premios (Nosotros), iconos + subtítulos en las 2 fichas con textos sin cambios, sin desborde horizontal (documento = 375px).
 - Nota: capturas con Chrome headless a 390px muestran contenido cortado a la derecha desde Sostenibilidad hacia abajo. Es artefacto del headless (sin emulación móvil), no del sitio: la emulación real da `scrollWidth` = 375.
 
-## Menú: limpieza después de publicar
-El theme apunta a `main-menu-equipo` (copia). Cuando el theme esté en vivo: agregar "Equipo" a `main-menu` (el que edita Dalila en Navegación), volver a apuntar `header-group.json` a `main-menu` y borrar `main-menu-equipo`. Hasta entonces, cualquier cambio de menú hay que hacerlo en la copia.
+## Menú: estado final (publicado 3 sep 13:27)
+El theme (ahora "Pewman - Main", MAIN) usa el menú handle `main-menu-equipo`, retitulado **"Main menu"**: es el canónico, el que se edita en Navegación. Cris cambió el padre "Nosotros" por "Empresa" con `#` (solo despliega). El default `main-menu` quedó como "Main menu (SIN USO…)" con el mismo contenido, porque el MCP no puede escribir en el theme MAIN para volver a apuntarlo. Para dejar un solo menú algún día: Personalizar → Header → Menú → elegir el SIN USO, quitarle el sufijo, borrar la copia.
