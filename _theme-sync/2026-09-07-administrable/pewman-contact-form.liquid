@@ -1,0 +1,114 @@
+{%- style -%}
+  #PewmanContact-{{ section.id }} {
+    position: relative;
+    background: linear-gradient(rgba(38,38,38,.82), rgba(38,38,38,.62)){% if section.settings.background_image %}, url({{ section.settings.background_image | image_url: width: 2048 }}) center/cover{% endif %};
+    padding: 78px 0;
+  }
+  #PewmanContact-{{ section.id }} .pewman-section-heading__title,
+  #PewmanContact-{{ section.id }} .pewman-eyebrow { color: #fff; }
+  #PewmanContact-{{ section.id }} .pewman-contact__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__sub { color: #fff; text-align: center; margin: -10px auto 26px; font-size: 15.5px; opacity: .92; max-width: 560px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__box {
+    max-width: 760px; margin: 0 auto; background: #fff; border: 1px solid var(--pewman-linea);
+    border-radius: 20px; padding: 40px; box-shadow: var(--pewman-sh);
+  }
+  #PewmanContact-{{ section.id }} .pewman-contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__box label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__box input,
+  #PewmanContact-{{ section.id }} .pewman-contact__box select,
+  #PewmanContact-{{ section.id }} .pewman-contact__box textarea {
+    width: 100%; border: 1.5px solid var(--pewman-linea); border-radius: 10px; padding: 12px 14px; font-size: 16px; transition: .18s;
+  }
+  {%- comment -%} 16px minimo en los campos: bajo eso iOS hace zoom automatico al tocar. {%- endcomment -%}
+  #PewmanContact-{{ section.id }} .pewman-contact__box input:focus,
+  #PewmanContact-{{ section.id }} .pewman-contact__box select:focus,
+  #PewmanContact-{{ section.id }} .pewman-contact__box textarea:focus { outline: none; border-color: var(--pewman-rojo); box-shadow: 0 0 0 3px rgba(189,0,40,.12); }
+  #PewmanContact-{{ section.id }} .pewman-contact__full { margin-bottom: 14px; }
+  #PewmanContact-{{ section.id }} .pewman-contact__box textarea { min-height: 96px; resize: vertical; }
+  #PewmanContact-{{ section.id }} .pewman-contact__ok { font-size: 13px; color: var(--pewman-rojo); margin-top: 10px; font-weight: 600; }
+  @media (max-width: 900px) { #PewmanContact-{{ section.id }} .pewman-contact__grid { grid-template-columns: 1fr; } }
+  {% if section.settings.background_image %}@media (max-width: 749px) { #PewmanContact-{{ section.id }} { background: linear-gradient(rgba(38,38,38,.82), rgba(38,38,38,.62)), url({{ section.settings.background_image | image_url: width: 1080 }}) center/cover; } }{% endif %}
+{%- endstyle -%}
+
+<div id="PewmanContact-{{ section.id }}">
+  <div class="pewman-contact__wrap">
+    {% render 'pewman-section-heading', eyebrow: section.settings.eyebrow | default: 'Contacto', heading: section.settings.heading | default: '¿Quieres saber más de nuestras soluciones?' %}
+    <p class="pewman-contact__sub">{{ section.settings.subtext | default: 'Respondemos tu solicitud en menos de 24 horas hábiles.' }}</p>
+    <div class="pewman-contact__box">
+      {%- assign cf_form_id = 'PewmanContactForm-' | append: section.id -%}
+      {%- form 'contact', id: cf_form_id, data-hs-form: 'contacto' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="pewman-contact__ok">{{ section.settings.success_text | default: '✓ ¡Gracias! Te contactaremos pronto.' }}</div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div class="pewman-contact__ok">{{ form.errors | default_errors }}</div>
+          {%- endif -%}
+          <div class="pewman-contact__grid">
+            <div><label for="ContactName-{{ section.id }}">{{ section.settings.label_name | default: 'Nombre' }}</label><input type="text" id="ContactName-{{ section.id }}" name="contact[name]" autocomplete="name" required></div>
+            <div><label for="ContactEmail-{{ section.id }}">{{ section.settings.label_email | default: 'Correo electrónico' }}</label><input type="email" id="ContactEmail-{{ section.id }}" name="contact[email]" autocomplete="email" required></div>
+          </div>
+          <div class="pewman-contact__grid">
+            <div><label for="ContactPhone-{{ section.id }}">{{ section.settings.label_phone | default: 'Teléfono' }}</label><input type="tel" id="ContactPhone-{{ section.id }}" name="contact[phone]" autocomplete="tel"></div>
+            <div><label for="ContactCrop-{{ section.id }}">{{ section.settings.label_crop | default: 'Tipo de cultivo' }}</label><input type="text" id="ContactCrop-{{ section.id }}" name="contact[Tipo de cultivo]" placeholder="{{ section.settings.ph_crop | default: 'Cerezos, uva, papas...' }}"></div>
+          </div>
+          <div class="pewman-contact__grid">
+            <div><label for="ContactHectares-{{ section.id }}">{{ section.settings.label_ha | default: 'Hectáreas' }}</label><input type="number" min="0" id="ContactHectares-{{ section.id }}" name="contact[Hectáreas]" placeholder="{{ section.settings.ph_ha | default: 'Ej: 25' }}"></div>
+            <div>
+              <label for="ContactProduct-{{ section.id }}">{{ section.settings.label_product | default: 'Producto de interés' }}</label>
+              {%- comment -%}
+                Antes los productos estaban escritos a mano (Crioprotect, Nanoforte): un
+                producto nuevo no aparecia solo. Ahora se listan todos los productos
+                activos de la tienda (Cris 2026-09-07, "agregar productos debe ser
+                autoadministrable"). La opcion extra ("Ambos") se edita en el panel.
+              {%- endcomment -%}
+              <select id="ContactProduct-{{ section.id }}" name="contact[Producto de interés]">
+                {%- for p in collections.all.products -%}
+                  <option>{{ p.title }}</option>
+                {%- endfor -%}
+                {%- if section.settings.product_extra_option != blank -%}
+                  <option>{{ section.settings.product_extra_option }}</option>
+                {%- endif -%}
+              </select>
+            </div>
+          </div>
+          <div class="pewman-contact__full">
+            <label for="ContactMessage-{{ section.id }}">{{ section.settings.label_message | default: 'Mensaje' }}</label>
+            <textarea id="ContactMessage-{{ section.id }}" name="contact[body]" placeholder="{{ section.settings.ph_message | default: 'Cuéntanos sobre tu cultivo' }}"></textarea>
+          </div>
+          {% render 'pewman-consent' %}
+          <button class="pewman-btn pewman-btn--dark" type="submit">{{ section.settings.submit_label | default: 'Enviar mensaje' }}</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pewman · Formulario",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Textos del formulario" },
+    { "type": "text", "id": "label_name", "label": "Etiqueta · Nombre", "default": "Nombre" },
+    { "type": "text", "id": "label_email", "label": "Etiqueta · Correo", "default": "Correo electrónico" },
+    { "type": "text", "id": "label_phone", "label": "Etiqueta · Teléfono", "default": "Teléfono" },
+    { "type": "text", "id": "label_crop", "label": "Etiqueta · Cultivo", "default": "Tipo de cultivo" },
+    { "type": "text", "id": "ph_crop", "label": "Ejemplo dentro del campo Cultivo", "default": "Cerezos, uva, papas..." },
+    { "type": "text", "id": "label_ha", "label": "Etiqueta · Hectáreas", "default": "Hectáreas" },
+    { "type": "text", "id": "ph_ha", "label": "Ejemplo dentro del campo Hectáreas", "default": "Ej: 25" },
+    { "type": "text", "id": "label_product", "label": "Etiqueta · Producto", "default": "Producto de interés" },
+    { "type": "text", "id": "product_extra_option", "label": "Opción extra al final de la lista de productos", "info": "Los productos activos de la tienda se listan solos. Déjalo vacío para no agregar nada.", "default": "Ambos" },
+    { "type": "text", "id": "label_message", "label": "Etiqueta · Mensaje", "default": "Mensaje" },
+    { "type": "text", "id": "ph_message", "label": "Ejemplo dentro del campo Mensaje", "default": "Cuéntanos sobre tu cultivo" },
+    { "type": "text", "id": "submit_label", "label": "Texto del botón", "default": "Enviar mensaje" },
+    { "type": "text", "id": "success_text", "label": "Mensaje tras enviar", "default": "✓ ¡Gracias! Te contactaremos pronto." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Contacto" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "¿Quieres saber más de nuestras soluciones?" },
+    { "type": "text", "id": "subtext", "label": "Texto bajo el título", "default": "Respondemos tu solicitud en menos de 24 horas hábiles." },
+    { "type": "image_picker", "id": "background_image", "label": "Imagen de fondo" }
+  ],
+  "presets": [
+    { "name": "Pewman · Formulario" }
+  ]
+}
+{% endschema %}
