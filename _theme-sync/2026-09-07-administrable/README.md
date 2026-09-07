@@ -19,15 +19,28 @@ Cada cambio deja el texto actual como `| default:`, así **el sitio se ve exacta
 | `sections/pewman-trials-documented.liquid` | `c705a631c56b44fb22b3f9a820fa6c41` | «Informe técnico» y el botón «⬇ Descargar PDF». |
 | `sections/pewman-ods.liquid` | `cedd0039a3616439c15aa5666c07af99` | Los 4 títulos de la ventana de cada ODS: Objetivo, Nuestra contribución, Metas alineadas, Impacto medible. |
 
-## Pendiente de decisión (ronda 2)
+## Criterio acordado con Cris (7 sep)
+- Si el texto va **dentro de una imagen** (banner CALS, banner "Origen chileno"): basta con poder cambiar la imagen. Ya se puede.
+- **Texto real, formularios, prender/apagar cosas, equipo, productos**: todo editable desde el panel, sin llamar a la agencia.
 
-**Copy de marketing todavía fijo en el código:**
-- `pewman-cals-distributor-banner`: todo el texto del banner y su ventana («Distribuidor oficial», «Conecta con tu distribuidor CALS», el párrafo, «¿En qué zona está tu campo?», «Ir a CALS», los mensajes de éxito).
-- `pewman-product-guide-gate`: «Descarga la guía de aplicación», «Guía de aplicación», «y preguntas frecuentes», mensajes de éxito.
-- `pewman-product-crops`: antetítulo «Compatibilidad».
-- `pewman-contact-form` y el gate: etiquetas de los campos y las opciones de producto («Crioprotect», «Nanoforte»): si suman un producto, no aparece solo en el desplegable.
+## Ronda 2 (mismo theme 159164399847)
 
-**Microcopy de interfaz** (se puede dejar fijo sin problema, salvo que quieran multi-idioma): «Leer →», «Ver impacto +», «Desde», «★★★★★», mensajes de estado vacío.
+| Archivo | MD5 | Qué queda editable |
+|---|---|---|
+| `sections/pewman-contact-form.liquid` | `a1d233f680cf4d94f79cb065aded5750` | **Productos del desplegable ahora dinámicos** (lista los productos activos de la tienda: un producto nuevo aparece solo) + opción extra («Ambos») editable. Etiquetas, ejemplos, botón y mensaje de gracias. |
+| `sections/pewman-cals-distributor-banner.liquid` | `a7d7f72cbd75ed05f0f678ba964cd95a` | Todos los textos de la ventana (antetítulo, título, párrafo, pregunta de zona, campos, botón, mensajes de éxito y botón a CALS). El link general reutiliza el setting `cals_url` que ya existía. |
+| `sections/pewman-product-guide-gate.liquid` | `ab7d462a05fd31226797b0d74c9f9b8c` | Antetítulo, título, portada (título/bajada), etiquetas y ejemplos del formulario, textos de éxito, botón de descarga, texto si no hay PDF. Los productos ya eran dinámicos. |
+| `sections/pewman-product-crops.liquid` | `44a2291a5432837f5c1022c7b3b92a16` | Antetítulo «Compatibilidad». |
+| `sections/pewman-solutions-grid.liquid` | `3d036d70ff20de4443ba196e3d40bc9d` | «Desde» y «Ver producto». |
+| `sections/pewman-blog-list.liquid` | `d1a3f15ff0e908aa924c086b04e05f68` | «Leer →» y texto cuando no hay entradas. |
+| `sections/pewman-blog-cards.liquid` | `b89eb5adb4d0cc27f1c6eb276528720b` | Texto cuando no hay entradas. |
+| `sections/pewman-papers-list.liquid` | `24430ea75e9e126039b5d5e932b7e31d` | «Leer →». |
+| `sections/pewman-testimonials-video-grid.liquid` | `9589e1912a0e29c3e22b8915055e8408` | Casilla para prender/apagar las 5 estrellas. |
+| `sections/pewman-footer.liquid` + `sections/footer-group.json` | `d71166fce9f3171af351bfd5319f5db6` / `931e953fbdaa196c0181b728ec48528d` | Dirección con una sola fuente: el pie hereda la de Configuración del tema si su campo queda vacío. **Cris confirmó of. 708**; el 726 del pie era un default viejo. |
 
-## Dato inconsistente que hay que resolver con el cliente
-La dirección aparece distinta en dos lugares: **of. 708** en la página de Contacto (viene del ajuste global) y **of. 726** en el pie de página (campo propio del footer). Hay que confirmar cuál es la correcta y dejarla en los dos. Ojo: la dirección se guarda en dos campos distintos; conviene unificar.
+Verificado por curl en el preview: Home (formulario con Crioprotect/Nanoforte/Ambos, ventana CALS), Crioprotect (guía, cultivos), Casos (estrellas), Patentes (Leer →), Contacto y pie (708). Todo idéntico a lo publicado.
+
+**Lección:** `themeFilesUpsert` por URL rechaza en silencio un archivo con un id de setting duplicado (pasó con `cals_url`, que ya existía). Antes de agregar settings, listar los ids existentes del schema. El checksum posterior es lo que delata el rechazo.
+
+## Queda fijo a propósito
+Solo microcopy sin valor de negocio: el símbolo «✓» de los mensajes de éxito, los menús técnicos de Shopify.
